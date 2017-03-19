@@ -311,8 +311,8 @@ The `unsafe` keyword has two uses: to declare the existence of contracts the
 compiler can't check, and to declare that the adherence of some code to
 those contracts has been checked by the programmer.
 -->
-`unsafe` は 2 つの目的に使われます。コンパイラがチェックできない契約が存在する事を宣言することと、
-コードが契約に準拠していることがプログラマによってチェックされた事を宣言する事です。
+<p><code>unsafe</code> は 2 つの目的に使われます。コンパイラがチェックできない契約が存在する事を宣言することと、
+コードが契約に準拠していることがプログラマによってチェックされた事を宣言する事です。</p>
 <!--
 You can use `unsafe` to indicate the existence of unchecked contracts on
 _functions_ and on _trait declarations_. On functions, `unsafe` means that
@@ -322,10 +322,10 @@ requires. On trait declarations, `unsafe` means that implementors of the
 trait must check the trait documentation to ensure their implementation
 maintains the contracts the trait requires.
 -->
-_関数_ と _trait の宣言_ に未チェックな契約が存在する事を、`unsafe` を使って示すことができます。
-関数に `unsafe` を使うと、ドキュメントを読んで、
+<p><em>関数</em> と <em>trait の宣言</em> に未チェックな契約が存在する事を、<code>unsafe</code> を使って示すことができます。
+関数に <code>unsafe</code> を使うと、ドキュメントを読んで、
 要求された契約を守るように関数を使うことを、その関数のユーザーに要請することになります。
-trait の宣言に `unsafe` を使うと、その trait を実装するユーザーに対し、ドキュメントをチェックして契約を守るよう要請します。
+trait の宣言に <code>unsafe</code> を使うと、その trait を実装するユーザーに対し、ドキュメントをチェックして契約を守るよう要請します。</p>
 <!--
 You can use `unsafe` on a block to declare that all constraints required
 by an unsafe function within the block have been adhered to, and the code
