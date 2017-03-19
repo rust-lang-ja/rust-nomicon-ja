@@ -4,7 +4,7 @@
 
 * [安全と危険のご紹介](meet-safe-and-unsafe.md)
 	* [安全と危険の相互作用](safe-unsafe-meaning.md)
-	* [Working with Unsafe](working-with-unsafe.md)
+	* [Unsafe と連携する](working-with-unsafe.md)
 * [Data Layout](data.md)
 	* [repr(Rust)](repr-rust.md)
 	* [Exotically Sized Types](exotic-sizes.md)
