@@ -1,6 +1,6 @@
 <!-- The Rustonomicon -->
 
-# Rust の裏側
+# Rust 裏本
 
 <!-- The Dark Arts of Advanced and Unsafe Rust Programming -->
 
