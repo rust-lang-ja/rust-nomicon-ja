@@ -51,5 +51,11 @@ of safety and guarantees.
 
 はっきり言いますが、この本は詳細について深く説明します。例外の安全性、ポインタエイリアシング、メモリモデル、そして型理論についても少し。また、様々な種類の安全性や保証についてもたくさん説明します。
 
-[trpl]: ../book/index.html
+
+> 訳注: 原文は[こちら][nomicon-en]、日本語の翻訳文書は[こちら][bookja]です。
+
+
+[trpl]: https://doc.rust-lang.org/book/
 [he]: http://quotes.yourdictionary.com/author/h-p-lovecraft/172934
+[nomicon-en]: https://doc.rust-lang.org/nomicon/README.html
+[bookja]: https://github.com/imsut/rust-nomicon-ja
