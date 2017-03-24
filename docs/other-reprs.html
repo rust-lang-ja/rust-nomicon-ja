@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Other reprs - </title>
+        <title>代替メモリレイアウト - </title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -47,7 +47,7 @@
         </script>
 
         <div id="sidebar" class="sidebar">
-            <ul class="chapter"><li class="affix"><a href="README.html">はじめに</a></li><li><a href="meet-safe-and-unsafe.html"><strong>1.</strong> 安全と危険のご紹介</a></li><li><ul class="section"><li><a href="safe-unsafe-meaning.html"><strong>1.1.</strong> 安全と危険の相互作用</a></li><li><a href="working-with-unsafe.html"><strong>1.2.</strong> Unsafe と連携する</a></li></ul></li><li><a href="data.html"><strong>2.</strong> Data Layout</a></li><li><ul class="section"><li><a href="repr-rust.html"><strong>2.1.</strong> repr(Rust)</a></li><li><a href="exotic-sizes.html"><strong>2.2.</strong> Exotically Sized Types</a></li><li><a href="other-reprs.html" class="active"><strong>2.3.</strong> Other reprs</a></li></ul></li><li><a href="ownership.html"><strong>3.</strong> Ownership</a></li><li><ul class="section"><li><a href="references.html"><strong>3.1.</strong> References</a></li><li><a href="lifetimes.html"><strong>3.2.</strong> Lifetimes</a></li><li><a href="lifetime-mismatch.html"><strong>3.3.</strong> Limits of Lifetimes</a></li><li><a href="lifetime-elision.html"><strong>3.4.</strong> Lifetime Elision</a></li><li><a href="unbounded-lifetimes.html"><strong>3.5.</strong> Unbounded Lifetimes</a></li><li><a href="hrtb.html"><strong>3.6.</strong> Higher-Rank Trait Bounds</a></li><li><a href="subtyping.html"><strong>3.7.</strong> Subtyping and Variance</a></li><li><a href="dropck.html"><strong>3.8.</strong> Drop Check</a></li><li><a href="phantom-data.html"><strong>3.9.</strong> PhantomData</a></li><li><a href="borrow-splitting.html"><strong>3.10.</strong> Splitting Borrows</a></li></ul></li><li><a href="conversions.html"><strong>4.</strong> Type Conversions</a></li><li><ul class="section"><li><a href="coercions.html"><strong>4.1.</strong> Coercions</a></li><li><a href="dot-operator.html"><strong>4.2.</strong> The Dot Operator</a></li><li><a href="casts.html"><strong>4.3.</strong> Casts</a></li><li><a href="transmutes.html"><strong>4.4.</strong> Transmutes</a></li></ul></li><li><a href="uninitialized.html"><strong>5.</strong> Uninitialized Memory</a></li><li><ul class="section"><li><a href="checked-uninit.html"><strong>5.1.</strong> Checked</a></li><li><a href="drop-flags.html"><strong>5.2.</strong> Drop Flags</a></li><li><a href="unchecked-uninit.html"><strong>5.3.</strong> Unchecked</a></li></ul></li><li><a href="obrm.html"><strong>6.</strong> Ownership Based Resource Management</a></li><li><ul class="section"><li><a href="constructors.html"><strong>6.1.</strong> Constructors</a></li><li><a href="destructors.html"><strong>6.2.</strong> Destructors</a></li><li><a href="leaking.html"><strong>6.3.</strong> Leaking</a></li></ul></li><li><a href="unwinding.html"><strong>7.</strong> Unwinding</a></li><li><ul class="section"><li><a href="exception-safety.html"><strong>7.1.</strong> Exception Safety</a></li><li><a href="poisoning.html"><strong>7.2.</strong> Poisoning</a></li></ul></li><li><a href="concurrency.html"><strong>8.</strong> Concurrency</a></li><li><ul class="section"><li><a href="races.html"><strong>8.1.</strong> Races</a></li><li><a href="send-and-sync.html"><strong>8.2.</strong> Send and Sync</a></li><li><a href="atomics.html"><strong>8.3.</strong> Atomics</a></li></ul></li><li><a href="vec.html"><strong>9.</strong> Implementing Vec</a></li><li><ul class="section"><li><a href="vec-layout.html"><strong>9.1.</strong> Layout</a></li><li><a href="vec-alloc.html"><strong>9.2.</strong> Allocating</a></li><li><a href="vec-push-pop.html"><strong>9.3.</strong> Push and Pop</a></li><li><a href="vec-dealloc.html"><strong>9.4.</strong> Deallocating</a></li><li><a href="vec-deref.html"><strong>9.5.</strong> Deref</a></li><li><a href="vec-insert-remove.html"><strong>9.6.</strong> Insert and Remove</a></li><li><a href="vec-into-iter.html"><strong>9.7.</strong> IntoIter</a></li><li><a href="vec-raw.html"><strong>9.8.</strong> RawVec</a></li><li><a href="vec-drain.html"><strong>9.9.</strong> Drain</a></li><li><a href="vec-zsts.html"><strong>9.10.</strong> Handling Zero-Sized Types</a></li><li><a href="vec-final.html"><strong>9.11.</strong> Final Code</a></li></ul></li><li><a href="arc-and-mutex.html"><strong>10.</strong> Implementing Arc and Mutex</a></li></ul>
+            <ul class="chapter"><li class="affix"><a href="README.html">はじめに</a></li><li><a href="meet-safe-and-unsafe.html"><strong>1.</strong> 安全と危険のご紹介</a></li><li><ul class="section"><li><a href="safe-unsafe-meaning.html"><strong>1.1.</strong> 安全と危険の相互作用</a></li><li><a href="working-with-unsafe.html"><strong>1.2.</strong> Unsafe と連携する</a></li></ul></li><li><a href="data.html"><strong>2.</strong> データレイアウト</a></li><li><ul class="section"><li><a href="repr-rust.html"><strong>2.1.</strong> repr(Rust)</a></li><li><a href="exotic-sizes.html"><strong>2.2.</strong> 奇妙なサイズの型</a></li><li><a href="other-reprs.html" class="active"><strong>2.3.</strong> 代替メモリレイアウト</a></li></ul></li><li><a href="ownership.html"><strong>3.</strong> Ownership</a></li><li><ul class="section"><li><a href="references.html"><strong>3.1.</strong> References</a></li><li><a href="lifetimes.html"><strong>3.2.</strong> Lifetimes</a></li><li><a href="lifetime-mismatch.html"><strong>3.3.</strong> Limits of Lifetimes</a></li><li><a href="lifetime-elision.html"><strong>3.4.</strong> Lifetime Elision</a></li><li><a href="unbounded-lifetimes.html"><strong>3.5.</strong> Unbounded Lifetimes</a></li><li><a href="hrtb.html"><strong>3.6.</strong> Higher-Rank Trait Bounds</a></li><li><a href="subtyping.html"><strong>3.7.</strong> Subtyping and Variance</a></li><li><a href="dropck.html"><strong>3.8.</strong> Drop Check</a></li><li><a href="phantom-data.html"><strong>3.9.</strong> PhantomData</a></li><li><a href="borrow-splitting.html"><strong>3.10.</strong> Splitting Borrows</a></li></ul></li><li><a href="conversions.html"><strong>4.</strong> Type Conversions</a></li><li><ul class="section"><li><a href="coercions.html"><strong>4.1.</strong> Coercions</a></li><li><a href="dot-operator.html"><strong>4.2.</strong> The Dot Operator</a></li><li><a href="casts.html"><strong>4.3.</strong> Casts</a></li><li><a href="transmutes.html"><strong>4.4.</strong> Transmutes</a></li></ul></li><li><a href="uninitialized.html"><strong>5.</strong> Uninitialized Memory</a></li><li><ul class="section"><li><a href="checked-uninit.html"><strong>5.1.</strong> Checked</a></li><li><a href="drop-flags.html"><strong>5.2.</strong> Drop Flags</a></li><li><a href="unchecked-uninit.html"><strong>5.3.</strong> Unchecked</a></li></ul></li><li><a href="obrm.html"><strong>6.</strong> Ownership Based Resource Management</a></li><li><ul class="section"><li><a href="constructors.html"><strong>6.1.</strong> Constructors</a></li><li><a href="destructors.html"><strong>6.2.</strong> Destructors</a></li><li><a href="leaking.html"><strong>6.3.</strong> Leaking</a></li></ul></li><li><a href="unwinding.html"><strong>7.</strong> Unwinding</a></li><li><ul class="section"><li><a href="exception-safety.html"><strong>7.1.</strong> Exception Safety</a></li><li><a href="poisoning.html"><strong>7.2.</strong> Poisoning</a></li></ul></li><li><a href="concurrency.html"><strong>8.</strong> Concurrency</a></li><li><ul class="section"><li><a href="races.html"><strong>8.1.</strong> Races</a></li><li><a href="send-and-sync.html"><strong>8.2.</strong> Send and Sync</a></li><li><a href="atomics.html"><strong>8.3.</strong> Atomics</a></li></ul></li><li><a href="vec.html"><strong>9.</strong> Implementing Vec</a></li><li><ul class="section"><li><a href="vec-layout.html"><strong>9.1.</strong> Layout</a></li><li><a href="vec-alloc.html"><strong>9.2.</strong> Allocating</a></li><li><a href="vec-push-pop.html"><strong>9.3.</strong> Push and Pop</a></li><li><a href="vec-dealloc.html"><strong>9.4.</strong> Deallocating</a></li><li><a href="vec-deref.html"><strong>9.5.</strong> Deref</a></li><li><a href="vec-insert-remove.html"><strong>9.6.</strong> Insert and Remove</a></li><li><a href="vec-into-iter.html"><strong>9.7.</strong> IntoIter</a></li><li><a href="vec-raw.html"><strong>9.8.</strong> RawVec</a></li><li><a href="vec-drain.html"><strong>9.9.</strong> Drain</a></li><li><a href="vec-zsts.html"><strong>9.10.</strong> Handling Zero-Sized Types</a></li><li><a href="vec-final.html"><strong>9.11.</strong> Final Code</a></li></ul></li><li><a href="arc-and-mutex.html"><strong>10.</strong> Implementing Arc and Mutex</a></li></ul>
         </div>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -67,25 +67,42 @@
                 </div>
 
                 <div id="content" class="content">
-                    <a class="header" href="#alternative-representations" name="alternative-representations"><h1>Alternative representations</h1></a>
-<p>Rust allows you to specify alternative data layout strategies from the default.</p>
+                    <!--
+# Alternative representations
+-->
+<a class="header" href="#代替メモリレイアウト" name="代替メモリレイアウト"><h1>代替メモリレイアウト</h1></a>
+<!--
+Rust allows you to specify alternative data layout strategies from the default.
+-->
+<p>Rust では、デフォルトとは異なる、代替のデータレイアウトを指定することができます。</p>
 <a class="header" href="#reprc" name="reprc"><h1>repr(C)</h1></a>
-<p>This is the most important <code>repr</code>. It has fairly simple intent: do what C does.
+<!--
+This is the most important `repr`. It has fairly simple intent: do what C does.
 The order, size, and alignment of fields is exactly what you would expect from C
 or C++. Any type you expect to pass through an FFI boundary should have
-<code>repr(C)</code>, as C is the lingua-franca of the programming world. This is also
+`repr(C)`, as C is the lingua-franca of the programming world. This is also
 necessary to soundly do more elaborate tricks with data layout such as
-reinterpreting values as a different type.</p>
-<p>However, the interaction with Rust's more exotic data layout features must be
-kept in mind. Due to its dual purpose as &quot;for FFI&quot; and &quot;for layout control&quot;,
-<code>repr(C)</code> can be applied to types that will be nonsensical or problematic if
-passed through the FFI boundary.</p>
-<ul>
-<li>
-<p>ZSTs are still zero-sized, even though this is not a standard behavior in
+reinterpreting values as a different type.
+-->
+<p>これは最も重要な <code>repr</code> です。意味はとても単純で、「C がやるようにやれ」です。
+フィールドの順序、サイズ、アラインメントが、C や C++ に期待するのと全く同じになります。
+FFI 境界を超えるであろう型は、すべて <code>repr(C)</code> になるべきです。
+C はプログラミング界の共通言語なのですから。
+また、値を別の型として再解釈する、といった複雑なトリックをやる場合にも <code>repr(C)</code> は必須です。</p>
+<!--
+However, the interaction with Rust's more exotic data layout features must be
+kept in mind. Due to its dual purpose as "for FFI" and "for layout control",
+`repr(C)` can be applied to types that will be nonsensical or problematic if
+passed through the FFI boundary.
+-->
+<p>しかし、Rust の風変わりなデータレイアウト機能との相互作用も忘れてはいけません。
+「FFI のため」と「データレイアウトのため」という二つの目的があるため、
+FFI 境界を超えることが無意味または問題になるような型にも <code>repr(C)</code> は適用されます。</p>
+<!--
+* ZSTs are still zero-sized, even though this is not a standard behavior in
 C, and is explicitly contrary to the behavior of an empty type in C++, which
-still consumes a byte of space.</p>
-</li>
+still consumes a byte of space.
+<ul>
 <li>
 <p>DSTs, tuples, and tagged unions are not a concept in C and as such are never
 FFI safe.</p>
@@ -95,39 +112,94 @@ FFI safe.</p>
 difference from a struct is that the fields aren’t named.</p>
 </li>
 <li>
-<p><strong>If the type would have any <a href="drop-flags.html">drop flags</a>, they will still be added</strong></p>
+<p><strong>If the type would have any <a href="drop-flags.md">drop flags</a>, they will still be added</strong></p>
 </li>
 <li>
 <p>This is equivalent to one of <code>repr(u*)</code> (see the next section) for enums. The
 chosen size is the default enum size for the target platform's C ABI. Note that
 enum representation in C is implementation defined, so this is really a &quot;best
 guess&quot;. In particular, this may be incorrect when the C code of interest is
-compiled with certain flags.</p>
+compiled with certain flags.
+--&gt;</p>
+</li>
+<li>
+<p>ZST のサイズはやはり 0 になります。これは C の標準的な挙動ではないし、C++ の挙動
+（空の型も 1 byte を消費します）とは明確に異なります。</p>
+</li>
+<li>
+<p>DST, タプル, タグ付き共用体という概念は C には存在しないため、FFI では安全に使えません。</p>
+</li>
+<li>
+<p><code>repr(C)</code> を適用した状況では、タプルは構造体と似ています。構造体との違いは、フィールドに名前がないことだけです。</p>
+</li>
+<li>
+<p><strong>型に <a href="drop-flags.md">drop flags</a> が付いていても、その型は追加されます。</strong></p>
+</li>
+<li>
+<p>enum については、<code>repr(u*)</code> （次のセクションで説明します）と同等です。選んだサイズが、対象となるプラットフォームの C ABI でのデフォルトの enum のサイズとなります。C での enum のデータ表現は実装依存なので、これはベストの推測でしかないことに注意してください。とくに、対象の C コードが特定のフラグつきでコンパイルされた場合に、正しく動かないかもしれません。</p>
 </li>
 </ul>
+<!--
+# repr(u8), repr(u16), repr(u32), repr(u64)
+-->
 <a class="header" href="#repru8-repru16-repru32-repru64" name="repru8-repru16-repru32-repru64"><h1>repr(u8), repr(u16), repr(u32), repr(u64)</h1></a>
-<p>These specify the size to make a C-like enum. If the discriminant overflows the
+<!--
+These specify the size to make a C-like enum. If the discriminant overflows the
 integer it has to fit in, it will produce a compile-time error. You can manually
 ask Rust to allow this by setting the overflowing element to explicitly be 0.
 However Rust will not allow you to create an enum where two variants have the
-same discriminant.</p>
-<p>On non-C-like enums, this will inhibit certain optimizations like the null-
-pointer optimization.</p>
-<p>These reprs have no effect on a struct.</p>
+same discriminant.
+-->
+<p>これらは、enum を C っぽくレイアウトするように指示します。
+enum の要素が指定した整数をオーバーフローする場合、コンパイルエラーとなります。
+オーバーフローする値を 0 に設定するよう Rust に指定することもできますが、
+2 つの異なる enum 要素が同じ値を取ることはできません。</p>
+<!--
+On non-C-like enums, this will inhibit certain optimizations like the null-
+pointer optimization.
+-->
+<p>C っぽくない enum （訳注：要素がパラメタをとるような enum）に <code>repr(u*)</code> を適用すると、
+null ポインタ最適化のようなある種の最適化ができなくなります。</p>
+<!--
+These reprs have no effect on a struct.
+-->
+<p>この repr を構造体につかっても効果はありません。</p>
+<!--
+# repr(packed)
+-->
 <a class="header" href="#reprpacked" name="reprpacked"><h1>repr(packed)</h1></a>
-<p><code>repr(packed)</code> forces Rust to strip any padding, and only align the type to a
+<!--
+`repr(packed)` forces Rust to strip any padding, and only align the type to a
 byte. This may improve the memory footprint, but will likely have other negative
-side-effects.</p>
-<p>In particular, most architectures <em>strongly</em> prefer values to be aligned. This
+side-effects.
+-->
+<p><code>repr(packed)</code> を使うと Rust はパディングを一切取り除き、すべてを byte 単位にアラインします。
+メモリ使用量は改善しますが、悪い副作用を引き起こす可能性が高いです。</p>
+<!--
+In particular, most architectures *strongly* prefer values to be aligned. This
 may mean the unaligned loads are penalized (x86), or even fault (some ARM
 chips). For simple cases like directly loading or storing a packed field, the
 compiler might be able to paper over alignment issues with shifts and masks.
 However if you take a reference to a packed field, it's unlikely that the
-compiler will be able to emit code to avoid an unaligned load.</p>
-<p><strong><a href="https://github.com/rust-lang/rust/issues/27060">As of Rust 1.0 this can cause undefined behavior.</a></strong></p>
+compiler will be able to emit code to avoid an unaligned load.
+-->
+<p>特にほとんどのアークテクチャは、値がアラインされていることを<em>強く</em>望んでいます。
+つまりアラインされていないデータの読み込みにはペナルティがある（x86）かもしれませんし、
+失敗する（いくつかの ARM チップ）かもしれません。
+パックされたフィールドを直接読んだり書いたりするという単純なケースでは、
+コンパイラがシフトやマスクを駆使してアラインメントの問題を隠してくれるかもしれません。
+しかし、パックされたフィールドへのリファレンスを扱う場合には、アラインされてない読み込みを避けるような
+コードをコンパイラが生成することは期待できないでしょう。</p>
+<!--
+**[As of Rust 1.0 this can cause undefined behavior.][ub loads]**
 <p><code>repr(packed)</code> is not to be used lightly. Unless you have extreme requirements,
 this should not be used.</p>
-<p>This repr is a modifier on <code>repr(C)</code> and <code>repr(rust)</code>.</p>
+<p>This repr is a modifier on <code>repr(C)</code> and <code>repr(rust)</code>.
+--&gt;</p>
+<p><strong><a href="https://github.com/rust-lang/rust/issues/27060">Rust 1.0 時点では、これは未定義な挙動です。</a></strong></p>
+<p><code>repr(packed)</code> は気軽に使えるものではありません。
+極端な要求に応えようとしているのでない限り、使うべきではありません。</p>
+<p>この repr は <code>repr(C)</code> や <code>repr(rust)</code> の就職誌として使えます。</p>
 
                 </div>
 
