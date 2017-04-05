@@ -16,7 +16,7 @@ Instead of the programs I had hoped for, there came only a shuddering blackness 
 
 > 私に与えられたのは、望んだようなプログラムではなく、身を震わせるような暗黒と言い表せないような孤独であった。そして私はついに、誰ひとり口にしようともしなかった恐ろしい真実、ささやくことすらできない神秘中の神秘を目にしたのだ。石のように硬く、耳障りな音をたてるこの言語は、ロンドンが古きロンドンではなく、パリが古きパリではないように、Rust の御代をとこしえにするものではなく、実はきわめて危険で、不完全に防腐処理された、だらしなく寝そべった死体だったのだ。そこにはコンパイル時に生まれた奇妙な生き物たちが所在なさげに蔓延っていた。
 >
-> （訳注: H.P. ラヴクラフトの小説「[あの人][he]」のパロディのようです。）
+> （訳注: H.P. ラヴクラフトの小説「[あの男][he]」のパロディのようです。）
 
 <!--
 This book digs into all the awful details that are necessary to understand in order to write correct Unsafe Rust programs. Due to the nature of this problem, it may lead to unleashing untold horrors that shatter your psyche into a billion infinitesimal fragments of despair.
