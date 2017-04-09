@@ -1,6 +1,7 @@
 <!--
 # Ownership and Lifetimes
 -->
+
 # 所有権と生存期間
 
 <!--

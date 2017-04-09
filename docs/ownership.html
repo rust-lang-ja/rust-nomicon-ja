@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Ownership - </title>
+        <title>所有権と生存期間 - </title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -47,7 +47,7 @@
         </script>
 
         <div id="sidebar" class="sidebar">
-            <ul class="chapter"><li class="affix"><a href="README.html">はじめに</a></li><li><a href="meet-safe-and-unsafe.html"><strong>1.</strong> 安全と危険のご紹介</a></li><li><ul class="section"><li><a href="safe-unsafe-meaning.html"><strong>1.1.</strong> 安全と危険の相互作用</a></li><li><a href="working-with-unsafe.html"><strong>1.2.</strong> Unsafe と連携する</a></li></ul></li><li><a href="data.html"><strong>2.</strong> データレイアウト</a></li><li><ul class="section"><li><a href="repr-rust.html"><strong>2.1.</strong> repr(Rust)</a></li><li><a href="exotic-sizes.html"><strong>2.2.</strong> 奇妙なサイズの型</a></li><li><a href="other-reprs.html"><strong>2.3.</strong> 代替メモリレイアウト</a></li></ul></li><li><a href="ownership.html" class="active"><strong>3.</strong> Ownership</a></li><li><ul class="section"><li><a href="references.html"><strong>3.1.</strong> References</a></li><li><a href="lifetimes.html"><strong>3.2.</strong> Lifetimes</a></li><li><a href="lifetime-mismatch.html"><strong>3.3.</strong> Limits of Lifetimes</a></li><li><a href="lifetime-elision.html"><strong>3.4.</strong> Lifetime Elision</a></li><li><a href="unbounded-lifetimes.html"><strong>3.5.</strong> Unbounded Lifetimes</a></li><li><a href="hrtb.html"><strong>3.6.</strong> Higher-Rank Trait Bounds</a></li><li><a href="subtyping.html"><strong>3.7.</strong> Subtyping and Variance</a></li><li><a href="dropck.html"><strong>3.8.</strong> Drop Check</a></li><li><a href="phantom-data.html"><strong>3.9.</strong> PhantomData</a></li><li><a href="borrow-splitting.html"><strong>3.10.</strong> Splitting Borrows</a></li></ul></li><li><a href="conversions.html"><strong>4.</strong> Type Conversions</a></li><li><ul class="section"><li><a href="coercions.html"><strong>4.1.</strong> Coercions</a></li><li><a href="dot-operator.html"><strong>4.2.</strong> The Dot Operator</a></li><li><a href="casts.html"><strong>4.3.</strong> Casts</a></li><li><a href="transmutes.html"><strong>4.4.</strong> Transmutes</a></li></ul></li><li><a href="uninitialized.html"><strong>5.</strong> Uninitialized Memory</a></li><li><ul class="section"><li><a href="checked-uninit.html"><strong>5.1.</strong> Checked</a></li><li><a href="drop-flags.html"><strong>5.2.</strong> Drop Flags</a></li><li><a href="unchecked-uninit.html"><strong>5.3.</strong> Unchecked</a></li></ul></li><li><a href="obrm.html"><strong>6.</strong> Ownership Based Resource Management</a></li><li><ul class="section"><li><a href="constructors.html"><strong>6.1.</strong> Constructors</a></li><li><a href="destructors.html"><strong>6.2.</strong> Destructors</a></li><li><a href="leaking.html"><strong>6.3.</strong> Leaking</a></li></ul></li><li><a href="unwinding.html"><strong>7.</strong> Unwinding</a></li><li><ul class="section"><li><a href="exception-safety.html"><strong>7.1.</strong> Exception Safety</a></li><li><a href="poisoning.html"><strong>7.2.</strong> Poisoning</a></li></ul></li><li><a href="concurrency.html"><strong>8.</strong> Concurrency</a></li><li><ul class="section"><li><a href="races.html"><strong>8.1.</strong> Races</a></li><li><a href="send-and-sync.html"><strong>8.2.</strong> Send and Sync</a></li><li><a href="atomics.html"><strong>8.3.</strong> Atomics</a></li></ul></li><li><a href="vec.html"><strong>9.</strong> Implementing Vec</a></li><li><ul class="section"><li><a href="vec-layout.html"><strong>9.1.</strong> Layout</a></li><li><a href="vec-alloc.html"><strong>9.2.</strong> Allocating</a></li><li><a href="vec-push-pop.html"><strong>9.3.</strong> Push and Pop</a></li><li><a href="vec-dealloc.html"><strong>9.4.</strong> Deallocating</a></li><li><a href="vec-deref.html"><strong>9.5.</strong> Deref</a></li><li><a href="vec-insert-remove.html"><strong>9.6.</strong> Insert and Remove</a></li><li><a href="vec-into-iter.html"><strong>9.7.</strong> IntoIter</a></li><li><a href="vec-raw.html"><strong>9.8.</strong> RawVec</a></li><li><a href="vec-drain.html"><strong>9.9.</strong> Drain</a></li><li><a href="vec-zsts.html"><strong>9.10.</strong> Handling Zero-Sized Types</a></li><li><a href="vec-final.html"><strong>9.11.</strong> Final Code</a></li></ul></li><li><a href="arc-and-mutex.html"><strong>10.</strong> Implementing Arc and Mutex</a></li></ul>
+            <ul class="chapter"><li class="affix"><a href="README.html">はじめに</a></li><li><a href="meet-safe-and-unsafe.html"><strong>1.</strong> 安全と危険のご紹介</a></li><li><ul class="section"><li><a href="safe-unsafe-meaning.html"><strong>1.1.</strong> 安全と危険の相互作用</a></li><li><a href="working-with-unsafe.html"><strong>1.2.</strong> Unsafe と連携する</a></li></ul></li><li><a href="data.html"><strong>2.</strong> データレイアウト</a></li><li><ul class="section"><li><a href="repr-rust.html"><strong>2.1.</strong> repr(Rust)</a></li><li><a href="exotic-sizes.html"><strong>2.2.</strong> 奇妙なサイズの型</a></li><li><a href="other-reprs.html"><strong>2.3.</strong> 代替メモリレイアウト</a></li></ul></li><li><a href="ownership.html" class="active"><strong>3.</strong> 所有権と生存期間</a></li><li><ul class="section"><li><a href="references.html"><strong>3.1.</strong> リファレンス</a></li><li><a href="lifetimes.html"><strong>3.2.</strong> Lifetimes</a></li><li><a href="lifetime-mismatch.html"><strong>3.3.</strong> Limits of Lifetimes</a></li><li><a href="lifetime-elision.html"><strong>3.4.</strong> Lifetime Elision</a></li><li><a href="unbounded-lifetimes.html"><strong>3.5.</strong> Unbounded Lifetimes</a></li><li><a href="hrtb.html"><strong>3.6.</strong> Higher-Rank Trait Bounds</a></li><li><a href="subtyping.html"><strong>3.7.</strong> Subtyping and Variance</a></li><li><a href="dropck.html"><strong>3.8.</strong> Drop Check</a></li><li><a href="phantom-data.html"><strong>3.9.</strong> PhantomData</a></li><li><a href="borrow-splitting.html"><strong>3.10.</strong> Splitting Borrows</a></li></ul></li><li><a href="conversions.html"><strong>4.</strong> Type Conversions</a></li><li><ul class="section"><li><a href="coercions.html"><strong>4.1.</strong> Coercions</a></li><li><a href="dot-operator.html"><strong>4.2.</strong> The Dot Operator</a></li><li><a href="casts.html"><strong>4.3.</strong> Casts</a></li><li><a href="transmutes.html"><strong>4.4.</strong> Transmutes</a></li></ul></li><li><a href="uninitialized.html"><strong>5.</strong> Uninitialized Memory</a></li><li><ul class="section"><li><a href="checked-uninit.html"><strong>5.1.</strong> Checked</a></li><li><a href="drop-flags.html"><strong>5.2.</strong> Drop Flags</a></li><li><a href="unchecked-uninit.html"><strong>5.3.</strong> Unchecked</a></li></ul></li><li><a href="obrm.html"><strong>6.</strong> Ownership Based Resource Management</a></li><li><ul class="section"><li><a href="constructors.html"><strong>6.1.</strong> Constructors</a></li><li><a href="destructors.html"><strong>6.2.</strong> Destructors</a></li><li><a href="leaking.html"><strong>6.3.</strong> Leaking</a></li></ul></li><li><a href="unwinding.html"><strong>7.</strong> Unwinding</a></li><li><ul class="section"><li><a href="exception-safety.html"><strong>7.1.</strong> Exception Safety</a></li><li><a href="poisoning.html"><strong>7.2.</strong> Poisoning</a></li></ul></li><li><a href="concurrency.html"><strong>8.</strong> Concurrency</a></li><li><ul class="section"><li><a href="races.html"><strong>8.1.</strong> Races</a></li><li><a href="send-and-sync.html"><strong>8.2.</strong> Send and Sync</a></li><li><a href="atomics.html"><strong>8.3.</strong> Atomics</a></li></ul></li><li><a href="vec.html"><strong>9.</strong> Implementing Vec</a></li><li><ul class="section"><li><a href="vec-layout.html"><strong>9.1.</strong> Layout</a></li><li><a href="vec-alloc.html"><strong>9.2.</strong> Allocating</a></li><li><a href="vec-push-pop.html"><strong>9.3.</strong> Push and Pop</a></li><li><a href="vec-dealloc.html"><strong>9.4.</strong> Deallocating</a></li><li><a href="vec-deref.html"><strong>9.5.</strong> Deref</a></li><li><a href="vec-insert-remove.html"><strong>9.6.</strong> Insert and Remove</a></li><li><a href="vec-into-iter.html"><strong>9.7.</strong> IntoIter</a></li><li><a href="vec-raw.html"><strong>9.8.</strong> RawVec</a></li><li><a href="vec-drain.html"><strong>9.9.</strong> Drain</a></li><li><a href="vec-zsts.html"><strong>9.10.</strong> Handling Zero-Sized Types</a></li><li><a href="vec-final.html"><strong>9.11.</strong> Final Code</a></li></ul></li><li><a href="arc-and-mutex.html"><strong>10.</strong> Implementing Arc and Mutex</a></li></ul>
         </div>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -67,60 +67,129 @@
                 </div>
 
                 <div id="content" class="content">
-                    <a class="header" href="#ownership-and-lifetimes" name="ownership-and-lifetimes"><h1>Ownership and Lifetimes</h1></a>
-<p>Ownership is the breakout feature of Rust. It allows Rust to be completely
+                    <!--
+# Ownership and Lifetimes
+-->
+<a class="header" href="#所有権と生存期間" name="所有権と生存期間"><h1>所有権と生存期間</h1></a>
+<!--
+Ownership is the breakout feature of Rust. It allows Rust to be completely
 memory-safe and efficient, while avoiding garbage collection. Before getting
 into the ownership system in detail, we will consider the motivation of this
-design.</p>
-<p>We will assume that you accept that garbage collection (GC) is not always an
+design.
+-->
+<p>所有権は Rust が爆発的に有名になるきっかけとなった機能です。
+所有権により、Rust は完全にメモリ安全かつ、ガーベジコレクションがないため効率的になります。
+所有権の詳細に立ち入る前に、この機能がなぜ必要なのかを考えてみましょう。</p>
+<!--
+We will assume that you accept that garbage collection (GC) is not always an
 optimal solution, and that it is desirable to manually manage memory in some
 contexts. If you do not accept this, might I interest you in a different
-language?</p>
-<p>Regardless of your feelings on GC, it is pretty clearly a <em>massive</em> boon to
-making code safe. You never have to worry about things going away <em>too soon</em>
+language?
+-->
+<p>ガーベジコレクション（GC）が常に最適なソリューションではないこと、
+手動のメモリ管理の方が望ましいケースもあることには異論はないと思います。
+もしそう思わないなら、別の言語に興味を持った方が良いですよ?</p>
+<!--
+Regardless of your feelings on GC, it is pretty clearly a *massive* boon to
+making code safe. You never have to worry about things going away *too soon*
 (although whether you still wanted to be pointing at that thing is a different
 issue...). This is a pervasive problem that C and C++ programs need to deal
 with. Consider this simple mistake that all of us who have used a non-GC'd
-language have made at one point:</p>
-<pre><code class="language-rust,ignore">fn as_str(data: &amp;u32) -&gt; &amp;str {
+language have made at one point:
+-->
+<p>あなたが GC のことをどう思っていようとも、GC はコードを安全にするために<em>とてつもない</em>恩恵をもたらしました。
+オブジェクトが<em>早すぎるタイミングで</em>消えてしまう心配が全く必要ないんです。
+（とはいえ、そのオブジェクトへのポインタをその時点まで保有しておくべきかどうかというのは別の問題ですが・・・）
+これは、C や C++ プログラムが対処しなければならない、広範囲に広がっている問題です。
+GC の無い言語を使ったことのあるひとなら誰でも一度はやってしまった、この単純な間違いを見てみましょう。</p>
+<!--
+```rust,ignore
+fn as_str(data: &u32) -> &str {
     // compute the string
+    let s = format!("{}", data);
+<pre><code>// OH NO! We returned a reference to something that
+// exists only in this function!
+// Dangling pointer! Use after free! Alas!
+// (this does not compile in Rust)
+&amp;s
+</code></pre>
+<p>}</p>
+<pre><code>--&gt;
+
+```rust,ignore
+fn as_str(data: &amp;u32) -&gt; &amp;str {
+    // 文字列を生成する
     let s = format!(&quot;{}&quot;, data);
 
-    // OH NO! We returned a reference to something that
-    // exists only in this function!
-    // Dangling pointer! Use after free! Alas!
-    // (this does not compile in Rust)
+    // しまった! この関数内でしか存在しないオブジェクトへの
+    // リファレンスを返してしまった!
+    // ダングリングポインタだ! メモリ解放後の参照だ! うわーー!
+    // （このコードは Rust ではコンパイルエラーになります）
     &amp;s
 }
 </code></pre>
-<p>This is exactly what Rust's ownership system was built to solve.
-Rust knows the scope in which the <code>&amp;s</code> lives, and as such can prevent it from
+<!--
+This is exactly what Rust's ownership system was built to solve.
+Rust knows the scope in which the `&s` lives, and as such can prevent it from
 escaping. However this is a simple case that even a C compiler could plausibly
 catch. Things get more complicated as code gets bigger and pointers get fed through
 various functions. Eventually, a C compiler will fall down and won't be able to
 perform sufficient escape analysis to prove your code unsound. It will consequently
-be forced to accept your program on the assumption that it is correct.</p>
-<p>This will never happen to Rust. It's up to the programmer to prove to the
-compiler that everything is sound.</p>
+be forced to accept your program on the assumption that it is correct.
+-->
+<p>これこそが、Rust の所有権システムが解決する問題なのです。
+Rust は <code>&amp;s</code> が生存するスコープを理解し、<code>&amp;s</code> がそのスコープ外に逃げることを防ぎます。
+しかし、この単純なケースは、C コンパイラですらうまいこと防ぐことができるでしょう。
+コードが大きくなり、様々な関数にポインタが渡されるようになると、やっかいなことになります。
+いずれ C コンパイラは、十分なエスケープ解析ができなくなり、コードが健全である証明に失敗し、屈服することになるのです。
+結果的に、C コンパイラはあなたのプログラムが正しいと仮定して、それを受け入れることを強制されます。</p>
+<!--
+This will never happen to Rust. It's up to the programmer to prove to the
+compiler that everything is sound.
 <p>Of course, Rust's story around ownership is much more complicated than just
 verifying that references don't escape the scope of their referent. That's
 because ensuring pointers are always valid is much more complicated than this.
-For instance in this code,</p>
-<pre><code class="language-rust,ignore">let mut data = vec![1, 2, 3];
+For instance in this code,
+--&gt;</p>
+<p>これは Rust では決して起こりません。全てが健全であるとコンパイラに証明するのはプログラマの責任なのです。</p>
+<p>もちろん、リファレンスが参照先のスコープから逃げ出していないことを検証することよりも
+所有権に関する Rust の話はもっともっと複雑です。
+ポインタがつねに有効であることを証明するのは、もっともっと複雑だからです。
+例えばこのコードを見てみましょう。</p>
+<!--
+```rust,ignore
+let mut data = vec![1, 2, 3];
 // get an internal reference
-let x = &amp;data[0];
-
-// OH NO! `push` causes the backing storage of `data` to be reallocated.
+let x = &data[0];
+<p>// OH NO! <code>push</code> causes the backing storage of <code>data</code> to be reallocated.
 // Dangling pointer! Use after free! Alas!
 // (this does not compile in Rust)
+data.push(4);</p>
+<p>println!(&quot;{}&quot;, x);</p>
+<pre><code>--&gt;
+
+```rust,ignore
+let mut data = vec![1, 2, 3];
+// 内部データのリファレンスを取る
+let x = &amp;data[0];
+
+// しまった! `push` によって `data` の格納先が再割り当てされてしまった。
+// ダングリングポインタだ! メモリ解放後の参照だ! うわーー!
+// （このコードは Rust ではコンパイルエラーになります）
 data.push(4);
 
 println!(&quot;{}&quot;, x);
 </code></pre>
-<p>naive scope analysis would be insufficient to prevent this bug, because <code>data</code>
-does in fact live as long as we needed. However it was <em>changed</em> while we had
+<!--
+naive scope analysis would be insufficient to prevent this bug, because `data`
+does in fact live as long as we needed. However it was *changed* while we had
 a reference into it. This is why Rust requires any references to freeze the
-referent and its owners.</p>
+referent and its owners.
+-->
+<p>単純なスコープ解析では、このバグは防げません。
+<code>data</code> の生存期間は十分に長いからです。
+問題は、その参照を保持している間に、参照先が<em>変わって</em>しまったことです。
+Rust でリファレンスを取ると、参照先とその所有者がフリーズされるのは、こういう理由なのです。</p>
 
                 </div>
 
