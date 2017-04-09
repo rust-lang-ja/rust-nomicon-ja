@@ -41,20 +41,6 @@ language have made at one point:
 これは、C や C++ プログラムが対処しなければならない、広範囲に広がっている問題です。
 GC の無い言語を使ったことのあるひとなら誰でも一度はやってしまった、この単純な間違いを見てみましょう。
 
-<!--
-```rust,ignore
-fn as_str(data: &u32) -> &str {
-    // compute the string
-    let s = format!("{}", data);
-
-    // OH NO! We returned a reference to something that
-    // exists only in this function!
-    // Dangling pointer! Use after free! Alas!
-    // (this does not compile in Rust)
-    &s
-}
-```
--->
 
 ```rust,ignore
 fn as_str(data: &u32) -> &str {
@@ -89,34 +75,21 @@ Rust は `&s` が生存するスコープを理解し、`&s` がそのスコー�
 <!--
 This will never happen to Rust. It's up to the programmer to prove to the
 compiler that everything is sound.
+-->
 
+これは Rust では決して起こりません。全てが健全であるとコンパイラに証明するのはプログラマの責任なのです。
+
+<!--
 Of course, Rust's story around ownership is much more complicated than just
 verifying that references don't escape the scope of their referent. That's
 because ensuring pointers are always valid is much more complicated than this.
 For instance in this code,
 -->
 
-これは Rust では決して起こりません。全てが健全であるとコンパイラに証明するのはプログラマの責任なのです。
-
 もちろん、リファレンスが参照先のスコープから逃げ出していないことを検証することよりも
 所有権に関する Rust の話はもっともっと複雑です。
 ポインタがつねに有効であることを証明するのは、もっともっと複雑だからです。
 例えばこのコードを見てみましょう。
-
-<!--
-```rust,ignore
-let mut data = vec![1, 2, 3];
-// get an internal reference
-let x = &data[0];
-
-// OH NO! `push` causes the backing storage of `data` to be reallocated.
-// Dangling pointer! Use after free! Alas!
-// (this does not compile in Rust)
-data.push(4);
-
-println!("{}", x);
-```
--->
 
 ```rust,ignore
 let mut data = vec![1, 2, 3];

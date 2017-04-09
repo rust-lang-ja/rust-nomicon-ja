@@ -34,14 +34,16 @@ statically in the case of [dynamically sized types][dst].
 
 <!--
 Rust gives you the following ways to lay out composite data:
+-->
 
+Rust では次の方法で複合データのメモリレイアウトを制御することができます。
+
+<!--
 * structs (named product types)
 * tuples (anonymous product types)
 * arrays (homogeneous product types)
 * enums (named sum types -- tagged unions)
- -->
-
-Rust では次の方法で複合データのメモリレイアウトを制御することができます。
+-->
 
 * 構造体（名前付き直積型）
 * タプル（名前なし直積型）
@@ -85,19 +87,6 @@ of 32-bits. It will potentially become:
 32-bit にアラインされます。そのため全体の構造体のサイズも 32 bit の倍数になります。
 このようになるでしょう。
 
-
-<!--
-```rust
-struct A {
-    a: u8,
-    _pad1: [u8; 3], // to align `b`
-    b: u32,
-    c: u16,
-    _pad2: [u8; 2], // to make overall size multiple of 4
-}
-```
--->
-
 ```rust
 struct A {
     a: u8,
@@ -130,6 +119,7 @@ struct B {
     b: u64,
 }
 ```
+
 <!--
 Rust *does* guarantee that two instances of A have their data laid out in
 exactly the same way. However Rust *does not* currently guarantee that an
@@ -195,17 +185,21 @@ struct Foo<u32, u16> {
 <!--
 The latter case quite simply wastes space. An optimal use of space therefore
 requires different monomorphizations to have *different field orderings*.
-
-**Note: this is a hypothetical optimization that is not yet implemented in Rust
-1.0**
-
-Enums make this consideration even more complicated. Naively, an enum such as:
 -->
 
 後者の例ははっきり言ってスペースの無駄遣いです。
 したがって、スペースを最適に使うには、異なる単体化には*異なるフィールド順序*が必要になります。
 
+<!--
+**Note: this is a hypothetical optimization that is not yet implemented in Rust
+1.0**
+-->
+
 **これは仮定の最適化で、Rust 1.0 ではまた実装されていないことに注意してください。**
+
+<!--
+Enums make this consideration even more complicated. Naively, an enum such as:
+-->
 
 Enum については、もっと複雑な検討が必要になります。つまり、この enum
 
@@ -222,15 +216,6 @@ would be laid out as:
 -->
 
 は、次のようにレイアウトされるでしょう。
-
-<!--
-```rust
-struct FooRepr {
-    data: u64, // this is either a u64, u32, or u8 based on `tag`
-    tag: u8,   // 0 = A, 1 = B, 2 = C
-}
-```
--->
 
 ```rust
 struct FooRepr {

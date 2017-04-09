@@ -98,14 +98,14 @@ statically in the case of [dynamically sized types][dst].
 <a href="exotic-sizes.html#dynamically-sized-types-dsts">動的にサイズが決まる型</a> の場合、型のサイズとアラインメントは静的にはわからない場合があることに注意してください。</p>
 <!--
 Rust gives you the following ways to lay out composite data:
-<ul>
-<li>structs (named product types)</li>
-<li>tuples (anonymous product types)</li>
-<li>arrays (homogeneous product types)</li>
-<li>enums (named sum types -- tagged unions)
---&gt;</li>
-</ul>
+-->
 <p>Rust では次の方法で複合データのメモリレイアウトを制御することができます。</p>
+<!--
+* structs (named product types)
+* tuples (anonymous product types)
+* arrays (homogeneous product types)
+* enums (named sum types -- tagged unions)
+-->
 <ul>
 <li>構造体（名前付き直積型）</li>
 <li>タプル（名前なし直積型）</li>
@@ -141,17 +141,6 @@ of 32-bits. It will potentially become:
 <p>この構造体は、メンバーのプリミティブ型が対応するサイズにアラインされるアーキテクチャでは、
 32-bit にアラインされます。そのため全体の構造体のサイズも 32 bit の倍数になります。
 このようになるでしょう。</p>
-<!--
-```rust
-struct A {
-    a: u8,
-    _pad1: [u8; 3], // to align `b`
-    b: u32,
-    c: u16,
-    _pad2: [u8; 2], // to make overall size multiple of 4
-}
-```
--->
 <pre><code class="language-rust">struct A {
     a: u8,
     _pad1: [u8; 3], // `b` のアラインメントのため
@@ -232,13 +221,17 @@ struct Foo&lt;u32, u16&gt; {
 <!--
 The latter case quite simply wastes space. An optimal use of space therefore
 requires different monomorphizations to have *different field orderings*.
-<p><strong>Note: this is a hypothetical optimization that is not yet implemented in Rust
-1.0</strong></p>
-<p>Enums make this consideration even more complicated. Naively, an enum such as:
---&gt;</p>
+-->
 <p>後者の例ははっきり言ってスペースの無駄遣いです。
 したがって、スペースを最適に使うには、異なる単体化には<em>異なるフィールド順序</em>が必要になります。</p>
+<!--
+**Note: this is a hypothetical optimization that is not yet implemented in Rust
+1.0**
+-->
 <p><strong>これは仮定の最適化で、Rust 1.0 ではまた実装されていないことに注意してください。</strong></p>
+<!--
+Enums make this consideration even more complicated. Naively, an enum such as:
+-->
 <p>Enum については、もっと複雑な検討が必要になります。つまり、この enum</p>
 <pre><code class="language-rust">enum Foo {
     A(u32),
@@ -250,14 +243,6 @@ requires different monomorphizations to have *different field orderings*.
 would be laid out as:
 -->
 <p>は、次のようにレイアウトされるでしょう。</p>
-<!--
-```rust
-struct FooRepr {
-    data: u64, // this is either a u64, u32, or u8 based on `tag`
-    tag: u8,   // 0 = A, 1 = B, 2 = C
-}
-```
--->
 <pre><code class="language-rust">struct FooRepr {
     data: u64, // `tag` によって、u64, u32, u8 のいずれかになります
     tag: u8,   // 0 = A, 1 = B, 2 = C

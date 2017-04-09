@@ -88,8 +88,7 @@ this regard, DSTs are not normal types. Due to their lack of a statically known
 size, these types can only exist behind some kind of pointer. Any pointer to a
 DST consequently becomes a *fat* pointer consisting of the pointer and the
 information that "completes" them (more on this below).
-<p>There are two major DSTs exposed by the language: trait objects, and slices.
---&gt;</p>
+-->
 <p>実際に、Rust は動的にサイズが決まる型（DST）、静的にはサイズやアラインメントがわからない型、
 をサポートしています。
 一見すると、これは少し馬鹿げているようです。型をうまく扱うためには、
@@ -98,6 +97,9 @@ information that "completes" them (more on this below).
 ある種のポインタの裏にしか存在できないのです。
 DST を指すポインタは結果的に、普通のポインタと DST を補完する情報（以下で詳しく説明します）から構成される、
 <em>太った</em> ポインタになります。</p>
+<!--
+There are two major DSTs exposed by the language: trait objects, and slices.
+-->
 <p>言語が提供する DST のうち重要なものが 2 つあります。trait オブジェクトとスライスです。</p>
 <!--
 A trait object represents some type that implements the traits it specifies.
@@ -120,15 +122,6 @@ Structs can actually store a single DST directly as their last field, but this
 makes them a DST as well:
 -->
 <p>構造体は、最後のフィールドとして DST を直接含むことができますが、その構造体自体も DST になります。</p>
-<!--
-```rust
-// Can't be stored on the stack directly
-struct Foo {
-    info: u32,
-    data: [u8],
-}
-```
--->
 <pre><code class="language-rust">// 直接スタックには置けません。
 struct Foo {
     info: u32,
@@ -147,20 +140,8 @@ a variable position based on its alignment][dst-issue].**
 <!--
 <p>Rust actually allows types to be specified that occupy no space:
 --&gt;</p>
-<p>Rust ではなんと、スペースを有しない型を使うことができます。</p>
-<!--
-```rust
-struct Foo; // No fields = no size
-<p>// All fields have no size = no size
-struct Baz {
-foo: Foo,
-qux: (),      // empty tuple has no size
-baz: [u8; 0], // empty array has no size
-}</p>
-<pre><code>--&gt;
-
-```rust
-struct Foo; // フィールドがない = サイズ 0
+<p>Rust ではなんと、スペースを持たない型を使うことができます。</p>
+<pre><code class="language-rust">struct Foo; // フィールドがない = サイズ 0
 
 // すべてのフィールドのサイズがない = サイズ 0
 struct Baz {
@@ -235,11 +216,6 @@ Empty types can be declared by specifying an enum with no variants:
 <p>Rust では、<em>インスタンスを生成できない</em>型を宣言することもできます。
 こういう型は、型レベルの話にのみ出てきて、値レベルには出てきません。
 空の型は、識別子を持たない enum として宣言できます。</p>
-<!--
-```rust
-enum Void {} // No variants = EMPTY
-```
--->
 <pre><code class="language-rust">enum Void {} // 識別子なし = 空
 </code></pre>
 <!--
@@ -267,16 +243,7 @@ compile:
 <p>原理的に、Rust ではこの事実をもとに、興味深い解析と最適化が可能です。
 たとえば、<code>Result&lt;T, Void&gt;</code> は <code>Err</code> にはなり得ないので、
 <code>T</code> と表現することができます。以下のコードがコンパイルに通るようにも<em>できる</em>でしょう。</p>
-<!--
-```rust,ignore
-enum Void {}
-<p>let res: Result&lt;u32, Void&gt; = Ok(0);</p>
-<p>// Err doesn't exist anymore, so Ok is actually irrefutable.
-let Ok(num) = res;</p>
-<pre><code>--&gt;
-
-```rust,ignore
-enum Void {}
+<pre><code class="language-rust,ignore">enum Void {}
 
 let res: Result&lt;u32, Void&gt; = Ok(0);
 

@@ -22,24 +22,28 @@ this more fundamental model is satisfied.
 
 <!--
 There are two kinds of reference:
-
-* Shared reference: `&`
-* Mutable reference: `&mut`
 -->
 
 リファレンスには 2 種類があります。
+
+<!--
+* Shared reference: `&`
+* Mutable reference: `&mut`
+-->
 
 * 共有リファレンス: `&`
 * 可変リファレンス: `&mut`
 
 <!--
 Which obey the following rules:
-
-* A reference cannot outlive its referent
-* A mutable reference cannot be aliased
 -->
 
 リファレンスは次のルールに従います。
+
+<!--
+* A reference cannot outlive its referent
+* A mutable reference cannot be aliased
+-->
 
 * リファレンスの生存期間が、参照先の生存期間より長くなることはできません。
 * 可変リファレンスは、別名を持つことができません。
@@ -231,20 +235,6 @@ reborrowed to point to a field of its referent:
 又貸ししたリファレンスは、派生したすべたの又貸しの有効期限が切れると、ふたたび生存することになります。
 たとえば、可変リファレンスは、その参照先の一つのフィールドを指すリファレンスを又貸しすることができます。
 
-<!--
-```rust
-let x = &mut (1, 2);
-{
-    // reborrow x to a subfield
-    let y = &mut x.0;
-    // y is now live, but x isn't
-    *y = 3;
-}
-// y goes out of scope, so x is live again
-*x = (5, 7);
-```
--->
-
 ```rust
 let x = &mut (1, 2);
 {
@@ -268,23 +258,6 @@ disjointness can be statically proven:
 つまり、どのリファレンスも他のリファレンスの先祖であってはいけないということです。
 Rust は、構造体のフィールドが互いに素であることを静的に証明できるので、
 フィールドの又貸しが可能です。
-
-<!--
-```rust
-let x = &mut (1, 2);
-{
-    // reborrow x to two disjoint subfields
-    let y = &mut x.0;
-    let z = &mut x.1;
-
-    // y and z are now live, but x isn't
-    *y = 3;
-    *z = 4;
-}
-// y and z go out of scope, so x is live again
-*x = (5, 7);
-```
--->
 
 ```rust
 let x = &mut (1, 2);
@@ -332,13 +305,15 @@ course invalidate all outstanding references prematurely.
 <!--
 As a local lint against inappropriate mutation, only variables that are marked
 as `mut` can be borrowed mutably.
+-->
 
+不適切な値の変更を lint が検出するので、`mut` とマークされた変数だけが変更可能なように貸し出されます。
+
+<!--
 It is interesting to note that Box behaves exactly like an owned reference. It
 can be moved out of, and Rust understands it sufficiently to reason about its
 paths like a normal variable.
 -->
-
-不適切な値の変更を lint が検出するので、`mut` とマークされた変数だけが変更可能なように貸し出されます。
 
 Box がまさに所有中リファレンスのように振る舞うというおとを覚えておくと良いでしょう。
 Box は値を解放することができ、変数が解放された時と同様に Rust はそのパスについて推論するための

@@ -700,14 +700,14 @@ statically in the case of [dynamically sized types][dst].
 <a href="exotic-sizes.html#dynamically-sized-types-dsts">動的にサイズが決まる型</a> の場合、型のサイズとアラインメントは静的にはわからない場合があることに注意してください。</p>
 <!--
 Rust gives you the following ways to lay out composite data:
-<ul>
-<li>structs (named product types)</li>
-<li>tuples (anonymous product types)</li>
-<li>arrays (homogeneous product types)</li>
-<li>enums (named sum types -- tagged unions)
---&gt;</li>
-</ul>
+-->
 <p>Rust では次の方法で複合データのメモリレイアウトを制御することができます。</p>
+<!--
+* structs (named product types)
+* tuples (anonymous product types)
+* arrays (homogeneous product types)
+* enums (named sum types -- tagged unions)
+-->
 <ul>
 <li>構造体（名前付き直積型）</li>
 <li>タプル（名前なし直積型）</li>
@@ -743,17 +743,6 @@ of 32-bits. It will potentially become:
 <p>この構造体は、メンバーのプリミティブ型が対応するサイズにアラインされるアーキテクチャでは、
 32-bit にアラインされます。そのため全体の構造体のサイズも 32 bit の倍数になります。
 このようになるでしょう。</p>
-<!--
-```rust
-struct A {
-    a: u8,
-    _pad1: [u8; 3], // to align `b`
-    b: u32,
-    c: u16,
-    _pad2: [u8; 2], // to make overall size multiple of 4
-}
-```
--->
 <pre><code class="language-rust">struct A {
     a: u8,
     _pad1: [u8; 3], // `b` のアラインメントのため
@@ -834,13 +823,17 @@ struct Foo&lt;u32, u16&gt; {
 <!--
 The latter case quite simply wastes space. An optimal use of space therefore
 requires different monomorphizations to have *different field orderings*.
-<p><strong>Note: this is a hypothetical optimization that is not yet implemented in Rust
-1.0</strong></p>
-<p>Enums make this consideration even more complicated. Naively, an enum such as:
---&gt;</p>
+-->
 <p>後者の例ははっきり言ってスペースの無駄遣いです。
 したがって、スペースを最適に使うには、異なる単体化には<em>異なるフィールド順序</em>が必要になります。</p>
+<!--
+**Note: this is a hypothetical optimization that is not yet implemented in Rust
+1.0**
+-->
 <p><strong>これは仮定の最適化で、Rust 1.0 ではまた実装されていないことに注意してください。</strong></p>
+<!--
+Enums make this consideration even more complicated. Naively, an enum such as:
+-->
 <p>Enum については、もっと複雑な検討が必要になります。つまり、この enum</p>
 <pre><code class="language-rust">enum Foo {
     A(u32),
@@ -852,14 +845,6 @@ requires different monomorphizations to have *different field orderings*.
 would be laid out as:
 -->
 <p>は、次のようにレイアウトされるでしょう。</p>
-<!--
-```rust
-struct FooRepr {
-    data: u64, // this is either a u64, u32, or u8 based on `tag`
-    tag: u8,   // 0 = A, 1 = B, 2 = C
-}
-```
--->
 <pre><code class="language-rust">struct FooRepr {
     data: u64, // `tag` によって、u64, u32, u8 のいずれかになります
     tag: u8,   // 0 = A, 1 = B, 2 = C
@@ -920,8 +905,7 @@ this regard, DSTs are not normal types. Due to their lack of a statically known
 size, these types can only exist behind some kind of pointer. Any pointer to a
 DST consequently becomes a *fat* pointer consisting of the pointer and the
 information that "completes" them (more on this below).
-<p>There are two major DSTs exposed by the language: trait objects, and slices.
---&gt;</p>
+-->
 <p>実際に、Rust は動的にサイズが決まる型（DST）、静的にはサイズやアラインメントがわからない型、
 をサポートしています。
 一見すると、これは少し馬鹿げているようです。型をうまく扱うためには、
@@ -930,6 +914,9 @@ information that "completes" them (more on this below).
 ある種のポインタの裏にしか存在できないのです。
 DST を指すポインタは結果的に、普通のポインタと DST を補完する情報（以下で詳しく説明します）から構成される、
 <em>太った</em> ポインタになります。</p>
+<!--
+There are two major DSTs exposed by the language: trait objects, and slices.
+-->
 <p>言語が提供する DST のうち重要なものが 2 つあります。trait オブジェクトとスライスです。</p>
 <!--
 A trait object represents some type that implements the traits it specifies.
@@ -952,15 +939,6 @@ Structs can actually store a single DST directly as their last field, but this
 makes them a DST as well:
 -->
 <p>構造体は、最後のフィールドとして DST を直接含むことができますが、その構造体自体も DST になります。</p>
-<!--
-```rust
-// Can't be stored on the stack directly
-struct Foo {
-    info: u32,
-    data: [u8],
-}
-```
--->
 <pre><code class="language-rust">// 直接スタックには置けません。
 struct Foo {
     info: u32,
@@ -979,20 +957,8 @@ a variable position based on its alignment][dst-issue].**
 <!--
 <p>Rust actually allows types to be specified that occupy no space:
 --&gt;</p>
-<p>Rust ではなんと、スペースを有しない型を使うことができます。</p>
-<!--
-```rust
-struct Foo; // No fields = no size
-<p>// All fields have no size = no size
-struct Baz {
-foo: Foo,
-qux: (),      // empty tuple has no size
-baz: [u8; 0], // empty array has no size
-}</p>
-<pre><code>--&gt;
-
-```rust
-struct Foo; // フィールドがない = サイズ 0
+<p>Rust ではなんと、スペースを持たない型を使うことができます。</p>
+<pre><code class="language-rust">struct Foo; // フィールドがない = サイズ 0
 
 // すべてのフィールドのサイズがない = サイズ 0
 struct Baz {
@@ -1067,11 +1033,6 @@ Empty types can be declared by specifying an enum with no variants:
 <p>Rust では、<em>インスタンスを生成できない</em>型を宣言することもできます。
 こういう型は、型レベルの話にのみ出てきて、値レベルには出てきません。
 空の型は、識別子を持たない enum として宣言できます。</p>
-<!--
-```rust
-enum Void {} // No variants = EMPTY
-```
--->
 <pre><code class="language-rust">enum Void {} // 識別子なし = 空
 </code></pre>
 <!--
@@ -1099,16 +1060,7 @@ compile:
 <p>原理的に、Rust ではこの事実をもとに、興味深い解析と最適化が可能です。
 たとえば、<code>Result&lt;T, Void&gt;</code> は <code>Err</code> にはなり得ないので、
 <code>T</code> と表現することができます。以下のコードがコンパイルに通るようにも<em>できる</em>でしょう。</p>
-<!--
-```rust,ignore
-enum Void {}
-<p>let res: Result&lt;u32, Void&gt; = Ok(0);</p>
-<p>// Err doesn't exist anymore, so Ok is actually irrefutable.
-let Ok(num) = res;</p>
-<pre><code>--&gt;
-
-```rust,ignore
-enum Void {}
+<pre><code class="language-rust,ignore">enum Void {}
 
 let res: Result&lt;u32, Void&gt; = Ok(0);
 
@@ -1163,30 +1115,7 @@ passed through the FFI boundary.
 <p>しかし、Rust の風変わりなデータレイアウト機能との相互作用も忘れてはいけません。
 「FFI のため」と「データレイアウトのため」という二つの目的があるため、
 FFI 境界を超えることが無意味または問題になるような型にも <code>repr(C)</code> は適用されます。</p>
-<!--
-* ZSTs are still zero-sized, even though this is not a standard behavior in
-C, and is explicitly contrary to the behavior of an empty type in C++, which
-still consumes a byte of space.
 <ul>
-<li>
-<p>DSTs, tuples, and tagged unions are not a concept in C and as such are never
-FFI safe.</p>
-</li>
-<li>
-<p>Tuple structs are like structs with regards to <code>repr(C)</code>, as the only
-difference from a struct is that the fields aren’t named.</p>
-</li>
-<li>
-<p><strong>If the type would have any <a href="drop-flags.md">drop flags</a>, they will still be added</strong></p>
-</li>
-<li>
-<p>This is equivalent to one of <code>repr(u*)</code> (see the next section) for enums. The
-chosen size is the default enum size for the target platform's C ABI. Note that
-enum representation in C is implementation defined, so this is really a &quot;best
-guess&quot;. In particular, this may be incorrect when the C code of interest is
-compiled with certain flags.
---&gt;</p>
-</li>
 <li>
 <p>ZST のサイズはやはり 0 になります。これは C の標準的な挙動ではないし、C++ の挙動
 （空の型も 1 byte を消費します）とは明確に異なります。</p>
@@ -1255,12 +1184,6 @@ compiler will be able to emit code to avoid an unaligned load.
 コンパイラがシフトやマスクを駆使してアラインメントの問題を隠してくれるかもしれません。
 しかし、パックされたフィールドへのリファレンスを扱う場合には、アラインされてない読み込みを避けるような
 コードをコンパイラが生成することは期待できないでしょう。</p>
-<!--
-**[As of Rust 1.0 this can cause undefined behavior.][ub loads]**
-<p><code>repr(packed)</code> is not to be used lightly. Unless you have extreme requirements,
-this should not be used.</p>
-<p>This repr is a modifier on <code>repr(C)</code> and <code>repr(rust)</code>.
---&gt;</p>
 <p><strong><a href="https://github.com/rust-lang/rust/issues/27060">Rust 1.0 時点では、これは未定義な挙動です。</a></strong></p>
 <p><code>repr(packed)</code> は気軽に使えるものではありません。
 極端な要求に応えようとしているのでない限り、使うべきではありません。</p>
@@ -1300,22 +1223,7 @@ language have made at one point:
 （とはいえ、そのオブジェクトへのポインタをその時点まで保有しておくべきかどうかというのは別の問題ですが・・・）
 これは、C や C++ プログラムが対処しなければならない、広範囲に広がっている問題です。
 GC の無い言語を使ったことのあるひとなら誰でも一度はやってしまった、この単純な間違いを見てみましょう。</p>
-<!--
-```rust,ignore
-fn as_str(data: &u32) -> &str {
-    // compute the string
-    let s = format!("{}", data);
-<pre><code>// OH NO! We returned a reference to something that
-// exists only in this function!
-// Dangling pointer! Use after free! Alas!
-// (this does not compile in Rust)
-&amp;s
-</code></pre>
-<p>}</p>
-<pre><code>--&gt;
-
-```rust,ignore
-fn as_str(data: &amp;u32) -&gt; &amp;str {
+<pre><code class="language-rust,ignore">fn as_str(data: &amp;u32) -&gt; &amp;str {
     // 文字列を生成する
     let s = format!(&quot;{}&quot;, data);
 
@@ -1344,30 +1252,19 @@ Rust は <code>&amp;s</code> が生存するスコープを理解し、<code>&am
 <!--
 This will never happen to Rust. It's up to the programmer to prove to the
 compiler that everything is sound.
-<p>Of course, Rust's story around ownership is much more complicated than just
+-->
+<p>これは Rust では決して起こりません。全てが健全であるとコンパイラに証明するのはプログラマの責任なのです。</p>
+<!--
+Of course, Rust's story around ownership is much more complicated than just
 verifying that references don't escape the scope of their referent. That's
 because ensuring pointers are always valid is much more complicated than this.
 For instance in this code,
---&gt;</p>
-<p>これは Rust では決して起こりません。全てが健全であるとコンパイラに証明するのはプログラマの責任なのです。</p>
+-->
 <p>もちろん、リファレンスが参照先のスコープから逃げ出していないことを検証することよりも
 所有権に関する Rust の話はもっともっと複雑です。
 ポインタがつねに有効であることを証明するのは、もっともっと複雑だからです。
 例えばこのコードを見てみましょう。</p>
-<!--
-```rust,ignore
-let mut data = vec![1, 2, 3];
-// get an internal reference
-let x = &data[0];
-<p>// OH NO! <code>push</code> causes the backing storage of <code>data</code> to be reallocated.
-// Dangling pointer! Use after free! Alas!
-// (this does not compile in Rust)
-data.push(4);</p>
-<p>println!(&quot;{}&quot;, x);</p>
-<pre><code>--&gt;
-
-```rust,ignore
-let mut data = vec![1, 2, 3];
+<pre><code class="language-rust,ignore">let mut data = vec![1, 2, 3];
 // 内部データのリファレンスを取る
 let x = &amp;data[0];
 
@@ -1408,24 +1305,24 @@ this more fundamental model is satisfied.
 ボローチェッカーを拡張することも可能です。</p>
 <!--
 There are two kinds of reference:
-<ul>
-<li>Shared reference: <code>&amp;</code></li>
-<li>Mutable reference: <code>&amp;mut</code>
---&gt;</li>
-</ul>
+-->
 <p>リファレンスには 2 種類があります。</p>
+<!--
+* Shared reference: `&`
+* Mutable reference: `&mut`
+-->
 <ul>
 <li>共有リファレンス: <code>&amp;</code></li>
 <li>可変リファレンス: <code>&amp;mut</code></li>
 </ul>
 <!--
 Which obey the following rules:
-<ul>
-<li>A reference cannot outlive its referent</li>
-<li>A mutable reference cannot be aliased
---&gt;</li>
-</ul>
+-->
 <p>リファレンスは次のルールに従います。</p>
+<!--
+* A reference cannot outlive its referent
+* A mutable reference cannot be aliased
+-->
 <ul>
 <li>リファレンスの生存期間が、参照先の生存期間より長くなることはできません。</li>
 <li>可変リファレンスは、別名を持つことができません。</li>
@@ -1581,19 +1478,6 @@ reborrowed to point to a field of its referent:
 <p>可変リファレンスは、その子孫を他の共有リファレンスまたは可変リファレンスに又貸しすることができます。
 又貸ししたリファレンスは、派生したすべたの又貸しの有効期限が切れると、ふたたび生存することになります。
 たとえば、可変リファレンスは、その参照先の一つのフィールドを指すリファレンスを又貸しすることができます。</p>
-<!--
-```rust
-let x = &mut (1, 2);
-{
-    // reborrow x to a subfield
-    let y = &mut x.0;
-    // y is now live, but x isn't
-    *y = 3;
-}
-// y goes out of scope, so x is live again
-*x = (5, 7);
-```
--->
 <pre><code class="language-rust">let x = &amp;mut (1, 2);
 {
     // x のフィールドを又借りする
@@ -1614,24 +1498,7 @@ disjointness can be statically proven:
 つまり、どのリファレンスも他のリファレンスの先祖であってはいけないということです。
 Rust は、構造体のフィールドが互いに素であることを静的に証明できるので、
 フィールドの又貸しが可能です。</p>
-<!--
-```rust
-let x = &mut (1, 2);
-{
-    // reborrow x to two disjoint subfields
-    let y = &mut x.0;
-    let z = &mut x.1;
-<pre><code>// y and z are now live, but x isn't
-*y = 3;
-*z = 4;
-</code></pre>
-<p>}
-// y and z go out of scope, so x is live again
-*x = (5, 7);</p>
-<pre><code>--&gt;
-
-```rust
-let x = &amp;mut (1, 2);
+<pre><code class="language-rust">let x = &amp;mut (1, 2);
 {
     // x を 2 つの互いに素なフィールドに又貸しする
     let y = &amp;mut x.0;
@@ -1671,11 +1538,13 @@ course invalidate all outstanding references prematurely.
 <!--
 As a local lint against inappropriate mutation, only variables that are marked
 as `mut` can be borrowed mutably.
-<p>It is interesting to note that Box behaves exactly like an owned reference. It
+-->
+<p>不適切な値の変更を lint が検出するので、<code>mut</code> とマークされた変数だけが変更可能なように貸し出されます。</p>
+<!--
+It is interesting to note that Box behaves exactly like an owned reference. It
 can be moved out of, and Rust understands it sufficiently to reason about its
 paths like a normal variable.
---&gt;</p>
-<p>不適切な値の変更を lint が検出するので、<code>mut</code> とマークされた変数だけが変更可能なように貸し出されます。</p>
+-->
 <p>Box がまさに所有中リファレンスのように振る舞うというおとを覚えておくと良いでしょう。
 Box は値を解放することができ、変数が解放された時と同様に Rust はそのパスについて推論するための
 十分な情報を持っています。</p>

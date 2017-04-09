@@ -87,24 +87,24 @@ this more fundamental model is satisfied.
 ボローチェッカーを拡張することも可能です。</p>
 <!--
 There are two kinds of reference:
-<ul>
-<li>Shared reference: <code>&amp;</code></li>
-<li>Mutable reference: <code>&amp;mut</code>
---&gt;</li>
-</ul>
+-->
 <p>リファレンスには 2 種類があります。</p>
+<!--
+* Shared reference: `&`
+* Mutable reference: `&mut`
+-->
 <ul>
 <li>共有リファレンス: <code>&amp;</code></li>
 <li>可変リファレンス: <code>&amp;mut</code></li>
 </ul>
 <!--
 Which obey the following rules:
-<ul>
-<li>A reference cannot outlive its referent</li>
-<li>A mutable reference cannot be aliased
---&gt;</li>
-</ul>
+-->
 <p>リファレンスは次のルールに従います。</p>
+<!--
+* A reference cannot outlive its referent
+* A mutable reference cannot be aliased
+-->
 <ul>
 <li>リファレンスの生存期間が、参照先の生存期間より長くなることはできません。</li>
 <li>可変リファレンスは、別名を持つことができません。</li>
@@ -260,19 +260,6 @@ reborrowed to point to a field of its referent:
 <p>可変リファレンスは、その子孫を他の共有リファレンスまたは可変リファレンスに又貸しすることができます。
 又貸ししたリファレンスは、派生したすべたの又貸しの有効期限が切れると、ふたたび生存することになります。
 たとえば、可変リファレンスは、その参照先の一つのフィールドを指すリファレンスを又貸しすることができます。</p>
-<!--
-```rust
-let x = &mut (1, 2);
-{
-    // reborrow x to a subfield
-    let y = &mut x.0;
-    // y is now live, but x isn't
-    *y = 3;
-}
-// y goes out of scope, so x is live again
-*x = (5, 7);
-```
--->
 <pre><code class="language-rust">let x = &amp;mut (1, 2);
 {
     // x のフィールドを又借りする
@@ -293,24 +280,7 @@ disjointness can be statically proven:
 つまり、どのリファレンスも他のリファレンスの先祖であってはいけないということです。
 Rust は、構造体のフィールドが互いに素であることを静的に証明できるので、
 フィールドの又貸しが可能です。</p>
-<!--
-```rust
-let x = &mut (1, 2);
-{
-    // reborrow x to two disjoint subfields
-    let y = &mut x.0;
-    let z = &mut x.1;
-<pre><code>// y and z are now live, but x isn't
-*y = 3;
-*z = 4;
-</code></pre>
-<p>}
-// y and z go out of scope, so x is live again
-*x = (5, 7);</p>
-<pre><code>--&gt;
-
-```rust
-let x = &amp;mut (1, 2);
+<pre><code class="language-rust">let x = &amp;mut (1, 2);
 {
     // x を 2 つの互いに素なフィールドに又貸しする
     let y = &amp;mut x.0;
@@ -350,11 +320,13 @@ course invalidate all outstanding references prematurely.
 <!--
 As a local lint against inappropriate mutation, only variables that are marked
 as `mut` can be borrowed mutably.
-<p>It is interesting to note that Box behaves exactly like an owned reference. It
+-->
+<p>不適切な値の変更を lint が検出するので、<code>mut</code> とマークされた変数だけが変更可能なように貸し出されます。</p>
+<!--
+It is interesting to note that Box behaves exactly like an owned reference. It
 can be moved out of, and Rust understands it sufficiently to reason about its
 paths like a normal variable.
---&gt;</p>
-<p>不適切な値の変更を lint が検出するので、<code>mut</code> とマークされた変数だけが変更可能なように貸し出されます。</p>
+-->
 <p>Box がまさに所有中リファレンスのように振る舞うというおとを覚えておくと良いでしょう。
 Box は値を解放することができ、変数が解放された時と同様に Rust はそのパスについて推論するための
 十分な情報を持っています。</p>

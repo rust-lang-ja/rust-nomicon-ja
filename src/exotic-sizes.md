@@ -26,8 +26,6 @@ this regard, DSTs are not normal types. Due to their lack of a statically known
 size, these types can only exist behind some kind of pointer. Any pointer to a
 DST consequently becomes a *fat* pointer consisting of the pointer and the
 information that "completes" them (more on this below).
-
-There are two major DSTs exposed by the language: trait objects, and slices.
 -->
 
 実際に、Rust は動的にサイズが決まる型（DST）、静的にはサイズやアラインメントがわからない型、
@@ -38,6 +36,10 @@ There are two major DSTs exposed by the language: trait objects, and slices.
 ある種のポインタの裏にしか存在できないのです。
 DST を指すポインタは結果的に、普通のポインタと DST を補完する情報（以下で詳しく説明します）から構成される、
 *太った* ポインタになります。
+
+<!--
+There are two major DSTs exposed by the language: trait objects, and slices.
+-->
 
 言語が提供する DST のうち重要なものが 2 つあります。trait オブジェクトとスライスです。
 
@@ -68,16 +70,6 @@ makes them a DST as well:
 
 構造体は、最後のフィールドとして DST を直接含むことができますが、その構造体自体も DST になります。
 
-<!--
-```rust
-// Can't be stored on the stack directly
-struct Foo {
-    info: u32,
-    data: [u8],
-}
-```
--->
-
 ```rust
 // 直接スタックには置けません。
 struct Foo {
@@ -105,20 +97,7 @@ a variable position based on its alignment][dst-issue].**
 Rust actually allows types to be specified that occupy no space:
 -->
 
-Rust ではなんと、スペースを有しない型を使うことができます。
-
-<!--
-```rust
-struct Foo; // No fields = no size
-
-// All fields have no size = no size
-struct Baz {
-    foo: Foo,
-    qux: (),      // empty tuple has no size
-    baz: [u8; 0], // empty array has no size
-}
-```
--->
+Rust ではなんと、スペースを持たない型を使うことができます。
 
 ```rust
 struct Foo; // フィールドがない = サイズ 0
@@ -209,12 +188,6 @@ Rust では、*インスタンスを生成できない*型を宣言すること�
 こういう型は、型レベルの話にのみ出てきて、値レベルには出てきません。
 空の型は、識別子を持たない enum として宣言できます。
 
-<!--
-```rust
-enum Void {} // No variants = EMPTY
-```
--->
-
 ```rust
 enum Void {} // 識別子なし = 空
 ```
@@ -247,17 +220,6 @@ compile:
 原理的に、Rust ではこの事実をもとに、興味深い解析と最適化が可能です。
 たとえば、`Result<T, Void>` は `Err` にはなり得ないので、
 `T` と表現することができます。以下のコードがコンパイルに通るようにも*できる*でしょう。
-
-<!--
-```rust,ignore
-enum Void {}
-
-let res: Result<u32, Void> = Ok(0);
-
-// Err doesn't exist anymore, so Ok is actually irrefutable.
-let Ok(num) = res;
-```
--->
 
 ```rust,ignore
 enum Void {}

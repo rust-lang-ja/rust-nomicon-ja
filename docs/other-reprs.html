@@ -98,30 +98,7 @@ passed through the FFI boundary.
 <p>しかし、Rust の風変わりなデータレイアウト機能との相互作用も忘れてはいけません。
 「FFI のため」と「データレイアウトのため」という二つの目的があるため、
 FFI 境界を超えることが無意味または問題になるような型にも <code>repr(C)</code> は適用されます。</p>
-<!--
-* ZSTs are still zero-sized, even though this is not a standard behavior in
-C, and is explicitly contrary to the behavior of an empty type in C++, which
-still consumes a byte of space.
 <ul>
-<li>
-<p>DSTs, tuples, and tagged unions are not a concept in C and as such are never
-FFI safe.</p>
-</li>
-<li>
-<p>Tuple structs are like structs with regards to <code>repr(C)</code>, as the only
-difference from a struct is that the fields aren’t named.</p>
-</li>
-<li>
-<p><strong>If the type would have any <a href="drop-flags.md">drop flags</a>, they will still be added</strong></p>
-</li>
-<li>
-<p>This is equivalent to one of <code>repr(u*)</code> (see the next section) for enums. The
-chosen size is the default enum size for the target platform's C ABI. Note that
-enum representation in C is implementation defined, so this is really a &quot;best
-guess&quot;. In particular, this may be incorrect when the C code of interest is
-compiled with certain flags.
---&gt;</p>
-</li>
 <li>
 <p>ZST のサイズはやはり 0 になります。これは C の標準的な挙動ではないし、C++ の挙動
 （空の型も 1 byte を消費します）とは明確に異なります。</p>
@@ -190,12 +167,6 @@ compiler will be able to emit code to avoid an unaligned load.
 コンパイラがシフトやマスクを駆使してアラインメントの問題を隠してくれるかもしれません。
 しかし、パックされたフィールドへのリファレンスを扱う場合には、アラインされてない読み込みを避けるような
 コードをコンパイラが生成することは期待できないでしょう。</p>
-<!--
-**[As of Rust 1.0 this can cause undefined behavior.][ub loads]**
-<p><code>repr(packed)</code> is not to be used lightly. Unless you have extreme requirements,
-this should not be used.</p>
-<p>This repr is a modifier on <code>repr(C)</code> and <code>repr(rust)</code>.
---&gt;</p>
 <p><strong><a href="https://github.com/rust-lang/rust/issues/27060">Rust 1.0 時点では、これは未定義な挙動です。</a></strong></p>
 <p><code>repr(packed)</code> は気軽に使えるものではありません。
 極端な要求に応えようとしているのでない限り、使うべきではありません。</p>
