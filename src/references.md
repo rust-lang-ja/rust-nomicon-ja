@@ -181,7 +181,7 @@ then it is safe to mutate or even move its internals. Note however that the
 refcount itself uses interior mutability.
 -->
 
-この効果を使った興味深い例が Rc 地震です。もし Rc の参照カウントが 1 なら、
+この効果を使った興味深い例が Rc 自身です。もし Rc の参照カウントが 1 なら、
 内部状態を変更したり、move したりしても安全です。
 refcount 自体も内部可変性を使っています。
 
