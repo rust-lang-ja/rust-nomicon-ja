@@ -4,3 +4,5 @@
 
 [原文](https://github.com/rust-lang-nursery/nomicon) の
 [616b98](https://github.com/rust-lang-nursery/nomicon/commit/616b98444ff4eb5260deee95ee3e090dfd98b947) を翻訳中です。
+
+翻訳は[こちら](http://rust-lang-ja.github.io/rust-nomicon-ja/)です。
