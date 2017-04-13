@@ -11,7 +11,7 @@
 	* [代替メモリレイアウト](other-reprs.md)
 * [所有権と生存期間](ownership.md)
 	* [リファレンス](references.md)
-	* [Lifetimes](lifetimes.md)
+	* [生存期間](lifetimes.md)
 	* [Limits of Lifetimes](lifetime-mismatch.md)
 	* [Lifetime Elision](lifetime-elision.md)
 	* [Unbounded Lifetimes](unbounded-lifetimes.md)
