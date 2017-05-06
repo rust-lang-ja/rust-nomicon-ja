@@ -45,7 +45,7 @@ Which obey the following rules:
 * A mutable reference cannot be aliased
 -->
 
-* リファレンスの生存期間が、参照先の生存期間より長くなることはできません。
+* リファレンスのライフタイムが、参照先のライフタイムより長くなることはできません。
 * 可変リファレンスは、別名を持つことができません。
 
 <!--
@@ -208,7 +208,7 @@ Note: Liveness is not the same thing as a *lifetime*, which will be explained
 in detail in the next section of this chapter.
 -->
 
-生存性 (liveness) は、この章の次の節でで詳しく説明する *生存期間 (lifetime)* とは違うことに注意してください。
+生存性 (liveness) は、この章の次の節でで詳しく説明する *ライフタイム (lifetime)* とは違うことに注意してください。
 
 <!--
 Roughly, a reference is *live* at some point in a program if it can be

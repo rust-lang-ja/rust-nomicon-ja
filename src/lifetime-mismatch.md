@@ -2,7 +2,7 @@
 # Limits of Lifetimes
 -->
 
-# 生存期間システムの限界
+# ライフタイムシステムの限界
 
 <!--
 Given the following code:
@@ -97,8 +97,8 @@ try to call `share`, and it sees we're trying to alias that `&'c mut foo` and
 blows up in our face!
 -->
 
-`loan` の生存期間と mutate_and_share のシグネチャとのため、
-`&mut foo` の生存期間は `'c` に延長されなくてはなりません。
+`loan` のライフタイムと mutate_and_share のシグネチャとのため、
+`&mut foo` のライフタイムは `'c` に延長されなくてはなりません。
 そして、`share` を呼ぼうとするとき、`&'c mut foo` の別名を取ろうとすると認識され、大失敗に終わるのです。
 
 <!--
@@ -107,7 +107,7 @@ care about, but the lifetime system is too coarse-grained to handle that.
 -->
 
 このプログラムは、私たちにとって重要なリファレンスの意味的には全く正しいのですが、
-生存期間システムはこのプログラムを処理するには粗すぎるのです。
+ライフタイムシステムはこのプログラムを処理するには粗すぎるのです。
 
 <!--
 TODO: other common problems? SEME regions stuff, mostly?

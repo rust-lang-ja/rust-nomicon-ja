@@ -2,7 +2,7 @@
 # Ownership and Lifetimes
 -->
 
-# 所有権と生存期間
+# 所有権とライフタイム
 
 <!--
 Ownership is the breakout feature of Rust. It allows Rust to be completely
@@ -112,6 +112,6 @@ referent and its owners.
 -->
 
 単純なスコープ解析では、このバグは防げません。
-`data` の生存期間は十分に長いからです。
+`data` のライフタイムは十分に長いからです。
 問題は、その参照を保持している間に、参照先が*変わって*しまったことです。
 Rust でリファレンスを取ると、参照先とその所有者がフリーズされるのは、こういう理由なのです。

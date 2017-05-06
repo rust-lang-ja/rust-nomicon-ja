@@ -2,20 +2,20 @@
 # Lifetime Elision
 -->
 
-# 生存期間の省略
+# ライフタイムの省略
 
 <!--
 In order to make common patterns more ergonomic, Rust allows lifetimes to be
 *elided* in function signatures.
 -->
 
-よくあるパターンをより易しく書けるように、Rust では関数シグネチャの生存期間を省略できます。
+よくあるパターンをより易しく書けるように、Rust では関数シグネチャのライフタイムを省略できます。
 
 <!--
 A *lifetime position* is anywhere you can write a lifetime in a type:
 -->
 
-*生存期間ポジション* とは、型の定義において生存期間を書ける場所のことです。
+*ライフタイムポジション* とは、型の定義においてライフタイムを書ける場所のことです。
 
 ```rust,ignore
 &'a T
@@ -27,7 +27,7 @@ T<'a>
 Lifetime positions can appear as either "input" or "output":
 -->
 
-生存期間ポジションは、「入力」か「出力」のいづれかです。
+ライフタイムポジションは、「入力」か「出力」のいづれかです。
 
 <!--
 * For `fn` definitions, input refers to the types of the formal arguments
@@ -40,17 +40,17 @@ Lifetime positions can appear as either "input" or "output":
 -->
 
 * `fn` 定義では、入力とは仮引数の型のことで、出力とは結果の型のことです。
-  `fn foo(s: *str) -> (&str, &str)` では、入力ポジションの生存期間が一つ省略され、
-  出力ポジションの生存期間が二つ省略されています。
+  `fn foo(s: *str) -> (&str, &str)` では、入力ポジションのライフタイムが一つ省略され、
+  出力ポジションのライフタイムが二つ省略されています。
   `fn` メソッド定義の入力ポジションには、
-  メソッドの `impl` ヘッダに現れる生存期間は含まれません。
-  （デフォルトメソッドの場合の trait ヘッダに現れる生存期間も含まれません。）
+  メソッドの `impl` ヘッダに現れるライフタイムは含まれません。
+  （デフォルトメソッドの場合の trait ヘッダに現れるライフタイムも含まれません。）
 
 <!--
 * In the future, it should be possible to elide `impl` headers in the same manner.
 -->
 
-* 将来のバージョンでは、`impl` ヘッダの生存期間の省略も同様に可能になるでしょう。
+* 将来のバージョンでは、`impl` ヘッダのライフタイムの省略も同様に可能になるでしょう。
 
 <!--
 Elision rules are as follows:
@@ -63,29 +63,29 @@ Elision rules are as follows:
   parameter.
 -->
 
-* 入力ポジションの省略された生存期間は、それぞれ別の生存期間パラメタになります。
+* 入力ポジションの省略されたライフタイムは、それぞれ別のライフタイムパラメタになります。
 
 <!--
 * If there is exactly one input lifetime position (elided or not), that lifetime
   is assigned to *all* elided output lifetimes.
 -->
 
-* 入力ポジションの生存期間（省略されているかどうかに関わらず）が一つしか無い場合、
-  省略された出力生存期間全てにその生存期間が割り当てられます。
+* 入力ポジションのライフタイム（省略されているかどうかに関わらず）が一つしか無い場合、
+  省略された出力ライフタイム全てにそのライフタイムが割り当てられます。
 
 <!--
 * If there are multiple input lifetime positions, but one of them is `&self` or
   `&mut self`, the lifetime of `self` is assigned to *all* elided output lifetimes.
 -->
 
-* 入力ポジションに複数の生存期間があって、そのうちの一つが `&self` または `&mut self` の場合、
-  省略された出力生存期間全てに `self` の生存期間が割り当てられます。
+* 入力ポジションに複数のライフタイムがあって、そのうちの一つが `&self` または `&mut self` の場合、
+  省略された出力ライフタイム全てに `self` のライフタイムが割り当てられます。
 
 <!--
 * Otherwise, it is an error to elide an output lifetime.
 -->
 
-* それ以外の場合は、出力の生存期間を省略するとエラーになります。
+* それ以外の場合は、出力のライフタイムを省略するとエラーになります。
 
 <!--
 Examples:
