@@ -15,7 +15,7 @@
 	* [ライフタイムシステムの限界](lifetime-mismatch.md)
 	* [ライフタイムの省略](lifetime-elision.md)
 	* [無制限のライフタイム](unbounded-lifetimes.md)
-	* [Higher-Rank Trait Bounds](hrtb.md)
+	* [高階トレイト境界](hrtb.md)
 	* [Subtyping and Variance](subtyping.md)
 	* [Drop Check](dropck.md)
 	* [PhantomData](phantom-data.md)
