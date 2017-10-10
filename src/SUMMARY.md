@@ -34,7 +34,7 @@
 	* [Destructors](destructors.md)
 	* [Leaking](leaking.md)
 * [Unwinding](unwinding.md)
-	* [Exception Safety](exception-safety.md)
+	* [例外安全性](exception-safety.md)
 	* [Poisoning](poisoning.md)
 * [Concurrency](concurrency.md)
 	* [Races](races.md)
