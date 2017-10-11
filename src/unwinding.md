@@ -3,7 +3,7 @@
 <!--
 Rust has a *tiered* error-handling scheme:
 -->
-Rustのエラーハンドリングには階層的なスキームが存在します。
+Rustのエラーハンドリングには**階層的な**スキームが存在します。
 
 <!--
 * If something might reasonably be absent, Option is used.
