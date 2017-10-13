@@ -1,5 +1,4 @@
-<!--# Poisoning-->
-#ポイズニング
+# Poisoning
 
 <!--
 Although all unsafe code *must* ensure it has minimal exception safety, not all
@@ -39,9 +38,9 @@ panic. Any future attempts to lock the Mutex will return an `Err` or panic.
 こういった型は、panicに直面した際に、意図的に自分自身を**poison**する可能性があり
 ます。poisoningは自体は特に何か別の事態を引き起こすわけではありません。一般的に
 通常の手続きの継続を止めるべきであることを表しています。よく知られた例として
-標準ライブラリのMutex型があります。この型は対応するMutexGuards(`lock()`の返り値
-の型)が、panicによってdropされた際に自分自身をpoisonします。以後Mutexをlockしよう
-とすると`Err`を返すかpanicします。
+標準ライブラリのMutex型があります。この型は対応するMutexGuards(lockを取得した際に
+返るもの)が、panicによってdropされた際に自分自身をpoisonします。以後Mutexをlock
+しようとすると`Err`を返すかpanicします。
 
 <!--
 Mutex poisons not for true safety in the sense that Rust normally cares about. It

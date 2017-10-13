@@ -35,7 +35,7 @@
 	* [Leaking](leaking.md)
 * [Unwinding](unwinding.md)
 	* [例外安全性](exception-safety.md)
-	* [ポイズニング](poisoning.md)
+	* [Poisoning](poisoning.md)
 * [Concurrency](concurrency.md)
 	* [Races](races.md)
 	* [Send and Sync](send-and-sync.md)
