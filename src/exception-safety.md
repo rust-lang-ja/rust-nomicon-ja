@@ -11,7 +11,7 @@ pretty much everything can unwind, and you need to be ready for it.
 プログラム中のunwindの使用は補助的なものにとどめるべきですが、panicすることが
 **可能な**コードは数多くあります。Noneをunwrapしたり、範囲外のインデックスアクセス
 を行ったり、値を0で割ったりすれば、プログラムはpanicします。debugビルドの場合、
-任意の代数的計算がオーバーフローをするとpanicを引き起こす可能性があります。
+任意の代数的計算がオーバーフローするとpanicを引き起こす可能性があります。
 コードが実行する内容に非常に気を使わない限り、ほぼ全てにおいてunwindする可能性が
 あり、したがって備える必要があります。
 
@@ -48,12 +48,12 @@ a panic. This does not necessarily mean that the state a panic witnesses is a
 fully coherent state. We need only guarantee that it's a *safe* state.
 -->
 Rustにおいては大抵、unsafeなコードは不適切なsafeコードに対処する準備を
-しておく必要がありますが、unwindingに関しても例外ではありません。
-一時的によろしくない状態を作り出すコードの場合、panicがその状態を使用すること
-のないように注意する必要があります。一般的に、これはこの状態が存在する際には
+しておく必要がありますが、unwindingに関しても同様です。
+一時的によろしくない状態を作り出すコードの場合、panicによってその状態が使用
+されないように注意する必要があります。一般的に、これはこの状態が存在する際には
 panicが起こらないようにするか、panic時にクリーンアップを行うようなガードを
 実装するかのいずれかによって対処します。
-これはpanicから見てその状態に変化がないということを必ずしも意味しません。
+これはpanicしたコードが見る状態が無矛盾であることを必ずしも意味しません。
 ただ、その状態が*safe*であることを保証できれば良いのです。
 
 <!--
@@ -65,9 +65,9 @@ needs to be careful and consider exception safety.
 -->
 多くのunsafeなコードは木構造の先端(leaf-like)であり、したがって例外安全にするのは
 難しくありません。実行されるコード全体を制御下におくことができ、そのほとんどは
-panicできないためです。しかしながら、unsafeコードブロック中において一時的に
-未初期化の領域を持つ配列を扱うことは珍しくなく、その際に呼び出し元から与えられた
-コードを繰り返し実行することもしばしばです。そのような場合には例外安全である
+panicできないためです。しかしながら、unsafeコードブロック中においては一時的に
+未初期化の領域を持つ配列を持ちつつ、呼び出し元から与えられたコードを繰り返し
+実行することもしばしばです。そのような場合には例外安全である
 ことを慎重に確かめなくてはなりません。
 
 
@@ -154,7 +154,7 @@ uselessly. We would rather have the following:
 -->
 これをRustでそのまま実装すること自体は全く問題がありませんが、パフォーマンス上
 考慮しなくてはならない問題点が存在します。`self`が何度も無意味にスワップされて
-しまうのです。以下の方がベターです。
+しまうのです。以下の方が良いでしょう。
 
 ```text
 bubble_up(heap, index):
@@ -183,7 +183,7 @@ user-defined!
 Unlike Vec, the fix isn't as easy here. One option is to break the user-defined
 code and the unsafe code into two separate phases:
 -->
-Vecの場合と違い、対処法は単純ではありません。方法の一つはユーザー定義コードを
+Vecの場合と違い、対処法は単純ではありません。一つの方法はユーザー定義コードを
 分割してunsafeなコードを二つに分けることです。
 
 ```text
@@ -205,8 +205,8 @@ actually touched the state of the heap yet. Once we do start messing with the
 heap, we're working with only data and functions that we trust, so there's no
 concern of panics.
 -->
-前半ではヒープそのものについてはノータッチなため、ユーザー定義コードが膨張した
-場合について考慮する必要はありません。ヒープ自体に触る時には信頼済みのデータと
+前半ではヒープの状態にまだ触れていないので、ユーザー定義コードが爆発しても
+問題ではありません。ヒープ自体に触る時には信頼済みのデータと
 関数だけを対象としているため、panicの心配をしなくて済みます。
 
 <!--
@@ -214,11 +214,11 @@ Perhaps you're not happy with this design. Surely it's cheating! And we have
 to do the complex heap traversal *twice*! Alright, let's bite the bullet. Let's
 intermix untrusted and unsafe code *for reals*.
 -->
-この書き方に気持ち悪さを感じたあなたは正常です。というのもこれはある意味でずるを
+おそらくこのデザインには不満を感じるでしょう。というのもこれはある意味でずるを
 しているようなものであり、複雑なheapの走査を**二回も！**しなくてはならない
 ためです。
-では、ちょっと辛いかもしれませんがもう少し現実的なやり方でunsafeとsafeを混ぜて
-みましょう。
+では、ちょっと辛いかもしれませんがもう少し現実的なやり方で信頼できないコードと
+unsafeなコードを混ぜてみましょう。
 
 <!--
 If Rust had `try` and `finally` like in Java, we could do the following:
@@ -245,7 +245,7 @@ cause any double-drops! If the algorithm terminates normally, then this
 operation happens to coincide precisely with the how we finish up regardless.
 -->
 基本的な考え方は単純です。比較時にパニックが起きた場合、論理的に初期化されて
-いないindexに要素を挿入し関数を脱出します。heapの内容をみようとした場合、
+いないindexの未確定な要素を投げ捨てて関数を脱出します。heapの内容をみようとした場合、
 **矛盾した**内容を見る可能性はありますが、少なくとも二回ドロップするようなこと
 は無くなります！アルゴリズムが正常終了した場合も、ここでの手続きは最終的に同じ
 結果をもたらします。
@@ -257,7 +257,7 @@ destructor for the "finally" logic. Whether we panic or not, that destructor
 will run and clean up after us.
 -->
 残念ながらRustにはこのような機能は存在しないので、自作しましょう！「finally」
-のロジック実装したデストラクタを持ったstructの中にアルゴリズムのステートを隔離
+のロジック実装したデストラクタを持ったstructの中にアルゴリズムの状態を保存
 することで実装します。panicするしないに関わらず、このデストラクタが
 クリーンアップを行なってくれます。
 
