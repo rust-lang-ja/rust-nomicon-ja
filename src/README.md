@@ -57,5 +57,5 @@ of safety and guarantees.
 
 [trpl]: https://doc.rust-lang.org/book/
 [he]: http://quotes.yourdictionary.com/author/h-p-lovecraft/172934
-[nomicon-en]: https://doc.rust-lang.org/nomicon/README.html
-[bookja]: https://github.com/imsut/rust-nomicon-ja
+[nomicon-en]: https://doc.rust-lang.org/nomicon/index.html
+[bookja]: https://github.com/rust-lang-ja/rust-nomicon-ja
