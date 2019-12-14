@@ -1,81 +1,159 @@
 <!DOCTYPE HTML>
-<html lang="en">
+<html lang="en" class="sidebar-visible no-js">
     <head>
+        <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>代替メモリレイアウト - </title>
+        
+
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <base href="">
-
-        <link rel="stylesheet" href="book.css">
-        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <meta name="theme-color" content="#ffffff" />
 
         <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
 
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
 
+        <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="highlight.css">
         <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
 
-        <!-- MathJax -->
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <!-- Custom theme stylesheets -->
+        
 
-        <!-- Fetch JQuery from CDN but have a local fallback -->
-        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-        <script>
-            if (typeof jQuery == 'undefined') {
-                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
-            }
-        </script>
+        
     </head>
     <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script type="text/javascript">
-            var theme = localStorage.getItem('theme');
-            if (theme == null) { theme = 'light'; }
-            $('body').removeClass().addClass(theme);
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script type="text/javascript">
-            var sidebar = localStorage.getItem('sidebar');
-            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
-            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
         </script>
 
-        <div id="sidebar" class="sidebar">
-            <ul class="chapter"><li class="affix"><a href="README.html">はじめに</a></li><li><a href="meet-safe-and-unsafe.html"><strong>1.</strong> 安全と危険のご紹介</a></li><li><ul class="section"><li><a href="safe-unsafe-meaning.html"><strong>1.1.</strong> 安全と危険の相互作用</a></li><li><a href="working-with-unsafe.html"><strong>1.2.</strong> Unsafe と連携する</a></li></ul></li><li><a href="data.html"><strong>2.</strong> データレイアウト</a></li><li><ul class="section"><li><a href="repr-rust.html"><strong>2.1.</strong> repr(Rust)</a></li><li><a href="exotic-sizes.html"><strong>2.2.</strong> 奇妙なサイズの型</a></li><li><a href="other-reprs.html" class="active"><strong>2.3.</strong> 代替メモリレイアウト</a></li></ul></li><li><a href="ownership.html"><strong>3.</strong> 所有権とライフタイム</a></li><li><ul class="section"><li><a href="references.html"><strong>3.1.</strong> リファレンス</a></li><li><a href="lifetimes.html"><strong>3.2.</strong> ライフタイム</a></li><li><a href="lifetime-mismatch.html"><strong>3.3.</strong> ライフタイムシステムの限界</a></li><li><a href="lifetime-elision.html"><strong>3.4.</strong> ライフタイムの省略</a></li><li><a href="unbounded-lifetimes.html"><strong>3.5.</strong> 無制限のライフタイム</a></li><li><a href="hrtb.html"><strong>3.6.</strong> 高階トレイト境界</a></li><li><a href="subtyping.html"><strong>3.7.</strong> Subtyping and Variance</a></li><li><a href="dropck.html"><strong>3.8.</strong> Drop Check</a></li><li><a href="phantom-data.html"><strong>3.9.</strong> PhantomData</a></li><li><a href="borrow-splitting.html"><strong>3.10.</strong> Splitting Borrows</a></li></ul></li><li><a href="conversions.html"><strong>4.</strong> Type Conversions</a></li><li><ul class="section"><li><a href="coercions.html"><strong>4.1.</strong> Coercions</a></li><li><a href="dot-operator.html"><strong>4.2.</strong> The Dot Operator</a></li><li><a href="casts.html"><strong>4.3.</strong> Casts</a></li><li><a href="transmutes.html"><strong>4.4.</strong> Transmutes</a></li></ul></li><li><a href="uninitialized.html"><strong>5.</strong> Uninitialized Memory</a></li><li><ul class="section"><li><a href="checked-uninit.html"><strong>5.1.</strong> Checked</a></li><li><a href="drop-flags.html"><strong>5.2.</strong> Drop Flags</a></li><li><a href="unchecked-uninit.html"><strong>5.3.</strong> Unchecked</a></li></ul></li><li><a href="obrm.html"><strong>6.</strong> Ownership Based Resource Management</a></li><li><ul class="section"><li><a href="constructors.html"><strong>6.1.</strong> Constructors</a></li><li><a href="destructors.html"><strong>6.2.</strong> Destructors</a></li><li><a href="leaking.html"><strong>6.3.</strong> Leaking</a></li></ul></li><li><a href="unwinding.html"><strong>7.</strong> Unwinding</a></li><li><ul class="section"><li><a href="exception-safety.html"><strong>7.1.</strong> Exception Safety</a></li><li><a href="poisoning.html"><strong>7.2.</strong> Poisoning</a></li></ul></li><li><a href="concurrency.html"><strong>8.</strong> Concurrency</a></li><li><ul class="section"><li><a href="races.html"><strong>8.1.</strong> Races</a></li><li><a href="send-and-sync.html"><strong>8.2.</strong> Send and Sync</a></li><li><a href="atomics.html"><strong>8.3.</strong> Atomics</a></li></ul></li><li><a href="vec.html"><strong>9.</strong> Implementing Vec</a></li><li><ul class="section"><li><a href="vec-layout.html"><strong>9.1.</strong> Layout</a></li><li><a href="vec-alloc.html"><strong>9.2.</strong> Allocating</a></li><li><a href="vec-push-pop.html"><strong>9.3.</strong> Push and Pop</a></li><li><a href="vec-dealloc.html"><strong>9.4.</strong> Deallocating</a></li><li><a href="vec-deref.html"><strong>9.5.</strong> Deref</a></li><li><a href="vec-insert-remove.html"><strong>9.6.</strong> Insert and Remove</a></li><li><a href="vec-into-iter.html"><strong>9.7.</strong> IntoIter</a></li><li><a href="vec-raw.html"><strong>9.8.</strong> RawVec</a></li><li><a href="vec-drain.html"><strong>9.9.</strong> Drain</a></li><li><a href="vec-zsts.html"><strong>9.10.</strong> Handling Zero-Sized Types</a></li><li><a href="vec-final.html"><strong>9.11.</strong> Final Code</a></li></ul></li><li><a href="arc-and-mutex.html"><strong>10.</strong> Implementing Arc and Mutex</a></li></ul>
-        </div>
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
+                <ol class="chapter"><li class="affix"><a href="index.html">はじめに</a></li><li><a href="meet-safe-and-unsafe.html"><strong aria-hidden="true">1.</strong> 安全と危険のご紹介</a></li><li><ol class="section"><li><a href="safe-unsafe-meaning.html"><strong aria-hidden="true">1.1.</strong> 安全と危険の相互作用</a></li><li><a href="working-with-unsafe.html"><strong aria-hidden="true">1.2.</strong> Unsafe と連携する</a></li></ol></li><li><a href="data.html"><strong aria-hidden="true">2.</strong> データレイアウト</a></li><li><ol class="section"><li><a href="repr-rust.html"><strong aria-hidden="true">2.1.</strong> repr(Rust)</a></li><li><a href="exotic-sizes.html"><strong aria-hidden="true">2.2.</strong> 奇妙なサイズの型</a></li><li><a href="other-reprs.html" class="active"><strong aria-hidden="true">2.3.</strong> 代替メモリレイアウト</a></li></ol></li><li><a href="ownership.html"><strong aria-hidden="true">3.</strong> 所有権とライフタイム</a></li><li><ol class="section"><li><a href="references.html"><strong aria-hidden="true">3.1.</strong> リファレンス</a></li><li><a href="lifetimes.html"><strong aria-hidden="true">3.2.</strong> ライフタイム</a></li><li><a href="lifetime-mismatch.html"><strong aria-hidden="true">3.3.</strong> ライフタイムシステムの限界</a></li><li><a href="lifetime-elision.html"><strong aria-hidden="true">3.4.</strong> ライフタイムの省略</a></li><li><a href="unbounded-lifetimes.html"><strong aria-hidden="true">3.5.</strong> 無制限のライフタイム</a></li><li><a href="hrtb.html"><strong aria-hidden="true">3.6.</strong> 高階トレイト境界</a></li><li><a href="subtyping.html"><strong aria-hidden="true">3.7.</strong> Subtyping and Variance</a></li><li><a href="dropck.html"><strong aria-hidden="true">3.8.</strong> Drop Check</a></li><li><a href="phantom-data.html"><strong aria-hidden="true">3.9.</strong> PhantomData</a></li><li><a href="borrow-splitting.html"><strong aria-hidden="true">3.10.</strong> Splitting Borrows</a></li></ol></li><li><a href="conversions.html"><strong aria-hidden="true">4.</strong> Type Conversions</a></li><li><ol class="section"><li><a href="coercions.html"><strong aria-hidden="true">4.1.</strong> Coercions</a></li><li><a href="dot-operator.html"><strong aria-hidden="true">4.2.</strong> The Dot Operator</a></li><li><a href="casts.html"><strong aria-hidden="true">4.3.</strong> Casts</a></li><li><a href="transmutes.html"><strong aria-hidden="true">4.4.</strong> Transmutes</a></li></ol></li><li><a href="uninitialized.html"><strong aria-hidden="true">5.</strong> Uninitialized Memory</a></li><li><ol class="section"><li><a href="checked-uninit.html"><strong aria-hidden="true">5.1.</strong> Checked</a></li><li><a href="drop-flags.html"><strong aria-hidden="true">5.2.</strong> Drop Flags</a></li><li><a href="unchecked-uninit.html"><strong aria-hidden="true">5.3.</strong> Unchecked</a></li></ol></li><li><a href="obrm.html"><strong aria-hidden="true">6.</strong> 所有権に基づいたリソース管理</a></li><li><ol class="section"><li><a href="constructors.html"><strong aria-hidden="true">6.1.</strong> Constructors</a></li><li><a href="destructors.html"><strong aria-hidden="true">6.2.</strong> Destructors</a></li><li><a href="leaking.html"><strong aria-hidden="true">6.3.</strong> Leaking</a></li></ol></li><li><a href="unwinding.html"><strong aria-hidden="true">7.</strong> Unwinding</a></li><li><ol class="section"><li><a href="exception-safety.html"><strong aria-hidden="true">7.1.</strong> 例外安全性</a></li><li><a href="poisoning.html"><strong aria-hidden="true">7.2.</strong> Poisoning</a></li></ol></li><li><a href="concurrency.html"><strong aria-hidden="true">8.</strong> Concurrency</a></li><li><ol class="section"><li><a href="races.html"><strong aria-hidden="true">8.1.</strong> Races</a></li><li><a href="send-and-sync.html"><strong aria-hidden="true">8.2.</strong> Send and Sync</a></li><li><a href="atomics.html"><strong aria-hidden="true">8.3.</strong> Atomics</a></li></ol></li><li><a href="vec.html"><strong aria-hidden="true">9.</strong> Implementing Vec</a></li><li><ol class="section"><li><a href="vec-layout.html"><strong aria-hidden="true">9.1.</strong> Layout</a></li><li><a href="vec-alloc.html"><strong aria-hidden="true">9.2.</strong> Allocating</a></li><li><a href="vec-push-pop.html"><strong aria-hidden="true">9.3.</strong> Push and Pop</a></li><li><a href="vec-dealloc.html"><strong aria-hidden="true">9.4.</strong> Deallocating</a></li><li><a href="vec-deref.html"><strong aria-hidden="true">9.5.</strong> Deref</a></li><li><a href="vec-insert-remove.html"><strong aria-hidden="true">9.6.</strong> Insert and Remove</a></li><li><a href="vec-into-iter.html"><strong aria-hidden="true">9.7.</strong> IntoIter</a></li><li><a href="vec-raw.html"><strong aria-hidden="true">9.8.</strong> RawVec</a></li><li><a href="vec-drain.html"><strong aria-hidden="true">9.9.</strong> Drain</a></li><li><a href="vec-zsts.html"><strong aria-hidden="true">9.10.</strong> Handling Zero-Sized Types</a></li><li><a href="vec-final.html"><strong aria-hidden="true">9.11.</strong> Final Code</a></li></ol></li><li><a href="arc-and-mutex.html"><strong aria-hidden="true">10.</strong> Implementing Arc and Mutex</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
+                
                 <div id="menu-bar" class="menu-bar">
-                    <div class="left-buttons">
-                        <i id="sidebar-toggle" class="fa fa-bars"></i>
-                        <i id="theme-toggle" class="fa fa-paint-brush"></i>
-                    </div>
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
 
-                    <h1 class="menu-title"></h1>
+                        <h1 class="menu-title"></h1>
 
-                    <div class="right-buttons">
-                        <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
                     </div>
                 </div>
 
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
                 <div id="content" class="content">
-                    <!--
+                    <main>
+                        <!--
 # Alternative representations
 -->
-<a class="header" href="#代替メモリレイアウト" name="代替メモリレイアウト"><h1>代替メモリレイアウト</h1></a>
+<h1><a class="header" href="#代替メモリレイアウト" id="代替メモリレイアウト">代替メモリレイアウト</a></h1>
 <!--
 Rust allows you to specify alternative data layout strategies from the default.
 -->
 <p>Rust では、デフォルトとは異なる、代替のデータレイアウトを指定することができます。</p>
-<a class="header" href="#reprc" name="reprc"><h1>repr(C)</h1></a>
+<h1><a class="header" href="#reprc" id="reprc">repr(C)</a></h1>
 <!--
 This is the most important `repr`. It has fairly simple intent: do what C does.
 The order, size, and alignment of fields is exactly what you would expect from C
@@ -110,7 +188,7 @@ FFI 境界を超えることが無意味または問題になるような型に�
 <p><code>repr(C)</code> を適用した状況では、タプルは構造体と似ています。構造体との違いは、フィールドに名前がないことだけです。</p>
 </li>
 <li>
-<p><strong>型に <a href="drop-flags.md">drop flags</a> が付いていても、その型は追加されます。</strong></p>
+<p><strong>型に <a href="drop-flags.html">drop flags</a> が付いていても、その型は追加されます。</strong></p>
 </li>
 <li>
 <p>enum については、<code>repr(u*)</code> （次のセクションで説明します）と同等です。選んだサイズが、対象となるプラットフォームの C ABI でのデフォルトの enum のサイズとなります。C での enum のデータ表現は実装依存なので、これはベストの推測でしかないことに注意してください。とくに、対象の C コードが特定のフラグつきでコンパイルされた場合に、正しく動かないかもしれません。</p>
@@ -119,7 +197,7 @@ FFI 境界を超えることが無意味または問題になるような型に�
 <!--
 # repr(u8), repr(u16), repr(u32), repr(u64)
 -->
-<a class="header" href="#repru8-repru16-repru32-repru64" name="repru8-repru16-repru32-repru64"><h1>repr(u8), repr(u16), repr(u32), repr(u64)</h1></a>
+<h1><a class="header" href="#repru8-repru16-repru32-repru64" id="repru8-repru16-repru32-repru64">repr(u8), repr(u16), repr(u32), repr(u64)</a></h1>
 <!--
 These specify the size to make a C-like enum. If the discriminant overflows the
 integer it has to fit in, it will produce a compile-time error. You can manually
@@ -144,7 +222,7 @@ These reprs have no effect on a struct.
 <!--
 # repr(packed)
 -->
-<a class="header" href="#reprpacked" name="reprpacked"><h1>repr(packed)</h1></a>
+<h1><a class="header" href="#reprpacked" id="reprpacked">repr(packed)</a></h1>
 <!--
 `repr(packed)` forces Rust to strip any padding, and only align the type to a
 byte. This may improve the memory footprint, but will likely have other negative
@@ -170,51 +248,67 @@ compiler will be able to emit code to avoid an unaligned load.
 <p><strong><a href="https://github.com/rust-lang/rust/issues/27060">Rust 1.0 時点では、これは未定義な挙動です。</a></strong></p>
 <p><code>repr(packed)</code> は気軽に使えるものではありません。
 極端な要求に応えようとしているのでない限り、使うべきではありません。</p>
-<p>この repr は <code>repr(C)</code> や <code>repr(rust)</code> の修飾子として使えます。</p>
+<p>この repr は <code>repr(C)</code> や <code>repr(rust)</code> の就職誌として使えます。</p>
 
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="exotic-sizes.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="ownership.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
                 </div>
+            </div>
 
-                <!-- Mobile navigation buttons -->
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="exotic-sizes.html" class="mobile-nav-chapters previous">
+                    <a href="exotic-sizes.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a href="ownership.html" class="mobile-nav-chapters next">
+                    <a href="ownership.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
-
-            </div>
-
-            
-                <a href="exotic-sizes.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
-                    <i class="fa fa-angle-left"></i>
-                </a>
-            
-
-            
-                <a href="ownership.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
-                    <i class="fa fa-angle-right"></i>
-                </a>
-            
+            </nav>
 
         </div>
 
-
-        <!-- Local fallback for Font Awesome -->
-        <script>
-            if ($(".fa").css("font-family") !== "FontAwesome") {
-                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
-            }
-        </script>
-
-        <!-- Livereload script (if served using the cli tool) -->
         
 
-        <script src="highlight.js"></script>
-        <script src="book.js"></script>
+        
+
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
     </body>
 </html>
