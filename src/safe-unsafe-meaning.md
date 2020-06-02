@@ -66,7 +66,7 @@ The standard library has a number of unsafe functions, including:
 * All FFI functions are `unsafe` because the other language can do arbitrary
   operations that the Rust compiler can't check.
 -->
- 
+
 * `slice::get_unchecked` は未チェックのインデックス参照を実行します。自由自在にメモリ安全性に違反できます。
 * `mem::transmute` は、型安全の仕組みを好きなようにすり抜けて、ある値が特定の型であると再解釈します（詳細は [変換] をみてください）。
 * サイズが確定している型の生のポインタには、固有の `offset` メソッドがあります。渡されたオフセットが LLVM が定める "境界内" になければ、未定義の挙動を引き起こします。
@@ -84,7 +84,7 @@ Rust 1.0 現在、危険な traits は 2 つしかありません。
 * `Sync` is a marker trait that promises threads can safely share implementors
   through a shared reference.
   -->
-  
+
 * `Send` は API を持たないマーカー trait で、実装された型が他のスレッドに安全に送れる（move できる）ことを約束します。
 * `Sync` もマーカー trait で、この trait を実装した型は、共有リファレンスを使って安全に複数のスレッドで共有できる事を約束します。
 
