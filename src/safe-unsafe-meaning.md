@@ -34,10 +34,10 @@ trait must check the trait documentation to ensure their implementation
 maintains the contracts the trait requires.
 -->
 
-_関数_ と _trait の宣言_ に未チェックな契約が存在する事を、`unsafe` を使って示すことができます。
+_関数_ と _トレイトの宣言_ に未チェックな契約が存在する事を、`unsafe` を使って示すことができます。
 関数に `unsafe` を使うと、ドキュメントを読んで、
 要求された契約を守るように関数を使うことを、その関数のユーザーに要請することになります。
-trait の宣言に `unsafe` を使うと、その trait を実装するユーザーに対し、ドキュメントをチェックして契約を守るよう要請します。
+トレイトの宣言に `unsafe` を使うと、そのトレイトを実装するユーザーに対し、ドキュメントをチェックして契約を守るよう要請します。
 
 <!--
 You can use `unsafe` on a block to declare that all constraints required
@@ -47,7 +47,7 @@ to declare that the implementation of that trait has adhered to whatever
 contracts the trait's documentation requires.
 -->
 
-コードブロックに使われた `unsafe` は、そのブロックで呼ばれている危険な関数が要求する契約は守られていて、コードが信頼出来る事を意味します。`unsafe` を trait の実装に使うと、その実装が trait のドキュメントに書かれている契約に準拠している事を示します。
+コードブロックに使われた `unsafe` は、そのブロックで呼ばれている危険な関数が要求する契約は守られていて、コードが信頼出来る事を意味します。`unsafe` をトレイトの実装に使うと、その実装がトレイトのドキュメントに書かれている契約に準拠している事を示します。
 
 <!--
 The standard library has a number of unsafe functions, including:
@@ -69,7 +69,7 @@ The standard library has a number of unsafe functions, including:
 
 * `slice::get_unchecked` は未チェックのインデックス参照を実行します。自由自在にメモリ安全性に違反できます。
 * `mem::transmute` は、型安全の仕組みを好きなようにすり抜けて、ある値が特定の型であると再解釈します（詳細は [変換] をみてください）。
-* サイズが確定している型の生のポインタには、固有の `offset` メソッドがあります。渡されたオフセットが LLVM が定める "境界内" になければ、未定義の挙動を引き起こします。
+* サイズが確定している型の生ポインタには、固有の `offset` メソッドがあります。渡されたオフセットが LLVM が定める "境界内" になければ、未定義の挙動を引き起こします。
 * すべての FFI 関数は `unsafe` です。なぜなら Rust コンパイラは、他の言語が実行するどんな操作もチェックできないからです。
 
 <!--
@@ -85,8 +85,8 @@ Rust 1.0 現在、危険な traits は 2 つしかありません。
   through a shared reference.
   -->
 
-* `Send` は API を持たないマーカー trait で、実装された型が他のスレッドに安全に送れる（move できる）ことを約束します。
-* `Sync` もマーカー trait で、この trait を実装した型は、共有リファレンスを使って安全に複数のスレッドで共有できる事を約束します。
+* `Send` は API を持たないマーカートレイトで、実装された型が他のスレッドに安全に送れる（ムーブできる）ことを約束します。
+* `Sync` もマーカートレイトで、このトレイトを実装した型は、共有された参照を使って安全に複数のスレッドで共有できる事を約束します。
 
 <!--
 Much of the Rust standard library also uses Unsafe Rust internally, although
