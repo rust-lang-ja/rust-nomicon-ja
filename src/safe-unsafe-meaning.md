@@ -116,7 +116,7 @@ maintain). On the other hand, Unsafe Rust has to be very careful about
 trusting Safe Rust.
 -->
 
-このように安全と危険の分けると、安全な Rust は、自分が利用する危険な Rust が正しく書かれている事、
+このように安全と危険を分けると、安全な Rust は、自分が利用する危険な Rust が正しく書かれている事、
 つまり危険な Rust がそれが守るべき契約を実際に守っている事、を本質的に信頼しなくてはいけません。
 逆に、危険な Rust は安全な Rust を注意して信頼しなくてはいけません。
 
