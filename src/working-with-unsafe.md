@@ -99,7 +99,7 @@ pub struct Vec<T> {
 impl<T> Vec<T> {
     pub fn push(&mut self, elem: T) {
         if self.len == self.cap {
-            // not important for this example
+            // この例では重要ではありません。
             self.reallocate();
         }
         unsafe {
