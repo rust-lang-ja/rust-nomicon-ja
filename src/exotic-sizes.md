@@ -61,7 +61,7 @@ it points to.
 -->
 
 スライスとは、単純にある連続したスペース（通常は配列か `Vec`）のビューです。
-スライスを補完する情報とは、単にポインタが指すエレメントの数です。
+スライスを補完する情報とは、単にポインタが指す要素の数です。
 
 <!--
 Structs can actually store a single DST directly as their last field, but this
