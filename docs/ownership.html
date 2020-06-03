@@ -185,7 +185,7 @@ GC の無い言語を使ったことのあるひとなら誰でも一度はや�
     let s = format!(&quot;{}&quot;, data);
 
     // しまった! この関数内でしか存在しないオブジェクトへの
-    // リファレンスを返してしまった!
+    // 参照を返してしまった!
     // ダングリングポインタだ! メモリ解放後の参照だ! うわーー!
     // （このコードは Rust ではコンパイルエラーになります）
     &amp;s
@@ -217,12 +217,12 @@ verifying that references don't escape the scope of their referent. That's
 because ensuring pointers are always valid is much more complicated than this.
 For instance in this code,
 -->
-<p>もちろん、リファレンスが参照先のスコープから逃げ出していないことを検証することよりも
+<p>もちろん、参照が参照先のスコープから逃げ出していないことを検証することよりも
 所有権に関する Rust の話はもっともっと複雑です。
-ポインタがつねに有効であることを証明するのは、もっともっと複雑だからです。
+ポインタが常に有効であることを証明するのは、もっともっと複雑だからです。
 例えばこのコードを見てみましょう。</p>
 <pre><code class="language-rust ignore">let mut data = vec![1, 2, 3];
-// 内部データのリファレンスを取る
+// 内部データの参照を取る
 let x = &amp;data[0];
 
 // しまった! `push` によって `data` の格納先が再割り当てされてしまった。
@@ -241,7 +241,7 @@ referent and its owners.
 <p>単純なスコープ解析では、このバグは防げません。
 <code>data</code> のライフタイムは十分に長いからです。
 問題は、その参照を保持している間に、参照先が<em>変わって</em>しまったことです。
-Rust でリファレンスを取ると、参照先とその所有者がフリーズされるのは、こういう理由なのです。</p>
+Rust で参照を取ると、参照先とその所有者がフリーズされるのは、こういう理由なのです。</p>
 
                     </main>
 

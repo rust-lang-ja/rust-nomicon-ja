@@ -156,7 +156,7 @@ that you can be stored anywhere. Alignment is at least 1, and always a power of
 platform-specific behavior. In particular, on x86 `u64` and `f64` may be only
 aligned to 32 bits.
 -->
-<p>最初に重要なことは、すべての型はバイト単位で指定されたアラインメントに従います。
+<p>最初に重要なこととして、すべての型はバイト単位で指定されたアラインメントに従います。
 ある型のアラインメントは、値を格納する有効なアドレスを規定します。
 アラインメント <code>n</code> の値は、<code>n</code> の倍数のアドレスにのみ格納できます。
 つまりアラインメント 2 は、偶数アドレスにのみ格納できることを意味し、
@@ -164,7 +164,7 @@ aligned to 32 bits.
 アラインメントの最小値は 1 で、常に 2 のべき乗になります。
 ほとんどのプリミティブ型はそのサイズにアラインメントされますが、
 これはプラットフォーム依存の挙動です。
-特に x86 では <code>u64</code> と <code>f64</code> は 32 bits にアラインされるかもしれません。</p>
+特に x86 では <code>u64</code> と <code>f64</code> は 32ビットにアラインされるかもしれません。</p>
 <!--
 A type's size must always be a multiple of its alignment. This ensures that an
 array of that type may always be indexed by offsetting by a multiple of its
@@ -220,7 +220,7 @@ respective sizes. The whole struct will therefore have a size that is a multiple
 of 32-bits. It will potentially become:
 -->
 <p>この構造体は、メンバーのプリミティブ型が対応するサイズにアラインされるアーキテクチャでは、
-32-bit にアラインされます。そのため全体の構造体のサイズも 32 bit の倍数になります。
+32ビットにアラインされます。そのため全体の構造体のサイズも 32ビットの倍数になります。
 このようになるでしょう。</p>
 <pre><pre class="playpen"><code class="language-rust">
 # #![allow(unused_variables)]
@@ -230,7 +230,7 @@ struct A {
     _pad1: [u8; 3], // `b` のアラインメントのため
     b: u32,
     c: u16,
-    _pad2: [u8; 2], // 全体のサイズを 4 byte の倍数にするため
+    _pad2: [u8; 2], // 全体のサイズを 4バイトの倍数にするため
 }
 #}</code></pre></pre>
 <!--
@@ -269,7 +269,7 @@ With A and B as written, this point would seem to be pedantic, but several other
 features of Rust make it desirable for the language to play with data layout in
 complex ways.
 -->
-<p>この A, B の例では、レイアウトのが保証されないなんて融通が利かないと思うかもしれませんが、
+<p>この A, B の例では、レイアウトが保証されないなんて融通が利かないと思うかもしれませんが、
 他の機能を考えると、Rust がデータレイアウトを複雑にいじくれるようにするのは好ましいのです。</p>
 <!--
 For instance, consider this struct:
@@ -359,8 +359,8 @@ instead. The net result is that, for example, `size_of::<Option<&T>>() ==
 size_of::<&T>()`.
 -->
 <p>ところが、このような表現が非効率な場合もあります。
-わかりやすい例としては、Rust の &quot;null ポインタ最適化&quot; があります。
-これは、ある enum がデータを持たないメンバー（たとえば <code>None</code>）と、（ネストしてるかもしれない）null を取らないメンバー（たとえば <code>&amp;T</code>）から構成される場合、null ポインタをデータを持たないメンバーと解釈することができるので、タグが不要になります。
+わかりやすい例としては、Rust の &quot;ヌルポインタ最適化&quot; があります。
+これは、ある enum がデータを持たないメンバー（たとえば <code>None</code>）と、（ネストしてるかもしれない）ヌルを取らないメンバー（たとえば <code>&amp;T</code>）から構成される場合、ヌルポインタをデータを持たないメンバーと解釈することができるので、タグが不要になります。
 その結果、たとえば <code>size_of::&lt;Optiona&lt;&amp;T&gt;&gt;() == size_of::&lt;&amp;T&gt;()</code> となります。</p>
 <!--
 There are many types in Rust that are, or contain, non-nullable pointers such as
@@ -371,12 +371,12 @@ use fairly elaborate algorithms to cache bits throughout nested types with
 special constrained representations. As such it is *especially* desirable that
 we leave enum layout unspecified today.
 -->
-<p>Rust には、null ポインタになりえない型や、null ポインタを含まない型がたくさんあります。
+<p>Rust には、ヌルポインタになりえない型や、ヌルポインタを含まない型がたくさんあります。
 例えば <code>Box&lt;T&gt;</code>, <code>Vec&lt;T&gt;</code>, <code>String</code>, <code>&amp;T</code>, <code>&amp;mut T</code> などです。
 同様に、ネストした複数の enum が、タグを単一の判別子に押し込めることも考えられます。
 タグが取り得る値は、定義により限られているからです。
 原理的には、enum はとても複雑なアルゴリズムを使って、ネストした型を特別な制約のもとで表現し、
-bit を隠すことができるでしょう。
+ビットを隠すことができるでしょう。
 このため、enum のレイアウトを規定しないでおくことは、現状では <em>特に</em> 好ましいのです。</p>
 
                     </main>
