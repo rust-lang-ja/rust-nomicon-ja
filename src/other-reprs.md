@@ -74,8 +74,8 @@ On non-C-like enums, this will inhibit certain optimizations like the null-
 pointer optimization.
 -->
 
-C っぽくない enum （訳注：要素がパラメタをとるような enum）に `repr(u*)` を適用すると、
-null ポインタ最適化のようなある種の最適化ができなくなります。
+C っぽくない enum （訳注：要素がパラメータをとるような enum）に `repr(u*)` を適用すると、
+ヌルポインタ最適化のようなある種の最適化ができなくなります。
 
 <!--
 These reprs have no effect on a struct.
@@ -96,7 +96,7 @@ byte. This may improve the memory footprint, but will likely have other negative
 side-effects.
 -->
 
-`repr(packed)` を使うと Rust はパディングを一切取り除き、すべてを byte 単位にアラインします。
+`repr(packed)` を使うと Rust はパディングを一切取り除き、すべてをバイト単位にアラインします。
 メモリ使用量は改善しますが、悪い副作用を引き起こす可能性が高いです。
 
 <!--
@@ -108,12 +108,12 @@ However if you take a reference to a packed field, it's unlikely that the
 compiler will be able to emit code to avoid an unaligned load.
 -->
 
-特にほとんどのアークテクチャは、値がアラインされていることを*強く*望んでいます。
+特にほとんどのアーキテクチャは、値がアラインされていることを*強く*望んでいます。
 つまりアラインされていないデータの読み込みにはペナルティがある（x86）かもしれませんし、
 失敗する（いくつかの ARM チップ）かもしれません。
 パックされたフィールドを直接読んだり書いたりするという単純なケースでは、
 コンパイラがシフトやマスクを駆使してアラインメントの問題を隠してくれるかもしれません。
-しかし、パックされたフィールドへのリファレンスを扱う場合には、アラインされてない読み込みを避けるような
+しかし、パックされたフィールドへの参照を扱う場合には、アラインされてない読み込みを避けるような
 コードをコンパイラが生成することは期待できないでしょう。
 
 
@@ -122,7 +122,7 @@ compiler will be able to emit code to avoid an unaligned load.
 `repr(packed)` は気軽に使えるものではありません。
 極端な要求に応えようとしているのでない限り、使うべきではありません。
 
-この repr は `repr(C)` や `repr(rust)` の就職誌として使えます。
+この repr は `repr(C)` や `repr(rust)` の修飾子として使えます。
 
 [drop flags]: drop-flags.md
 [ub loads]: https://github.com/rust-lang/rust/issues/27060
