@@ -122,7 +122,7 @@ compiler will be able to emit code to avoid an unaligned load.
 `repr(packed)` は気軽に使えるものではありません。
 極端な要求に応えようとしているのでない限り、使うべきではありません。
 
-この repr は `repr(C)` や `repr(rust)` の就職誌として使えます。
+この repr は `repr(C)` や `repr(rust)` の修飾子として使えます。
 
 [drop flags]: drop-flags.md
 [ub loads]: https://github.com/rust-lang/rust/issues/27060
