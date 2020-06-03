@@ -10,7 +10,7 @@ binary manner. Unfortunately, reality is significantly more complicated than
 that. For instance, consider the following toy function:
 -->
 
-たいていの場合、危険な Rust を扱うツールは、限定された状況やバイナリでしか使えないようになっています。
+たいていの場合、アンセーフな Rust を扱うツールは、限定された状況やバイナリでしか使えないようになっています。
 残念なことに、現実はそれよりも極めて複雑です。例えば、以下の簡単な関数を見てみましょう。
 
 ```rust
@@ -58,7 +58,7 @@ operations necessarily depends on the state established by otherwise
 
 *安全なコードを変更しただけなのに*、今やこのプログラムは安全ではなくなりました。
 これが安全性の本質的な問題です。局所的ではないのです。
-危険な操作の健全性は、通常 "安全" な操作によって構築された状態に依存しているのです。
+アンセーフな操作の健全性は、通常 "安全" な操作によって構築された状態に依存しているのです。
 
 <!--
 Safety is modular in the sense that opting into unsafety doesn't require you
@@ -69,10 +69,10 @@ safety *isn't* modular in the sense that programs are inherently stateful and
 your unsafe operations may depend on arbitrary other state.
 -->
 
-安全性は、危険な操作をしたからといってあらゆる他の悪い事を考慮する必要はない、という意味ではモジュール化されています。
-例えば、スライスに対して未チェックのインデックスアクセスをしても、スライスが null だったらどうしようとか、
+安全性は、アンセーフな操作をしたからといってあらゆる他の悪い事を考慮する必要はない、という意味ではモジュール化されています。
+例えば、スライスに対して未チェックのインデックスアクセスをしても、スライスがヌルだったらどうしようとか、
 スライスが未初期化のメモリを含んでいるかもといった心配をする必要はありません。基本的には何も変わりません。
-しかし、プログラムは本質的にステートフルであり、危険な操作はその他の任意の状態に依存しているかもしれない、
+しかし、プログラムは本質的にステートフルであり、アンセーフな操作はその他の任意の状態に依存しているかもしれない、
 という意味で、安全性はモジュール化されてはいないのです。
 
 
