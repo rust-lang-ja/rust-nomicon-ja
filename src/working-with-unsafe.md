@@ -181,10 +181,11 @@ well-behaved in a way that safe code doesn't care about.
 安全なコードを書くときには気にする必要はないのですが、アンセーフなコードでは、
 トレイトの任意の実装や渡された任意の関数が行儀よく振る舞うことを期待することはできないのです。
 
-
+<!--
 However if unsafe code couldn't prevent client safe code from messing with its
 state in arbitrary ways, safety would be a lost cause. Thankfully, it *can*
 prevent arbitrary code from messing with critical state due to privacy.
+-->
 
 しかし、安全なコードが状態をあらゆる方法でぐちゃぐちゃにすることを、危険なコードが防げないのだとしたら、
 安全性とは絵に描いた餅かもしれません。
