@@ -236,7 +236,7 @@ the ability to be confident that certain situations are statically impossible.
 -->
 
 ただし、どちらの例も現時点では動きません。
-つまり、Void 型による利点は、静的な解析によて、特定の状況が起こらないと確実に言えることだけです。
+つまり、Void 型による利点は、静的な解析によって、特定の状況が起こらないと確実に言えることだけです。
 
 <!--
 One final subtle detail about empty types is that raw pointers to them are
