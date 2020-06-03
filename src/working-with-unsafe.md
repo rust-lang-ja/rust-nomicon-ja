@@ -10,7 +10,7 @@ binary manner. Unfortunately, reality is significantly more complicated than
 that. For instance, consider the following toy function:
 -->
 
-たいていの場合、危険な Rust を扱うツールは、限定された状況やバイナリでしか使えないようになっています。
+たいていの場合、アンセーフな Rust を扱うツールは、限定された状況やバイナリでしか使えないようになっています。
 残念なことに、現実はそれよりも極めて複雑です。例えば、以下の簡単な関数を見てみましょう。
 
 ```rust
@@ -58,7 +58,7 @@ operations necessarily depends on the state established by otherwise
 
 *安全なコードを変更しただけなのに*、今やこのプログラムは安全ではなくなりました。
 これが安全性の本質的な問題です。局所的ではないのです。
-危険な操作の健全性は、通常 "安全" な操作によって構築された状態に依存しているのです。
+アンセーフな操作の健全性は、通常 "安全" な操作によって構築された状態に依存しているのです。
 
 <!--
 Safety is modular in the sense that opting into unsafety doesn't require you
@@ -69,11 +69,11 @@ safety *isn't* modular in the sense that programs are inherently stateful and
 your unsafe operations may depend on arbitrary other state.
 -->
 
-安全性は、危険な操作をしたからといってあらゆる他の悪い事を考慮する必要はない、という意味ではモジュール化されています。
-例えば、スライスに対して未チェックのインデックスアクセスをしても、スライスが null だったらどうしようとか、
+安全性は、アンセーフな操作をしたからといってあらゆる他の悪い事を考慮する必要はない、という意味ではモジュール化されています。
+例えば、スライスに対して未チェックのインデックスアクセスをしても、スライスがヌルだったらどうしようとか、
 スライスが未初期化のメモリを含んでいるかもといった心配をする必要はありません。基本的には何も変わりません。
-しかし、プログラムは本質的にステートフルであり、危険な操作はその他の任意の状態に依存しているかもしれない、
-という意味で、安全性はモジュール化されてはいないのです。
+しかし、プログラムは本質的にステートフルであり、アンセーフな操作はその他の任意の状態に依存しているかもしれない、
+という意味で、安全性はモジュール化*されてはいない*のです。
 
 
 <!--
@@ -99,7 +99,7 @@ pub struct Vec<T> {
 impl<T> Vec<T> {
     pub fn push(&mut self, elem: T) {
         if self.len == self.cap {
-            // not important for this example
+            // この例では重要ではありません。
             self.reallocate();
         }
         unsafe {
@@ -125,7 +125,7 @@ adding the following method:
 
 ```rust,ignore
 fn make_room(&mut self) {
-    // grow the capacity
+    // キャパシティを大きくする
     self.cap += 1;
 }
 ```
@@ -149,7 +149,7 @@ module boundary with privacy.
 -->
 
 `unsafe` は関数そのものを汚染するだけでなく、*モジュール* 全体を汚染します。
-一般的に、危険なコードのスコープを制限する唯一で完全無欠の方法は、モジュール境界での非公開性を利用することです。
+一般的に、アンセーフなコードのスコープを制限する唯一で完全無欠の方法は、モジュール境界での非公開性を利用することです。
 
 <!--
 However this works *perfectly*. The existence of `make_room` is *not* a
@@ -175,21 +175,22 @@ well-behaved in a way that safe code doesn't care about.
 -->
 
 このように、複雑な普遍条件に依存した安全な抽象化を提供することは可能なのです。
-これは安全な Rust と危険な Rust の関係において決定的に重要です。
-すでに見たように、危険なコードは *特定* の安全なコードを信頼しなくてはなりませんが、
+これは安全な Rust とアンセーフな Rust の関係において*決定的に*重要です。
+すでに見たように、アンセーフなコードは *特定* の安全なコードを信頼しなくてはなりませんが、
 安全なコード *一般* を信頼することはできません。
-安全なコードを書くときには気にする必要はないのですが、危険なコードでは、
-trait の任意の実装や渡された任意の関数が行儀よく振る舞うことを期待することはできないのです。
+安全なコードを書くときには気にする必要はないのですが、アンセーフなコードでは、
+トレイトの任意の実装や渡された任意の関数が行儀よく振る舞うことを期待することはできないのです。
 
-
+<!--
 However if unsafe code couldn't prevent client safe code from messing with its
 state in arbitrary ways, safety would be a lost cause. Thankfully, it *can*
 prevent arbitrary code from messing with critical state due to privacy.
+-->
 
-しかし、安全なコードが状態をあらゆる方法でぐちゃぐちゃにすることを、危険なコードが防げないのだとしたら、
+しかし、安全なコードが状態をあらゆる方法でぐちゃぐちゃにすることを、アンセーフなコードが防げないのだとしたら、
 安全性とは絵に描いた餅かもしれません。
 ありがたいことに、非公開性を利用することで、
-任意のコードが重要な状態をめちゃくちゃにしないよう防ぐことができるのです。
+任意のコードが重要な状態をめちゃくちゃにしないよう防ぐことが*できる*のです。
 
 <!--
 Safety lives!
