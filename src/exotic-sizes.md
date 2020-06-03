@@ -41,7 +41,7 @@ DST を指すポインタは結果的に、普通のポインタと DST を補�
 There are two major DSTs exposed by the language: trait objects, and slices.
 -->
 
-言語が提供する DST のうち重要なものが 2 つあります。trait オブジェクトとスライスです。
+言語が提供する DST のうち重要なものが 2 つあります。トレイトオブジェクトとスライスです。
 
 <!--
 A trait object represents some type that implements the traits it specifies.
@@ -50,7 +50,7 @@ with a vtable containing all the information necessary to use the type.
 This is the information that completes a trait object: a pointer to its vtable.
 -->
 
-Trait オブジェクトは、それが指す Trait を実装するある型を表現します。
+トレイトオブジェクトは、それが指すトレイトを実装するある型を表現します。
 元となった型は消去されますが、vtable とリフレクションとによって実行時にはその型を利用することができます。
 つまり、Trait オブジェクトを補完する情報とは vtable へのポインタとなります。
 
@@ -60,7 +60,7 @@ A slice is simply a view into some contiguous storage -- typically an array or
 it points to.
 -->
 
-スライスとは、単純にある連続したスペース（通常はアレイか `Vec`）のビューです。
+スライスとは、単純にある連続したスペース（通常は配列か `Vec`）のビューです。
 スライスを補完する情報とは、単にポインタが指すエレメントの数です。
 
 <!--
