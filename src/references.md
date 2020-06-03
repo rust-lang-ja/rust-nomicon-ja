@@ -110,8 +110,8 @@ reference, you're declaring that an ownership path exists to this address
 of memory.
 -->
 
-リファレンスは、単純にパスの名前と定義できます。
-リファレンスを作成するということは、あるメモリアドレスに所有権の
+参照は、単純にパスの名前と定義できます。
+参照を作成するということは、あるメモリアドレスに所有権の
 パスが存在することを宣言するということです。
 
 <!--
@@ -157,11 +157,11 @@ its children). If this is done, the value may be mutated. In particular, a
 mutable reference can be taken.
 -->
 
-一般に、一意ではないパスを参照できるのは、共有リファレンスだけです。
+一般に、一意ではないパスを参照できるのは、共有参照だけです。
 しかし、相互排他を保証するメカニズムがあれば、一時的にその値（とそしてすべての子ども）への唯一のパスを確立し、
 「唯一の真の所有者」を確立できるかもしれません。
 もしこれが可能なら、その値を変更できるかもしれません。
-とくに、可変リファレンスを取ることができるようになります。
+とくに、可変参照を取ることができるようになります。
 
 <!--
 The most common way to establish such a path is through *interior mutability*,
@@ -182,8 +182,8 @@ refcount itself uses interior mutability.
 -->
 
 この効果を使った興味深い例が Rc 自身です。もし Rc の参照カウントが 1 なら、
-内部状態を変更したり、move したりしても安全です。
-refcount 自体も内部可変性を使っています。
+内部状態を変更したり、ムーブしたりしても安全です。
+参照カウント自体も内部可変性を使っています。
 
 <!--
 In order to correctly communicate to the type system that a variable or field of
@@ -217,11 +217,11 @@ unreachable (for instance, they reside in freed or leaked memory). Mutable
 references can be reachable but *not* live through the process of *reborrowing*.
 -->
 
-大雑把に言うと、リファレンスをデリファレンスできるとき、
-そのリファレンスは、プログラム中のある時点で *生存している* といえます。
-共有リファレンスは、文字通り到達不可能な場合（たとえば、解放済みメモリやリークしてるメモリに
+大雑把に言うと、参照を参照外しできるとき、
+その参照は、プログラム中のある時点で *生存している* といえます。
+共有参照は、文字通り到達不可能な場合（たとえば、解放済みメモリやリークしてるメモリに
 存在している場合）を除いて、常に生存しています。
-可変リファレンスには、*又貸し*というプロセスがあるので、到達できても生存して*いない*ことがあります。
+可変参照には、*又貸し*というプロセスがあるので、到達できても生存して*いない*ことがあります。
 
 
 <!--
@@ -231,9 +231,9 @@ reborrows derived from it expire. For instance, a mutable reference can be
 reborrowed to point to a field of its referent:
 -->
 
-可変リファレンスは、その子孫を他の共有リファレンスまたは可変リファレンスに又貸しすることができます。
-又貸ししたリファレンスは、派生したすべたの又貸しの有効期限が切れると、ふたたび生存することになります。
-たとえば、可変リファレンスは、その参照先の一つのフィールドを指すリファレンスを又貸しすることができます。
+可変参照は、その子孫を他の共有参照または可変参照に又貸しすることができます。
+又貸しした参照は、派生したすべたの又貸しの有効期限が切れると、ふたたび生存することになります。
+たとえば、可変参照は、その参照先の一つのフィールドを指す参照を又貸しすることができます。
 
 ```rust
 let x = &mut (1, 2);
