@@ -74,8 +74,8 @@ On non-C-like enums, this will inhibit certain optimizations like the null-
 pointer optimization.
 -->
 
-C っぽくない enum （訳注：要素がパラメタをとるような enum）に `repr(u*)` を適用すると、
-null ポインタ最適化のようなある種の最適化ができなくなります。
+C っぽくない enum （訳注：要素がパラメータをとるような enum）に `repr(u*)` を適用すると、
+ヌルポインタ最適化のようなある種の最適化ができなくなります。
 
 <!--
 These reprs have no effect on a struct.
@@ -96,7 +96,7 @@ byte. This may improve the memory footprint, but will likely have other negative
 side-effects.
 -->
 
-`repr(packed)` を使うと Rust はパディングを一切取り除き、すべてを byte 単位にアラインします。
+`repr(packed)` を使うと Rust はパディングを一切取り除き、すべてをバイト単位にアラインします。
 メモリ使用量は改善しますが、悪い副作用を引き起こす可能性が高いです。
 
 <!--
