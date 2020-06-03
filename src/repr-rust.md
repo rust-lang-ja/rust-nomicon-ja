@@ -19,7 +19,7 @@ aligned to 32 bits.
 アラインメントの最小値は 1 で、常に 2 のべき乗になります。
 ほとんどのプリミティブ型はそのサイズにアラインメントされますが、
 これはプラットフォーム依存の挙動です。
-特に x86 では `u64` と `f64` は 32 bits にアラインされるかもしれません。
+特に x86 では `u64` と `f64` は 32ビットにアラインされるかもしれません。
 
 <!--
 A type's size must always be a multiple of its alignment. This ensures that an
