@@ -139,7 +139,7 @@ the compiler.
 
 究極の ZST の利用法として、Set と Map を考えてみましょう。
 `Map<Key, Value>` があるときに、`Set<Key>` を `Map<Key, UselessJunk>` の
-簡単なラッパーとして実装することはよくあります。
+簡単なラッパとして実装することはよくあります。
 多くの言語では、UselessJunk のスペースを割り当てる必要があるでしょうし、
 結果的に使わない UselessJunk を保存したり読み込んだりする必要もあるでしょう。
 こういったことが不要であると示すのはコンパイラにとっては難しい仕事でしょう。
@@ -165,7 +165,7 @@ may return `nullptr` when a zero-sized allocation is requested, which is
 indistinguishable from out of memory.
 -->
 
-安全なコードは ZST について心配する必要はありませんが、*危険な* コードは
+安全なコードは ZST について心配する必要はありませんが、*アンセーフな*コードは
 サイズ 0 の型を使った時の結果について注意しなくてはなりません。
 特に、ポインタのオフセットは no-op になることや、
 （Rust のデフォルトである jemalloc を含む）標準的なメモリアロケータは、
@@ -208,7 +208,7 @@ this would require providing a value of type `Void`.
 特定のケースでは絶対に失敗しないことがわかっているとします。
 `Result<T, Void>` を返すことで、この事実を型レベルで伝えることが可能です。
 Void 型の値を提供することはできないので、この Result は Err に*なり得ないと静的にわかります*。
-そのため、この API の利用者は、自信を持って Result を unwrap することができます。
+そのため、この API の利用者は、自信を持って Result をアンラップすることができます。
 
 <!--
 In principle, Rust can do some interesting analyses and optimizations based
