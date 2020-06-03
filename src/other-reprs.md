@@ -108,7 +108,7 @@ However if you take a reference to a packed field, it's unlikely that the
 compiler will be able to emit code to avoid an unaligned load.
 -->
 
-特にほとんどのアークテクチャは、値がアラインされていることを*強く*望んでいます。
+特にほとんどのアーキテクチャは、値がアラインされていることを*強く*望んでいます。
 つまりアラインされていないデータの読み込みにはペナルティがある（x86）かもしれませんし、
 失敗する（いくつかの ARM チップ）かもしれません。
 パックされたフィールドを直接読んだり書いたりするという単純なケースでは、
