@@ -125,7 +125,7 @@ adding the following method:
 
 ```rust,ignore
 fn make_room(&mut self) {
-    // grow the capacity
+    // キャパシティを大きくする
     self.cap += 1;
 }
 ```
