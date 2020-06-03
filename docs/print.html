@@ -242,7 +242,7 @@ nonsense.
 -->
 <p>安全な Rust は真の Rust プログラミング言語です。もしあなたが安全な Rust だけでコードを書くなら、
 型安全やメモリ安全性などを心配する必要はないでしょう。
-null ポインタや dangling ポインタ、馬鹿げた「未定義な挙動」などに我慢する必要はないのです。</p>
+ヌルポインタやダングリングポインタ、馬鹿げた「未定義な挙動」などに我慢する必要はないのです。</p>
 <!--
 *That's totally awesome.*
 -->
@@ -284,9 +284,9 @@ The only things that are different in Unsafe Rust are that you can:
 * Mutate statics
 -->
 <ul>
-<li>生のポインタが指す値を得る</li>
-<li><code>unsafe</code> な関数を呼ぶ（C 言語で書かれた関数や、intrinsics、生のアロケータなど）</li>
-<li><code>unsafe</code> な trait を実装する</li>
+<li>生ポインタが指す値を得る</li>
+<li><code>unsafe</code> な関数を呼ぶ（C 言語で書かれた関数や、intrinsic、生のアロケータなど）</li>
+<li><code>unsafe</code> なトレイトを実装する</li>
 <li>静的な構造体を変更する</li>
 </ul>
 <!--
@@ -319,15 +319,15 @@ language cares about is preventing the following things:
 * Causing a [data race][race]
 -->
 <ul>
-<li>null ポインタや dangling ポインタのデリファレンス</li>
+<li>ヌルポインタやダングリングポインタの参照外し</li>
 <li><a href="uninitialized.html">未初期化のメモリ</a> を読む</li>
 <li><a href="references.html">ポインタエイリアスルール</a> を破る</li>
 <li>不正なプリミティブな値を生成する
 <ul>
-<li>dangling リファレンス、null リファレンス</li>
+<li>ダングリング参照、ヌル参照</li>
 <li>0 でも 1 でもない <code>bool</code> 値</li>
 <li>未定義な <code>enum</code> 判別式</li>
-<li>[0x0, 0xD7FF] と [0xE000, 0x10FFFF] 範囲外の <code>char</code> 値 </li>
+<li>[0x0, 0xD7FF] と [0xE000, 0x10FFFF] 範囲外の <code>char</code> 値</li>
 <li>utf8 ではない <code>str</code> 値</li>
 </ul>
 </li>
@@ -343,9 +343,9 @@ the above problems. Some additional constraints may also derive from compiler
 intrinsics that make special assumptions about how code can be optimized.
 -->
 <p>これだけです。これが、Rust が防ぐ「未定義な挙動」の原因です。
-もちろん、危険な関数や trait が「未定義な挙動」を起こさないための他の制約を作り出す事は可能ですが、
+もちろん、危険な関数やトレイトが「未定義な挙動」を起こさないための他の制約を作り出す事は可能ですが、
 そういった制約が破られた場合、たいてい上の問題のどれかを引き起こします。
-コンパイラ intrinsics がその他の制約を生み出し、コードの最適化に関する特別な仮定をすることもあります。</p>
+コンパイラ intrinsic がその他の制約を生み出し、コードの最適化に関する特別な仮定をすることもあります。</p>
 <!--
 Rust is otherwise quite permissive with respect to other dubious operations.
 Rust considers it "safe" to:
@@ -376,19 +376,19 @@ incorrect. Rust provides lots of tools to make these things rare, but
 these problems are considered impractical to categorically prevent.
 -->
 <p>とはいえ、こういうことをできてしまうプログラムは<em>恐らく</em>間違っていると言えるでしょう。
-Rust はこういった事をおきにくくするためのツールをたくさん提供します。
+Rust はこういった事を起きにくくするためのツールをたくさん提供します。
 しかし、これらの問題を完全に防ぐのは現実的ではないと考えられています。</p>
 <!-- # How Safe and Unsafe Interact -->
 <h1><a class="header" href="#安全と危険の相互作用" id="安全と危険の相互作用">安全と危険の相互作用</a></h1>
 <!-- What's the relationship between Safe Rust and Unsafe Rust? How do they
 interact? -->
-<p>安全な Rust と危険な Rust とはどう関係しているのでしょうか? どのように影響し合うのでしょうか?</p>
+<p>安全な Rust とアンセーフな Rust とはどう関係しているのでしょうか? どのように影響し合うのでしょうか?</p>
 <!-- The separation between Safe Rust and Unsafe Rust is controlled with the
 `unsafe` keyword, which acts as an interface from one to the other. This is
 why we can say Safe Rust is a safe language: all the unsafe parts are kept
 exclusively behind the boundary. -->
-<p><code>unsafe</code> キーワードがインターフェースとなり、安全な Rust と危険な Rust とを分離します。
-このため、安全な Rust は安全な言語で、危険な部分は完全に境界外に管理されている、と言うことができるのです。</p>
+<p><code>unsafe</code> キーワードがインターフェースとなり、安全な Rust とアンセーフな Rust とを分離します。
+このため、安全な Rust は安全な言語で、アンセーフな部分は完全に境界外に管理されている、と言うことができるのです。</p>
 <!--
 The `unsafe` keyword has two uses: to declare the existence of contracts the
 compiler can't check, and to declare that the adherence of some code to
@@ -405,10 +405,10 @@ requires. On trait declarations, `unsafe` means that implementors of the
 trait must check the trait documentation to ensure their implementation
 maintains the contracts the trait requires.
 -->
-<p><em>関数</em> と <em>trait の宣言</em> に未チェックな契約が存在する事を、<code>unsafe</code> を使って示すことができます。
+<p><em>関数</em> と <em>トレイトの宣言</em> に未チェックな契約が存在する事を、<code>unsafe</code> を使って示すことができます。
 関数に <code>unsafe</code> を使うと、ドキュメントを読んで、
 要求された契約を守るように関数を使うことを、その関数のユーザーに要請することになります。
-trait の宣言に <code>unsafe</code> を使うと、その trait を実装するユーザーに対し、ドキュメントをチェックして契約を守るよう要請します。</p>
+トレイトの宣言に <code>unsafe</code> を使うと、そのトレイトを実装するユーザーに対し、ドキュメントをチェックして契約を守るよう要請します。</p>
 <!--
 You can use `unsafe` on a block to declare that all constraints required
 by an unsafe function within the block have been adhered to, and the code
@@ -416,11 +416,11 @@ can therefore be trusted. You can use `unsafe` on a trait implementation
 to declare that the implementation of that trait has adhered to whatever
 contracts the trait's documentation requires.
 -->
-<p>コードブロックに使われた <code>unsafe</code> は、そのブロックで呼ばれている危険な関数が要求する契約は守られていて、コードが信頼出来る事を意味します。<code>unsafe</code> を trait の実装に使うと、その実装が trait のドキュメントに書かれている契約に準拠している事を示します。</p>
+<p>コードブロックに使われた <code>unsafe</code> は、そのブロックで呼ばれているアンセーフな関数が要求する契約は守られていて、コードが信頼出来る事を意味します。<code>unsafe</code> をトレイトの実装に使うと、その実装がトレイトのドキュメントに書かれている契約に準拠している事を示します。</p>
 <!--
 The standard library has a number of unsafe functions, including:
 -->
-<p>標準ライブラリにはいくつもの危険な関数があります。例えば、</p>
+<p>標準ライブラリにはいくつものアンセーフな関数があります。例えば、</p>
 <!--
 * `slice::get_unchecked`, which performs unchecked indexing, allowing
   memory safety to be freely violated.
@@ -435,13 +435,13 @@ The standard library has a number of unsafe functions, including:
 <ul>
 <li><code>slice::get_unchecked</code> は未チェックのインデックス参照を実行します。自由自在にメモリ安全性に違反できます。</li>
 <li><code>mem::transmute</code> は、型安全の仕組みを好きなようにすり抜けて、ある値が特定の型であると再解釈します（詳細は <a href="conversions.html">変換</a> をみてください）。</li>
-<li>サイズが確定している型の生のポインタには、固有の <code>offset</code> メソッドがあります。渡されたオフセットが LLVM が定める &quot;境界内&quot; になければ、未定義の挙動を引き起こします。</li>
+<li>サイズが確定している型の生ポインタには、固有の <code>offset</code> メソッドがあります。渡されたオフセットが LLVM が定める &quot;境界内&quot; になければ、未定義の挙動を引き起こします。</li>
 <li>すべての FFI 関数は <code>unsafe</code> です。なぜなら Rust コンパイラは、他の言語が実行するどんな操作もチェックできないからです。</li>
 </ul>
 <!--
 As of Rust 1.0 there are exactly two unsafe traits:
 -->
-<p>Rust 1.0 現在、危険な traits は 2 つしかありません。</p>
+<p>Rust 1.0 現在、アンセーフなトレイトは 2 つしかありません。</p>
 <!--
 * `Send` is a marker trait (a trait with no API) that promises implementors are
   safe to send (move) to another thread.
@@ -449,16 +449,16 @@ As of Rust 1.0 there are exactly two unsafe traits:
   through a shared reference.
   -->
 <ul>
-<li><code>Send</code> は API を持たないマーカー trait で、実装された型が他のスレッドに安全に送れる（move できる）ことを約束します。</li>
-<li><code>Sync</code> もマーカー trait で、この trait を実装した型は、共有リファレンスを使って安全に複数のスレッドで共有できる事を約束します。</li>
+<li><code>Send</code> は API を持たないマーカートレイトで、実装された型が他のスレッドに安全に送れる（ムーブできる）ことを約束します。</li>
+<li><code>Sync</code> もマーカートレイトで、このトレイトを実装した型は、共有された参照を使って安全に複数のスレッドで共有できる事を約束します。</li>
 </ul>
 <!--
 Much of the Rust standard library also uses Unsafe Rust internally, although
 these implementations are rigorously manually checked, and the Safe Rust
 interfaces provided on top of these implementations can be assumed to be safe.
 -->
-<p>また、多くの Rust 標準ライブラリは内部で危険な Rust を使っています。ただ、標準ライブラリの
-実装はプログラマが徹底的にチェックしているので、危険な Rust の上に実装された安全な Rust は安全であると仮定して良いでしょう。</p>
+<p>また、多くの Rust 標準ライブラリは内部でアンセーフな Rust を使っています。ただ、標準ライブラリの
+実装はプログラマが徹底的にチェックしているので、アンセーフな Rust の上に実装された安全な Rust は安全であると仮定して良いでしょう。</p>
 <!--
 The need for all of this separation boils down a single fundamental property
 of Safe Rust:
@@ -474,9 +474,9 @@ the Unsafe Rust actually maintains whatever contracts it is supposed to
 maintain). On the other hand, Unsafe Rust has to be very careful about
 trusting Safe Rust.
 -->
-<p>このように安全と危険の分けると、安全な Rust は、自分が利用する危険な Rust が正しく書かれている事、
-つまり危険な Rust がそれが守るべき契約を実際に守っている事、を本質的に信頼しなくてはいけません。
-逆に、危険な Rust は安全な Rust を注意して信頼しなくてはいけません。</p>
+<p>このように安全とアンセーフを分けると、安全な Rust は、自分が利用するアンセーフな Rust が正しく書かれている事、
+つまりアンセーフな Rust がそれが守るべき契約を実際に守っている事、を本質的に信頼しなくてはいけません。
+逆に、アンセーフな Rust は安全な Rust を注意して信頼しなくてはいけません。</p>
 <!--
 As an example, Rust has the `PartialOrd` and `Ord` traits to differentiate
 between types which can "just" be compared, and those that provide a total
@@ -490,13 +490,13 @@ sense. The unsafe portions of `BTreeMap`'s internals have to be careful to
 maintain all necessary contracts, even if a key type's `Ord` implementation
 does not implement a total ordering.
 -->
-<p>例えば、Rust には <code>PartialOrd</code> trait と <code>Ord</code> trait があり、単に比較可能な型と全順序が
+<p>例えば、Rust には <code>PartialOrd</code>トレイトと <code>Ord</code>トレイトがあり、単に比較可能な型と全順序が
 定義されている型（任意の値が同じ型の他の値と比べて等しいか、大きいか、小さい）とを区別します。
-順序つきマップの <code>BTreeMap</code> は半順序の型には使えないので、キーとして使われる型が <code>Ord</code> trait を
+順序つきマップの <code>BTreeMap</code> は半順序の型には使えないので、キーとして使われる型が <code>Ord</code>トレイトを
 実装している事を要求します。
-しかし <code>BTreeMap</code> の実装は危険な Rust が使っていて、危険な Rust は渡された <code>Ord</code> の実装が
+しかし <code>BTreeMap</code> の実装ではアンセーフな Rust が使われていて、アンセーフな Rust は渡された <code>Ord</code> の実装が
 適切であるとは仮定できません。
-<code>BTreeMap</code> 内部の危険な部分は、キー型の <code>Ord</code> の実装が全順序ではない場合でも、必要な契約が
+<code>BTreeMap</code> 内部のアンセーフな部分は、キー型の <code>Ord</code> の実装が全順序ではない場合でも、必要な契約が
 すべて守られるよう注意深く書かれなくてはいけません。</p>
 <!--
 Unsafe Rust cannot automatically trust Safe Rust. When writing Unsafe Rust,
@@ -504,7 +504,7 @@ you must be careful to only rely on specific Safe Rust code, and not make
 assumptions about potential future Safe Rust code providing the same
 guarantees.
 -->
-<p>危険な Rust は安全な Rust を無意識には信頼できません。危険な Rust コードを書くときには、
+<p>アンセーフな Rust は安全な Rust を無意識には信頼できません。アンセーフな Rust コードを書くときには、
 安全な Rust の特定のコードのみに依存する必要があり、
 安全な Rust が将来にわたって同様の安全性を提供すると仮定してはいけません。</p>
 <!--
@@ -512,8 +512,8 @@ This is the problem that `unsafe` traits exist to resolve. The `BTreeMap`
 type could theoretically require that keys implement a new trait called
 `UnsafeOrd`, rather than `Ord`, that might look like this:
 -->
-<p>この問題を解決するために <code>unsafe</code> な trait が存在します。理論上は、<code>BTreeMap</code> 型は
-キーが <code>Ord</code> ではなく、新しい trait <code>UnsafeOrd</code> を実装する事を要求する事ができます。
+<p>この問題を解決するために <code>unsafe</code> なトレイトが存在します。理論上は、<code>BTreeMap</code> 型は
+キーが <code>Ord</code> ではなく、新しいトレイト<code>UnsafeOrd</code> を実装する事を要求する事ができます。
 このようなコードになるでしょう。</p>
 <pre><pre class="playpen"><code class="language-rust">
 # #![allow(unused_variables)]
@@ -532,10 +532,10 @@ trait expects. In this situation, the Unsafe Rust in the internals of
 correct. If it isn't, it's the fault of the unsafe trait implementation
 code, which is consistent with Rust's safety guarantees.
 -->
-<p>この場合、<code>UnsafeOrd</code> を実装する型は、この trait が期待する契約に準拠している事を示すために
+<p>この場合、<code>UnsafeOrd</code> を実装する型は、このトレイトが期待する契約に準拠している事を示すために
 <code>unsafe</code> キーワードを使うことになります。
-この状況では、<code>BTreeMap</code> 内部の危険な Rust は、キー型が <code>UnsafeOrd</code> を正しく実装していると
-信用する事ができます。もしそうで無ければ、それは trait の実装の問題であり、
+この状況では、<code>BTreeMap</code> 内部のアンセーフな Rust は、キー型が <code>UnsafeOrd</code> を正しく実装していると
+信用する事ができます。もしそうで無ければ、それはトレイトの実装の問題であり、
 これは Rust の安全性の保証と一致しています。</p>
 <!--
 The decision of whether to mark a trait `unsafe` is an API design choice.
@@ -548,14 +548,14 @@ depends on the same sort of consideration. If `unsafe` code cannot reasonably
 expect to defend against a bad implementation of the trait, then marking the
 trait `unsafe` is a reasonable choice.
 -->
-<p>trait に <code>unsafe</code> をつけるかどうかは API デザインにおける選択です。
-Rust では従来 <code>unsafe</code> な trait を避けてきました。そうしないと危険な Rust が
+<p>トレイトに <code>unsafe</code> をつけるかどうかは API デザインにおける選択です。
+Rust では従来 <code>unsafe</code> なトレイトを避けてきました。そうしないとアンセーフな Rust が
 蔓延してしまい、好ましくないからです。
 <code>Send</code> と <code>Sync</code> が <code>unsafe</code> となっているのは、スレッドの安全性が <em>基本的な性質</em> であり、
 間違った <code>Ord</code> の実装に対して危険なコードが防衛できるのと同様の意味では防衛できないからです。
-あなたが宣言した trait を <code>unsafe</code> とマークするかどうかも、同じようにじっくりと考えてください。
-もし <code>unsafe</code> なコードがその trait の間違った実装から防御することが合理的に不可能であるなら、
-その trait を <code>unsafe</code> とするのは合理的な選択です。</p>
+あなたが宣言したトレイトを <code>unsafe</code> とマークするかどうかも、同じようにじっくりと考えてください。
+もし <code>unsafe</code> なコードがそのトレイトの間違った実装から防御することが合理的に不可能であるなら、
+そのトレイトを <code>unsafe</code> とするのは合理的な選択です。</p>
 <!--
 As an aside, while `Send` and `Sync` are `unsafe` traits, they are
 automatically implemented for types when such derivations are provably safe
@@ -563,7 +563,7 @@ to do. `Send` is automatically derived for all types composed only of values
 whose types also implement `Send`. `Sync` is automatically derived for all
 types composed only of values whose types also implement `Sync`.
 -->
-<p>余談ですが、<code>unsafe</code> な trait である <code>Send</code> と <code>Sync</code> は、それらを実装する事が安全だと
+<p>余談ですが、<code>unsafe</code> なトレイトである <code>Send</code> と <code>Sync</code> は、それらを実装する事が安全だと
 実証可能な場合には自動的に実装されます。
 <code>Send</code> は、<code>Send</code> を実装した型だけから構成される型に対して、自動的に実装されます。
 <code>Sync</code> は、<code>Sync</code> を実装した型だけから構成される型に対して、自動的に実装されます。</p>
@@ -574,11 +574,11 @@ writing Unsafe Rust. The rest of the book is largely a discussion of the sort
 of care that must be taken, and what contracts it is expected of Unsafe Rust
 to uphold.
 -->
-<p>これが安全な Rust と危険な Rust のダンスです。
-これは、安全な Rust をできるだけ快適に使えるように、しかし危険な Rust を書くには
+<p>これが安全な Rust とアンセーフな Rust のダンスです。
+これは、安全な Rust をできるだけ快適に使えるように、しかしアンセーフな Rust を書くには
 それ以上の努力と注意深さが要求されるようなデザインになっています。
 この本の残りでは、どういう点に注意しなくはいけないのか、
-危険な Rust を維持するための契約とは何なのかを議論します。</p>
+アンセーフな Rust を維持するための契約とは何なのかを議論します。</p>
 <!--
 # Working with Unsafe
 -->
@@ -588,7 +588,7 @@ Rust generally only gives us the tools to talk about Unsafe Rust in a scoped and
 binary manner. Unfortunately, reality is significantly more complicated than
 that. For instance, consider the following toy function:
 -->
-<p>たいていの場合、危険な Rust を扱うツールは、限定された状況やバイナリでしか使えないようになっています。
+<p>たいていの場合、アンセーフな Rust を扱うツールは、限定された状況やバイナリでしか使えないようになっています。
 残念なことに、現実はそれよりも極めて複雑です。例えば、以下の簡単な関数を見てみましょう。</p>
 <pre><pre class="playpen"><code class="language-rust">
 # #![allow(unused_variables)]
@@ -634,7 +634,7 @@ operations necessarily depends on the state established by otherwise
 -->
 <p><em>安全なコードを変更しただけなのに</em>、今やこのプログラムは安全ではなくなりました。
 これが安全性の本質的な問題です。局所的ではないのです。
-危険な操作の健全性は、通常 &quot;安全&quot; な操作によって構築された状態に依存しているのです。</p>
+アンセーフな操作の健全性は、通常 &quot;安全&quot; な操作によって構築された状態に依存しているのです。</p>
 <!--
 Safety is modular in the sense that opting into unsafety doesn't require you
 to consider arbitrary other kinds of badness. For instance, doing an unchecked
@@ -643,11 +643,11 @@ null or containing uninitialized memory. Nothing fundamentally changes. However
 safety *isn't* modular in the sense that programs are inherently stateful and
 your unsafe operations may depend on arbitrary other state.
 -->
-<p>安全性は、危険な操作をしたからといってあらゆる他の悪い事を考慮する必要はない、という意味ではモジュール化されています。
-例えば、スライスに対して未チェックのインデックスアクセスをしても、スライスが null だったらどうしようとか、
+<p>安全性は、アンセーフな操作をしたからといってあらゆる他の悪い事を考慮する必要はない、という意味ではモジュール化されています。
+例えば、スライスに対して未チェックのインデックスアクセスをしても、スライスがヌルだったらどうしようとか、
 スライスが未初期化のメモリを含んでいるかもといった心配をする必要はありません。基本的には何も変わりません。
-しかし、プログラムは本質的にステートフルであり、危険な操作はその他の任意の状態に依存しているかもしれない、
-という意味で、安全性はモジュール化されてはいないのです。</p>
+しかし、プログラムは本質的にステートフルであり、アンセーフな操作はその他の任意の状態に依存しているかもしれない、
+という意味で、安全性はモジュール化<em>されてはいない</em>のです。</p>
 <!--
 Trickier than that is when we get into actual statefulness. Consider a simple
 implementation of `Vec`:
@@ -668,7 +668,7 @@ pub struct Vec&lt;T&gt; {
 impl&lt;T&gt; Vec&lt;T&gt; {
     pub fn push(&amp;mut self, elem: T) {
         if self.len == self.cap {
-            // not important for this example
+            // この例では重要ではありません。
             self.reallocate();
         }
         unsafe {
@@ -689,7 +689,7 @@ adding the following method:
 <p>このコードはとてもシンプルなので、それなりに監査して検証できるでしょう。
 それでは次のメソッドを追加してみましょう。</p>
 <pre><code class="language-rust ignore">fn make_room(&amp;mut self) {
-    // grow the capacity
+    // キャパシティを大きくする
     self.cap += 1;
 }
 </code></pre>
@@ -709,7 +709,7 @@ Generally, the only bullet-proof way to limit the scope of unsafe code is at the
 module boundary with privacy.
 -->
 <p><code>unsafe</code> は関数そのものを汚染するだけでなく、<em>モジュール</em> 全体を汚染します。
-一般的に、危険なコードのスコープを制限する唯一で完全無欠の方法は、モジュール境界での非公開性を利用することです。</p>
+一般的に、アンセーフなコードのスコープを制限する唯一で完全無欠の方法は、モジュール境界での非公開性を利用することです。</p>
 <!--
 However this works *perfectly*. The existence of `make_room` is *not* a
 problem for the soundness of Vec because we didn't mark it as public. Only the
@@ -731,18 +731,20 @@ arbitrary implementor of a trait or any function that was passed to it to be
 well-behaved in a way that safe code doesn't care about.
 -->
 <p>このように、複雑な普遍条件に依存した安全な抽象化を提供することは可能なのです。
-これは安全な Rust と危険な Rust の関係において決定的に重要です。
-すでに見たように、危険なコードは <em>特定</em> の安全なコードを信頼しなくてはなりませんが、
+これは安全な Rust とアンセーフな Rust の関係において<em>決定的に</em>重要です。
+すでに見たように、アンセーフなコードは <em>特定</em> の安全なコードを信頼しなくてはなりませんが、
 安全なコード <em>一般</em> を信頼することはできません。
-安全なコードを書くときには気にする必要はないのですが、危険なコードでは、
-trait の任意の実装や渡された任意の関数が行儀よく振る舞うことを期待することはできないのです。</p>
-<p>However if unsafe code couldn't prevent client safe code from messing with its
-state in arbitrary ways, safety would be a lost cause. Thankfully, it <em>can</em>
-prevent arbitrary code from messing with critical state due to privacy.</p>
-<p>しかし、安全なコードが状態をあらゆる方法でぐちゃぐちゃにすることを、危険なコードが防げないのだとしたら、
+安全なコードを書くときには気にする必要はないのですが、アンセーフなコードでは、
+トレイトの任意の実装や渡された任意の関数が行儀よく振る舞うことを期待することはできないのです。</p>
+<!--
+However if unsafe code couldn't prevent client safe code from messing with its
+state in arbitrary ways, safety would be a lost cause. Thankfully, it *can*
+prevent arbitrary code from messing with critical state due to privacy.
+-->
+<p>しかし、安全なコードが状態をあらゆる方法でぐちゃぐちゃにすることを、アンセーフなコードが防げないのだとしたら、
 安全性とは絵に描いた餅かもしれません。
 ありがたいことに、非公開性を利用することで、
-任意のコードが重要な状態をめちゃくちゃにしないよう防ぐことができるのです。</p>
+任意のコードが重要な状態をめちゃくちゃにしないよう防ぐことが<em>できる</em>のです。</p>
 <!--
 Safety lives!
 -->
@@ -770,7 +772,7 @@ that you can be stored anywhere. Alignment is at least 1, and always a power of
 platform-specific behavior. In particular, on x86 `u64` and `f64` may be only
 aligned to 32 bits.
 -->
-<p>最初に重要なことは、すべての型はバイト単位で指定されたアラインメントに従います。
+<p>最初に重要なこととして、すべての型はバイト単位で指定されたアラインメントに従います。
 ある型のアラインメントは、値を格納する有効なアドレスを規定します。
 アラインメント <code>n</code> の値は、<code>n</code> の倍数のアドレスにのみ格納できます。
 つまりアラインメント 2 は、偶数アドレスにのみ格納できることを意味し、
@@ -778,7 +780,7 @@ aligned to 32 bits.
 アラインメントの最小値は 1 で、常に 2 のべき乗になります。
 ほとんどのプリミティブ型はそのサイズにアラインメントされますが、
 これはプラットフォーム依存の挙動です。
-特に x86 では <code>u64</code> と <code>f64</code> は 32 bits にアラインされるかもしれません。</p>
+特に x86 では <code>u64</code> と <code>f64</code> は 32ビットにアラインされるかもしれません。</p>
 <!--
 A type's size must always be a multiple of its alignment. This ensures that an
 array of that type may always be indexed by offsetting by a multiple of its
@@ -834,7 +836,7 @@ respective sizes. The whole struct will therefore have a size that is a multiple
 of 32-bits. It will potentially become:
 -->
 <p>この構造体は、メンバーのプリミティブ型が対応するサイズにアラインされるアーキテクチャでは、
-32-bit にアラインされます。そのため全体の構造体のサイズも 32 bit の倍数になります。
+32ビットにアラインされます。そのため全体の構造体のサイズも 32ビットの倍数になります。
 このようになるでしょう。</p>
 <pre><pre class="playpen"><code class="language-rust">
 # #![allow(unused_variables)]
@@ -844,7 +846,7 @@ struct A {
     _pad1: [u8; 3], // `b` のアラインメントのため
     b: u32,
     c: u16,
-    _pad2: [u8; 2], // 全体のサイズを 4 byte の倍数にするため
+    _pad2: [u8; 2], // 全体のサイズを 4バイトの倍数にするため
 }
 #}</code></pre></pre>
 <!--
@@ -883,7 +885,7 @@ With A and B as written, this point would seem to be pedantic, but several other
 features of Rust make it desirable for the language to play with data layout in
 complex ways.
 -->
-<p>この A, B の例では、レイアウトのが保証されないなんて融通が利かないと思うかもしれませんが、
+<p>この A, B の例では、レイアウトが保証されないなんて融通が利かないと思うかもしれませんが、
 他の機能を考えると、Rust がデータレイアウトを複雑にいじくれるようにするのは好ましいのです。</p>
 <!--
 For instance, consider this struct:
@@ -973,8 +975,8 @@ instead. The net result is that, for example, `size_of::<Option<&T>>() ==
 size_of::<&T>()`.
 -->
 <p>ところが、このような表現が非効率な場合もあります。
-わかりやすい例としては、Rust の &quot;null ポインタ最適化&quot; があります。
-これは、ある enum がデータを持たないメンバー（たとえば <code>None</code>）と、（ネストしてるかもしれない）null を取らないメンバー（たとえば <code>&amp;T</code>）から構成される場合、null ポインタをデータを持たないメンバーと解釈することができるので、タグが不要になります。
+わかりやすい例としては、Rust の &quot;ヌルポインタ最適化&quot; があります。
+これは、ある enum がデータを持たないメンバー（たとえば <code>None</code>）と、（ネストしてるかもしれない）ヌルを取らないメンバー（たとえば <code>&amp;T</code>）から構成される場合、ヌルポインタをデータを持たないメンバーと解釈することができるので、タグが不要になります。
 その結果、たとえば <code>size_of::&lt;Optiona&lt;&amp;T&gt;&gt;() == size_of::&lt;&amp;T&gt;()</code> となります。</p>
 <!--
 There are many types in Rust that are, or contain, non-nullable pointers such as
@@ -985,12 +987,12 @@ use fairly elaborate algorithms to cache bits throughout nested types with
 special constrained representations. As such it is *especially* desirable that
 we leave enum layout unspecified today.
 -->
-<p>Rust には、null ポインタになりえない型や、null ポインタを含まない型がたくさんあります。
+<p>Rust には、ヌルポインタになりえない型や、ヌルポインタを含まない型がたくさんあります。
 例えば <code>Box&lt;T&gt;</code>, <code>Vec&lt;T&gt;</code>, <code>String</code>, <code>&amp;T</code>, <code>&amp;mut T</code> などです。
 同様に、ネストした複数の enum が、タグを単一の判別子に押し込めることも考えられます。
 タグが取り得る値は、定義により限られているからです。
 原理的には、enum はとても複雑なアルゴリズムを使って、ネストした型を特別な制約のもとで表現し、
-bit を隠すことができるでしょう。
+ビットを隠すことができるでしょう。
 このため、enum のレイアウトを規定しないでおくことは、現状では <em>特に</em> 好ましいのです。</p>
 <!--
 # Exotically Sized Types
@@ -1025,14 +1027,14 @@ DST を指すポインタは結果的に、普通のポインタと DST を補�
 <!--
 There are two major DSTs exposed by the language: trait objects, and slices.
 -->
-<p>言語が提供する DST のうち重要なものが 2 つあります。trait オブジェクトとスライスです。</p>
+<p>言語が提供する DST のうち重要なものが 2 つあります。トレイトオブジェクトとスライスです。</p>
 <!--
 A trait object represents some type that implements the traits it specifies.
 The exact original type is *erased* in favor of runtime reflection
 with a vtable containing all the information necessary to use the type.
 This is the information that completes a trait object: a pointer to its vtable.
 -->
-<p>Trait オブジェクトは、それが指す Trait を実装するある型を表現します。
+<p>トレイトオブジェクトは、それが指すトレイトを実装するある型を表現します。
 元となった型は消去されますが、vtable とリフレクションとによって実行時にはその型を利用することができます。
 つまり、Trait オブジェクトを補完する情報とは vtable へのポインタとなります。</p>
 <!--
@@ -1040,8 +1042,8 @@ A slice is simply a view into some contiguous storage -- typically an array or
 `Vec`. The information that completes a slice is just the number of elements
 it points to.
 -->
-<p>スライスとは、単純にある連続したスペース（通常はアレイか <code>Vec</code>）のビューです。
-スライスを補完する情報とは、単にポインタが指すエレメントの数です。</p>
+<p>スライスとは、単純にある連続したスペース（通常は配列か <code>Vec</code>）のビューです。
+スライスを補完する情報とは、単にポインタが指す要素の数です。</p>
 <!--
 Structs can actually store a single DST directly as their last field, but this
 makes them a DST as well:
@@ -1078,8 +1080,8 @@ struct Foo; // フィールドがない = サイズ 0
 // すべてのフィールドのサイズがない = サイズ 0
 struct Baz {
     foo: Foo,
-    qux: (),      // empty tuple has no size
-    baz: [u8; 0], // empty array has no size
+    qux: (),      // 空のタプルにはサイズがありません
+    baz: [u8; 0], // 空の配列にはサイズがありません
 }
 #}</code></pre></pre>
 <!--
@@ -1091,7 +1093,7 @@ make sense -- it doesn't occupy any space. Also there's only one  value of that
 type, so anything that loads it can just produce it from the  aether -- which is
 also a no-op since it doesn't occupy any space.
 -->
-<p>サイズ 0 の型（ZST）は、当然ながら、それ自体ではほとんど価値があありません。
+<p>サイズ 0 の型（ZST）は、当然ながら、それ自体ではほとんど価値がありません。
 しかし、多くの興味深いレイアウトの選択肢と組み合わせると、ZST が潜在的に役に立つことがいろいろな
 ケースで明らかになります。Rust は、ZST を生成したり保存したりするオペレーションが no-op に
 還元できることを理解しています。
@@ -1108,7 +1110,7 @@ the compiler.
 -->
 <p>究極の ZST の利用法として、Set と Map を考えてみましょう。
 <code>Map&lt;Key, Value&gt;</code> があるときに、<code>Set&lt;Key&gt;</code> を <code>Map&lt;Key, UselessJunk&gt;</code> の
-簡単なラッパーとして実装することはよくあります。
+簡単なラッパとして実装することはよくあります。
 多くの言語では、UselessJunk のスペースを割り当てる必要があるでしょうし、
 結果的に使わない UselessJunk を保存したり読み込んだりする必要もあるでしょう。
 こういったことが不要であると示すのはコンパイラにとっては難しい仕事でしょう。</p>
@@ -1130,7 +1132,7 @@ and standard allocators (including jemalloc, the one used by default in Rust)
 may return `nullptr` when a zero-sized allocation is requested, which is
 indistinguishable from out of memory.
 -->
-<p>安全なコードは ZST について心配する必要はありませんが、<em>危険な</em> コードは
+<p>安全なコードは ZST について心配する必要はありませんが、<em>アンセーフな</em>コードは
 サイズ 0 の型を使った時の結果について注意しなくてはなりません。
 特に、ポインタのオフセットは no-op になることや、
 （Rust のデフォルトである jemalloc を含む）標準的なメモリアロケータは、
@@ -1168,7 +1170,7 @@ this would require providing a value of type `Void`.
 特定のケースでは絶対に失敗しないことがわかっているとします。
 <code>Result&lt;T, Void&gt;</code> を返すことで、この事実を型レベルで伝えることが可能です。
 Void 型の値を提供することはできないので、この Result は Err に<em>なり得ないと静的にわかります</em>。
-そのため、この API の利用者は、自信を持って Result を unwrap することができます。</p>
+そのため、この API の利用者は、自信を持って Result をアンラップすることができます。</p>
 <!--
 In principle, Rust can do some interesting analyses and optimizations based
 on this fact. For instance, `Result<T, Void>` could be represented as just `T`,
@@ -1190,7 +1192,7 @@ But neither of these tricks work today, so all Void types get you is
 the ability to be confident that certain situations are statically impossible.
 -->
 <p>ただし、どちらの例も現時点では動きません。
-つまり、Void 型による利点は、静的な解析によて、特定の状況が起こらないと確実に言えることだけです。</p>
+つまり、Void 型による利点は、静的な解析によって、特定の状況が起こらないと確実に言えることだけです。</p>
 <!--
 One final subtle detail about empty types is that raw pointers to them are
 actually valid to construct, but dereferencing them is Undefined Behavior
@@ -1198,10 +1200,10 @@ because that doesn't actually make sense. That is, you could model C's `void *`
 type with `*const Void`, but this doesn't necessarily gain anything over using
 e.g. `*const ()`, which *is* safe to randomly dereference.
 -->
-<p>最後に細かいことを一つ。空の型を指す生のポインタを構成することは有効ですが、
-それをデリファレンスすることは、意味がないので、未定義の挙動となります。
+<p>最後に細かいことを一つ。空の型を指す生ポインタを構成することは有効ですが、
+それを参照外しすることは、意味がないので、未定義の挙動となります。
 つまり、C における <code>void *</code> と同じような意味で <code>*const Void</code> を使うこと出来ますが、
-これは、<em>安全に</em>デリファレンスできる型（例えば <code>*const ()</code>）と比べて何も利点はありません。</p>
+これは、<em>安全に</em>参照外しできる型（例えば <code>*const ()</code>）と比べて何も利点はありません。</p>
 <!--
 # Alternative representations
 -->
@@ -1270,8 +1272,8 @@ enum の要素が指定した整数をオーバーフローする場合、コン
 On non-C-like enums, this will inhibit certain optimizations like the null-
 pointer optimization.
 -->
-<p>C っぽくない enum （訳注：要素がパラメタをとるような enum）に <code>repr(u*)</code> を適用すると、
-null ポインタ最適化のようなある種の最適化ができなくなります。</p>
+<p>C っぽくない enum （訳注：要素がパラメータをとるような enum）に <code>repr(u*)</code> を適用すると、
+ヌルポインタ最適化のようなある種の最適化ができなくなります。</p>
 <!--
 These reprs have no effect on a struct.
 -->
@@ -1285,7 +1287,7 @@ These reprs have no effect on a struct.
 byte. This may improve the memory footprint, but will likely have other negative
 side-effects.
 -->
-<p><code>repr(packed)</code> を使うと Rust はパディングを一切取り除き、すべてを byte 単位にアラインします。
+<p><code>repr(packed)</code> を使うと Rust はパディングを一切取り除き、すべてをバイト単位にアラインします。
 メモリ使用量は改善しますが、悪い副作用を引き起こす可能性が高いです。</p>
 <!--
 In particular, most architectures *strongly* prefer values to be aligned. This
@@ -1295,17 +1297,17 @@ compiler might be able to paper over alignment issues with shifts and masks.
 However if you take a reference to a packed field, it's unlikely that the
 compiler will be able to emit code to avoid an unaligned load.
 -->
-<p>特にほとんどのアークテクチャは、値がアラインされていることを<em>強く</em>望んでいます。
+<p>特にほとんどのアーキテクチャは、値がアラインされていることを<em>強く</em>望んでいます。
 つまりアラインされていないデータの読み込みにはペナルティがある（x86）かもしれませんし、
 失敗する（いくつかの ARM チップ）かもしれません。
 パックされたフィールドを直接読んだり書いたりするという単純なケースでは、
 コンパイラがシフトやマスクを駆使してアラインメントの問題を隠してくれるかもしれません。
-しかし、パックされたフィールドへのリファレンスを扱う場合には、アラインされてない読み込みを避けるような
+しかし、パックされたフィールドへの参照を扱う場合には、アラインされてない読み込みを避けるような
 コードをコンパイラが生成することは期待できないでしょう。</p>
 <p><strong><a href="https://github.com/rust-lang/rust/issues/27060">Rust 1.0 時点では、これは未定義な挙動です。</a></strong></p>
 <p><code>repr(packed)</code> は気軽に使えるものではありません。
 極端な要求に応えようとしているのでない限り、使うべきではありません。</p>
-<p>この repr は <code>repr(C)</code> や <code>repr(rust)</code> の就職誌として使えます。</p>
+<p>この repr は <code>repr(C)</code> や <code>repr(rust)</code> の修飾子として使えます。</p>
 <!--
 # Ownership and Lifetimes
 -->
@@ -1346,7 +1348,7 @@ GC の無い言語を使ったことのあるひとなら誰でも一度はや�
     let s = format!(&quot;{}&quot;, data);
 
     // しまった! この関数内でしか存在しないオブジェクトへの
-    // リファレンスを返してしまった!
+    // 参照を返してしまった!
     // ダングリングポインタだ! メモリ解放後の参照だ! うわーー!
     // （このコードは Rust ではコンパイルエラーになります）
     &amp;s
@@ -1378,12 +1380,12 @@ verifying that references don't escape the scope of their referent. That's
 because ensuring pointers are always valid is much more complicated than this.
 For instance in this code,
 -->
-<p>もちろん、リファレンスが参照先のスコープから逃げ出していないことを検証することよりも
+<p>もちろん、参照が参照先のスコープから逃げ出していないことを検証することよりも
 所有権に関する Rust の話はもっともっと複雑です。
-ポインタがつねに有効であることを証明するのは、もっともっと複雑だからです。
+ポインタが常に有効であることを証明するのは、もっともっと複雑だからです。
 例えばこのコードを見てみましょう。</p>
 <pre><code class="language-rust ignore">let mut data = vec![1, 2, 3];
-// 内部データのリファレンスを取る
+// 内部データの参照を取る
 let x = &amp;data[0];
 
 // しまった! `push` によって `data` の格納先が再割り当てされてしまった。
@@ -1402,7 +1404,7 @@ referent and its owners.
 <p>単純なスコープ解析では、このバグは防げません。
 <code>data</code> のライフタイムは十分に長いからです。
 問題は、その参照を保持している間に、参照先が<em>変わって</em>しまったことです。
-Rust でリファレンスを取ると、参照先とその所有者がフリーズされるのは、こういう理由なのです。</p>
+Rust で参照を取ると、参照先とその所有者がフリーズされるのは、こういう理由なのです。</p>
 <!--
 # References
 -->

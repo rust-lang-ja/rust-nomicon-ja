@@ -149,13 +149,13 @@
 <h1><a class="header" href="#安全と危険の相互作用" id="安全と危険の相互作用">安全と危険の相互作用</a></h1>
 <!-- What's the relationship between Safe Rust and Unsafe Rust? How do they
 interact? -->
-<p>安全な Rust と危険な Rust とはどう関係しているのでしょうか? どのように影響し合うのでしょうか?</p>
+<p>安全な Rust とアンセーフな Rust とはどう関係しているのでしょうか? どのように影響し合うのでしょうか?</p>
 <!-- The separation between Safe Rust and Unsafe Rust is controlled with the
 `unsafe` keyword, which acts as an interface from one to the other. This is
 why we can say Safe Rust is a safe language: all the unsafe parts are kept
 exclusively behind the boundary. -->
-<p><code>unsafe</code> キーワードがインターフェースとなり、安全な Rust と危険な Rust とを分離します。
-このため、安全な Rust は安全な言語で、危険な部分は完全に境界外に管理されている、と言うことができるのです。</p>
+<p><code>unsafe</code> キーワードがインターフェースとなり、安全な Rust とアンセーフな Rust とを分離します。
+このため、安全な Rust は安全な言語で、アンセーフな部分は完全に境界外に管理されている、と言うことができるのです。</p>
 <!--
 The `unsafe` keyword has two uses: to declare the existence of contracts the
 compiler can't check, and to declare that the adherence of some code to
@@ -172,10 +172,10 @@ requires. On trait declarations, `unsafe` means that implementors of the
 trait must check the trait documentation to ensure their implementation
 maintains the contracts the trait requires.
 -->
-<p><em>関数</em> と <em>trait の宣言</em> に未チェックな契約が存在する事を、<code>unsafe</code> を使って示すことができます。
+<p><em>関数</em> と <em>トレイトの宣言</em> に未チェックな契約が存在する事を、<code>unsafe</code> を使って示すことができます。
 関数に <code>unsafe</code> を使うと、ドキュメントを読んで、
 要求された契約を守るように関数を使うことを、その関数のユーザーに要請することになります。
-trait の宣言に <code>unsafe</code> を使うと、その trait を実装するユーザーに対し、ドキュメントをチェックして契約を守るよう要請します。</p>
+トレイトの宣言に <code>unsafe</code> を使うと、そのトレイトを実装するユーザーに対し、ドキュメントをチェックして契約を守るよう要請します。</p>
 <!--
 You can use `unsafe` on a block to declare that all constraints required
 by an unsafe function within the block have been adhered to, and the code
@@ -183,11 +183,11 @@ can therefore be trusted. You can use `unsafe` on a trait implementation
 to declare that the implementation of that trait has adhered to whatever
 contracts the trait's documentation requires.
 -->
-<p>コードブロックに使われた <code>unsafe</code> は、そのブロックで呼ばれている危険な関数が要求する契約は守られていて、コードが信頼出来る事を意味します。<code>unsafe</code> を trait の実装に使うと、その実装が trait のドキュメントに書かれている契約に準拠している事を示します。</p>
+<p>コードブロックに使われた <code>unsafe</code> は、そのブロックで呼ばれているアンセーフな関数が要求する契約は守られていて、コードが信頼出来る事を意味します。<code>unsafe</code> をトレイトの実装に使うと、その実装がトレイトのドキュメントに書かれている契約に準拠している事を示します。</p>
 <!--
 The standard library has a number of unsafe functions, including:
 -->
-<p>標準ライブラリにはいくつもの危険な関数があります。例えば、</p>
+<p>標準ライブラリにはいくつものアンセーフな関数があります。例えば、</p>
 <!--
 * `slice::get_unchecked`, which performs unchecked indexing, allowing
   memory safety to be freely violated.
@@ -202,13 +202,13 @@ The standard library has a number of unsafe functions, including:
 <ul>
 <li><code>slice::get_unchecked</code> は未チェックのインデックス参照を実行します。自由自在にメモリ安全性に違反できます。</li>
 <li><code>mem::transmute</code> は、型安全の仕組みを好きなようにすり抜けて、ある値が特定の型であると再解釈します（詳細は <a href="conversions.html">変換</a> をみてください）。</li>
-<li>サイズが確定している型の生のポインタには、固有の <code>offset</code> メソッドがあります。渡されたオフセットが LLVM が定める &quot;境界内&quot; になければ、未定義の挙動を引き起こします。</li>
+<li>サイズが確定している型の生ポインタには、固有の <code>offset</code> メソッドがあります。渡されたオフセットが LLVM が定める &quot;境界内&quot; になければ、未定義の挙動を引き起こします。</li>
 <li>すべての FFI 関数は <code>unsafe</code> です。なぜなら Rust コンパイラは、他の言語が実行するどんな操作もチェックできないからです。</li>
 </ul>
 <!--
 As of Rust 1.0 there are exactly two unsafe traits:
 -->
-<p>Rust 1.0 現在、危険な traits は 2 つしかありません。</p>
+<p>Rust 1.0 現在、アンセーフなトレイトは 2 つしかありません。</p>
 <!--
 * `Send` is a marker trait (a trait with no API) that promises implementors are
   safe to send (move) to another thread.
@@ -216,16 +216,16 @@ As of Rust 1.0 there are exactly two unsafe traits:
   through a shared reference.
   -->
 <ul>
-<li><code>Send</code> は API を持たないマーカー trait で、実装された型が他のスレッドに安全に送れる（move できる）ことを約束します。</li>
-<li><code>Sync</code> もマーカー trait で、この trait を実装した型は、共有リファレンスを使って安全に複数のスレッドで共有できる事を約束します。</li>
+<li><code>Send</code> は API を持たないマーカートレイトで、実装された型が他のスレッドに安全に送れる（ムーブできる）ことを約束します。</li>
+<li><code>Sync</code> もマーカートレイトで、このトレイトを実装した型は、共有された参照を使って安全に複数のスレッドで共有できる事を約束します。</li>
 </ul>
 <!--
 Much of the Rust standard library also uses Unsafe Rust internally, although
 these implementations are rigorously manually checked, and the Safe Rust
 interfaces provided on top of these implementations can be assumed to be safe.
 -->
-<p>また、多くの Rust 標準ライブラリは内部で危険な Rust を使っています。ただ、標準ライブラリの
-実装はプログラマが徹底的にチェックしているので、危険な Rust の上に実装された安全な Rust は安全であると仮定して良いでしょう。</p>
+<p>また、多くの Rust 標準ライブラリは内部でアンセーフな Rust を使っています。ただ、標準ライブラリの
+実装はプログラマが徹底的にチェックしているので、アンセーフな Rust の上に実装された安全な Rust は安全であると仮定して良いでしょう。</p>
 <!--
 The need for all of this separation boils down a single fundamental property
 of Safe Rust:
@@ -241,9 +241,9 @@ the Unsafe Rust actually maintains whatever contracts it is supposed to
 maintain). On the other hand, Unsafe Rust has to be very careful about
 trusting Safe Rust.
 -->
-<p>このように安全と危険の分けると、安全な Rust は、自分が利用する危険な Rust が正しく書かれている事、
-つまり危険な Rust がそれが守るべき契約を実際に守っている事、を本質的に信頼しなくてはいけません。
-逆に、危険な Rust は安全な Rust を注意して信頼しなくてはいけません。</p>
+<p>このように安全とアンセーフを分けると、安全な Rust は、自分が利用するアンセーフな Rust が正しく書かれている事、
+つまりアンセーフな Rust がそれが守るべき契約を実際に守っている事、を本質的に信頼しなくてはいけません。
+逆に、アンセーフな Rust は安全な Rust を注意して信頼しなくてはいけません。</p>
 <!--
 As an example, Rust has the `PartialOrd` and `Ord` traits to differentiate
 between types which can "just" be compared, and those that provide a total
@@ -257,13 +257,13 @@ sense. The unsafe portions of `BTreeMap`'s internals have to be careful to
 maintain all necessary contracts, even if a key type's `Ord` implementation
 does not implement a total ordering.
 -->
-<p>例えば、Rust には <code>PartialOrd</code> trait と <code>Ord</code> trait があり、単に比較可能な型と全順序が
+<p>例えば、Rust には <code>PartialOrd</code>トレイトと <code>Ord</code>トレイトがあり、単に比較可能な型と全順序が
 定義されている型（任意の値が同じ型の他の値と比べて等しいか、大きいか、小さい）とを区別します。
-順序つきマップの <code>BTreeMap</code> は半順序の型には使えないので、キーとして使われる型が <code>Ord</code> trait を
+順序つきマップの <code>BTreeMap</code> は半順序の型には使えないので、キーとして使われる型が <code>Ord</code>トレイトを
 実装している事を要求します。
-しかし <code>BTreeMap</code> の実装は危険な Rust が使っていて、危険な Rust は渡された <code>Ord</code> の実装が
+しかし <code>BTreeMap</code> の実装ではアンセーフな Rust が使われていて、アンセーフな Rust は渡された <code>Ord</code> の実装が
 適切であるとは仮定できません。
-<code>BTreeMap</code> 内部の危険な部分は、キー型の <code>Ord</code> の実装が全順序ではない場合でも、必要な契約が
+<code>BTreeMap</code> 内部のアンセーフな部分は、キー型の <code>Ord</code> の実装が全順序ではない場合でも、必要な契約が
 すべて守られるよう注意深く書かれなくてはいけません。</p>
 <!--
 Unsafe Rust cannot automatically trust Safe Rust. When writing Unsafe Rust,
@@ -271,7 +271,7 @@ you must be careful to only rely on specific Safe Rust code, and not make
 assumptions about potential future Safe Rust code providing the same
 guarantees.
 -->
-<p>危険な Rust は安全な Rust を無意識には信頼できません。危険な Rust コードを書くときには、
+<p>アンセーフな Rust は安全な Rust を無意識には信頼できません。アンセーフな Rust コードを書くときには、
 安全な Rust の特定のコードのみに依存する必要があり、
 安全な Rust が将来にわたって同様の安全性を提供すると仮定してはいけません。</p>
 <!--
@@ -279,8 +279,8 @@ This is the problem that `unsafe` traits exist to resolve. The `BTreeMap`
 type could theoretically require that keys implement a new trait called
 `UnsafeOrd`, rather than `Ord`, that might look like this:
 -->
-<p>この問題を解決するために <code>unsafe</code> な trait が存在します。理論上は、<code>BTreeMap</code> 型は
-キーが <code>Ord</code> ではなく、新しい trait <code>UnsafeOrd</code> を実装する事を要求する事ができます。
+<p>この問題を解決するために <code>unsafe</code> なトレイトが存在します。理論上は、<code>BTreeMap</code> 型は
+キーが <code>Ord</code> ではなく、新しいトレイト<code>UnsafeOrd</code> を実装する事を要求する事ができます。
 このようなコードになるでしょう。</p>
 <pre><pre class="playpen"><code class="language-rust">
 # #![allow(unused_variables)]
@@ -299,10 +299,10 @@ trait expects. In this situation, the Unsafe Rust in the internals of
 correct. If it isn't, it's the fault of the unsafe trait implementation
 code, which is consistent with Rust's safety guarantees.
 -->
-<p>この場合、<code>UnsafeOrd</code> を実装する型は、この trait が期待する契約に準拠している事を示すために
+<p>この場合、<code>UnsafeOrd</code> を実装する型は、このトレイトが期待する契約に準拠している事を示すために
 <code>unsafe</code> キーワードを使うことになります。
-この状況では、<code>BTreeMap</code> 内部の危険な Rust は、キー型が <code>UnsafeOrd</code> を正しく実装していると
-信用する事ができます。もしそうで無ければ、それは trait の実装の問題であり、
+この状況では、<code>BTreeMap</code> 内部のアンセーフな Rust は、キー型が <code>UnsafeOrd</code> を正しく実装していると
+信用する事ができます。もしそうで無ければ、それはトレイトの実装の問題であり、
 これは Rust の安全性の保証と一致しています。</p>
 <!--
 The decision of whether to mark a trait `unsafe` is an API design choice.
@@ -315,14 +315,14 @@ depends on the same sort of consideration. If `unsafe` code cannot reasonably
 expect to defend against a bad implementation of the trait, then marking the
 trait `unsafe` is a reasonable choice.
 -->
-<p>trait に <code>unsafe</code> をつけるかどうかは API デザインにおける選択です。
-Rust では従来 <code>unsafe</code> な trait を避けてきました。そうしないと危険な Rust が
+<p>トレイトに <code>unsafe</code> をつけるかどうかは API デザインにおける選択です。
+Rust では従来 <code>unsafe</code> なトレイトを避けてきました。そうしないとアンセーフな Rust が
 蔓延してしまい、好ましくないからです。
 <code>Send</code> と <code>Sync</code> が <code>unsafe</code> となっているのは、スレッドの安全性が <em>基本的な性質</em> であり、
 間違った <code>Ord</code> の実装に対して危険なコードが防衛できるのと同様の意味では防衛できないからです。
-あなたが宣言した trait を <code>unsafe</code> とマークするかどうかも、同じようにじっくりと考えてください。
-もし <code>unsafe</code> なコードがその trait の間違った実装から防御することが合理的に不可能であるなら、
-その trait を <code>unsafe</code> とするのは合理的な選択です。</p>
+あなたが宣言したトレイトを <code>unsafe</code> とマークするかどうかも、同じようにじっくりと考えてください。
+もし <code>unsafe</code> なコードがそのトレイトの間違った実装から防御することが合理的に不可能であるなら、
+そのトレイトを <code>unsafe</code> とするのは合理的な選択です。</p>
 <!--
 As an aside, while `Send` and `Sync` are `unsafe` traits, they are
 automatically implemented for types when such derivations are provably safe
@@ -330,7 +330,7 @@ to do. `Send` is automatically derived for all types composed only of values
 whose types also implement `Send`. `Sync` is automatically derived for all
 types composed only of values whose types also implement `Sync`.
 -->
-<p>余談ですが、<code>unsafe</code> な trait である <code>Send</code> と <code>Sync</code> は、それらを実装する事が安全だと
+<p>余談ですが、<code>unsafe</code> なトレイトである <code>Send</code> と <code>Sync</code> は、それらを実装する事が安全だと
 実証可能な場合には自動的に実装されます。
 <code>Send</code> は、<code>Send</code> を実装した型だけから構成される型に対して、自動的に実装されます。
 <code>Sync</code> は、<code>Sync</code> を実装した型だけから構成される型に対して、自動的に実装されます。</p>
@@ -341,11 +341,11 @@ writing Unsafe Rust. The rest of the book is largely a discussion of the sort
 of care that must be taken, and what contracts it is expected of Unsafe Rust
 to uphold.
 -->
-<p>これが安全な Rust と危険な Rust のダンスです。
-これは、安全な Rust をできるだけ快適に使えるように、しかし危険な Rust を書くには
+<p>これが安全な Rust とアンセーフな Rust のダンスです。
+これは、安全な Rust をできるだけ快適に使えるように、しかしアンセーフな Rust を書くには
 それ以上の努力と注意深さが要求されるようなデザインになっています。
 この本の残りでは、どういう点に注意しなくはいけないのか、
-危険な Rust を維持するための契約とは何なのかを議論します。</p>
+アンセーフな Rust を維持するための契約とは何なのかを議論します。</p>
 
                     </main>
 

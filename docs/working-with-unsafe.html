@@ -154,7 +154,7 @@ Rust generally only gives us the tools to talk about Unsafe Rust in a scoped and
 binary manner. Unfortunately, reality is significantly more complicated than
 that. For instance, consider the following toy function:
 -->
-<p>たいていの場合、危険な Rust を扱うツールは、限定された状況やバイナリでしか使えないようになっています。
+<p>たいていの場合、アンセーフな Rust を扱うツールは、限定された状況やバイナリでしか使えないようになっています。
 残念なことに、現実はそれよりも極めて複雑です。例えば、以下の簡単な関数を見てみましょう。</p>
 <pre><pre class="playpen"><code class="language-rust">
 # #![allow(unused_variables)]
@@ -200,7 +200,7 @@ operations necessarily depends on the state established by otherwise
 -->
 <p><em>安全なコードを変更しただけなのに</em>、今やこのプログラムは安全ではなくなりました。
 これが安全性の本質的な問題です。局所的ではないのです。
-危険な操作の健全性は、通常 &quot;安全&quot; な操作によって構築された状態に依存しているのです。</p>
+アンセーフな操作の健全性は、通常 &quot;安全&quot; な操作によって構築された状態に依存しているのです。</p>
 <!--
 Safety is modular in the sense that opting into unsafety doesn't require you
 to consider arbitrary other kinds of badness. For instance, doing an unchecked
@@ -209,11 +209,11 @@ null or containing uninitialized memory. Nothing fundamentally changes. However
 safety *isn't* modular in the sense that programs are inherently stateful and
 your unsafe operations may depend on arbitrary other state.
 -->
-<p>安全性は、危険な操作をしたからといってあらゆる他の悪い事を考慮する必要はない、という意味ではモジュール化されています。
-例えば、スライスに対して未チェックのインデックスアクセスをしても、スライスが null だったらどうしようとか、
+<p>安全性は、アンセーフな操作をしたからといってあらゆる他の悪い事を考慮する必要はない、という意味ではモジュール化されています。
+例えば、スライスに対して未チェックのインデックスアクセスをしても、スライスがヌルだったらどうしようとか、
 スライスが未初期化のメモリを含んでいるかもといった心配をする必要はありません。基本的には何も変わりません。
-しかし、プログラムは本質的にステートフルであり、危険な操作はその他の任意の状態に依存しているかもしれない、
-という意味で、安全性はモジュール化されてはいないのです。</p>
+しかし、プログラムは本質的にステートフルであり、アンセーフな操作はその他の任意の状態に依存しているかもしれない、
+という意味で、安全性はモジュール化<em>されてはいない</em>のです。</p>
 <!--
 Trickier than that is when we get into actual statefulness. Consider a simple
 implementation of `Vec`:
@@ -234,7 +234,7 @@ pub struct Vec&lt;T&gt; {
 impl&lt;T&gt; Vec&lt;T&gt; {
     pub fn push(&amp;mut self, elem: T) {
         if self.len == self.cap {
-            // not important for this example
+            // この例では重要ではありません。
             self.reallocate();
         }
         unsafe {
@@ -255,7 +255,7 @@ adding the following method:
 <p>このコードはとてもシンプルなので、それなりに監査して検証できるでしょう。
 それでは次のメソッドを追加してみましょう。</p>
 <pre><code class="language-rust ignore">fn make_room(&amp;mut self) {
-    // grow the capacity
+    // キャパシティを大きくする
     self.cap += 1;
 }
 </code></pre>
@@ -275,7 +275,7 @@ Generally, the only bullet-proof way to limit the scope of unsafe code is at the
 module boundary with privacy.
 -->
 <p><code>unsafe</code> は関数そのものを汚染するだけでなく、<em>モジュール</em> 全体を汚染します。
-一般的に、危険なコードのスコープを制限する唯一で完全無欠の方法は、モジュール境界での非公開性を利用することです。</p>
+一般的に、アンセーフなコードのスコープを制限する唯一で完全無欠の方法は、モジュール境界での非公開性を利用することです。</p>
 <!--
 However this works *perfectly*. The existence of `make_room` is *not* a
 problem for the soundness of Vec because we didn't mark it as public. Only the
@@ -297,18 +297,20 @@ arbitrary implementor of a trait or any function that was passed to it to be
 well-behaved in a way that safe code doesn't care about.
 -->
 <p>このように、複雑な普遍条件に依存した安全な抽象化を提供することは可能なのです。
-これは安全な Rust と危険な Rust の関係において決定的に重要です。
-すでに見たように、危険なコードは <em>特定</em> の安全なコードを信頼しなくてはなりませんが、
+これは安全な Rust とアンセーフな Rust の関係において<em>決定的に</em>重要です。
+すでに見たように、アンセーフなコードは <em>特定</em> の安全なコードを信頼しなくてはなりませんが、
 安全なコード <em>一般</em> を信頼することはできません。
-安全なコードを書くときには気にする必要はないのですが、危険なコードでは、
-trait の任意の実装や渡された任意の関数が行儀よく振る舞うことを期待することはできないのです。</p>
-<p>However if unsafe code couldn't prevent client safe code from messing with its
-state in arbitrary ways, safety would be a lost cause. Thankfully, it <em>can</em>
-prevent arbitrary code from messing with critical state due to privacy.</p>
-<p>しかし、安全なコードが状態をあらゆる方法でぐちゃぐちゃにすることを、危険なコードが防げないのだとしたら、
+安全なコードを書くときには気にする必要はないのですが、アンセーフなコードでは、
+トレイトの任意の実装や渡された任意の関数が行儀よく振る舞うことを期待することはできないのです。</p>
+<!--
+However if unsafe code couldn't prevent client safe code from messing with its
+state in arbitrary ways, safety would be a lost cause. Thankfully, it *can*
+prevent arbitrary code from messing with critical state due to privacy.
+-->
+<p>しかし、安全なコードが状態をあらゆる方法でぐちゃぐちゃにすることを、アンセーフなコードが防げないのだとしたら、
 安全性とは絵に描いた餅かもしれません。
 ありがたいことに、非公開性を利用することで、
-任意のコードが重要な状態をめちゃくちゃにしないよう防ぐことができるのです。</p>
+任意のコードが重要な状態をめちゃくちゃにしないよう防ぐことが<em>できる</em>のです。</p>
 <!--
 Safety lives!
 -->
