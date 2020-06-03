@@ -105,8 +105,8 @@ struct Foo; // フィールドがない = サイズ 0
 // すべてのフィールドのサイズがない = サイズ 0
 struct Baz {
     foo: Foo,
-    qux: (),      // empty tuple has no size
-    baz: [u8; 0], // empty array has no size
+    qux: (),      // 空のタプルにはサイズがありません
+    baz: [u8; 0], // 空の配列にはサイズがありません
 }
 ```
 
