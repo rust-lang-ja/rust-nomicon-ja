@@ -246,10 +246,10 @@ type with `*const Void`, but this doesn't necessarily gain anything over using
 e.g. `*const ()`, which *is* safe to randomly dereference.
 -->
 
-最後に細かいことを一つ。空の型を指す生のポインタを構成することは有効ですが、
-それをデリファレンスすることは、意味がないので、未定義の挙動となります。
+最後に細かいことを一つ。空の型を指す生ポインタを構成することは有効ですが、
+それを参照外しすることは、意味がないので、未定義の挙動となります。
 つまり、C における `void *` と同じような意味で `*const Void` を使うこと出来ますが、
-これは、*安全に*デリファレンスできる型（例えば `*const ()`）と比べて何も利点はありません。
+これは、*安全に*参照外しできる型（例えば `*const ()`）と比べて何も利点はありません。
 
 
 [dst-issue]: https://github.com/rust-lang/rust/issues/26403
