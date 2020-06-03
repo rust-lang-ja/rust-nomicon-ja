@@ -120,7 +120,7 @@ type, so anything that loads it can just produce it from the  aether -- which is
 also a no-op since it doesn't occupy any space.
 -->
 
-サイズ 0 の型（ZST）は、当然ながら、それ自体ではほとんど価値があありません。
+サイズ 0 の型（ZST）は、当然ながら、それ自体ではほとんど価値がありません。
 しかし、多くの興味深いレイアウトの選択肢と組み合わせると、ZST が潜在的に役に立つことがいろいろな
 ケースで明らかになります。Rust は、ZST を生成したり保存したりするオペレーションが no-op に
 還元できることを理解しています。
