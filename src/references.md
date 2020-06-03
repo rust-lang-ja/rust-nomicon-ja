@@ -2,7 +2,7 @@
 # References
 -->
 
-# リファレンス
+# 参照
 
 <!--
 This section gives a high-level view of the memory model that *all* Rust
@@ -15,38 +15,38 @@ this more fundamental model is satisfied.
 
 このセクションでは、*すべての* Rust プログラムが満たさなくてはならないメモリモデルを
 ざっくりと見ていきます。
-安全なコードは、ボローチェッカーによってこのモデルを満たしていることが静的に検証されます。
-危険なコードは、ボローチェッカーの裏をかくかもしれませんが、このモデルを満たします。
+安全なコードは、借用チェッカによってこのモデルを満たしていることが静的に検証されます。
+アンセーフなコードは、借用チェッカの裏をかくかもしれませんが、このモデルを満たします。
 この基本的なモデルを満たしている限り、より多くのプログラムがコンパイルに通るように
-ボローチェッカーを拡張することも可能です。
+借用チェッカを拡張することも可能です。
 
 <!--
 There are two kinds of reference:
 -->
 
-リファレンスには 2 種類があります。
+参照には 2 種類があります。
 
 <!--
 * Shared reference: `&`
 * Mutable reference: `&mut`
 -->
 
-* 共有リファレンス: `&`
-* 可変リファレンス: `&mut`
+* 共有参照: `&`
+* 可変参照: `&mut`
 
 <!--
 Which obey the following rules:
 -->
 
-リファレンスは次のルールに従います。
+参照は次のルールに従います。
 
 <!--
 * A reference cannot outlive its referent
 * A mutable reference cannot be aliased
 -->
 
-* リファレンスのライフタイムが、参照先のライフタイムより長くなることはできません。
-* 可変リファレンスは、別名を持つことができません。
+* 参照のライフタイムが、参照先のライフタイムより長くなることはできません。
+* 可変参照は、別名を持つことができません。
 
 <!--
 That's it. That's the whole model. Of course, we should probably define
