@@ -187,7 +187,7 @@ state in arbitrary ways, safety would be a lost cause. Thankfully, it *can*
 prevent arbitrary code from messing with critical state due to privacy.
 -->
 
-しかし、安全なコードが状態をあらゆる方法でぐちゃぐちゃにすることを、危険なコードが防げないのだとしたら、
+しかし、安全なコードが状態をあらゆる方法でぐちゃぐちゃにすることを、アンセーフなコードが防げないのだとしたら、
 安全性とは絵に描いた餅かもしれません。
 ありがたいことに、非公開性を利用することで、
 任意のコードが重要な状態をめちゃくちゃにしないよう防ぐことが*できる*のです。
