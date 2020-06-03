@@ -179,7 +179,7 @@ well-behaved in a way that safe code doesn't care about.
 すでに見たように、アンセーフなコードは *特定* の安全なコードを信頼しなくてはなりませんが、
 安全なコード *一般* を信頼することはできません。
 安全なコードを書くときには気にする必要はないのですが、アンセーフなコードでは、
-trait の任意の実装や渡された任意の関数が行儀よく振る舞うことを期待することはできないのです。
+トレイトの任意の実装や渡された任意の関数が行儀よく振る舞うことを期待することはできないのです。
 
 
 However if unsafe code couldn't prevent client safe code from messing with its
