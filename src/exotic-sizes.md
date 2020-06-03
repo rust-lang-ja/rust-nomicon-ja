@@ -41,7 +41,7 @@ DST を指すポインタは結果的に、普通のポインタと DST を補�
 There are two major DSTs exposed by the language: trait objects, and slices.
 -->
 
-言語が提供する DST のうち重要なものが 2 つあります。trait オブジェクトとスライスです。
+言語が提供する DST のうち重要なものが 2 つあります。トレイトオブジェクトとスライスです。
 
 <!--
 A trait object represents some type that implements the traits it specifies.
@@ -50,7 +50,7 @@ with a vtable containing all the information necessary to use the type.
 This is the information that completes a trait object: a pointer to its vtable.
 -->
 
-Trait オブジェクトは、それが指す Trait を実装するある型を表現します。
+トレイトオブジェクトは、それが指すトレイトを実装するある型を表現します。
 元となった型は消去されますが、vtable とリフレクションとによって実行時にはその型を利用することができます。
 つまり、Trait オブジェクトを補完する情報とは vtable へのポインタとなります。
 
@@ -60,8 +60,8 @@ A slice is simply a view into some contiguous storage -- typically an array or
 it points to.
 -->
 
-スライスとは、単純にある連続したスペース（通常はアレイか `Vec`）のビューです。
-スライスを補完する情報とは、単にポインタが指すエレメントの数です。
+スライスとは、単純にある連続したスペース（通常は配列か `Vec`）のビューです。
+スライスを補完する情報とは、単にポインタが指す要素の数です。
 
 <!--
 Structs can actually store a single DST directly as their last field, but this
@@ -105,8 +105,8 @@ struct Foo; // フィールドがない = サイズ 0
 // すべてのフィールドのサイズがない = サイズ 0
 struct Baz {
     foo: Foo,
-    qux: (),      // empty tuple has no size
-    baz: [u8; 0], // empty array has no size
+    qux: (),      // 空のタプルにはサイズがありません
+    baz: [u8; 0], // 空の配列にはサイズがありません
 }
 ```
 
@@ -120,7 +120,7 @@ type, so anything that loads it can just produce it from the  aether -- which is
 also a no-op since it doesn't occupy any space.
 -->
 
-サイズ 0 の型（ZST）は、当然ながら、それ自体ではほとんど価値があありません。
+サイズ 0 の型（ZST）は、当然ながら、それ自体ではほとんど価値がありません。
 しかし、多くの興味深いレイアウトの選択肢と組み合わせると、ZST が潜在的に役に立つことがいろいろな
 ケースで明らかになります。Rust は、ZST を生成したり保存したりするオペレーションが no-op に
 還元できることを理解しています。
@@ -139,7 +139,7 @@ the compiler.
 
 究極の ZST の利用法として、Set と Map を考えてみましょう。
 `Map<Key, Value>` があるときに、`Set<Key>` を `Map<Key, UselessJunk>` の
-簡単なラッパーとして実装することはよくあります。
+簡単なラッパとして実装することはよくあります。
 多くの言語では、UselessJunk のスペースを割り当てる必要があるでしょうし、
 結果的に使わない UselessJunk を保存したり読み込んだりする必要もあるでしょう。
 こういったことが不要であると示すのはコンパイラにとっては難しい仕事でしょう。
@@ -165,7 +165,7 @@ may return `nullptr` when a zero-sized allocation is requested, which is
 indistinguishable from out of memory.
 -->
 
-安全なコードは ZST について心配する必要はありませんが、*危険な* コードは
+安全なコードは ZST について心配する必要はありませんが、*アンセーフな*コードは
 サイズ 0 の型を使った時の結果について注意しなくてはなりません。
 特に、ポインタのオフセットは no-op になることや、
 （Rust のデフォルトである jemalloc を含む）標準的なメモリアロケータは、
@@ -208,7 +208,7 @@ this would require providing a value of type `Void`.
 特定のケースでは絶対に失敗しないことがわかっているとします。
 `Result<T, Void>` を返すことで、この事実を型レベルで伝えることが可能です。
 Void 型の値を提供することはできないので、この Result は Err に*なり得ないと静的にわかります*。
-そのため、この API の利用者は、自信を持って Result を unwrap することができます。
+そのため、この API の利用者は、自信を持って Result をアンラップすることができます。
 
 <!--
 In principle, Rust can do some interesting analyses and optimizations based
@@ -236,7 +236,7 @@ the ability to be confident that certain situations are statically impossible.
 -->
 
 ただし、どちらの例も現時点では動きません。
-つまり、Void 型による利点は、静的な解析によて、特定の状況が起こらないと確実に言えることだけです。
+つまり、Void 型による利点は、静的な解析によって、特定の状況が起こらないと確実に言えることだけです。
 
 <!--
 One final subtle detail about empty types is that raw pointers to them are
@@ -246,10 +246,10 @@ type with `*const Void`, but this doesn't necessarily gain anything over using
 e.g. `*const ()`, which *is* safe to randomly dereference.
 -->
 
-最後に細かいことを一つ。空の型を指す生のポインタを構成することは有効ですが、
-それをデリファレンスすることは、意味がないので、未定義の挙動となります。
+最後に細かいことを一つ。空の型を指す生ポインタを構成することは有効ですが、
+それを参照外しすることは、意味がないので、未定義の挙動となります。
 つまり、C における `void *` と同じような意味で `*const Void` を使うこと出来ますが、
-これは、*安全に*デリファレンスできる型（例えば `*const ()`）と比べて何も利点はありません。
+これは、*安全に*参照外しできる型（例えば `*const ()`）と比べて何も利点はありません。
 
 
 [dst-issue]: https://github.com/rust-lang/rust/issues/26403
