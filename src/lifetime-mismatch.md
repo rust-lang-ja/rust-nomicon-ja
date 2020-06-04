@@ -109,7 +109,7 @@ This program is clearly correct according to the reference semantics we actually
 care about, but the lifetime system is too coarse-grained to handle that.
 -->
 
-このプログラムは、私たちにとって重要なリファレンスの意味的には全く正しいのですが、
+このプログラムは、私たちにとって重要な参照の意味的には全く正しいのですが、
 ライフタイムシステムはこのプログラムを処理するには粗すぎるのです。
 
 <!--
