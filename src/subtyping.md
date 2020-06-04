@@ -4,10 +4,17 @@
 
 # 派生型と変性
 
+<!--
 Although Rust doesn't have any notion of structural inheritance, it *does*
 include subtyping. In Rust, subtyping derives entirely from lifetimes. Since
 lifetimes are scopes, we can partially order them based on the *contains*
 (outlives) relationship. We can even express this as a generic bound.
+-->
+
+Rust には構造の継承の概念はありませんが、派生型の概念は*あります*。
+Rust では、派生型は完全にライフタイムに由来します。ライフタイムはスコープですので、
+包含関係によって部分的にライフタイムを定めることが出来ます。
+ジェネリック境界として表現することも可能です。
 
 Subtyping on lifetimes is in terms of that relationship: if `'a: 'b` ("a contains
 b" or "a outlives b"), then `'a` is a subtype of `'b`. This is a large source of
