@@ -32,9 +32,9 @@ would expect `foo.share()` to succeed as `foo` shouldn't be mutably borrowed.
 -->
 
 このコードはコンパイルを通ると思うかもしれません。
-`mutate_and_share` は、`foo` を一時的に変更可能に借り入れますが、
-共有リファレンスを返します。
-そうすると、`foo` は変更可能には借りられていないので、
+`mutate_and_share` は、`foo` を一時的に変更可能に借用しますが、
+共有参照を返します。
+そうすると、`foo` は変更可能には借用されていないので、
 `foo.share()` は成功すると思うでしょう。
 
 <!--
