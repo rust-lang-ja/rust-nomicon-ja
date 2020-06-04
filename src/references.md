@@ -315,7 +315,7 @@ can be moved out of, and Rust understands it sufficiently to reason about its
 paths like a normal variable.
 -->
 
-Box がまさに所有中参照のように振る舞うというおとを覚えておくと良いでしょう。
+Box がまさに所有中参照のように振る舞うということを覚えておくと良いでしょう。
 Box は値を解放することができ、変数が解放された時と同様に Rust はそのパスについて推論するための
 十分な情報を持っています。
 
