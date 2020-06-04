@@ -375,6 +375,6 @@ However it is important for these definitions to be sound that the existence of
 a raw pointer does not imply some kind of live path.**
 -->
 
-**生のポインタが別名という意味をどの程度持っているのか、というのはまだ答えの出てない問題です。
-しかし、この節で出てきた定義が健全であるためには、生のポインタを使うとある種の生存パスが
+**生ポインタが別名という意味をどの程度持っているのか、というのはまだ答えの出てない問題です。
+しかし、この節で出てきた定義が健全であるためには、生ポインタを使うとある種の生存パスが
 わからなくなるということ重要です。**
