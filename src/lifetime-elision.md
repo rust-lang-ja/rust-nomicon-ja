@@ -27,7 +27,7 @@ T<'a>
 Lifetime positions can appear as either "input" or "output":
 -->
 
-ライフタイムポジションは、「入力」か「出力」のいずれかです。
+ライフタイムポジションは、「入力」または「出力」という形で現れます。
 
 <!--
 * For `fn` definitions, input refers to the types of the formal arguments
