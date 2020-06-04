@@ -23,7 +23,11 @@ confusion, because it seems intuitively backwards to many: the bigger scope is a
 *subtype* of the smaller scope.
 -->
 
-ライフタイムにおける派生型を、ライフタイムの関係から見ます。もし `'a: 'b` （「 a は b を含む」あるいは「 a は b より長生きする」）ならば、 `'a` は `'b` の派生型です。これは混乱の大きな原因です。というのも、多くの人にとっては、この関係は直感的に逆のように感じるからです: より大きいスコープは小さい方のスコープの*派生型*となる。
+ライフタイムにおける派生型を、ライフタイムの関係から見ます。
+もし `'a: 'b` （「 a は b を含む」あるいは「 a は b より長生きする」）ならば、
+`'a` は `'b` の派生型です。これは混乱の大きな原因です。というのも、
+多くの人にとっては、
+この関係は直感的に逆のように感じるからです: より大きいスコープは小さい方のスコープの*派生型*となる。
 
 This does in fact make sense, though. The intuitive reason for this is that if
 you expect an `&'a u8`, then it's totally fine for me to hand you an `&'static
