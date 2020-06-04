@@ -45,12 +45,15 @@ However when we try to compile it:
 
 ```text
 <anon>:11:5: 11:8 error: cannot borrow `foo` as immutable because it is also borrowed as mutable
+(エラー: `foo`は可変で借用されているので、不変で借用できません)
 <anon>:11     foo.share();
               ^~~
 <anon>:10:16: 10:19 note: previous borrow of `foo` occurs here; the mutable borrow prevents subsequent moves, borrows, or modification of `foo` until the borrow ends
+(注釈: 以前の`foo`の借用はここで起きています。可変での借用は、その借用が終わるまで、その後のムーブや、借用、`foo`の変更を防ぎます)
 <anon>:10     let loan = foo.mutate_and_share();
                          ^~~
 <anon>:12:2: 12:2 note: previous borrow ends here
+(注釈: 以前の借用はここで終了しています)
 <anon>:8 fn main() {
 <anon>:9     let mut foo = Foo;
 <anon>:10     let loan = foo.mutate_and_share();
