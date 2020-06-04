@@ -24,7 +24,7 @@ this more fundamental model is satisfied.
 There are two kinds of reference:
 -->
 
-参照には 2 種類があります。
+参照には 2 種類あります。
 
 <!--
 * Shared reference: `&`
