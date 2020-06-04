@@ -367,7 +367,7 @@ track that they are used correctly, and they are wildly unsafe.
 実際には、もう少し複雑です。参照に加えて Rust には*生ポインタ*もあります。
 `*const T` と `*mut T` のことです。
 生ポインタには、継承可能な所有権も別名という概念もありません。
-そのため、Rust は生ポインタを追跡する努力を一切しませんし、名前のポインタは極めて危険です。
+そのため、Rust は生ポインタを追跡する努力を一切しませんし、生ポインタは極めて危険です。
 
 <!--
 **It is an open question to what degree raw pointers have alias semantics.
