@@ -110,7 +110,7 @@ reference, you're declaring that an ownership path exists to this address
 of memory.
 -->
 
-参照は、単純にパスの名前と定義できます。
+参照は、単純にパスの*名前*と定義できます。
 参照を作成するということは、あるメモリアドレスに所有権の
 パスが存在することを宣言するということです。
 
