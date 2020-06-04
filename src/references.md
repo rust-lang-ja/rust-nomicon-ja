@@ -254,8 +254,8 @@ explicitly enables this to be done with disjoint struct fields, because
 disjointness can be statically proven:
 -->
 
-*複数の*可変リファレンスに又貸しすることも可能ですが、その複数のリファレンスは互いに素でなくてはいけません。
-つまり、どのリファレンスも他のリファレンスの先祖であってはいけないということです。
+*複数の*可変参照に又貸しすることも可能ですが、その複数の参照は互いに素でなくてはいけません。
+つまり、どの参照も他の参照の先祖であってはいけないということです。
 Rust は、構造体のフィールドが互いに素であることを静的に証明できるので、
 フィールドの又貸しが可能です。
 
@@ -294,13 +294,13 @@ only given to *live* owned references because moving its referent would of
 course invalidate all outstanding references prematurely.
 -->
 
-話を単純にするために、変数をリファレンス型の一種、*所有中*リファレンス、と仮定してみましょう。
-所有中リファレンスは、可変リファレンスとほとんど同じ意味を持ちます。
-可変リファレンスまたは共有リファレンスに又貸しでき、それによって生存中ではなくなります。
-生存中の所有中リファレンスは、値を解放（move out）できるという特殊な性質があります
-（とはいえ、可変リファレンスは値をスワップアウトできますが）。
-この能力は、*生存中の* 所有中リファレンスのみに与えられています。
-そうでなければ、早すぎるタイミングでその他のリファレンスを無効にすることになります。
+話を単純にするために、変数を参照型の一種、*所有中*参照、と仮定してみましょう。
+所有中参照は、可変参照とほとんど同じ意味を持ちます。
+可変参照または共有参照に又貸しでき、それによって生存中ではなくなります。
+生存中の所有中参照は、値を解放（move out）できるという特殊な性質があります
+（とはいえ、可変参照は値をスワップアウトできますが）。
+この能力は、*生存中の* 所有中参照のみに与えられています。
+そうでなければ、早すぎるタイミングでその他の参照を無効にすることになります。
 
 <!--
 As a local lint against inappropriate mutation, only variables that are marked
@@ -315,7 +315,7 @@ can be moved out of, and Rust understands it sufficiently to reason about its
 paths like a normal variable.
 -->
 
-Box がまさに所有中リファレンスのように振る舞うというおとを覚えておくと良いでしょう。
+Box がまさに所有中参照のように振る舞うというおとを覚えておくと良いでしょう。
 Box は値を解放することができ、変数が解放された時と同様に Rust はそのパスについて推論するための
 十分な情報を持っています。
 
@@ -337,7 +337,7 @@ With liveness and paths defined, we can now properly define *aliasing*:
 of its ancestors or descendants.**
 -->
 
-**可変リファレンスは、その先祖か子孫に他のリファレンスが存在している時、別名を持つといいます。**
+**可変参照は、その先祖か子孫に他の参照が存在している時、別名を持つといいます。**
 
 <!--
 (If you prefer, you may also say the two live references alias *each other*.
@@ -345,7 +345,7 @@ This has no semantic consequences, but is probably a more useful notion when
 verifying the soundness of a construct.)
 -->
 
-（二つの生存中のリファレンスが互いの別名になっている、と言うこともできます。
+（二つの生存中の参照が互いの別名になっている、と言うこともできます。
 意味上の違いは特にありませんが、プログラムの構造の健全性を検証する時には、
 この考え方の方がわかりやすいでしょう。）
 
@@ -364,7 +364,7 @@ ownership or aliasing semantics. As a result, Rust makes absolutely no effort to
 track that they are used correctly, and they are wildly unsafe.
 -->
 
-実際には、もう少し複雑です。リファレンスに加えて Rust には*生のポインタ*もあります。
+実際には、もう少し複雑です。参照に加えて Rust には*生のポインタ*もあります。
 `*const T` と `*mut T` のことです。
 生のポインタには、継承可能な所有権も別名という概念もありません。
 そのため、Rust は生のポインタを追跡する努力を一切しませんし、名前のポインタは極めて危険です。
