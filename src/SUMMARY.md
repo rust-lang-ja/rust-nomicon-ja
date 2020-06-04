@@ -16,7 +16,7 @@
 	* [ライフタイムの省略](lifetime-elision.md)
 	* [無制限のライフタイム](unbounded-lifetimes.md)
 	* [高階トレイト境界](hrtb.md)
-	* [Subtyping and Variance](subtyping.md)
+	* [派生型と変性](subtyping.md)
 	* [Drop Check](dropck.md)
 	* [PhantomData](phantom-data.md)
 	* [Splitting Borrows](borrow-splitting.md)
