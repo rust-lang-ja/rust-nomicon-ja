@@ -208,7 +208,7 @@ Note: Liveness is not the same thing as a *lifetime*, which will be explained
 in detail in the next section of this chapter.
 -->
 
-生存性 (liveness) は、この章の次の節でで詳しく説明する *ライフタイム (lifetime)* とは違うことに注意してください。
+生存性 (liveness) は、この章の次の節で詳しく説明する *ライフタイム (lifetime)* とは違うことに注意してください。
 
 <!--
 Roughly, a reference is *live* at some point in a program if it can be
