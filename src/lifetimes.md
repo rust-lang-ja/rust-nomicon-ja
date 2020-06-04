@@ -13,7 +13,7 @@ the scope it's valid for.
 
 Rust は今まで説明してきたルールを*ライフタイム*を使って強制します。
 ライフタイムとは、要するにプログラム中のスコープの名前です。
-参照と、参照を含むものとは、有効なスコープを示すライフタイムでタグづけられています。
+参照と、参照を含むものとは、有効なスコープを示すライフタイムでタグ付けられています。
 
 <!--
 Within a function body, Rust generally doesn't let you explicitly name the
