@@ -63,7 +63,7 @@ Elision rules are as follows:
   parameter.
 -->
 
-* 入力ポジションの省略されたライフタイムは、それぞれ別のライフタイムパラメタになります。
+* 入力ポジションの省略されたライフタイムは、それぞれ別のライフタイムパラメータになります。
 
 <!--
 * If there is exactly one input lifetime position (elided or not), that lifetime
