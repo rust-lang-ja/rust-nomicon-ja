@@ -307,7 +307,7 @@ As a local lint against inappropriate mutation, only variables that are marked
 as `mut` can be borrowed mutably.
 -->
 
-不適切な値の変更を lint が検出するので、`mut` とマークされた変数だけが変更可能なように貸し出されます。
+不適切な値の変更を lint が検出するので、`mut` とマークされた変数だけが変更可能なように借用されます。
 
 <!--
 It is interesting to note that Box behaves exactly like an owned reference. It
