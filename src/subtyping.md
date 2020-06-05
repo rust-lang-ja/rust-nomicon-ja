@@ -142,9 +142,12 @@ Some important variances:
 * `UnsafeCell<T>`、`Cell<T>`、`RefCell<T>`、`Mutex<T>` や他の内部可変性型は `T` において
   非変性です（ `*mut T` も同じということがわかるでしょう）
 
+<!--
 To understand why these variances are correct and desirable, we will consider
 several examples.
+-->
 
+これらの変性がなぜ正しくそして望ましいかを理解するために、いくつかの例を考えましょう。
 
 We have already covered why `&'a T` should be variant over `'a` when
 introducing subtyping: it's desirable to be able to pass longer-lived things
