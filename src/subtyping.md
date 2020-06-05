@@ -318,19 +318,34 @@ signature:
 fn foo(&'a str) -> usize;
 ```
 
+<!--
 This signature claims that it can handle any `&str` that lives at least as
 long as `'a`. Now if this signature was variant over `&'a str`, that
 would mean
+-->
+
+このシグネチャは、少なくとも `'a` は生きる、いかなる `&str` も扱うことができると
+主張します。この時、もしシグネチャが `&'a str` において変性であるならば、これは
+次のシグネチャ
 
 ```rust,ignore
 fn foo(&'static str) -> usize;
 ```
 
+<!--
 could be provided in its place, as it would be a subtype. However this function
 has a stronger requirement: it says that it can only handle `&'static str`s,
 and nothing else. Giving `&'a str`s to it would be unsound, as it's free to
 assume that what it's given lives forever. Therefore functions are not variant
 over their arguments.
+-->
+
+が同じ場所に現れうるということを意味するでしょう。 `&'static str` が派生型だからです。
+しかし、この関数にはより強い要件があります。 `&'static str` のみを扱い、他のものは
+扱わないということです。 `&'a str` などを渡すと健全ではなくなるでしょう。
+なぜなら、この関数シグネチャは自由に、渡されたものが永遠に生きると見なすことが
+できるからです。
+それゆえに、関数はその引数において、変性ではないのです。
 
 To see why `Fn(T) -> U` should be variant over U, consider the following
 function signature:
