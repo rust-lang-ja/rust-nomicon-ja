@@ -293,9 +293,15 @@ Box の古いライフタイムを「記憶」するものが他に存在しな�
 弱くするのは問題ありません。変性の `&mut` が問題である理由は、元々の派生型を
 記憶している他のものが存在するからです: 実際の所有者です。
 
+<!--
 The invariance of the cell types can be seen as follows: `&` is like an `&mut`
 for a cell, because you can still store values in them through an `&`. Therefore
 cells must be invariant to avoid lifetime smuggling.
+-->
+
+cell 型の非変性は次のように見ることが出来ます。すなわち、 `&` は cell における `&mut` のようになります。
+なぜなら、 `&` を通して値を保存することも可能だからです。
+したがって、ライフタイムをこっそり導入することがないよう、 cell は非変性でなければなりません。
 
 `Fn` is the most subtle case because it has mixed variance. To see why
 `Fn(T) -> U` should be invariant over T, consider the following function
