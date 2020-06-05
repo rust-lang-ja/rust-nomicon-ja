@@ -166,7 +166,7 @@ additional level of indirection does not change the desire to be able to pass
 longer lived things where shorted lived things are expected.
 -->
 
-似た理由が、なぜ `&'a T` が `T` において変性であるべきかについて適用できます。
+似た理由が、なぜ `&'a T` が T において変性であるべきかについて適用できます。
 `&&'a str` が求められている場所で `&&'static str` を渡せるようにすることが
 合理的であるからです。間接参照の段階が増えても、短く生きるものが求められている
 場合により長く生きるものを渡せるようにするという願いは変わりません。
