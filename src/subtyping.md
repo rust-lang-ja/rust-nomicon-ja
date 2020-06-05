@@ -86,8 +86,13 @@ lifetime, and a type to point to.
 例えば、 `Vec` は `T` を受け取り `Vec<T>` を返す型コンストラクタです。
  `&` や `&mut` は 2 つの入力を受け取ります: ライフタイムと、指し示すための型です。
 
+<!--
 A type constructor's *variance* is how the subtyping of its inputs affects the
 subtyping of its outputs. There are two kinds of variance in Rust:
+-->
+
+型コンストラクタの*変性*は、どのように型コンストラクタの入力の派生型が出力の派生型に
+影響するかということです。 Rust では 2 種類の変性があります。
 
 * F is *variant* over `T` if `T` being a subtype of `U` implies
   `F<T>` is a subtype of `F<U>` (subtyping "passes through")
