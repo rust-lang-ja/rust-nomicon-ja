@@ -241,12 +241,20 @@ Put another way: `&'a mut T` owns `'a`, but only *borrows* T.
 問題ないのです。
 言い換えると、 `&'a mut T` は `'a` を所有しますが、 T は単に*借用している*だけなのです。
 
+<!--
 `Box` and `Vec` are interesting cases because they're variant, but you can
 definitely store values in them! This is where Rust gets really clever: it's
 fine for them to be variant because you can only store values
 in them *via a mutable reference*! The mutable reference makes the whole type
 invariant, and therefore prevents you from smuggling a short-lived type into
 them.
+-->
+
+`Box` と `Vec` は興味深いケースです。なぜなら、これらは変性であるのに、
+この中に値を保存できるからです! これは Rust が本当に賢いところです: これらにとって、
+変性であることは問題ないのです。なぜなら値を*可変参照を通して*だけ
+値を保存できるからです! 可変参照はすべての型を非変性にします。そしてそれ故に
+短く生きる型をこっそり入れることを防ぐのです。
 
 Being variant allows `Box` and `Vec` to be weakened when shared
 immutably. So you can pass a `&Box<&'static str>` where a `&Box<&'a str>` is
