@@ -303,9 +303,15 @@ cell 型の非変性は次のように見ることが出来ます。すなわち
 なぜなら、 `&` を通して値を保存することも可能だからです。
 したがって、ライフタイムをこっそり導入することがないよう、 cell は非変性でなければなりません。
 
+<!--
 `Fn` is the most subtle case because it has mixed variance. To see why
 `Fn(T) -> U` should be invariant over T, consider the following function
 signature:
+-->
+
+`Fn` はまぜこぜの変性を持っているので、最も見分けのつかないケースです。
+なぜ `Fn(T) -> U` が T において非変性であるべきかを確認するために、
+次の関数シグネチャを考えてみましょう。
 
 ```rust,ignore
 // 'a is derived from some parent scope
