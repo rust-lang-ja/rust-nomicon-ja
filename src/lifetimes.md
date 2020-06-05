@@ -13,7 +13,7 @@ the scope it's valid for.
 
 Rust は今まで説明してきたルールを*ライフタイム*を使って強制します。
 ライフタイムとは、要するにプログラム中のスコープの名前です。
-リファレンスと、リファレンスを含むものとは、有効なスコープを示すライフタイムでタグづけられています。
+参照と、参照を含むものとは、有効なスコープを示すライフタイムでタグ付けられています。
 
 <!--
 Within a function body, Rust generally doesn't let you explicitly name the
@@ -79,7 +79,7 @@ The borrow checker always tries to minimize the extent of a lifetime, so it will
 likely desugar to the following:
 -->
 
-ボローチェッカーは、ライフタイムの長さを最小にしようとするので、
+借用チェッカは、ライフタイムの長さを最小にしようとするので、
 これは次のように脱糖されるでしょう。
 
 ```rust,ignore
@@ -109,7 +109,7 @@ Actually passing references to outer scopes will cause Rust to infer
 a larger lifetime:
 -->
 
-リファレンスを外のスコープに返す場合は、Rust はより大きいライフタイムを推論することになります。
+参照を外のスコープに返す場合は、Rust はより大きいライフタイムを推論することになります。
 
 ```rust
 let x = 0;
@@ -124,7 +124,7 @@ z = y;
     'b: {
         let z: &'b i32;
         'c: {
-            // ここでは 'b を使う必要があります。なぜならこのリファレンスは
+            // ここでは 'b を使う必要があります。なぜならこの参照は
             // スコープ `b に渡されるからです。
             let y: &'b i32 = &'b x;
             z = y;
@@ -138,7 +138,7 @@ z = y;
 # Example: references that outlive referents
 -->
 
-# 例：参照先より長く生きるリファレンス
+# 例：参照先より長く生きる参照
 
 <!--
 Alright, let's look at some of those examples from before:
@@ -177,10 +177,10 @@ to the u32 originated in, or somewhere *even earlier*. That's a bit of a tall
 order.
 -->
 
-`as_str` のシグネチャは、*ある*ライフタイムを持つ u32 へのリファレンスをとり、
-そのリファレンスと*同じ長さだけ*生きる str へのリファレンスを生成することを約束します。
+`as_str` のシグネチャは、*ある*ライフタイムを持つ u32 への参照をとり、
+その参照と*同じ長さだけ*生きる str への参照を生成することを約束します。
 このシグネチャが問題になるかもしれないと、すでに話しました。
-このシグネチャは、引数の u32 を指すリファレンスが生成されたスコープか、もしくは*それより以前のスコープ*で、str を探すことを意味します。これはなかなか難しい注文です。
+このシグネチャは、引数の u32 を指す参照が生成されたスコープか、もしくは*それより以前のスコープ*で、str を探すことを意味します。これはなかなか難しい注文です。
 
 <!--
 We then proceed to compute the string `s`, and return a reference to it. Since
@@ -193,13 +193,13 @@ the first thing we said that references can't do. The compiler rightfully blows
 up in our face.
 -->
 
-それから文字列 `s` を計算し、そのリファレンスを返します。
-この関数は、返されるリファレンスが `'a` より長生きすることを約束しているので、このリファレンスのライフタイムとして `'a` を使うことを推論します。
+それから文字列 `s` を計算し、その参照を返します。
+この関数は、返される参照が `'a` より長生きすることを約束しているので、この参照のライフタイムとして `'a` を使うことを推論します。
 残念なことに、`s` はスコープ `'b` の中で定義されているので、
 この推論が妥当になるためには、`'b` が `'a` を含んでいなくてはなりません。
 ところがこれは明らかに成立しません。`'a` はこの関数呼び出しそものを含んでいるからです。
-結局、この関数は参照先より長生きするリファレンスを生成してしまいました。
-そしてこれは*文字通り*、リファレンスがやってはいけないことの一番目でした。
+結局、この関数は参照先より長生きする参照を生成してしまいました。
+そしてこれは*文字通り*、参照がやってはいけないことの一番目でした。
 コンパイラは正当に怒りだします。
 
 <!--
@@ -271,7 +271,7 @@ our implementation *just a bit*.)
 # Example: aliasing a mutable reference
 -->
 
-# 例：可変リファレンスの別名付け
+# 例：可変参照の別名付け
 
 <!--
 How about the other example:
@@ -312,9 +312,9 @@ violate the *second* rule of references.
 
 これは、すこし分かりにくいですが面白い問題です。
 私たちは、Rust が次のような理由で、このプログラムを拒否するだろうと思っています。
-つまり、`push` するために `data` への可変リファレンスを取ろうとするとき、
-`data` の子孫への共有リファレンス `x` が生存中です。
-これは可変リファレンスの別名となり、リファレンスの*二番目*のルールに違反します。
+つまり、`push` するために `data` への可変参照を取ろうとするとき、
+`data` の子孫への共有参照 `x` が生存中です。
+これは可変参照の別名となり、参照の*二番目*のルールに違反します。
 
 <!--
 However this is *not at all* how Rust reasons that this program is bad. Rust
@@ -327,10 +327,10 @@ within `'b`, and rejects our program because the `&'b data` must still be live!
 -->
 
 ところが、Rust がこのプログラムを悪いと推論するやり方は*全く違う*のです。
-Rust は、`x` が `data` の部分パスへのリファレンスであることは理解しません。
+Rust は、`x` が `data` の部分パスへの参照であることは理解しません。
 Rust は Vec のことなど何も知らないのです。
 Rust に*見えている*のは、`x` は println! のためにスコープ `'b` の中で生存しなくてはならないことです。
-さらに、`Index::index` のシグネチャは、`data` を参照するリファレンスが
+さらに、`Index::index` のシグネチャは、`data` を参照する参照が
 スコープ `'b` の中で生存することを要求します。
 `push` を呼び出すときに、`&'c mut data` を取ろうとすることを Rust は理解します。
 Rust はスコープ `'c` が スコープ `'b` に含まれていることを知っているので、
@@ -347,7 +347,7 @@ correct with respect to Rust's *true* semantics are rejected because lifetimes
 are too dumb.
 -->
 
-ここでは、ライフタイムをチェックするシステムは、私たちが維持したいリファレンスの意味論に比べて
+ここでは、ライフタイムをチェックするシステムは、私たちが維持したい参照の意味論に比べて
 とても荒いことを見てきました。
 ほとんどの場合、*これで全く大丈夫*です。
 私たちが書いたコードをコンパイラに説明するために丸一日費やさなくてもいいからです。
