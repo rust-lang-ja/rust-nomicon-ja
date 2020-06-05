@@ -257,9 +257,14 @@ them.
 値を保存できるからです! 可変参照はすべての型を非変性にします。そしてそれ故に
 短く生きる型をこっそり入れることを防ぐのです。
 
+<!--
 Being variant allows `Box` and `Vec` to be weakened when shared
 immutably. So you can pass a `&Box<&'static str>` where a `&Box<&'a str>` is
 expected.
+-->
+
+変性であることで、イミュータブルで共有されるときに `Box` や `Vec` を弱くすることができます。
+よって `&Box<&'a str>` が期待される場合に `&Box<&'static str>` を渡すことができるのです。
 
 However what should happen when passing *by-value* is less obvious. It turns out
 that, yes, you can use subtyping when passing by-value. That is, this works:
