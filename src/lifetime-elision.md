@@ -27,7 +27,7 @@ T<'a>
 Lifetime positions can appear as either "input" or "output":
 -->
 
-ライフタイムポジションは、「入力」か「出力」のいづれかです。
+ライフタイムポジションは、「入力」または「出力」という形で現れます。
 
 <!--
 * For `fn` definitions, input refers to the types of the formal arguments
@@ -63,7 +63,7 @@ Elision rules are as follows:
   parameter.
 -->
 
-* 入力ポジションの省略されたライフタイムは、それぞれ別のライフタイムパラメタになります。
+* 入力ポジションの省略されたライフタイムは、それぞれ別のライフタイムパラメータになります。
 
 <!--
 * If there is exactly one input lifetime position (elided or not), that lifetime
