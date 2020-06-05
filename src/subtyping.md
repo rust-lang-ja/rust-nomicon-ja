@@ -347,8 +347,13 @@ over their arguments.
 できるからです。
 それゆえに、関数はその引数において、変性ではないのです。
 
+<!--
 To see why `Fn(T) -> U` should be variant over U, consider the following
 function signature:
+-->
+
+なぜ `Fn(T) -> U` が U において変性であるべきかを確認するために、次の関数シグネチャを
+考えてみましょう。
 
 ```rust,ignore
 // 'a is derived from some parent scope
