@@ -191,7 +191,7 @@ fn main() {
         let string = String::from("world");
         overwrite(&mut forever_str, &mut &*string);
     }
-    // Oops, printing free'd memory
+    // しまった、解放されたメモリを出力しようとしている
     println!("{}", forever_str);
 }
 ```
