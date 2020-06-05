@@ -266,8 +266,14 @@ expected.
 変性であることで、イミュータブルで共有されるときに `Box` や `Vec` を弱くすることができます。
 よって `&Box<&'a str>` が期待される場合に `&Box<&'static str>` を渡すことができるのです。
 
+<!--
 However what should happen when passing *by-value* is less obvious. It turns out
 that, yes, you can use subtyping when passing by-value. That is, this works:
+-->
+
+しかし、*値*渡しが起きるとき、何が起きるかはあまり明らかではありません。
+ええ、値渡しされるときに派生型を使用することは可能だとわかります。
+つまり、このコードは動作します。
 
 ```rust
 fn get_box<'a>(str: &'a str) -> Box<&'a str> {
