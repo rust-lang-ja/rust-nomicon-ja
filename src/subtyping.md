@@ -125,6 +125,7 @@ Some important variances:
 
 いくつか重要な変性があります。
 
+<!--
 * `&'a T` is variant over `'a` and `T` (as is `*const T` by metaphor)
 * `&'a mut T` is variant over `'a` but invariant over `T`
 * `Fn(T) -> U` is invariant over `T`, but variant over `U`
@@ -132,6 +133,14 @@ Some important variances:
   their contents
 * `UnsafeCell<T>`, `Cell<T>`, `RefCell<T>`, `Mutex<T>` and all other
   interior mutability types are invariant over T (as is `*mut T` by metaphor)
+-->
+
+* `&'a T` は `'a` と `T` において変性です（ `*const T` も同じということがわかるでしょう）
+* `&'a mut T` は `'a` において変性ですが、 `T` においては非変性です
+* `Fn(T) -> U` は `T` において非変性ですが、 `U` においては変性です
+* `Box` や `Vec` や他の全てのコレクションは、要素の型において変性です
+* `UnsafeCell<T>`、`Cell<T>`、`RefCell<T>`、`Mutex<T>` や他の内部可変性型は `T` において
+  非変性です（ `*mut T` も同じということがわかるでしょう）
 
 To understand why these variances are correct and desirable, we will consider
 several examples.
