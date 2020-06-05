@@ -314,7 +314,7 @@ signature:
 次の関数シグネチャを考えてみましょう。
 
 ```rust,ignore
-// 'a is derived from some parent scope
+// 'a はある親スコープから継承されます
 fn foo(&'a str) -> usize;
 ```
 
