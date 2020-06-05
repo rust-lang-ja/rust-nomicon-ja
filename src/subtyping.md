@@ -216,9 +216,14 @@ print it! Therefore `&mut` should be invariant.
 ドロップされ、 `forever_str` は出力の際に解放されたメモリを指していたでしょう!
 それ故に `&mut` は非変性である必要があるのです。
 
+<!--
 This is the general theme of variance vs invariance: if variance would allow you
 to store a short-lived value into a longer-lived slot, then you must be
 invariant.
+-->
+
+変性か非変性かの一般的な主題はこちらです: もし変性によって、短く生きる値がより長く生きる
+スロットに保存されるようなことが起きてしまうならば、非変性でなければなりません。
 
 However it *is* sound for `&'a mut T` to be variant over `'a`. The key difference
 between `'a` and T is that `'a` is a property of the reference itself,
