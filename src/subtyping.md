@@ -11,7 +11,7 @@ lifetimes are scopes, we can partially order them based on the *contains*
 (outlives) relationship. We can even express this as a generic bound.
 -->
 
-Rust には構造の継承の概念はありませんが、派生型の概念は*あります*。
+Rust には構造継承の概念はありませんが、派生型の概念は*あります*。
 Rust では、派生型は完全にライフタイムに由来します。ライフタイムはスコープですので、
 包含関係によって部分的にライフタイムを定めることが出来ます。
 ジェネリック境界として表現することも可能です。
