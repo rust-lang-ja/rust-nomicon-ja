@@ -43,9 +43,13 @@ just `'a` *and more*.
 これに対する直感的な理由になります。  `'static` が `'a` *以上*のものであるように、
 Cat も Animal *以上*のものであるからです。
 
+<!--
 (Note, the subtyping relationship and typed-ness of lifetimes is a fairly
 arbitrary construct that some disagree with. However it simplifies our analysis
 to treat lifetimes and types uniformly.)
+-->
+
+（派生型の関係とライフタイムの型付けはかなり無理やりな構成で、これに反対する人もいることに注意してください。しかしながら、この構成によって分析が単純となり、ライフタイムと型を同じように扱えます。）
 
 Higher-ranked lifetimes are also subtypes of every concrete lifetime. This is
 because taking an arbitrary lifetime is strictly more general than taking a
