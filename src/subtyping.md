@@ -61,9 +61,17 @@ specific one.
 高階ライフタイムもまた、あらゆる具象ライフタイムの派生型です。
 これは、任意のライフタイムを取ることは、ある特定のライフタイムを取ることよりも厳密により一般的であるからです。
 
+<!--
 # Variance
+-->
 
+# 変性
+
+<!--
 Variance is where things get a bit complicated.
+-->
+
+変性はちょっと複雑です。
 
 Variance is a property that *type constructors* have with respect to their
 arguments. A type constructor in Rust is a generic type with unbound arguments.
