@@ -196,6 +196,7 @@ fn main() {
 }
 ```
 
+<!--
 The signature of `overwrite` is clearly valid: it takes mutable references to
 two values of the same type, and overwrites one with the other. If `&mut T` was
 variant over T, then `&mut &'static str` would be a subtype of `&mut &'a str`,
@@ -204,6 +205,16 @@ since `&'static str` is a subtype of `&'a str`. Therefore the lifetime of
 `string`, and `overwrite` would be called successfully. `string` would
 subsequently be dropped, and `forever_str` would point to freed memory when we
 print it! Therefore `&mut` should be invariant.
+-->
+
+`overwrite` のシグネチャは明らかに文法的に正しいです。これは、同じ型の 2 つの値の
+可変参照を受け取り、片方の値をもう一つの値で上書きします。
+もし `&mut T` が T において変性だったなら、 `&mut &'static str` は `&mut &'a str` の
+派生型だったでしょう。 `&'static str` が `&'a str` の派生型であるからです。
+それ故に、 `forever_str` のライフタイムは、見事により短い `string` のライフタイムに
+「縮まる」でしょう。そして、 `overwrite` の呼び出しは成功するでしょう。後に `string` は
+ドロップされ、 `forever_str` は出力の際に解放されたメモリを指していたでしょう!
+それ故に `&mut` は非変性である必要があるのです。
 
 This is the general theme of variance vs invariance: if variance would allow you
 to store a short-lived value into a longer-lived slot, then you must be
