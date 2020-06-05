@@ -149,9 +149,15 @@ several examples.
 
 これらの変性がなぜ正しくそして望ましいかを理解するために、いくつかの例を考えましょう。
 
+<!--
 We have already covered why `&'a T` should be variant over `'a` when
 introducing subtyping: it's desirable to be able to pass longer-lived things
 where shorter-lived things are needed.
+-->
+
+派生型を導入するときに、なぜ `&'a T` が `'a` において変性であるべきか、既にカバーしました。
+これは、短く生きるものが必要なときに、より長く生きるものを渡せるようにするために、
+望ましいものなのです。
 
 Similar reasoning applies to why it should be variant over T. It is reasonable
 to be able to pass `&&'static str` where an `&&'a str` is expected. The
