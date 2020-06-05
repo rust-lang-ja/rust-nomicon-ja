@@ -360,14 +360,23 @@ function signature:
 fn foo(usize) -> &'a str;
 ```
 
+<!--
 This signature claims that it will return something that outlives `'a`. It is
 therefore completely reasonable to provide
+-->
+
+このシグネチャは、関数が `'a` より長生きする何かを返すと主張しています。
+それゆえに、この場所に
 
 ```rust,ignore
 fn foo(usize) -> &'static str;
 ```
 
+<!--
 in its place. Therefore functions are variant over their return type.
+-->
+
+が置かれても全く問題ありません。ゆえに、関数は、そのリターン型において変性なのです。
 
 `*const` has the exact same semantics as `&`, so variance follows. `*mut` on the
 other hand can dereference to an `&mut` whether shared or not, so it is marked
