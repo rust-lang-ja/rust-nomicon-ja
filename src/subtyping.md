@@ -282,10 +282,16 @@ fn get_box<'a>(str: &'a str) -> Box<&'a str> {
 }
 ```
 
+<!--
 Weakening when you pass by-value is fine because there's no one else who
 "remembers" the old lifetime in the Box. The reason a variant `&mut` was
 trouble was because there's always someone else who remembers the original
 subtype: the actual owner.
+-->
+
+Box の古いライフタイムを「記憶」するものが他に存在しないので、値渡しの際に
+弱くするのは問題ありません。変性の `&mut` が問題である理由は、元々の派生型を
+記憶している他のものが存在するからです: 実際の所有者です。
 
 The invariance of the cell types can be seen as follows: `&` is like an `&mut`
 for a cell, because you can still store values in them through an `&`. Therefore
