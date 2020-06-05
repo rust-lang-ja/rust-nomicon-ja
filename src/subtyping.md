@@ -388,12 +388,20 @@ as invariant just like cells.
 他方で、 `*mut` は、共有の有無に関わらず `&mut` に参照外し可能です。よって
 `*mut` は cell と同じように非変性です。
 
+<!--
 This is all well and good for the types the standard library provides, but
 how is variance determined for type that *you* define? A struct, informally
 speaking, inherits the variance of its fields. If a struct `Foo`
 has a generic argument `A` that is used in a field `a`, then Foo's variance
 over `A` is exactly `a`'s variance. However this is complicated if `A` is used
 in multiple fields.
+-->
+
+これは標準ライブラリが提供する型にとっては上手くいくのですが、
+*あなたが*定義した型の変性はどのように決定されるのでしょうか? 簡単に言えば、
+構造体はフィールドの変性を受け継ぎます。もし構造体 `Foo` が、フィールド `a` に使われる
+ジェネリックな引数 `A` を持つならば、 Foo の `A` における変性は `a` の変性と全く同じです。
+しかしながら、もし `A` が複数のフィールドで使用されている場合、これは複雑になります。
 
 * If all uses of A are variant, then Foo is variant over A
 * Otherwise, Foo is invariant over A
