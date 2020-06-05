@@ -73,11 +73,18 @@ Variance is where things get a bit complicated.
 
 変性はちょっと複雑です。
 
+<!--
 Variance is a property that *type constructors* have with respect to their
 arguments. A type constructor in Rust is a generic type with unbound arguments.
 For instance `Vec` is a type constructor that takes a `T` and returns a
 `Vec<T>`. `&` and `&mut` are type constructors that take two inputs: a
 lifetime, and a type to point to.
+-->
+
+変性は、*型コンストラクタ*がその引数に関して持つ性質です。
+ Rust において型コンストラクタは、無制限の引数を持つジェネリックな型です。
+例えば、 `Vec` は `T` を受け取り `Vec<T>` を返す型コンストラクタです。
+ `&` や `&mut` は 2 つの入力を受け取ります: ライフタイムと、指し示すための型です。
 
 A type constructor's *variance* is how the subtyping of its inputs affects the
 subtyping of its outputs. There are two kinds of variance in Rust:
