@@ -29,11 +29,19 @@ confusion, because it seems intuitively backwards to many: the bigger scope is a
 多くの人にとっては、
 この関係は直感的に逆のように感じるからです: より大きいスコープは小さい方のスコープの*派生型*となる。
 
+<!--
 This does in fact make sense, though. The intuitive reason for this is that if
 you expect an `&'a u8`, then it's totally fine for me to hand you an `&'static
 u8`, in the same way that if you expect an Animal in Java, it's totally fine for
 me to hand you a Cat. Cats are just Animals *and more*, just as `'static` is
 just `'a` *and more*.
+-->
+
+それでもこれは実際、理にかなっています。
+ Java において、 Animal が期待される場合に Cat を渡しても問題ないのと全く同じように、
+もし `&'a u8` が期待される時、 `&'static u8` を渡しても問題ないということが
+これに対する直感的な理由になります。  `'static` が `'a` *以上*のものであるように、
+Cat も Animal *以上*のものであるからです。
 
 (Note, the subtyping relationship and typed-ness of lifetimes is a fairly
 arbitrary construct that some disagree with. However it simplifies our analysis
