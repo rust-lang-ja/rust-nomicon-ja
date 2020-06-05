@@ -101,15 +101,23 @@ subtyping of its outputs. There are two kinds of variance in Rust:
 -->
 
 * もし `T` が `U` の派生型である時、 `F<T>` が `F<U>` の派生型であるならば、 `F` は
-  *変性*です。（派生型の「パススルー」）
+  `T` において*変性*です。（派生型の「パススルー」）
 * それ以外の場合、 `T` は*非変性*です。（いかなる派生型の関係も継承されません）
 
+<!--
 (For those of you who are familiar with variance from other languages, what we
 refer to as "just" variance is in fact *covariance*. Rust has *contravariance*
 for functions. The future of contravariance is uncertain and it may be
 scrapped. For now, `fn(T)` is contravariant in `T`, which is used in matching
 methods in trait implementations to the trait definition. Traits don't have
 inferred variance, so `Fn(T)` is invariant in `T`).
+-->
+
+（他の言語で変性に慣れている方にとって、「単に」変性と言及しているものは実は*共変性*です。
+ Rust では関数に*反変性*が存在します。将来的に反変性がどうなるかは未定で、
+反変性が廃止されるかもしれません。今の所、 `fn(T)` は `T` の反変性で、これは
+トレイトの定義に対してトレイトの実装内のメソッドをマッチさせるのに使われます。
+トレイトは推論された変性を持たないため、 `fn(T)` は `T` において変性ではありません。）
 
 Some important variances:
 
