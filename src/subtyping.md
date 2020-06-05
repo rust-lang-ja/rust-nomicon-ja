@@ -225,12 +225,21 @@ invariant.
 変性か非変性かの一般的な主題はこちらです: もし変性によって、短く生きる値がより長く生きる
 スロットに保存されるようなことが起きてしまうならば、非変性でなければなりません。
 
+<!--
 However it *is* sound for `&'a mut T` to be variant over `'a`. The key difference
 between `'a` and T is that `'a` is a property of the reference itself,
 while T is something the reference is borrowing. If you change T's type, then
 the source still remembers the original type. However if you change the
 lifetime's type, no one but the reference knows this information, so it's fine.
 Put another way: `&'a mut T` owns `'a`, but only *borrows* T.
+-->
+
+しかし、 `&'a mut T` は `'a` において変性のように*見えます*。 `&'a` と T の
+重要な違いは、 `'a` は参照それ自体の性質ですが、 T は参照が借用しているものということです。
+もし T の型を変えても、借用元は元の型を記憶しています。
+しかし、もしライフタイムの型を変えると、参照以外のものはこの情報を記憶していないので、
+問題ないのです。
+言い換えると、 `&'a mut T` は `'a` を所有しますが、 T は単に*借用している*だけなのです。
 
 `Box` and `Vec` are interesting cases because they're variant, but you can
 definitely store values in them! This is where Rust gets really clever: it's
