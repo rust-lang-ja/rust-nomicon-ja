@@ -49,8 +49,8 @@ arbitrary construct that some disagree with. However it simplifies our analysis
 to treat lifetimes and types uniformly.)
 -->
 
-（派生型の関係とライフタイムの型付けはかなり無理やりな構成で、これに反対する人もいることに注意してください。しかしながら、この構成によって分析が単純となり、ライフタイムと型を同じように扱えます。）
-
+（派生型の関係とライフタイムの型付けはかなり無理やりな構成で、これに反対する人もいることに注意してください。
+しかしながら、この構成によって分析が単純となり、ライフタイムと型を同じように扱えます。）
 
 <!--
 Higher-ranked lifetimes are also subtypes of every concrete lifetime. This is
@@ -58,7 +58,8 @@ because taking an arbitrary lifetime is strictly more general than taking a
 specific one.
 -->
 
-高階ライフタイムもまた、あらゆる具象ライフタイムの派生型です。これは、任意のライフタイムを取ることは、ある特定のライフタイムを取ることよりも厳密により一般的であるからです。
+高階ライフタイムもまた、あらゆる具象ライフタイムの派生型です。
+これは、任意のライフタイムを取ることは、ある特定のライフタイムを取ることよりも厳密により一般的であるからです。
 
 # Variance
 
