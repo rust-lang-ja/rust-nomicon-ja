@@ -378,9 +378,15 @@ in its place. Therefore functions are variant over their return type.
 
 が置かれても全く問題ありません。ゆえに、関数は、そのリターン型において変性なのです。
 
+<!--
 `*const` has the exact same semantics as `&`, so variance follows. `*mut` on the
 other hand can dereference to an `&mut` whether shared or not, so it is marked
 as invariant just like cells.
+-->
+
+`*const` は `&` と全く同じセマンティクスを持ちます。つまり変性も `&` に従います。
+他方で、 `*mut` は、共有の有無に関わらず `&mut` に参照外し可能です。よって
+`*mut` は cell と同じように非変性です。
 
 This is all well and good for the types the standard library provides, but
 how is variance determined for type that *you* define? A struct, informally
