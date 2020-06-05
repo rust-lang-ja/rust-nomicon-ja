@@ -277,7 +277,7 @@ that, yes, you can use subtyping when passing by-value. That is, this works:
 
 ```rust
 fn get_box<'a>(str: &'a str) -> Box<&'a str> {
-    // string literals are `&'static str`s
+    // 文字列リテラルは `&'static str` です
     Box::new("hello")
 }
 ```
