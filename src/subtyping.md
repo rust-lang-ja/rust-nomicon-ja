@@ -94,9 +94,15 @@ subtyping of its outputs. There are two kinds of variance in Rust:
 型コンストラクタの*変性*は、どのように型コンストラクタの入力の派生型が出力の派生型に
 影響するかということです。 Rust では 2 種類の変性があります。
 
+<!--
 * F is *variant* over `T` if `T` being a subtype of `U` implies
   `F<T>` is a subtype of `F<U>` (subtyping "passes through")
 * F is *invariant* over `T` otherwise (no subtyping relation can be derived)
+-->
+
+* もし `T` が `U` の派生型である時、 `F<T>` が `F<U>` の派生型であるならば、 `F` は
+  *変性*です。（派生型の「パススルー」）
+* それ以外の場合、 `T` は*非変性*です。（いかなる派生型の関係も継承されません）
 
 (For those of you who are familiar with variance from other languages, what we
 refer to as "just" variance is in fact *covariance*. Rust has *contravariance*
