@@ -119,7 +119,11 @@ inferred variance, so `Fn(T)` is invariant in `T`).
 トレイトの定義に対してトレイトの実装内のメソッドをマッチさせるのに使われます。
 トレイトは推論された変性を持たないため、 `fn(T)` は `T` において変性ではありません。）
 
+<!--
 Some important variances:
+-->
+
+いくつか重要な変性があります。
 
 * `&'a T` is variant over `'a` and `T` (as is `*const T` by metaphor)
 * `&'a mut T` is variant over `'a` but invariant over `T`
