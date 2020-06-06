@@ -403,8 +403,13 @@ in multiple fields.
 ジェネリックな引数 `A` を持つならば、 Foo の `A` における変性は `a` の変性と全く同じです。
 しかしながら、もし `A` が複数のフィールドで使用されている場合、これは複雑になります。
 
+<!--
 * If all uses of A are variant, then Foo is variant over A
 * Otherwise, Foo is invariant over A
+-->
+
+* もし A を使用しているすべてのものが変性である場合、 Foo は A において変性です
+* そうでなければ、 Foo は A において非変性です
 
 ```rust
 use std::cell::Cell;
