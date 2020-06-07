@@ -101,7 +101,7 @@ subtyping of its outputs. There are two kinds of variance in Rust:
 * F is *invariant* over `T` otherwise (no subtyping relation can be derived)
 -->
 
-* もし `T` が `U` の派生型である時、 `F<T>` が `F<U>` の派生型であるならば、 F は
+* もし `T` が `U` の派生型であるとき、 `F<T>` が `F<U>` の派生型であるならば、 F は
   `T` において*変性*です。（派生型の「パススルー」）
 * それ以外の場合、 F は `T` において*非変性*です。（いかなる派生型の関係も継承されません）
 
