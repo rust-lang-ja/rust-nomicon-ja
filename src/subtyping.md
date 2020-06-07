@@ -114,7 +114,7 @@ methods in trait implementations to the trait definition. Traits don't have
 inferred variance, so `Fn(T)` is invariant in `T`).
 -->
 
-（他の言語で変性に慣れている方にとって、「単に」変性と言及しているものは実は*共変性*です。
+（他の言語で変性に慣れている方にとって、この本で「単に」変性と言及しているものは実は*共変性*です。
  Rust では関数に*反変性*が存在します。将来的に反変性がどうなるかは未定で、
 反変性が廃止されるかもしれません。今の所、 `fn(T)` は `T` の反変性で、これは
 トレイトの定義に対してトレイトの実装内のメソッドをマッチさせるのに使われます。
