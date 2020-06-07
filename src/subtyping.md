@@ -415,14 +415,14 @@ in multiple fields.
 use std::cell::Cell;
 
 struct Foo<'a, 'b, A: 'a, B: 'b, C, D, E, F, G, H> {
-    a: &'a A,     // variant over 'a and A
-    b: &'b mut B, // variant over 'b and invariant over B
-    c: *const C,  // variant over C
-    d: *mut D,    // invariant over D
-    e: Vec<E>,    // variant over E
-    f: Cell<F>,   // invariant over F
-    g: G,         // variant over G
-    h1: H,        // would also be variant over H except...
-    h2: Cell<H>,  // invariant over H, because invariance wins
+    a: &'a A,     // 'a と A において変性
+    b: &'b mut B, // 'b において変性、 B において非変性
+    c: *const C,  // C において変性
+    d: *mut D,    // D において非変性
+    e: Vec<E>,    // E において変性
+    f: Cell<F>,   // F において非変性
+    g: G,         // G において変性
+    h1: H,        // これも H において変性に見えるでしょうが...
+    h2: Cell<H>,  // H において非変性です。非変性が勝つのです
 }
 ```
