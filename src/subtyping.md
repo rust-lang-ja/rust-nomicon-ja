@@ -240,7 +240,7 @@ Put another way: `&'a mut T` owns `'a`, but only *borrows* T.
 もし T の型を変えても、借用元は元の型を記憶しています。
 しかし、もしライフタイムの型を変えると、参照以外のものはこの情報を記憶していないので、
 問題ないのです。
-言い換えると、 `&'a mut T` は `'a` を所有しますが、 T は単に*借用している*だけなのです。
+言い換えると、 `&'a mut T` は `'a` を所有しますが、 T を単に*借用している*だけなのです。
 
 <!--
 `Box` and `Vec` are interesting cases because they're variant, but you can
