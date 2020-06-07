@@ -289,7 +289,7 @@ trouble was because there's always someone else who remembers the original
 subtype: the actual owner.
 -->
 
-Box の古いライフタイムを「記憶」するものが他に存在しないので、値渡しの際に
+Box の古いライフタイムを「記憶」するものが他に存在しないので、値渡しの際に Box を
 弱くするのは問題ありません。変性の `&mut` が問題である理由は、元々の派生型を
 記憶している他のものが存在するからです: 実際の所有者です。
 
