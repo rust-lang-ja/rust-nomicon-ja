@@ -4,6 +4,7 @@
 
 # ドロップチェック
 
+<!--
 We have seen how lifetimes provide us some fairly simple rules for ensuring
 that we never read dangling references. However up to this point we have only ever
 interacted with the *outlives* relationship in an inclusive manner. That is,
@@ -11,6 +12,14 @@ when we talked about `'a: 'b`, it was ok for `'a` to live *exactly* as long as
 `'b`. At first glance, this seems to be a meaningless distinction. Nothing ever
 gets dropped at the same time as another, right? This is why we used the
 following desugaring of `let` statements:
+-->
+
+タングリング参照を絶対に読み込まないよう、ライフタイムが提供しているいくつかのかなり単純な規則を
+確認してきました。しかしここまで、片方のライフタイムが*より長生きする*関係についてのみ、包括的な方法で取り組んできました。
+つまり、 `'a: 'b` についてお話したとき、 `'a` が `'b` と*全く*同じだけ生きても問題なかったのです。
+ひと目見ただけでも、これは無意味な区別のように感じます。
+他のものと同時にドロップされるものって今まで存在していないですよね?
+これが、以下の `let` 文の脱糖を使用した理由です:
 
 ```rust,ignore
 let x;
