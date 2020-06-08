@@ -1,4 +1,8 @@
+<!--
 # Drop Check
+-->
+
+# ドロップチェック
 
 We have seen how lifetimes provide us some fairly simple rules for ensuring
 that we never read dangling references. However up to this point we have only ever
