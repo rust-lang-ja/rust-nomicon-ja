@@ -35,8 +35,13 @@ let y;
 }
 ```
 
+<!--
 Each creates its own scope, clearly establishing that one drops before the
 other. However, what if we do the following?
+-->
+
+それぞれがスコープを生成しているので、明らかに片方がもう片方よりも先にドロップすることが確認できます。
+しかし、次の場合はどうでしょう?
 
 ```rust,ignore
 let (x, y) = (vec![], vec![]);
