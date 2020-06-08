@@ -61,12 +61,21 @@ destruction order as of Rust 1.0.
 タプルはこの点において特別ではありません。 Rust 1.0 の時点で、
 複合構造体は単にデストラクションの順番を保証していないだけです。
 
+<!--
 We *could* specify this for the fields of built-in composites like tuples and
 structs. However, what about something like Vec? Vec has to manually drop its
 elements via pure-library code. In general, anything that implements Drop has
 a chance to fiddle with its innards during its final death knell. Therefore
 the compiler can't sufficiently reason about the actual destruction order
 of the contents of any type that implements Drop.
+-->
+
+タプルや構造体といった組み込み複合体のフィールドに、デストラクションの順番を
+定めることは*出来ました*。しかし、 Vec のようなものの場合どうでしょうか? Vec は
+純粋なライブラリのコードを通してその要素を手動でドロップする必要があります。
+一般に、 Drop を実装しているものは、最後にその内部をいじくる機会があります。
+それゆえに、コンパイラは Drop を実装しているいかなる型の内容の、実際の
+デストラクションの順番を十分に推論できないのです。
 
 So why do we care? We care because if the type system isn't careful, it could
 accidentally make dangling pointers. Consider the following simple program:
