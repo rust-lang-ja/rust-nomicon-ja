@@ -47,11 +47,19 @@ other. However, what if we do the following?
 let (x, y) = (vec![], vec![]);
 ```
 
+<!--
 Does either value strictly outlive the other? The answer is in fact *no*,
 neither value strictly outlives the other. Of course, one of x or y will be
 dropped before the other, but the actual order is not specified. Tuples aren't
 special in this regard; composite structures just don't guarantee their
 destruction order as of Rust 1.0.
+-->
+
+片方が厳密にもう片方よりも長生きするのでしょうか? 実は、答えは*いいえ*です。つまり、
+どちらの値も厳密に、他方より長生きしません。勿論、 x と y のどちらかが他方よりも
+先にドロップするでしょうが、実際の順番は定められていません。
+タプルはこの点において特別ではありません。 Rust 1.0 の時点で、
+複合構造体は単にデストラクションの順番を保証していないだけです。
 
 We *could* specify this for the fields of built-in composites like tuples and
 structs. However, what about something like Vec? Vec has to manually drop its
