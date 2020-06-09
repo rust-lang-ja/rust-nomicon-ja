@@ -105,7 +105,11 @@ is alive, so is days.
 *厳密に* `inspector` より長くは生きないということは問題ではありません。
 `inspector` が生きている限り、 `days` も生きています。
 
+<!--
 However if we add a destructor, the program will no longer compile!
+-->
+
+しかし、もしデストラクタを追加したら、プログラムはもうコンパイルできないでしょう!
 
 ```rust,ignore
 struct Inspector<'a>(&'a u8);
