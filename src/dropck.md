@@ -77,8 +77,13 @@ of the contents of any type that implements Drop.
 それゆえに、コンパイラは Drop を実装しているいかなる型の内容の、実際の
 デストラクションの順番を十分に推論できないのです。
 
+<!--
 So why do we care? We care because if the type system isn't careful, it could
 accidentally make dangling pointers. Consider the following simple program:
+-->
+
+ではなぜこれを気にするのでしょうか? 型システムが丁寧でない場合、誤ってダングリングポインタを
+生成しうるからです。次の単純なプログラムを考えてみましょう。
 
 ```rust
 struct Inspector<'a>(&'a u8);
