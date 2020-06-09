@@ -116,6 +116,7 @@ struct Inspector<'a>(&'a u8);
 
 impl<'a> Drop for Inspector<'a> {
     fn drop(&mut self) {
+        // 退職からたった{}日でした!
         println!("I was only {} days from retirement!", self.0);
     }
 }
@@ -124,8 +125,8 @@ fn main() {
     let (inspector, days);
     days = Box::new(1);
     inspector = Inspector(&days);
-    // Let's say `days` happens to get dropped first.
-    // Then when Inspector is dropped, it will try to read free'd memory!
+    // `days` が先にドロップするとしましょう。
+    // すると、 Inspector がドロップされる時、解放されたメモリを読もうとします!
 }
 ```
 
