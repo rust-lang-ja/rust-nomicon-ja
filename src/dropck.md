@@ -95,9 +95,15 @@ fn main() {
 }
 ```
 
+<!--
 This program is totally sound and compiles today. The fact that `days` does
 not *strictly* outlive `inspector` doesn't matter. As long as the `inspector`
 is alive, so is days.
+-->
+
+このプログラムは今日完全に問題なく、コンパイルすることが出来ます。 `days` が
+*厳密に* `inspector` より長くは生きないということは問題ではありません。
+`inspector` が生きている限り、 `days` も生きています。
 
 However if we add a destructor, the program will no longer compile!
 
