@@ -154,9 +154,14 @@ fn main() {
 <anon>:15 }
 ```
 
+<!--
 Implementing Drop lets the Inspector execute some arbitrary code during its
 death. This means it can potentially observe that types that are supposed to
 live as long as it does actually were destroyed first.
+-->
+
+Drop トレイトを実装することで、 Inspector が最後に任意のコードを実行するようにできます。
+これは、 Inspector と同じだけ生きる型が、実際には先に破棄されると潜在的に認識できます。
 
 Interestingly, only generic types need to worry about this. If they aren't
 generic, then the only lifetimes they can harbor are `'static`, which will truly
