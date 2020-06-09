@@ -132,22 +132,25 @@ fn main() {
 
 ```text
 <anon>:12:28: 12:32 error: `days` does not live long enough
+(エラー: `days` は十分長生きしません)
 <anon>:12     inspector = Inspector(&days);
                                      ^~~~
 <anon>:9:11: 15:2 note: reference must be valid for the block at 9:10...
+(注釈: 参照は 9:10 にあるブロックに対して有効でなければなりません)
 <anon>:9 fn main() {
 <anon>:10     let (inspector, days);
 <anon>:11     days = Box::new(1);
 <anon>:12     inspector = Inspector(&days);
-<anon>:13     // Let's say `days` happens to get dropped first.
-<anon>:14     // Then when Inspector is dropped, it will try to read free'd memory!
+<anon>:13     // `days` が先にドロップするとしましょう。
+<anon>:14     // すると、 Inspector がドロップされる時、解放されたメモリを読もうとします!
           ...
 <anon>:10:27: 15:2 note: ...but borrowed value is only valid for the block suffix following statement 0 at 10:26
+(注釈: ...しかし、借用された値は 10:26 にある、文 0 に続くブロックサフィックスに対してのみ有効です)
 <anon>:10     let (inspector, days);
 <anon>:11     days = Box::new(1);
 <anon>:12     inspector = Inspector(&days);
-<anon>:13     // Let's say `days` happens to get dropped first.
-<anon>:14     // Then when Inspector is dropped, it will try to read free'd memory!
+<anon>:13     // `days` が先にドロップするとしましょう。
+<anon>:14     // すると、 Inspector がドロップされる時、解放されたメモリを読もうとします!
 <anon>:15 }
 ```
 
