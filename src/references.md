@@ -2,7 +2,7 @@
 # References
 -->
 
-# リファレンス
+# 参照
 
 <!--
 This section gives a high-level view of the memory model that *all* Rust
@@ -15,38 +15,38 @@ this more fundamental model is satisfied.
 
 このセクションでは、*すべての* Rust プログラムが満たさなくてはならないメモリモデルを
 ざっくりと見ていきます。
-安全なコードは、ボローチェッカーによってこのモデルを満たしていることが静的に検証されます。
-危険なコードは、ボローチェッカーの裏をかくかもしれませんが、このモデルを満たします。
+安全なコードは、借用チェッカによってこのモデルを満たしていることが静的に検証されます。
+アンセーフなコードは、借用チェッカの裏をかくかもしれませんが、このモデルを満たします。
 この基本的なモデルを満たしている限り、より多くのプログラムがコンパイルに通るように
-ボローチェッカーを拡張することも可能です。
+借用チェッカを拡張することも可能です。
 
 <!--
 There are two kinds of reference:
 -->
 
-リファレンスには 2 種類があります。
+参照には 2 種類あります。
 
 <!--
 * Shared reference: `&`
 * Mutable reference: `&mut`
 -->
 
-* 共有リファレンス: `&`
-* 可変リファレンス: `&mut`
+* 共有参照: `&`
+* 可変参照: `&mut`
 
 <!--
 Which obey the following rules:
 -->
 
-リファレンスは次のルールに従います。
+参照は次のルールに従います。
 
 <!--
 * A reference cannot outlive its referent
 * A mutable reference cannot be aliased
 -->
 
-* リファレンスのライフタイムが、参照先のライフタイムより長くなることはできません。
-* 可変リファレンスは、別名を持つことができません。
+* 参照のライフタイムが、参照先のライフタイムより長くなることはできません。
+* 可変参照は、別名を持つことができません。
 
 <!--
 That's it. That's the whole model. Of course, we should probably define
@@ -88,7 +88,7 @@ fields (if any), and so on.
 もし、Rust が扱うのが値だけ（ポインタはない）であれば、
 すべての値はただ一つの変数か複合型に所有されることになります。
 ここから所有権の*木構造*が自然に導かれます。
-スタック自信が木のルートになり、変数が直接の子になります。
+スタック自身が木のルートになり、変数が直接の子になります。
 変数がフィールドを持つのであれば、それは変数の直接の子になるでしょう。
 
 <!--
@@ -110,8 +110,8 @@ reference, you're declaring that an ownership path exists to this address
 of memory.
 -->
 
-リファレンスは、単純にパスの名前と定義できます。
-リファレンスを作成するということは、あるメモリアドレスに所有権の
+参照は、単純にパスの*名前*と定義できます。
+参照を作成するということは、あるメモリアドレスに所有権の
 パスが存在することを宣言するということです。
 
 <!--
@@ -157,11 +157,11 @@ its children). If this is done, the value may be mutated. In particular, a
 mutable reference can be taken.
 -->
 
-一般に、一意ではないパスを参照できるのは、共有リファレンスだけです。
+一般に、一意ではないパスを参照できるのは、共有参照だけです。
 しかし、相互排他を保証するメカニズムがあれば、一時的にその値（とそしてすべての子ども）への唯一のパスを確立し、
 「唯一の真の所有者」を確立できるかもしれません。
 もしこれが可能なら、その値を変更できるかもしれません。
-とくに、可変リファレンスを取ることができるようになります。
+とくに、可変参照を取ることができるようになります。
 
 <!--
 The most common way to establish such a path is through *interior mutability*,
@@ -182,8 +182,8 @@ refcount itself uses interior mutability.
 -->
 
 この効果を使った興味深い例が Rc 自身です。もし Rc の参照カウントが 1 なら、
-内部状態を変更したり、move したりしても安全です。
-refcount 自体も内部可変性を使っています。
+内部状態を変更したり、ムーブしたりしても安全です。
+参照カウント自体も内部可変性を使っています。
 
 <!--
 In order to correctly communicate to the type system that a variable or field of
@@ -208,7 +208,7 @@ Note: Liveness is not the same thing as a *lifetime*, which will be explained
 in detail in the next section of this chapter.
 -->
 
-生存性 (liveness) は、この章の次の節でで詳しく説明する *ライフタイム (lifetime)* とは違うことに注意してください。
+生存性 (liveness) は、この章の次の節で詳しく説明する *ライフタイム (lifetime)* とは違うことに注意してください。
 
 <!--
 Roughly, a reference is *live* at some point in a program if it can be
@@ -217,11 +217,11 @@ unreachable (for instance, they reside in freed or leaked memory). Mutable
 references can be reachable but *not* live through the process of *reborrowing*.
 -->
 
-大雑把に言うと、リファレンスをデリファレンスできるとき、
-そのリファレンスは、プログラム中のある時点で *生存している* といえます。
-共有リファレンスは、文字通り到達不可能な場合（たとえば、解放済みメモリやリークしてるメモリに
+大雑把に言うと、参照を参照外しできるとき、
+その参照は、プログラム中のある時点で *生存している* といえます。
+共有参照は、文字通り到達不可能な場合（たとえば、解放済みメモリやリークしてるメモリに
 存在している場合）を除いて、常に生存しています。
-可変リファレンスには、*又貸し*というプロセスがあるので、到達できても生存して*いない*ことがあります。
+可変参照には、*又貸し*というプロセスがあるので、到達できても生存して*いない*ことがあります。
 
 
 <!--
@@ -231,9 +231,9 @@ reborrows derived from it expire. For instance, a mutable reference can be
 reborrowed to point to a field of its referent:
 -->
 
-可変リファレンスは、その子孫を他の共有リファレンスまたは可変リファレンスに又貸しすることができます。
-又貸ししたリファレンスは、派生したすべたの又貸しの有効期限が切れると、ふたたび生存することになります。
-たとえば、可変リファレンスは、その参照先の一つのフィールドを指すリファレンスを又貸しすることができます。
+可変参照は、その子孫を他の共有参照または可変参照に又貸しすることができます。
+又貸しした参照は、派生したすべての又貸しの有効期限が切れると、再び生存することになります。
+例えば、可変参照は、その参照先の一つのフィールドを指す参照を又貸しすることができます。
 
 ```rust
 let x = &mut (1, 2);
@@ -243,7 +243,7 @@ let x = &mut (1, 2);
     // この時点で y は生存しているが、x は生存していない
     *y = 3;
 }
-// y がスコープ外に出たので、x がふたたび生存中になる
+// y がスコープ外に出たので、x が再び生存中になる
 *x = (5, 7);
 ```
 
@@ -254,8 +254,8 @@ explicitly enables this to be done with disjoint struct fields, because
 disjointness can be statically proven:
 -->
 
-*複数の*可変リファレンスに又貸しすることも可能ですが、その複数のリファレンスは互いに素でなくてはいけません。
-つまり、どのリファレンスも他のリファレンスの先祖であってはいけないということです。
+*複数の*可変参照に又貸しすることも可能ですが、その複数の参照は互いに素でなくてはいけません。
+つまり、どの参照も他の参照の先祖であってはいけないということです。
 Rust は、構造体のフィールドが互いに素であることを静的に証明できるので、
 フィールドの又貸しが可能です。
 
@@ -294,20 +294,20 @@ only given to *live* owned references because moving its referent would of
 course invalidate all outstanding references prematurely.
 -->
 
-話を単純にするために、変数をリファレンス型の一種、*所有中*リファレンス、と仮定してみましょう。
-所有中リファレンスは、可変リファレンスとほとんど同じ意味を持ちます。
-可変リファレンスまたは共有リファレンスに又貸しでき、それによって生存中ではなくなります。
-生存中の所有中リファレンスは、値を解放（move out）できるという特殊な性質があります
-（とはいえ、可変リファレンスは値をスワップアウトできますが）。
-この能力は、*生存中の* 所有中リファレンスのみに与えられています。
-そうでなければ、早すぎるタイミングでその他のリファレンスを無効にすることになります。
+話を単純にするために、変数を参照型の一種、*所有中*参照、と仮定してみましょう。
+所有中参照は、可変参照とほとんど同じ意味を持ちます。
+可変参照または共有参照に又貸しでき、それによって生存中ではなくなります。
+生存中の所有中参照は、値を解放（ムーブアウト）できるという特殊な性質があります
+（とはいえ、可変参照は値をスワップアウトできますが）。
+この能力は、*生存中の* 所有中参照のみに与えられています。
+そうでなければ、早すぎるタイミングでその他の参照を無効にすることになります。
 
 <!--
 As a local lint against inappropriate mutation, only variables that are marked
 as `mut` can be borrowed mutably.
 -->
 
-不適切な値の変更を lint が検出するので、`mut` とマークされた変数だけが変更可能なように貸し出されます。
+不適切な値の変更を lint が検出するので、`mut` とマークされた変数だけが変更可能なように借用されます。
 
 <!--
 It is interesting to note that Box behaves exactly like an owned reference. It
@@ -315,7 +315,7 @@ can be moved out of, and Rust understands it sufficiently to reason about its
 paths like a normal variable.
 -->
 
-Box がまさに所有中リファレンスのように振る舞うというおとを覚えておくと良いでしょう。
+Box がまさに所有中参照のように振る舞うということを覚えておくと良いでしょう。
 Box は値を解放することができ、変数が解放された時と同様に Rust はそのパスについて推論するための
 十分な情報を持っています。
 
@@ -337,7 +337,7 @@ With liveness and paths defined, we can now properly define *aliasing*:
 of its ancestors or descendants.**
 -->
 
-**可変リファレンスは、その先祖か子孫に他のリファレンスが存在している時、別名を持つといいます。**
+**可変参照は、その先祖か子孫に他の参照が存在している時、別名を持つといいます。**
 
 <!--
 (If you prefer, you may also say the two live references alias *each other*.
@@ -345,7 +345,7 @@ This has no semantic consequences, but is probably a more useful notion when
 verifying the soundness of a construct.)
 -->
 
-（二つの生存中のリファレンスが互いの別名になっている、と言うこともできます。
+（二つの生存中の参照が互いの別名になっている、と言うこともできます。
 意味上の違いは特にありませんが、プログラムの構造の健全性を検証する時には、
 この考え方の方がわかりやすいでしょう。）
 
@@ -364,10 +364,10 @@ ownership or aliasing semantics. As a result, Rust makes absolutely no effort to
 track that they are used correctly, and they are wildly unsafe.
 -->
 
-実際には、もう少し複雑です。リファレンスに加えて Rust には*生のポインタ*もあります。
+実際には、もう少し複雑です。参照に加えて Rust には*生ポインタ*もあります。
 `*const T` と `*mut T` のことです。
-生のポインタには、継承可能な所有権も別名という概念もありません。
-そのため、Rust は生のポインタを追跡する努力を一切しませんし、名前のポインタは極めて危険です。
+生ポインタには、継承可能な所有権も別名という概念もありません。
+そのため、Rust は生ポインタを追跡する努力を一切しませんし、生ポインタは極めて危険です。
 
 <!--
 **It is an open question to what degree raw pointers have alias semantics.
@@ -375,6 +375,6 @@ However it is important for these definitions to be sound that the existence of
 a raw pointer does not imply some kind of live path.**
 -->
 
-**生のポインタが別名という意味をどの程度持っているのか、というのはまだ答えの出てない問題です。
-しかし、この節で出てきた定義が健全であるためには、生のポインタを使うとある種の生存パスが
+**生ポインタが別名という意味をどの程度持っているのか、というのはまだ答えの出てない問題です。
+しかし、この節で出てきた定義が健全であるためには、生ポインタを使うとある種の生存パスが
 わからなくなるということ重要です。**
