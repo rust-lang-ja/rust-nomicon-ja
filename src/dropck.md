@@ -181,8 +181,13 @@ Rust nomicon の英語版のこの章が書かれた時点で、ドロップチ�
 確かめるかについてのより細かい部分については全く決まっていません。しかし、大まかな規則は、
 この章全体で注目してきた僅かなものです。
 
+<!--
 **For a generic type to soundly implement drop, its generics arguments must
 strictly outlive it.**
+-->
+
+**ジェネリックな型に、問題なくドロップを実装するためには、そのジェネリックな引数は厳密に
+ジェネリックな型よりも長生きしなければなりません**
 
 Obeying this rule is (usually) necessary to satisfy the borrow
 checker; obeying it is sufficient but not necessary to be
