@@ -163,6 +163,7 @@ live as long as it does actually were destroyed first.
 Drop トレイトを実装することで、 Inspector が最後に任意のコードを実行するようにできます。
 これは、 Inspector と同じだけ生きる型が、実際には先に破棄されると潜在的に認識できます。
 
+<!--
 Interestingly, only generic types need to worry about this. If they aren't
 generic, then the only lifetimes they can harbor are `'static`, which will truly
 live *forever*. This is why this problem is referred to as *sound generic drop*.
@@ -170,6 +171,15 @@ Sound generic drop is enforced by the *drop checker*. As of this writing, some
 of the finer details of how the drop checker validates types is totally up in
 the air. However The Big Rule is the subtlety that we have focused on this whole
 section:
+-->
+
+興味深いことに、ジェネリックな型だけがこれを気に掛ける必要があります。
+もし型がジェネリックでなければ、型が隠蔽できる唯一のライフタイムは `'static` です。
+このライフタイムは本当に*永遠に*生き続けます。これが、この問題が*サウンドジェネリックドロップ*として
+呼ばれている理由です。サウンドジェネリックドロップは*ドロップチェッカ*によって実行されます。
+Rust nomicon の英語版のこの章が書かれた時点で、ドロップチェッカがどのように型の有効性を
+確かめるかについてのより細かい部分については全く決まっていません。しかし、大まかな規則は、
+この章全体で注目してきた僅かなものです。
 
 **For a generic type to soundly implement drop, its generics arguments must
 strictly outlive it.**
