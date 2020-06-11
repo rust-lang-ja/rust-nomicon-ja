@@ -200,9 +200,14 @@ sound to drop.
 この規則に従うことは十分条件ですが、健全であるためには不必要です。
 つまり、もし型がこの規則に則っている場合、その型は疑いなく安全にドロップできます。
 
+<!--
 The reason that it is not always necessary to satisfy the above rule
 is that some Drop implementations will not access borrowed data even
 though their type gives them the capability for such access.
+-->
+
+この規則を必ずしも満足させる必要がない理由は、借用されたデータにアクセス
+できるにも関わらず、データにアクセスしない Drop の実装が存在するからです。
 
 For example, this variant of the above `Inspector` example will never
 access borrowed data:
