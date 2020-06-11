@@ -209,8 +209,12 @@ though their type gives them the capability for such access.
 この規則を必ずしも満足させる必要がない理由は、借用されたデータにアクセス
 できるにも関わらず、データにアクセスしない Drop の実装が存在するからです。
 
+<!--
 For example, this variant of the above `Inspector` example will never
 access borrowed data:
+-->
+
+例えばこの、上記の `Inspector` の変種の例では、借用されたデータにアクセスしません。
 
 ```rust,ignore
 struct Inspector<'a>(&'a u8, &'static str);
