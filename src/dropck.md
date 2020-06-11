@@ -221,6 +221,7 @@ struct Inspector<'a>(&'a u8, &'static str);
 
 impl<'a> Drop for Inspector<'a> {
     fn drop(&mut self) {
+        // Inspector(_, {}) はいつ調査を*しない*かを知っています。
         println!("Inspector(_, {}) knows when *not* to inspect.", self.1);
     }
 }
@@ -229,9 +230,9 @@ fn main() {
     let (inspector, days);
     days = Box::new(1);
     inspector = Inspector(&days, "gadget");
-    // Let's say `days` happens to get dropped first.
-    // Even when Inspector is dropped, its destructor will not access the
-    // borrowed `days`.
+    // `days` が先にドロップするとしましょう。
+    // Inspector がドロップしたとしても、デストラクタは
+    // 借用された `days` にアクセスしません。
 }
 ```
 
