@@ -189,10 +189,16 @@ strictly outlive it.**
 **ジェネリックな型に、問題なくドロップを実装するためには、そのジェネリックな引数は厳密に
 ジェネリックな型よりも長生きしなければなりません**
 
+<!--
 Obeying this rule is (usually) necessary to satisfy the borrow
 checker; obeying it is sufficient but not necessary to be
 sound. That is, if your type obeys this rule then it's definitely
 sound to drop.
+-->
+
+この規則に従うことは、 (通常) 借用チェッカを満足させるために必要です。
+この規則に従うことは十分条件ですが、健全であるためには不必要です。
+つまり、もし型がこの規則に則っている場合、その型は疑いなく安全にドロップできます。
 
 The reason that it is not always necessary to satisfy the above rule
 is that some Drop implementations will not access borrowed data even
