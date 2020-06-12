@@ -305,8 +305,14 @@ the future.
 
 ドロップチェックを制御する正確な規則は、将来緩和される可能性があります。
 
+<!--
 The current analysis is deliberately conservative and trivial; it forces all
 borrowed data in a value to outlive that value, which is certainly sound.
+-->
+
+現在の分析方法は、わざと控えめで、自明なものにしています。
+ある値の中の全ての借用されたデータが、その値よりも長生きするよう強制するのです。
+これは明らかに健全です。
 
 Future versions of the language may make the analysis more precise, to
 reduce the number of cases where sound code is rejected as unsafe.
