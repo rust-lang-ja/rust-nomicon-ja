@@ -273,10 +273,16 @@ live long enough.
 しかしながら、上記の*両方の*変種は、 `fn main` の分析中に、 `days` が
 十分長生きしないと言われ、借用チェッカに弾かれるでしょう。
 
+<!--
 The reason is that the borrow checking analysis of `main` does not
 know about the internals of each Inspector's Drop implementation.  As
 far as the borrow checker knows while it is analyzing `main`, the body
 of an inspector's destructor might access that borrowed data.
+-->
+
+理由は、 `main` の借用チェックの際、 借用チェッカはそれぞれの Inspector の Drop の実装の
+内部については知らないからです。借用チェッカが `main` の分析をしている間、 inspector の
+デストラクタの本体が借用されたデータにアクセスするかもしれないと借用チェッカが認識しているからです。
 
 Therefore, the drop checker forces all borrowed data in a value to
 strictly outlive that value.
