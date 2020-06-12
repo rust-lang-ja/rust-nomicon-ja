@@ -236,7 +236,11 @@ fn main() {
 }
 ```
 
+<!--
 Likewise, this variant will also never access borrowed data:
+-->
+
+同様に、この変種も、借用されたデータにアクセスしません。
 
 ```rust,ignore
 use std::fmt;
