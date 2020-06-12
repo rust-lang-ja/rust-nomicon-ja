@@ -298,8 +298,12 @@ strictly outlive that value.
 
 # 脱出口
 
+<!--
 The precise rules that govern drop checking may be less restrictive in
 the future.
+-->
+
+ドロップチェックを制御する正確な規則は、将来緩和される可能性があります。
 
 The current analysis is deliberately conservative and trivial; it forces all
 borrowed data in a value to outlive that value, which is certainly sound.
