@@ -264,9 +264,14 @@ fn main() {
 }
 ```
 
+<!--
 However, *both* of the above variants are rejected by the borrow
 checker during the analysis of `fn main`, saying that `days` does not
 live long enough.
+-->
+
+しかしながら、上記の*両方の*変種は、 `fn main` の分析中に、 `days` が
+十分長生きしないという理由で借用チェッカに弾かれるでしょう。
 
 The reason is that the borrow checking analysis of `main` does not
 know about the internals of each Inspector's Drop implementation.  As
