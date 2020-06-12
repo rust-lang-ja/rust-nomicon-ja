@@ -292,7 +292,11 @@ strictly outlive that value.
 それゆえにドロップチェッカは、ある値の中の全ての借用されたデータが、
 その値よりも厳密に長生きするよう強制するのです。
 
+<!--
 # An Escape Hatch
+-->
+
+# 脱出口
 
 The precise rules that govern drop checking may be less restrictive in
 the future.
