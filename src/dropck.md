@@ -284,8 +284,13 @@ of an inspector's destructor might access that borrowed data.
 内部については知らないからです。借用チェッカが `main` の分析をしている間、 inspector の
 デストラクタの本体が借用されたデータにアクセスするかもしれないと借用チェッカが認識しているからです。
 
+<!--
 Therefore, the drop checker forces all borrowed data in a value to
 strictly outlive that value.
+-->
+
+それゆえにドロップチェッカは、ある値の中の全ての借用されたデータが、
+その値よりも厳密に長生きするよう強制するのです。
 
 # An Escape Hatch
 
