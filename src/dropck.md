@@ -314,10 +314,17 @@ borrowed data in a value to outlive that value, which is certainly sound.
 ある値の中の全ての借用されたデータが、その値よりも長生きするよう強制するのです。
 これは明らかに健全です。
 
+<!--
 Future versions of the language may make the analysis more precise, to
 reduce the number of cases where sound code is rejected as unsafe.
 This would help address cases such as the two Inspectors above that
 know not to inspect during destruction.
+-->
+
+将来の Rust のバージョンでは、健全なコードがアンセーフとして弾かれるケースの
+数を減らすため、分析がより正確になるかもしれません。
+これは、デストラクションの際にデータにアクセスしないと分かっている、
+上記の 2 つの Inspector のようなケースに対処するのを手助けしてくれるでしょう。
 
 In the meantime, there is an unstable attribute that one can use to
 assert (unsafely) that a generic type's destructor is *guaranteed* to
