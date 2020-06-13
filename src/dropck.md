@@ -337,9 +337,14 @@ to do so.
 たとえ破棄されたデータにアクセス出来るとしても、そのようなアクセスをしないと*保証する*と見なす、
 アンステーブルなアトリビュートを使用することが出来ます。
 
+<!--
 That attribute is called `may_dangle` and was introduced in [RFC 1327]
 (https://github.com/rust-lang/rfcs/blob/master/text/1327-dropck-param-eyepatch.md).
 To deploy it on the Inspector example from above, we would write:
+-->
+
+そのアトリビュートは `may_dangle` と呼ばれ、 [RFC 1327](https://github.com/rust-lang/rfcs/blob/master/text/1327-dropck-param-eyepatch.md) で
+導入されました。上記の Inspector の例でこのアトリビュートを使用する場合、以下のように書きます。
 
 ```rust,ignore
 struct Inspector<'a>(&'a u8, &'static str);
