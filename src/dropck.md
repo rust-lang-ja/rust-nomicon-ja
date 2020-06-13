@@ -326,10 +326,16 @@ know not to inspect during destruction.
 これは、デストラクションの際にデータにアクセスしないと分かっている、
 上記の 2 つの Inspector のようなケースに対処するのを手助けしてくれるでしょう。
 
+<!--
 In the meantime, there is an unstable attribute that one can use to
 assert (unsafely) that a generic type's destructor is *guaranteed* to
 not access any expired data, even if its type gives it the capability
 to do so.
+-->
+
+それまでは、 (アンセーフではあるが) ジェネリックな型のデストラクタが、
+たとえ破棄されたデータにアクセス出来るとしても、そのようなアクセスをしないと*保証する*と見なす、
+アンステーブルなアトリビュートを使用することが出来ます。
 
 That attribute is called `may_dangle` and was introduced in [RFC 1327]
 (https://github.com/rust-lang/rfcs/blob/master/text/1327-dropck-param-eyepatch.md).
