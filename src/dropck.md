@@ -351,6 +351,7 @@ struct Inspector<'a>(&'a u8, &'static str);
 
 unsafe impl<#[may_dangle] 'a> Drop for Inspector<'a> {
     fn drop(&mut self) {
+        // Inspector(_, {}) はいつ調査を*しない*かを知っています。
         println!("Inspector(_, {}) knows when *not* to inspect.", self.1);
     }
 }
