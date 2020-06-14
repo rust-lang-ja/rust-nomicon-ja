@@ -357,9 +357,15 @@ unsafe impl<#[may_dangle] 'a> Drop for Inspector<'a> {
 }
 ```
 
+<!--
 Use of this attribute requires the `Drop` impl to be marked `unsafe` because the
 compiler is not checking the implicit assertion that no potentially expired data
 (e.g. `self.0` above) is accessed.
+-->
+
+このアトリビュートを使用する場合、 `Drop` の impl が `unsafe` でマークされる必要があります。
+なぜならコンパイラは、いかなる既に破棄されているかもしれないデータ (例えば上記の `self.0`) にアクセスしないという
+暗黙の主張について検査しないからです。
 
 The attribute can be applied to any number of lifetime and type parameters. In
 the following example, we assert that we access no data behind a reference of
