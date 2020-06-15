@@ -419,7 +419,11 @@ other avenues for such indirect access.)
 (impl の特殊化など、言語仕様の将来の変更によっては、このような間接的なアクセスの
 方法が追加されるかもしれません。)
 
+<!--
 Here is an example of invoking a callback:
+-->
+
+これは、コールバックを呼び出す例です。
 
 ```rust,ignore
 struct Inspector<T>(T, &'static str, Box<for <'r> fn(&'r T) -> String>);
