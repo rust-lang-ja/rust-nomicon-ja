@@ -439,7 +439,11 @@ impl<T> Drop for Inspector<T> {
 }
 ```
 
+<!--
 Here is an example of a trait method call:
+-->
+
+これは、トレイトメソッドの呼び出しの例です。
 
 ```rust,ignore
 use std::fmt;
