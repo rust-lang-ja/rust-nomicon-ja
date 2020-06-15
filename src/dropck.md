@@ -367,11 +367,19 @@ compiler is not checking the implicit assertion that no potentially expired data
 なぜならコンパイラは、いかなる既に破棄されているかもしれないデータ (例えば上記の `self.0`) にアクセスしないという
 暗黙の主張について検査しないからです。
 
+<!--
 The attribute can be applied to any number of lifetime and type parameters. In
 the following example, we assert that we access no data behind a reference of
 lifetime `'b` and that the only uses of `T` will be moves or drops, but omit
 the attribute from `'a` and `U`, because we do access data with that lifetime
 and that type:
+-->
+
+このアトリビュートはライフタイムや型パラメータにいくつでも適用することが出来ます。
+以下の例では、 `'b` のライフタイムを持つ参照の先にあるデータにアクセスしないこと、
+そして、 `T` がムーブやドロップにのみ使用されることを主張します。
+しかし、 `'a` と `U` にはこのアトリビュートは省略します。なぜなら、これらのライフタイムや
+型を持つデータに実際にアクセスするからです。
 
 ```rust,ignore
 use std::fmt::Display;
