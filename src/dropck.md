@@ -462,9 +462,14 @@ impl<T: fmt::Display> Drop for Inspector<T> {
 }
 ```
 
+<!--
 And of course, all of these accesses could be further hidden within
 some other method invoked by the destructor, rather than being written
 directly within it.
+-->
+
+そして勿論、これら全てのアクセスは、何か他のメソッド内に直接書かれるよりも、
+デストラクタによって呼び出されたメソッドの内部に更に隠されうる事があります。
 
 In all of the above cases where the `&'a u8` is accessed in the
 destructor, adding the `#[may_dangle]`
