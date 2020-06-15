@@ -484,7 +484,11 @@ the attribute.
 誤用に対して型が脆弱になり、これによって惨事を引き起こします。
 このアトリビュートを付け足すのは避ける方がよいでしょう。
 
+<!--
 # Is that all about drop checker?
+-->
+
+# これがドロップチェッカについてのすべてですか?
 
 It turns out that when writing unsafe code, we generally don't need to
 worry at all about doing the right thing for the drop checker. However there
