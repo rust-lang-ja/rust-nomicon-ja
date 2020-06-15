@@ -452,8 +452,10 @@ struct Inspector<T: fmt::Display>(T, &'static str);
 
 impl<T: fmt::Display> Drop for Inspector<T> {
     fn drop(&mut self) {
-        // There is a hidden call to `<T as Display>::fmt` below, which
-        // could access a borrow e.g. if `T` is `&'a _`
+        // 以下のコードには隠れている、 `<T as Display>::fmt` の呼び出しがあります。
+        // もし `T` が `&'a _` である場合、この呼び出しで借用されたデータにアクセス出来てしまうでしょう。
+
+        // Inspector({}, {}) はうっかり破棄されたデータにアクセスしてしまいます。
         println!("Inspector({}, {}) unwittingly inspects expired data.",
                  self.0, self.1);
     }
