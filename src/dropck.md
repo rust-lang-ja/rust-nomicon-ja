@@ -430,7 +430,9 @@ struct Inspector<T>(T, &'static str, Box<for <'r> fn(&'r T) -> String>);
 
 impl<T> Drop for Inspector<T> {
     fn drop(&mut self) {
-        // The `self.2` call could access a borrow e.g. if `T` is `&'a _`.
+        // 例えば `T` が `&'a _` である場合、`self.2` の呼び出しによって借用されたデータにアクセス出来てしまうでしょう。
+
+        // Inspector({}, {}) はうっかり破棄されたデータにアクセスしてしまいます。
         println!("Inspector({}, {}) unwittingly inspects expired data.",
                  (self.2)(&self.0), self.1);
     }
