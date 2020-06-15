@@ -403,8 +403,13 @@ occur indirectly. Examples of such indirect access are:
 しかし、ジェネリックな型パラメータに対処する際、このようなアクセスは
 間接的に起こりえます。このような間接的なアクセスの例です。
 
+<!--
  * invoking a callback,
  * via a trait method call.
+-->
+
+ * コールバックを呼び出す場合
+ * トレイトメソッドの呼び出しを経由する場合
 
 (Future changes to the language, such as impl specialization, may add
 other avenues for such indirect access.)
