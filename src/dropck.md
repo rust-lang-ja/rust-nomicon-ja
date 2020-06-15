@@ -393,9 +393,15 @@ unsafe impl<'a, #[may_dangle] 'b, #[may_dangle] T, U: Display> Drop for Inspecto
 }
 ```
 
+<!--
 It is sometimes obvious that no such access can occur, like the case above.
 However, when dealing with a generic type parameter, such access can
 occur indirectly. Examples of such indirect access are:
+-->
+
+時々、上記のように、このようなアクセスが起こらないことが明白な場合があります。
+しかし、ジェネリックな型パラメータに対処する際、このようなアクセスは
+間接的に起こりえます。このような間接的なアクセスの例です。
 
  * invoking a callback,
  * via a trait method call.
