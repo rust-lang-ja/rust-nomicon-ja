@@ -471,11 +471,18 @@ directly within it.
 そして勿論、これら全てのアクセスは、何か他のメソッド内に直接書かれるよりも、
 デストラクタによって呼び出されたメソッドの内部に更に隠されうる事があります。
 
+<!--
 In all of the above cases where the `&'a u8` is accessed in the
 destructor, adding the `#[may_dangle]`
 attribute makes the type vulnerable to misuse that the borrower
 checker will not catch, inviting havoc. It is better to avoid adding
 the attribute.
+-->
+
+デストラクタ内の `&'a u8` にアクセスされる上記の全てのケースにおいて、
+`#[may_dangle]` アトリビュートを付け足すことで、借用チェッカが捕捉しないような
+誤用に対して型が脆弱になり、これによって惨事を引き起こします。
+このアトリビュートを付け足すのは避ける方がよいでしょう。
 
 # Is that all about drop checker?
 
