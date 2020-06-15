@@ -411,8 +411,13 @@ occur indirectly. Examples of such indirect access are:
  * コールバックを呼び出す場合
  * トレイトメソッドの呼び出しを経由する場合
 
+ <!--
 (Future changes to the language, such as impl specialization, may add
 other avenues for such indirect access.)
+-->
+
+(impl の特殊化など、言語仕様の将来の変更によっては、このような間接的なアクセスの
+方法が追加されるかもしれません。)
 
 Here is an example of invoking a callback:
 
