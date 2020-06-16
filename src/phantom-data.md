@@ -4,10 +4,16 @@
 
 # ファントムデータ
 
+<!--
 When working with unsafe code, we can often end up in a situation where
 types or lifetimes are logically associated with a struct, but not actually
 part of a field. This most commonly occurs with lifetimes. For instance, the
 `Iter` for `&'a [T]` is (approximately) defined as follows:
+-->
+
+アンセーフなコードを扱っているとき、しばしば型やライフタイムが論理的に構造体に結びついているけれども、
+フィールドの一部には結びついていない状況に陥る事があります。
+例えば、 `&'a [T]` に対する `Iter` は (大体) 以下のように定義されます。
 
 ```rust,ignore
 struct Iter<'a, T: 'a> {
