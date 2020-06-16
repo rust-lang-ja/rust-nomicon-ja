@@ -49,8 +49,13 @@ useful such as the information needed by drop check.
 これは、明白に型システムに、欲しい変種の種類を伝えるよりも、エラーが起こりにくいと思われていた一方、
 例えばドロップチェッカが必要とする情報など、利便なものを提供していました。
 
+<!--
 Iter logically contains a bunch of `&'a T`s, so this is exactly what we tell
 the PhantomData to simulate:
+-->
+
+Iter は論理的には沢山の `&'a T` を保持しているため、この型が、 PhantomData に
+装うよう伝えるものです。
 
 ```
 use std::marker;
