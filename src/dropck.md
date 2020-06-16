@@ -161,7 +161,8 @@ live as long as it does actually were destroyed first.
 -->
 
 Drop トレイトを実装することで、 Inspector が破棄される際に任意のコードを実行するようにできます。
-これは、 Inspector と同じだけ生きる型が、実際には先に破棄されると潜在的に認識できます。
+これは、 Inspector と同じだけ生きる型が、実際にはそれより先に破棄されると Inspector が
+潜在的に認識できることを意味します。
 
 <!--
 Interestingly, only generic types need to worry about this. If they aren't
