@@ -365,7 +365,7 @@ compiler is not checking the implicit assertion that no potentially expired data
 -->
 
 このアトリビュートを使用する場合、 `Drop` の impl が `unsafe` でマークされる必要があります。
-なぜならコンパイラは、いかなる既に破棄されているかもしれないデータ (例えば上記の `self.0`) にアクセスしないという
+なぜならコンパイラは、いかなる既に破棄されているかもしれないデータ (例えば上記の `self.0`) にアクセスしないという、
 暗黙の主張について検査しないからです。
 
 <!--
