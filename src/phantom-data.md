@@ -147,7 +147,14 @@ standard library made a utility for itself called `Unique<T>` which:
 アロケーションを持つ生ポインタは普及しているパターンですので、
 標準ライブラリが以下の機能を持つ、 `Unique<T>` と呼ばれるユーティリティを作りました。
 
+<!--
 * wraps a `*const T` for variance
 * includes a `PhantomData<T>`
 * auto-derives Send/Sync as if T was contained
 * marks the pointer as NonZero for the null-pointer optimization
+-->
+
+* 変性を得るため、 `*const T` をラップします
+* `PhantomData<T>` を含みます
+* T が Send/Sync を保持しているかのように、自動的に継承します
+* ヌルポインタ最適化のため、ポインタを非 0 としてマークします
