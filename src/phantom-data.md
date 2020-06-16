@@ -105,11 +105,18 @@ Nope.
 
 いいえ。
 
+<!--
 The drop checker will generously determine that `Vec<T>` does not own any values
 of type T. This will in turn make it conclude that it doesn't need to worry
 about Vec dropping any T's in its destructor for determining drop check
 soundness. This will in turn allow people to create unsoundness using
 Vec's destructor.
+-->
+
+ドロップチェッカは、 `Vec<T>` がいかなる型 `T` の値も持たないと惜しみなく決定するでしょう。
+これは結果的に、ドロップチェックの健全性を決定するために Vec のデストラクタ内で、 Vec がなにか T の
+値をドロップするということを心配する必要がないと結論付けます。
+この結果、 Vec のデストラクタを使用して、無制限という性質を作り出すことを可能にするのです。
 
 In order to tell dropck that we *do* own values of type T, and therefore may
 drop some T's when *we* drop, we must add an extra PhantomData saying exactly
