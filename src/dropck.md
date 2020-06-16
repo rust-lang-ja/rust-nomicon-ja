@@ -490,8 +490,14 @@ the attribute.
 
 # これがドロップチェッカについてのすべてですか?
 
+<!--
 It turns out that when writing unsafe code, we generally don't need to
 worry at all about doing the right thing for the drop checker. However there
 is one special case that you need to worry about, which we will look at in
 the next section.
+-->
+
+アンセーフなコードを書いているとき、一般的にはドロップチェッカに対して正しいことをする
+ことに関する心配は全く必要ないことが分かります。しかし、心配しなければいけない1つ特別な
+ケースが存在します。これは次のセクションで見ていきます。
 
