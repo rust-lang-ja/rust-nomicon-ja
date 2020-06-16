@@ -139,8 +139,13 @@ struct Vec<T> {
 }
 ```
 
+<!--
 Raw pointers that own an allocation is such a pervasive pattern that the
 standard library made a utility for itself called `Unique<T>` which:
+-->
+
+アロケーションを持つ生ポインタは普及しているパターンですので、
+標準ライブラリが以下の機能を持つ、 `Unique<T>` と呼ばれるユーティリティを作りました。
 
 * wraps a `*const T` for variance
 * includes a `PhantomData<T>`
