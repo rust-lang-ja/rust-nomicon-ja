@@ -67,8 +67,13 @@ struct Iter<'a, T: 'a> {
 }
 ```
 
+<!--
 and that's it. The lifetime will be bounded, and your iterator will be variant
 over `'a` and `T`. Everything Just Works.
+-->
+
+これでよし。ライフタイムには制限が付き、イテレータは `'a` と `T` において変性になります。
+全てうまく行きます。
 
 Another important example is Vec, which is (approximately) defined as follows:
 
