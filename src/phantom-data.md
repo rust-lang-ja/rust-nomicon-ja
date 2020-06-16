@@ -1,4 +1,8 @@
+<!--
 # PhantomData
+-->
+
+# ファントムデータ
 
 When working with unsafe code, we can often end up in a situation where
 types or lifetimes are logically associated with a struct, but not actually
