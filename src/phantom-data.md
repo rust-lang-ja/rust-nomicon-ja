@@ -132,7 +132,7 @@ that:
 use std::marker;
 
 struct Vec<T> {
-    data: *const T, // *const for covariance!
+    data: *const T, // 変性を得るため *const です!
     len: usize,
     cap: usize,
     _marker: marker::PhantomData<T>,
