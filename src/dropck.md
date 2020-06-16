@@ -70,7 +70,7 @@ the compiler can't sufficiently reason about the actual destruction order
 of the contents of any type that implements Drop.
 -->
 
-タプルや構造体といった組み込み複合体のフィールドに、デストラクションの順番を
+タプルや構造体といった組み込みの複合体のフィールドに、デストラクションの順番を
 定めることは*出来ました*。しかし、 Vec のようなものの場合どうでしょうか? Vec は
 純粋なライブラリのコードを通してその要素を手動でドロップする必要があります。
 一般に、 Drop を実装しているものは、最後にその内部をいじくる機会があります。
