@@ -83,7 +83,7 @@ Another important example is Vec, which is (approximately) defined as follows:
 
 ```
 struct Vec<T> {
-    data: *const T, // *const for variance!
+    data: *const T, // 変性を得るため *const です!
     len: usize,
     cap: usize,
 }
