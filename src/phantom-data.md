@@ -75,7 +75,11 @@ over `'a` and `T`. Everything Just Works.
 これでよし。ライフタイムには制限が付き、イテレータは `'a` と `T` において変性になります。
 全てうまく行きます。
 
+<!--
 Another important example is Vec, which is (approximately) defined as follows:
+-->
+
+もう一つ重要な例は Vec で、これは (大体) 以下のように定義されます。
 
 ```
 struct Vec<T> {
