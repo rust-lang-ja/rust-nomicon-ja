@@ -36,11 +36,18 @@ correct variance and drop checking.
 参照しなければなりません。正しくこれを行なうことは、正しい変性とドロップチェックを
 得るために必要です。
 
+<!--
 We do this using `PhantomData`, which is a special marker type. `PhantomData`
 consumes no space, but simulates a field of the given type for the purpose of
 static analysis. This was deemed to be less error-prone than explicitly telling
 the type-system the kind of variance that you want, while also providing other
 useful such as the information needed by drop check.
+-->
+
+これを、 `PhantomData` という、特別なマーカー型を使って行ないます。
+`PhantomData` はスペースを消費しませんが、静的分析のために、与えられた型のフィールドを装います。
+これは、明白に型システムに、欲しい変種の種類を伝えるよりも、エラーが起こりにくいと思われていた一方、
+例えばドロップチェッカが必要とする情報など、利便なものを提供していました。
 
 Iter logically contains a bunch of `&'a T`s, so this is exactly what we tell
 the PhantomData to simulate:
