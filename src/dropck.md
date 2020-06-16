@@ -281,7 +281,7 @@ far as the borrow checker knows while it is analyzing `main`, the body
 of an inspector's destructor might access that borrowed data.
 -->
 
-理由は、 `main` の借用チェックの際、 借用チェッカはそれぞれの Inspector の Drop の実装の
+理由は、 `main` の借用チェックの際、 借用チェッカは上記 2 つの例の、それぞれの Inspector の Drop の実装の
 内部については知らないからです。借用チェッカが `main` の分析をしている間、 inspector の
 デストラクタの本体が借用されたデータにアクセスするかもしれないと借用チェッカが認識しているからです。
 
