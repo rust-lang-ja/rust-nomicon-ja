@@ -160,7 +160,7 @@ death. This means it can potentially observe that types that are supposed to
 live as long as it does actually were destroyed first.
 -->
 
-Drop トレイトを実装することで、 Inspector が最後に任意のコードを実行するようにできます。
+Drop トレイトを実装することで、 Inspector が破棄される際に任意のコードを実行するようにできます。
 これは、 Inspector と同じだけ生きる型が、実際には先に破棄されると潜在的に認識できます。
 
 <!--
