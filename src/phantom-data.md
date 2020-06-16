@@ -118,9 +118,15 @@ Vec's destructor.
 値をドロップするということを心配する必要がないと結論付けます。
 この結果、 Vec のデストラクタを使用して、無制限という性質を作り出すことを可能にするのです。
 
+<!--
 In order to tell dropck that we *do* own values of type T, and therefore may
 drop some T's when *we* drop, we must add an extra PhantomData saying exactly
 that:
+-->
+
+ドロップチェックに、型 T の値を*本当に*保持していて、それ故に *Vec* が
+ドロップする際、なにか T の値もドロップするかもしれないと伝えるために、
+追加の PhantomData を加えなければなりません。
 
 ```
 use std::marker;
