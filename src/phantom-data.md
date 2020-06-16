@@ -89,11 +89,21 @@ struct Vec<T> {
 }
 ```
 
+<!--
 Unlike the previous example, it *appears* that everything is exactly as we
 want. Every generic argument to Vec shows up in at least one field.
 Good to go!
+-->
 
+前の例と違い、これは、全てが期待しているものと全く同じ*ように見えます*。
+Vec の全てのジェネリックな引数は少なくとも1つのフィールドに現れます。
+さあ準備完了!
+
+<!--
 Nope.
+-->
+
+いいえ。
 
 The drop checker will generously determine that `Vec<T>` does not own any values
 of type T. This will in turn make it conclude that it doesn't need to worry
