@@ -311,7 +311,7 @@ The current analysis is deliberately conservative and trivial; it forces all
 borrowed data in a value to outlive that value, which is certainly sound.
 -->
 
-現在の分析方法は、わざと控えめで、自明なものにしています。
+現在の分析方法は、わざと保守的で、自明なものにしています。
 ある値の中の全ての借用されたデータが、その値よりも長生きするよう強制するのです。
 これは明らかに健全です。
 
