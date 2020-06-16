@@ -22,11 +22,19 @@ struct Iter<'a, T: 'a> {
 }
 ```
 
+<!--
 However because `'a` is unused within the struct's body, it's *unbounded*.
 Because of the troubles this has historically caused, unbounded lifetimes and
 types are *forbidden* in struct definitions. Therefore we must somehow refer
 to these types in the body. Correctly doing this is necessary to have
 correct variance and drop checking.
+-->
+
+しかし、 `'a` は構造体の本体内では使用されないため、 `'a` は*無制限*のライフタイムとなります。
+これが過去に引き起こしてきた問題のために、無制限のライフタイムと無制限の型は、
+構造体の定義内では*禁じられています*。それ故に、なんとかして本体内にあるこれらの型を
+参照しなければなりません。正しくこれを行なうことは、正しい変性とドロップチェックを
+得るために必要です。
 
 We do this using `PhantomData`, which is a special marker type. `PhantomData`
 consumes no space, but simulates a field of the given type for the purpose of
