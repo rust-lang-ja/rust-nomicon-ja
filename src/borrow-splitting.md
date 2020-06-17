@@ -71,10 +71,17 @@ error: aborting due to 2 previous errors
 (エラー: 上記の 2 つのエラーのため中止)
 ```
 
+<!--
 While it was plausible that borrowck could understand this simple case, it's
 pretty clearly hopeless for borrowck to understand disjointness in general
 container types like a tree, especially if distinct keys actually *do* map
 to the same value.
+-->
+
+仮に借用チェッカがこの単純なケースを理解しても合理的に見えただろう一方、
+特に、異なるキーが本当に*本当に*同じ値にマップされているときなど、
+木のような一般的なコンテナ内の、各値の素集合性を借用チェッカが理解することを望むのは、
+明らかに無駄です。
 
 In order to "teach" borrowck that what we're doing is ok, we need to drop down
 to unsafe code. For instance, mutable slices expose a `split_at_mut` function
