@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js">
+<html lang="en" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -34,7 +34,7 @@
 
         
     </head>
-    <body class="light">
+    <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
             var path_to_root = "";
@@ -62,8 +62,11 @@
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
-            document.body.className = theme;
-            document.querySelector('html').className = theme + ' js';
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
@@ -79,8 +82,8 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="affix"><a href="index.html">はじめに</a></li><li><a href="meet-safe-and-unsafe.html"><strong aria-hidden="true">1.</strong> 安全と危険のご紹介</a></li><li><ol class="section"><li><a href="safe-unsafe-meaning.html"><strong aria-hidden="true">1.1.</strong> 安全と危険の相互作用</a></li><li><a href="working-with-unsafe.html"><strong aria-hidden="true">1.2.</strong> Unsafe と連携する</a></li></ol></li><li><a href="data.html"><strong aria-hidden="true">2.</strong> データレイアウト</a></li><li><ol class="section"><li><a href="repr-rust.html"><strong aria-hidden="true">2.1.</strong> repr(Rust)</a></li><li><a href="exotic-sizes.html"><strong aria-hidden="true">2.2.</strong> 奇妙なサイズの型</a></li><li><a href="other-reprs.html"><strong aria-hidden="true">2.3.</strong> 代替メモリレイアウト</a></li></ol></li><li><a href="ownership.html"><strong aria-hidden="true">3.</strong> 所有権とライフタイム</a></li><li><ol class="section"><li><a href="references.html"><strong aria-hidden="true">3.1.</strong> リファレンス</a></li><li><a href="lifetimes.html"><strong aria-hidden="true">3.2.</strong> ライフタイム</a></li><li><a href="lifetime-mismatch.html"><strong aria-hidden="true">3.3.</strong> ライフタイムシステムの限界</a></li><li><a href="lifetime-elision.html"><strong aria-hidden="true">3.4.</strong> ライフタイムの省略</a></li><li><a href="unbounded-lifetimes.html"><strong aria-hidden="true">3.5.</strong> 無制限のライフタイム</a></li><li><a href="hrtb.html"><strong aria-hidden="true">3.6.</strong> 高階トレイト境界</a></li><li><a href="subtyping.html"><strong aria-hidden="true">3.7.</strong> Subtyping and Variance</a></li><li><a href="dropck.html"><strong aria-hidden="true">3.8.</strong> Drop Check</a></li><li><a href="phantom-data.html"><strong aria-hidden="true">3.9.</strong> PhantomData</a></li><li><a href="borrow-splitting.html"><strong aria-hidden="true">3.10.</strong> Splitting Borrows</a></li></ol></li><li><a href="conversions.html"><strong aria-hidden="true">4.</strong> Type Conversions</a></li><li><ol class="section"><li><a href="coercions.html"><strong aria-hidden="true">4.1.</strong> Coercions</a></li><li><a href="dot-operator.html"><strong aria-hidden="true">4.2.</strong> The Dot Operator</a></li><li><a href="casts.html"><strong aria-hidden="true">4.3.</strong> Casts</a></li><li><a href="transmutes.html"><strong aria-hidden="true">4.4.</strong> Transmutes</a></li></ol></li><li><a href="uninitialized.html"><strong aria-hidden="true">5.</strong> Uninitialized Memory</a></li><li><ol class="section"><li><a href="checked-uninit.html"><strong aria-hidden="true">5.1.</strong> Checked</a></li><li><a href="drop-flags.html"><strong aria-hidden="true">5.2.</strong> Drop Flags</a></li><li><a href="unchecked-uninit.html"><strong aria-hidden="true">5.3.</strong> Unchecked</a></li></ol></li><li><a href="obrm.html"><strong aria-hidden="true">6.</strong> 所有権に基づいたリソース管理</a></li><li><ol class="section"><li><a href="constructors.html"><strong aria-hidden="true">6.1.</strong> Constructors</a></li><li><a href="destructors.html"><strong aria-hidden="true">6.2.</strong> Destructors</a></li><li><a href="leaking.html"><strong aria-hidden="true">6.3.</strong> Leaking</a></li></ol></li><li><a href="unwinding.html"><strong aria-hidden="true">7.</strong> Unwinding</a></li><li><ol class="section"><li><a href="exception-safety.html"><strong aria-hidden="true">7.1.</strong> 例外安全性</a></li><li><a href="poisoning.html"><strong aria-hidden="true">7.2.</strong> Poisoning</a></li></ol></li><li><a href="concurrency.html"><strong aria-hidden="true">8.</strong> Concurrency</a></li><li><ol class="section"><li><a href="races.html"><strong aria-hidden="true">8.1.</strong> Races</a></li><li><a href="send-and-sync.html"><strong aria-hidden="true">8.2.</strong> Send and Sync</a></li><li><a href="atomics.html"><strong aria-hidden="true">8.3.</strong> Atomics</a></li></ol></li><li><a href="vec.html"><strong aria-hidden="true">9.</strong> Implementing Vec</a></li><li><ol class="section"><li><a href="vec-layout.html"><strong aria-hidden="true">9.1.</strong> Layout</a></li><li><a href="vec-alloc.html"><strong aria-hidden="true">9.2.</strong> Allocating</a></li><li><a href="vec-push-pop.html"><strong aria-hidden="true">9.3.</strong> Push and Pop</a></li><li><a href="vec-dealloc.html"><strong aria-hidden="true">9.4.</strong> Deallocating</a></li><li><a href="vec-deref.html"><strong aria-hidden="true">9.5.</strong> Deref</a></li><li><a href="vec-insert-remove.html"><strong aria-hidden="true">9.6.</strong> Insert and Remove</a></li><li><a href="vec-into-iter.html"><strong aria-hidden="true">9.7.</strong> IntoIter</a></li><li><a href="vec-raw.html"><strong aria-hidden="true">9.8.</strong> RawVec</a></li><li><a href="vec-drain.html"><strong aria-hidden="true">9.9.</strong> Drain</a></li><li><a href="vec-zsts.html"><strong aria-hidden="true">9.10.</strong> Handling Zero-Sized Types</a></li><li><a href="vec-final.html"><strong aria-hidden="true">9.11.</strong> Final Code</a></li></ol></li><li><a href="arc-and-mutex.html"><strong aria-hidden="true">10.</strong> Implementing Arc and Mutex</a></li></ol>
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">はじめに</a></li><li class="chapter-item expanded "><a href="meet-safe-and-unsafe.html"><strong aria-hidden="true">1.</strong> 安全と危険のご紹介</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="safe-unsafe-meaning.html"><strong aria-hidden="true">1.1.</strong> 安全と危険の相互作用</a></li><li class="chapter-item expanded "><a href="working-with-unsafe.html"><strong aria-hidden="true">1.2.</strong> Unsafe と連携する</a></li></ol></li><li class="chapter-item expanded "><a href="data.html"><strong aria-hidden="true">2.</strong> データレイアウト</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="repr-rust.html"><strong aria-hidden="true">2.1.</strong> repr(Rust)</a></li><li class="chapter-item expanded "><a href="exotic-sizes.html"><strong aria-hidden="true">2.2.</strong> 奇妙なサイズの型</a></li><li class="chapter-item expanded "><a href="other-reprs.html"><strong aria-hidden="true">2.3.</strong> 代替メモリレイアウト</a></li></ol></li><li class="chapter-item expanded "><a href="ownership.html"><strong aria-hidden="true">3.</strong> 所有権とライフタイム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">3.1.</strong> リファレンス</a></li><li class="chapter-item expanded "><a href="lifetimes.html"><strong aria-hidden="true">3.2.</strong> ライフタイム</a></li><li class="chapter-item expanded "><a href="lifetime-mismatch.html"><strong aria-hidden="true">3.3.</strong> ライフタイムシステムの限界</a></li><li class="chapter-item expanded "><a href="lifetime-elision.html"><strong aria-hidden="true">3.4.</strong> ライフタイムの省略</a></li><li class="chapter-item expanded "><a href="unbounded-lifetimes.html"><strong aria-hidden="true">3.5.</strong> 無制限のライフタイム</a></li><li class="chapter-item expanded "><a href="hrtb.html"><strong aria-hidden="true">3.6.</strong> 高階トレイト境界</a></li><li class="chapter-item expanded "><a href="subtyping.html"><strong aria-hidden="true">3.7.</strong> Subtyping and Variance</a></li><li class="chapter-item expanded "><a href="dropck.html"><strong aria-hidden="true">3.8.</strong> Drop Check</a></li><li class="chapter-item expanded "><a href="phantom-data.html"><strong aria-hidden="true">3.9.</strong> PhantomData</a></li><li class="chapter-item expanded "><a href="borrow-splitting.html"><strong aria-hidden="true">3.10.</strong> Splitting Borrows</a></li></ol></li><li class="chapter-item expanded "><a href="conversions.html"><strong aria-hidden="true">4.</strong> Type Conversions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="coercions.html"><strong aria-hidden="true">4.1.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="dot-operator.html"><strong aria-hidden="true">4.2.</strong> The Dot Operator</a></li><li class="chapter-item expanded "><a href="casts.html"><strong aria-hidden="true">4.3.</strong> Casts</a></li><li class="chapter-item expanded "><a href="transmutes.html"><strong aria-hidden="true">4.4.</strong> Transmutes</a></li></ol></li><li class="chapter-item expanded "><a href="uninitialized.html"><strong aria-hidden="true">5.</strong> Uninitialized Memory</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="checked-uninit.html"><strong aria-hidden="true">5.1.</strong> Checked</a></li><li class="chapter-item expanded "><a href="drop-flags.html"><strong aria-hidden="true">5.2.</strong> Drop Flags</a></li><li class="chapter-item expanded "><a href="unchecked-uninit.html"><strong aria-hidden="true">5.3.</strong> Unchecked</a></li></ol></li><li class="chapter-item expanded "><a href="obrm.html"><strong aria-hidden="true">6.</strong> 所有権に基づいたリソース管理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="constructors.html"><strong aria-hidden="true">6.1.</strong> Constructors</a></li><li class="chapter-item expanded "><a href="destructors.html"><strong aria-hidden="true">6.2.</strong> Destructors</a></li><li class="chapter-item expanded "><a href="leaking.html"><strong aria-hidden="true">6.3.</strong> Leaking</a></li></ol></li><li class="chapter-item expanded "><a href="unwinding.html"><strong aria-hidden="true">7.</strong> Unwinding</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="exception-safety.html"><strong aria-hidden="true">7.1.</strong> 例外安全性</a></li><li class="chapter-item expanded "><a href="poisoning.html"><strong aria-hidden="true">7.2.</strong> Poisoning</a></li></ol></li><li class="chapter-item expanded "><a href="concurrency.html"><strong aria-hidden="true">8.</strong> Concurrency</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="races.html"><strong aria-hidden="true">8.1.</strong> Races</a></li><li class="chapter-item expanded "><a href="send-and-sync.html"><strong aria-hidden="true">8.2.</strong> Send and Sync</a></li><li class="chapter-item expanded "><a href="atomics.html"><strong aria-hidden="true">8.3.</strong> Atomics</a></li></ol></li><li class="chapter-item expanded "><a href="vec.html"><strong aria-hidden="true">9.</strong> Implementing Vec</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="vec-layout.html"><strong aria-hidden="true">9.1.</strong> Layout</a></li><li class="chapter-item expanded "><a href="vec-alloc.html"><strong aria-hidden="true">9.2.</strong> Allocating</a></li><li class="chapter-item expanded "><a href="vec-push-pop.html"><strong aria-hidden="true">9.3.</strong> Push and Pop</a></li><li class="chapter-item expanded "><a href="vec-dealloc.html"><strong aria-hidden="true">9.4.</strong> Deallocating</a></li><li class="chapter-item expanded "><a href="vec-deref.html"><strong aria-hidden="true">9.5.</strong> Deref</a></li><li class="chapter-item expanded "><a href="vec-insert-remove.html"><strong aria-hidden="true">9.6.</strong> Insert and Remove</a></li><li class="chapter-item expanded "><a href="vec-into-iter.html"><strong aria-hidden="true">9.7.</strong> IntoIter</a></li><li class="chapter-item expanded "><a href="vec-raw.html"><strong aria-hidden="true">9.8.</strong> RawVec</a></li><li class="chapter-item expanded "><a href="vec-drain.html"><strong aria-hidden="true">9.9.</strong> Drain</a></li><li class="chapter-item expanded "><a href="vec-zsts.html"><strong aria-hidden="true">9.10.</strong> Handling Zero-Sized Types</a></li><li class="chapter-item expanded "><a href="vec-final.html"><strong aria-hidden="true">9.11.</strong> Final Code</a></li></ol></li><li class="chapter-item expanded "><a href="arc-and-mutex.html"><strong aria-hidden="true">10.</strong> Implementing Arc and Mutex</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -89,37 +92,36 @@
 
             <div class="page">
                 
-                <div id="menu-bar" class="menu-bar">
-                    <div id="menu-bar-sticky-container">
-                        <div class="left-buttons">
-                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                                <i class="fa fa-bars"></i>
-                            </button>
-                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                                <i class="fa fa-paint-brush"></i>
-                            </button>
-                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
-                            </ul>
-                            
-                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                                <i class="fa fa-search"></i>
-                            </button>
-                            
-                        </div>
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
 
-                        <h1 class="menu-title"></h1>
+                    <h1 class="menu-title"></h1>
 
-                        <div class="right-buttons">
-                            <a href="print.html" title="Print this book" aria-label="Print this book">
-                                <i id="print-button" class="fa fa-print"></i>
-                            </a>
-                            
-                        </div>
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
                     </div>
                 </div>
 
@@ -516,14 +518,15 @@ type could theoretically require that keys implement a new trait called
 キーが <code>Ord</code> ではなく、新しいトレイト<code>UnsafeOrd</code> を実装する事を要求する事ができます。
 このようなコードになるでしょう。</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-use std::cmp::Ordering;
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>use std::cmp::Ordering;
 
 unsafe trait UnsafeOrd {
     fn cmp(&amp;self, other: &amp;Self) -&gt; Ordering;
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <!--
 Then, a type would use `unsafe` to implement `UnsafeOrd`, indicating that
 they've ensured their implementation maintains whatever contracts the
@@ -591,9 +594,9 @@ that. For instance, consider the following toy function:
 <p>たいていの場合、アンセーフな Rust を扱うツールは、限定された状況やバイナリでしか使えないようになっています。
 残念なことに、現実はそれよりも極めて複雑です。例えば、以下の簡単な関数を見てみましょう。</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-fn index(idx: usize, arr: &amp;[u8]) -&gt; Option&lt;u8&gt; {
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>fn index(idx: usize, arr: &amp;[u8]) -&gt; Option&lt;u8&gt; {
     if idx &lt; arr.len() {
         unsafe {
             Some(*arr.get_unchecked(idx))
@@ -602,7 +605,8 @@ fn index(idx: usize, arr: &amp;[u8]) -&gt; Option&lt;u8&gt; {
         None
     }
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <!--
 Clearly, this function is safe. We check that the index is in bounds, and if it
 is, index into the array in an unchecked manner. But even in such a trivial
@@ -614,9 +618,9 @@ function, the scope of the unsafe block is questionable. Consider changing the
 しかしこのような自明な関数でさえも、unsafe ブロックのスコープには疑問が残ります。
 <code>&lt;</code> を <code>&lt;=</code> に変えてみましょう。</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-fn index(idx: usize, arr: &amp;[u8]) -&gt; Option&lt;u8&gt; {
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>fn index(idx: usize, arr: &amp;[u8]) -&gt; Option&lt;u8&gt; {
     if idx &lt;= arr.len() {
         unsafe {
             Some(*arr.get_unchecked(idx))
@@ -625,7 +629,8 @@ fn index(idx: usize, arr: &amp;[u8]) -&gt; Option&lt;u8&gt; {
         None
     }
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <!--
 This program is now unsound, and yet *we only modified safe code*. This is the
 fundamental problem of safety: it's non-local. The soundness of our unsafe
@@ -677,11 +682,11 @@ impl&lt;T&gt; Vec&lt;T&gt; {
         }
     }
 
-    # fn reallocate(&amp;mut self) { }
-}
+<span class="boring">    fn reallocate(&amp;mut self) { }
+</span>}
 
-# fn main() {}
-</code></pre></pre>
+<span class="boring">fn main() {}
+</span></code></pre></pre>
 <!--
 This code is simple enough to reasonably audit and verify. Now consider
 adding the following method:
@@ -822,14 +827,15 @@ type's size is a multiple of its alignment. For instance:
 また全体のサイズがアラインメントの倍数になるようにします。
 例えば、</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-struct A {
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>struct A {
     a: u8,
     b: u32,
     c: u16,
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <!--
 will be 32-bit aligned on an architecture that aligns these primitives to their
 respective sizes. The whole struct will therefore have a size that is a multiple
@@ -839,16 +845,17 @@ of 32-bits. It will potentially become:
 32ビットにアラインされます。そのため全体の構造体のサイズも 32ビットの倍数になります。
 このようになるでしょう。</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-struct A {
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>struct A {
     a: u8,
     _pad1: [u8; 3], // `b` のアラインメントのため
     b: u32,
     c: u16,
     _pad2: [u8; 2], // 全体のサイズを 4バイトの倍数にするため
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <!--
 There is *no indirection* for these types; all data is stored within the struct,
 as you would expect in C. However with the exception of arrays (which are
@@ -859,9 +866,9 @@ Rust. Given the two following struct definitions:
 しかし、配列は例外（配列は隙間なく順にパックされます）ですが、Rust ではデータレイアウトは
 デフォルトでは規定されていません。以下の 2 つの構造体の定義を見てみましょう。</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-struct A {
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>struct A {
     a: i32,
     b: u64,
 }
@@ -870,7 +877,8 @@ struct B {
     a: i32,
     b: u64,
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <!--
 Rust *does* guarantee that two instances of A have their data laid out in
 exactly the same way. However Rust *does not* currently guarantee that an
@@ -892,14 +900,15 @@ For instance, consider this struct:
 -->
 <p>例えば、次の構造体を見てみましょう。</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-struct Foo&lt;T, U&gt; {
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>struct Foo&lt;T, U&gt; {
     count: u16,
     data1: T,
     data2: U,
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <!--
 Now consider the monomorphizations of `Foo<u32, u16>` and `Foo<u16, u32>`. If
 Rust lays out the fields in the order specified, we expect it to pad the
@@ -940,26 +949,28 @@ Enums make this consideration even more complicated. Naively, an enum such as:
 -->
 <p>Enum については、もっと複雑な検討が必要になります。つまり、この enum</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-enum Foo {
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>enum Foo {
     A(u32),
     B(u64),
     C(u8),
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <!--
 would be laid out as:
 -->
 <p>は、次のようにレイアウトされるでしょう。</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-struct FooRepr {
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>struct FooRepr {
     data: u64, // `tag` によって、u64, u32, u8 のいずれかになります
     tag: u8,   // 0 = A, 1 = B, 2 = C
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <!--
 And indeed this is approximately how it would be laid out in general (modulo the
 size and position of `tag`).
@@ -1050,14 +1061,15 @@ makes them a DST as well:
 -->
 <p>構造体は、最後のフィールドとして DST を直接含むことができますが、その構造体自体も DST になります。</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-// 直接スタックには置けません。
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>// 直接スタックには置けません。
 struct Foo {
     info: u32,
     data: [u8],
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <!--
 **NOTE: [As of Rust 1.0 struct DSTs are broken if the last field has
 a variable position based on its alignment][dst-issue].**
@@ -1073,9 +1085,9 @@ Rust actually allows types to be specified that occupy no space:
 -->
 <p>Rust ではなんと、スペースを持たない型を使うことができます。</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-struct Foo; // フィールドがない = サイズ 0
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>struct Foo; // フィールドがない = サイズ 0
 
 // すべてのフィールドのサイズがない = サイズ 0
 struct Baz {
@@ -1083,7 +1095,8 @@ struct Baz {
     qux: (),      // 空のタプルにはサイズがありません
     baz: [u8; 0], // 空の配列にはサイズがありません
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <!--
 On their own, Zero Sized Types (ZSTs) are, for obvious reasons, pretty useless.
 However as with many curious layout choices in Rust, their potential is realized
@@ -1151,10 +1164,11 @@ Empty types can be declared by specifying an enum with no variants:
 こういう型は、型レベルの話にのみ出てきて、値レベルには出てきません。
 空の型は、識別子を持たない enum として宣言できます。</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-enum Void {} // 識別子なし = 空
-#}</code></pre></pre>
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>enum Void {} // 識別子なし = 空
+<span class="boring">}
+</span></code></pre></pre>
 <!--
 Empty types are even more marginal than ZSTs. The primary motivating example for
 Void types is type-level unreachability. For instance, suppose an API needs to
@@ -1408,7 +1422,7 @@ Rust で参照を取ると、参照先とその所有者がフリーズされる
 <!--
 # References
 -->
-<h1><a class="header" href="#リファレンス" id="リファレンス">リファレンス</a></h1>
+<h1><a class="header" href="#参照" id="参照">参照</a></h1>
 <!--
 This section gives a high-level view of the memory model that *all* Rust
 programs must satisfy to be correct. Safe code is statically verified
@@ -1419,33 +1433,33 @@ this more fundamental model is satisfied.
 -->
 <p>このセクションでは、<em>すべての</em> Rust プログラムが満たさなくてはならないメモリモデルを
 ざっくりと見ていきます。
-安全なコードは、ボローチェッカーによってこのモデルを満たしていることが静的に検証されます。
-危険なコードは、ボローチェッカーの裏をかくかもしれませんが、このモデルを満たします。
+安全なコードは、借用チェッカによってこのモデルを満たしていることが静的に検証されます。
+アンセーフなコードは、借用チェッカの裏をかくかもしれませんが、このモデルを満たします。
 この基本的なモデルを満たしている限り、より多くのプログラムがコンパイルに通るように
-ボローチェッカーを拡張することも可能です。</p>
+借用チェッカを拡張することも可能です。</p>
 <!--
 There are two kinds of reference:
 -->
-<p>リファレンスには 2 種類があります。</p>
+<p>参照には 2 種類あります。</p>
 <!--
 * Shared reference: `&`
 * Mutable reference: `&mut`
 -->
 <ul>
-<li>共有リファレンス: <code>&amp;</code></li>
-<li>可変リファレンス: <code>&amp;mut</code></li>
+<li>共有参照: <code>&amp;</code></li>
+<li>可変参照: <code>&amp;mut</code></li>
 </ul>
 <!--
 Which obey the following rules:
 -->
-<p>リファレンスは次のルールに従います。</p>
+<p>参照は次のルールに従います。</p>
 <!--
 * A reference cannot outlive its referent
 * A mutable reference cannot be aliased
 -->
 <ul>
-<li>リファレンスのライフタイムが、参照先のライフタイムより長くなることはできません。</li>
-<li>可変リファレンスは、別名を持つことができません。</li>
+<li>参照のライフタイムが、参照先のライフタイムより長くなることはできません。</li>
+<li>可変参照は、別名を持つことができません。</li>
 </ul>
 <!--
 That's it. That's the whole model. Of course, we should probably define
@@ -1479,7 +1493,7 @@ fields (if any), and so on.
 <p>もし、Rust が扱うのが値だけ（ポインタはない）であれば、
 すべての値はただ一つの変数か複合型に所有されることになります。
 ここから所有権の<em>木構造</em>が自然に導かれます。
-スタック自信が木のルートになり、変数が直接の子になります。
+スタック自身が木のルートになり、変数が直接の子になります。
 変数がフィールドを持つのであれば、それは変数の直接の子になるでしょう。</p>
 <!--
 From this view, every value in Rust has a unique *path* in the tree of
@@ -1497,8 +1511,8 @@ We can then define references as simply *names* for paths. When you create a
 reference, you're declaring that an ownership path exists to this address
 of memory.
 -->
-<p>リファレンスは、単純にパスの名前と定義できます。
-リファレンスを作成するということは、あるメモリアドレスに所有権の
+<p>参照は、単純にパスの<em>名前</em>と定義できます。
+参照を作成するということは、あるメモリアドレスに所有権の
 パスが存在することを宣言するということです。</p>
 <!--
 Tragically, plenty of data doesn't reside on the stack, and we must also
@@ -1536,11 +1550,11 @@ temporarily, establishing a unique path to that value (and therefore all
 its children). If this is done, the value may be mutated. In particular, a
 mutable reference can be taken.
 -->
-<p>一般に、一意ではないパスを参照できるのは、共有リファレンスだけです。
+<p>一般に、一意ではないパスを参照できるのは、共有参照だけです。
 しかし、相互排他を保証するメカニズムがあれば、一時的にその値（とそしてすべての子ども）への唯一のパスを確立し、
 「唯一の真の所有者」を確立できるかもしれません。
 もしこれが可能なら、その値を変更できるかもしれません。
-とくに、可変リファレンスを取ることができるようになります。</p>
+とくに、可変参照を取ることができるようになります。</p>
 <!--
 The most common way to establish such a path is through *interior mutability*,
 in contrast to the *inherited mutability* that everything in Rust normally uses.
@@ -1557,8 +1571,8 @@ then it is safe to mutate or even move its internals. Note however that the
 refcount itself uses interior mutability.
 -->
 <p>この効果を使った興味深い例が Rc 自身です。もし Rc の参照カウントが 1 なら、
-内部状態を変更したり、move したりしても安全です。
-refcount 自体も内部可変性を使っています。</p>
+内部状態を変更したり、ムーブしたりしても安全です。
+参照カウント自体も内部可変性を使っています。</p>
 <!--
 In order to correctly communicate to the type system that a variable or field of
 a struct can have interior mutability, it must be wrapped in an UnsafeCell. This
@@ -1577,54 +1591,55 @@ UnsafeCell 自身は、その値に対して内部可変の操作を安全には
 Note: Liveness is not the same thing as a *lifetime*, which will be explained
 in detail in the next section of this chapter.
 -->
-<p>生存性 (liveness) は、この章の次の節でで詳しく説明する <em>ライフタイム (lifetime)</em> とは違うことに注意してください。</p>
+<p>生存性 (liveness) は、この章の次の節で詳しく説明する <em>ライフタイム (lifetime)</em> とは違うことに注意してください。</p>
 <!--
 Roughly, a reference is *live* at some point in a program if it can be
 dereferenced. Shared references are always live unless they are literally
 unreachable (for instance, they reside in freed or leaked memory). Mutable
 references can be reachable but *not* live through the process of *reborrowing*.
 -->
-<p>大雑把に言うと、リファレンスをデリファレンスできるとき、
-そのリファレンスは、プログラム中のある時点で <em>生存している</em> といえます。
-共有リファレンスは、文字通り到達不可能な場合（たとえば、解放済みメモリやリークしてるメモリに
+<p>大雑把に言うと、参照を参照外しできるとき、
+その参照は、プログラム中のある時点で <em>生存している</em> といえます。
+共有参照は、文字通り到達不可能な場合（たとえば、解放済みメモリやリークしてるメモリに
 存在している場合）を除いて、常に生存しています。
-可変リファレンスには、<em>又貸し</em>というプロセスがあるので、到達できても生存して<em>いない</em>ことがあります。</p>
+可変参照には、<em>又貸し</em>というプロセスがあるので、到達できても生存して<em>いない</em>ことがあります。</p>
 <!--
 A mutable reference can be reborrowed to either a shared or mutable reference to
 one of its descendants. A reborrowed reference will only be live again once all
 reborrows derived from it expire. For instance, a mutable reference can be
 reborrowed to point to a field of its referent:
 -->
-<p>可変リファレンスは、その子孫を他の共有リファレンスまたは可変リファレンスに又貸しすることができます。
-又貸ししたリファレンスは、派生したすべたの又貸しの有効期限が切れると、ふたたび生存することになります。
-たとえば、可変リファレンスは、その参照先の一つのフィールドを指すリファレンスを又貸しすることができます。</p>
+<p>可変参照は、その子孫を他の共有参照または可変参照に又貸しすることができます。
+又貸しした参照は、派生したすべての又貸しの有効期限が切れると、再び生存することになります。
+例えば、可変参照は、その参照先の一つのフィールドを指す参照を又貸しすることができます。</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-let x = &amp;mut (1, 2);
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>let x = &amp;mut (1, 2);
 {
     // x のフィールドを又借りする
     let y = &amp;mut x.0;
     // この時点で y は生存しているが、x は生存していない
     *y = 3;
 }
-// y がスコープ外に出たので、x がふたたび生存中になる
+// y がスコープ外に出たので、x が再び生存中になる
 *x = (5, 7);
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <!--
 It is also possible to reborrow into *multiple* mutable references, as long as
 they are *disjoint*: no reference is an ancestor of another. Rust
 explicitly enables this to be done with disjoint struct fields, because
 disjointness can be statically proven:
 -->
-<p><em>複数の</em>可変リファレンスに又貸しすることも可能ですが、その複数のリファレンスは互いに素でなくてはいけません。
-つまり、どのリファレンスも他のリファレンスの先祖であってはいけないということです。
+<p><em>複数の</em>可変参照に又貸しすることも可能ですが、その複数の参照は互いに素でなくてはいけません。
+つまり、どの参照も他の参照の先祖であってはいけないということです。
 Rust は、構造体のフィールドが互いに素であることを静的に証明できるので、
 フィールドの又貸しが可能です。</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-let x = &amp;mut (1, 2);
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>let x = &amp;mut (1, 2);
 {
     // x を 2 つの互いに素なフィールドに又貸しする
     let y = &amp;mut x.0;
@@ -1636,7 +1651,8 @@ let x = &amp;mut (1, 2);
 }
 // y と z がスコープ外に出たので、x がふたたび生存中になる
 *x = (5, 7);
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <!--
 However it's often the case that Rust isn't sufficiently smart to prove that
 multiple borrows are disjoint. *This does not mean it is fundamentally illegal
@@ -1654,24 +1670,24 @@ moved out of (though mutable references *can* be swapped out of). This power is
 only given to *live* owned references because moving its referent would of
 course invalidate all outstanding references prematurely.
 -->
-<p>話を単純にするために、変数をリファレンス型の一種、<em>所有中</em>リファレンス、と仮定してみましょう。
-所有中リファレンスは、可変リファレンスとほとんど同じ意味を持ちます。
-可変リファレンスまたは共有リファレンスに又貸しでき、それによって生存中ではなくなります。
-生存中の所有中リファレンスは、値を解放（move out）できるという特殊な性質があります
-（とはいえ、可変リファレンスは値をスワップアウトできますが）。
-この能力は、<em>生存中の</em> 所有中リファレンスのみに与えられています。
-そうでなければ、早すぎるタイミングでその他のリファレンスを無効にすることになります。</p>
+<p>話を単純にするために、変数を参照型の一種、<em>所有中</em>参照、と仮定してみましょう。
+所有中参照は、可変参照とほとんど同じ意味を持ちます。
+可変参照または共有参照に又貸しでき、それによって生存中ではなくなります。
+生存中の所有中参照は、値を解放（ムーブアウト）できるという特殊な性質があります
+（とはいえ、可変参照は値をスワップアウトできますが）。
+この能力は、<em>生存中の</em> 所有中参照のみに与えられています。
+そうでなければ、早すぎるタイミングでその他の参照を無効にすることになります。</p>
 <!--
 As a local lint against inappropriate mutation, only variables that are marked
 as `mut` can be borrowed mutably.
 -->
-<p>不適切な値の変更を lint が検出するので、<code>mut</code> とマークされた変数だけが変更可能なように貸し出されます。</p>
+<p>不適切な値の変更を lint が検出するので、<code>mut</code> とマークされた変数だけが変更可能なように借用されます。</p>
 <!--
 It is interesting to note that Box behaves exactly like an owned reference. It
 can be moved out of, and Rust understands it sufficiently to reason about its
 paths like a normal variable.
 -->
-<p>Box がまさに所有中リファレンスのように振る舞うというおとを覚えておくと良いでしょう。
+<p>Box がまさに所有中参照のように振る舞うということを覚えておくと良いでしょう。
 Box は値を解放することができ、変数が解放された時と同様に Rust はそのパスについて推論するための
 十分な情報を持っています。</p>
 <!--
@@ -1686,13 +1702,13 @@ With liveness and paths defined, we can now properly define *aliasing*:
 **A mutable reference is aliased if there exists another live reference to one
 of its ancestors or descendants.**
 -->
-<p><strong>可変リファレンスは、その先祖か子孫に他のリファレンスが存在している時、別名を持つといいます。</strong></p>
+<p><strong>可変参照は、その先祖か子孫に他の参照が存在している時、別名を持つといいます。</strong></p>
 <!--
 (If you prefer, you may also say the two live references alias *each other*.
 This has no semantic consequences, but is probably a more useful notion when
 verifying the soundness of a construct.)
 -->
-<p>（二つの生存中のリファレンスが互いの別名になっている、と言うこともできます。
+<p>（二つの生存中の参照が互いの別名になっている、と言うこともできます。
 意味上の違いは特にありませんが、プログラムの構造の健全性を検証する時には、
 この考え方の方がわかりやすいでしょう。）</p>
 <!--
@@ -1707,17 +1723,17 @@ has *raw pointers*: `*const T` and `*mut T`. Raw pointers have no inherent
 ownership or aliasing semantics. As a result, Rust makes absolutely no effort to
 track that they are used correctly, and they are wildly unsafe.
 -->
-<p>実際には、もう少し複雑です。リファレンスに加えて Rust には<em>生のポインタ</em>もあります。
+<p>実際には、もう少し複雑です。参照に加えて Rust には<em>生ポインタ</em>もあります。
 <code>*const T</code> と <code>*mut T</code> のことです。
-生のポインタには、継承可能な所有権も別名という概念もありません。
-そのため、Rust は生のポインタを追跡する努力を一切しませんし、名前のポインタは極めて危険です。</p>
+生ポインタには、継承可能な所有権も別名という概念もありません。
+そのため、Rust は生ポインタを追跡する努力を一切しませんし、生ポインタは極めて危険です。</p>
 <!--
 **It is an open question to what degree raw pointers have alias semantics.
 However it is important for these definitions to be sound that the existence of
 a raw pointer does not imply some kind of live path.**
 -->
-<p><strong>生のポインタが別名という意味をどの程度持っているのか、というのはまだ答えの出てない問題です。
-しかし、この節で出てきた定義が健全であるためには、生のポインタを使うとある種の生存パスが
+<p><strong>生ポインタが別名という意味をどの程度持っているのか、というのはまだ答えの出てない問題です。
+しかし、この節で出てきた定義が健全であるためには、生ポインタを使うとある種の生存パスが
 わからなくなるということ重要です。</strong></p>
 <!--
 # Lifetimes
@@ -1731,7 +1747,7 @@ the scope it's valid for.
 -->
 <p>Rust は今まで説明してきたルールを<em>ライフタイム</em>を使って強制します。
 ライフタイムとは、要するにプログラム中のスコープの名前です。
-リファレンスと、リファレンスを含むものとは、有効なスコープを示すライフタイムでタグづけられています。</p>
+参照と、参照を含むものとは、有効なスコープを示すライフタイムでタグ付けられています。</p>
 <!--
 Within a function body, Rust generally doesn't let you explicitly name the
 lifetimes involved. This is because it's generally not really necessary
@@ -1778,17 +1794,18 @@ completely desugar this simple piece of Rust code:
 しかし、複数の変数がお互いを参照している場合は問題になります。
 簡単な例として、この単純な Rust コードを脱糖してみましょう。</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-let x = 0;
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>let x = 0;
 let y = &amp;x;
 let z = &amp;y;
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <!--
 The borrow checker always tries to minimize the extent of a lifetime, so it will
 likely desugar to the following:
 -->
-<p>ボローチェッカーは、ライフタイムの長さを最小にしようとするので、
+<p>借用チェッカは、ライフタイムの長さを最小にしようとするので、
 これは次のように脱糖されるでしょう。</p>
 <pre><code class="language-rust ignore">// `'a: {` と `&amp;'b x` は正当な構文ではないことに注意してください!
 'a: {
@@ -1812,21 +1829,22 @@ Wow. That's... awful. Let's all take a moment to thank Rust for making this easi
 Actually passing references to outer scopes will cause Rust to infer
 a larger lifetime:
 -->
-<p>リファレンスを外のスコープに返す場合は、Rust はより大きいライフタイムを推論することになります。</p>
+<p>参照を外のスコープに返す場合は、Rust はより大きいライフタイムを推論することになります。</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-let x = 0;
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>let x = 0;
 let z;
 let y = &amp;x;
 z = y;
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <pre><code class="language-rust ignore">'a: {
     let x: i32 = 0;
     'b: {
         let z: &amp;'b i32;
         'c: {
-            // ここでは 'b を使う必要があります。なぜならこのリファレンスは
+            // ここでは 'b を使う必要があります。なぜならこの参照は
             // スコープ `b に渡されるからです。
             let y: &amp;'b i32 = &amp;'b x;
             z = y;
@@ -1837,7 +1855,7 @@ z = y;
 <!--
 # Example: references that outlive referents
 -->
-<h1><a class="header" href="#例参照先より長く生きるリファレンス" id="例参照先より長く生きるリファレンス">例：参照先より長く生きるリファレンス</a></h1>
+<h1><a class="header" href="#例参照先より長く生きる参照" id="例参照先より長く生きる参照">例：参照先より長く生きる参照</a></h1>
 <!--
 Alright, let's look at some of those examples from before:
 -->
@@ -1866,10 +1884,10 @@ that we're going to find a str somewhere in the scope the reference
 to the u32 originated in, or somewhere *even earlier*. That's a bit of a tall
 order.
 -->
-<p><code>as_str</code> のシグネチャは、<em>ある</em>ライフタイムを持つ u32 へのリファレンスをとり、
-そのリファレンスと<em>同じ長さだけ</em>生きる str へのリファレンスを生成することを約束します。
+<p><code>as_str</code> のシグネチャは、<em>ある</em>ライフタイムを持つ u32 への参照をとり、
+その参照と<em>同じ長さだけ</em>生きる str への参照を生成することを約束します。
 このシグネチャが問題になるかもしれないと、すでに話しました。
-このシグネチャは、引数の u32 を指すリファレンスが生成されたスコープか、もしくは<em>それより以前のスコープ</em>で、str を探すことを意味します。これはなかなか難しい注文です。</p>
+このシグネチャは、引数の u32 を指す参照が生成されたスコープか、もしくは<em>それより以前のスコープ</em>で、str を探すことを意味します。これはなかなか難しい注文です。</p>
 <!--
 We then proceed to compute the string `s`, and return a reference to it. Since
 the contract of our function says the reference must outlive `'a`, that's the
@@ -1880,13 +1898,13 @@ created a reference whose lifetime outlives its referent, which is *literally*
 the first thing we said that references can't do. The compiler rightfully blows
 up in our face.
 -->
-<p>それから文字列 <code>s</code> を計算し、そのリファレンスを返します。
-この関数は、返されるリファレンスが <code>'a</code> より長生きすることを約束しているので、このリファレンスのライフタイムとして <code>'a</code> を使うことを推論します。
+<p>それから文字列 <code>s</code> を計算し、その参照を返します。
+この関数は、返される参照が <code>'a</code> より長生きすることを約束しているので、この参照のライフタイムとして <code>'a</code> を使うことを推論します。
 残念なことに、<code>s</code> はスコープ <code>'b</code> の中で定義されているので、
 この推論が妥当になるためには、<code>'b</code> が <code>'a</code> を含んでいなくてはなりません。
 ところがこれは明らかに成立しません。<code>'a</code> はこの関数呼び出しそものを含んでいるからです。
-結局、この関数は参照先より長生きするリファレンスを生成してしまいました。
-そしてこれは<em>文字通り</em>、リファレンスがやってはいけないことの一番目でした。
+結局、この関数は参照先より長生きする参照を生成してしまいました。
+そしてこれは<em>文字通り</em>、参照がやってはいけないことの一番目でした。
 コンパイラは正当に怒りだします。</p>
 <!--
 To make this more clear, we can expand the example:
@@ -1920,12 +1938,13 @@ Of course, the right way to write this function is as follows:
 -->
 <p>この関数を正しく書くと、当然次のようになります。</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-fn to_string(data: &amp;u32) -&gt; String {
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>fn to_string(data: &amp;u32) -&gt; String {
     format!(&quot;{}&quot;, data)
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <!--
 We must produce an owned value inside the function to return it! The only way
 we could have returned an `&'a str` would have been if it was in a field of the
@@ -1945,7 +1964,7 @@ our implementation *just a bit*.)
 <!--
 # Example: aliasing a mutable reference
 -->
-<h1><a class="header" href="#例可変リファレンスの別名付け" id="例可変リファレンスの別名付け">例：可変リファレンスの別名付け</a></h1>
+<h1><a class="header" href="#例可変参照の別名付け" id="例可変参照の別名付け">例：可変参照の別名付け</a></h1>
 <!--
 How about the other example:
 -->
@@ -1978,9 +1997,9 @@ violate the *second* rule of references.
 -->
 <p>これは、すこし分かりにくいですが面白い問題です。
 私たちは、Rust が次のような理由で、このプログラムを拒否するだろうと思っています。
-つまり、<code>push</code> するために <code>data</code> への可変リファレンスを取ろうとするとき、
-<code>data</code> の子孫への共有リファレンス <code>x</code> が生存中です。
-これは可変リファレンスの別名となり、リファレンスの<em>二番目</em>のルールに違反します。</p>
+つまり、<code>push</code> するために <code>data</code> への可変参照を取ろうとするとき、
+<code>data</code> の子孫への共有参照 <code>x</code> が生存中です。
+これは可変参照の別名となり、参照の<em>二番目</em>のルールに違反します。</p>
 <!--
 However this is *not at all* how Rust reasons that this program is bad. Rust
 doesn't understand that `x` is a reference to a subpath of `data`. It doesn't
@@ -1991,10 +2010,10 @@ it then sees us try to make an `&'c mut data`. Rust knows that `'c` is contained
 within `'b`, and rejects our program because the `&'b data` must still be live!
 -->
 <p>ところが、Rust がこのプログラムを悪いと推論するやり方は<em>全く違う</em>のです。
-Rust は、<code>x</code> が <code>data</code> の部分パスへのリファレンスであることは理解しません。
+Rust は、<code>x</code> が <code>data</code> の部分パスへの参照であることは理解しません。
 Rust は Vec のことなど何も知らないのです。
 Rust に<em>見えている</em>のは、<code>x</code> は println! のためにスコープ <code>'b</code> の中で生存しなくてはならないことです。
-さらに、<code>Index::index</code> のシグネチャは、<code>data</code> を参照するリファレンスが
+さらに、<code>Index::index</code> のシグネチャは、<code>data</code> を参照する参照が
 スコープ <code>'b</code> の中で生存することを要求します。
 <code>push</code> を呼び出すときに、<code>&amp;'c mut data</code> を取ろうとすることを Rust は理解します。
 Rust はスコープ <code>'c</code> が スコープ <code>'b</code> に含まれていることを知っているので、
@@ -2008,7 +2027,7 @@ to the compiler. However it does mean that several programs that are totally
 correct with respect to Rust's *true* semantics are rejected because lifetimes
 are too dumb.
 -->
-<p>ここでは、ライフタイムをチェックするシステムは、私たちが維持したいリファレンスの意味論に比べて
+<p>ここでは、ライフタイムをチェックするシステムは、私たちが維持したい参照の意味論に比べて
 とても荒いことを見てきました。
 ほとんどの場合、<em>これで全く大丈夫</em>です。
 私たちが書いたコードをコンパイラに説明するために丸一日費やさなくてもいいからです。
@@ -2040,21 +2059,24 @@ One might expect it to compile. We call `mutate_and_share`, which mutably borrow
 would expect `foo.share()` to succeed as `foo` shouldn't be mutably borrowed.
 -->
 <p>このコードはコンパイルを通ると思うかもしれません。
-<code>mutate_and_share</code> は、<code>foo</code> を一時的に変更可能に借り入れますが、
-共有リファレンスを返します。
-そうすると、<code>foo</code> は変更可能には借りられていないので、
+<code>mutate_and_share</code> は、<code>foo</code> を一時的に変更可能に借用しますが、
+共有参照を返します。
+そうすると、<code>foo</code> は変更可能には借用されていないので、
 <code>foo.share()</code> は成功すると思うでしょう。</p>
 <!--
 However when we try to compile it:
 -->
 <p>ところが、このコードをコンパイルすると・・・。</p>
 <pre><code class="language-text">&lt;anon&gt;:11:5: 11:8 error: cannot borrow `foo` as immutable because it is also borrowed as mutable
+(エラー: `foo`は可変で借用されているので、不変で借用できません)
 &lt;anon&gt;:11     foo.share();
               ^~~
 &lt;anon&gt;:10:16: 10:19 note: previous borrow of `foo` occurs here; the mutable borrow prevents subsequent moves, borrows, or modification of `foo` until the borrow ends
+(注釈: 以前の`foo`の借用はここで起きています。可変での借用は、その借用が終わるまで、その後のムーブや、借用、`foo`の変更を防ぎます)
 &lt;anon&gt;:10     let loan = foo.mutate_and_share();
                          ^~~
 &lt;anon&gt;:12:2: 12:2 note: previous borrow ends here
+(注釈: 以前の借用はここで終了しています)
 &lt;anon&gt;:8 fn main() {
 &lt;anon&gt;:9     let mut foo = Foo;
 &lt;anon&gt;:10     let loan = foo.mutate_and_share();
@@ -2102,7 +2124,7 @@ blows up in our face!
 This program is clearly correct according to the reference semantics we actually
 care about, but the lifetime system is too coarse-grained to handle that.
 -->
-<p>このプログラムは、私たちにとって重要なリファレンスの意味的には全く正しいのですが、
+<p>このプログラムは、私たちにとって重要な参照の意味的には全く正しいのですが、
 ライフタイムシステムはこのプログラムを処理するには粗すぎるのです。</p>
 <!--
 TODO: other common problems? SEME regions stuff, mostly?
@@ -2128,7 +2150,7 @@ T&lt;'a&gt;
 <!--
 Lifetime positions can appear as either "input" or "output":
 -->
-<p>ライフタイムポジションは、「入力」か「出力」のいづれかです。</p>
+<p>ライフタイムポジションは、「入力」または「出力」という形で現れます。</p>
 <!--
 * For `fn` definitions, input refers to the types of the formal arguments
   in the `fn` definition, while output refers to
@@ -2161,7 +2183,7 @@ Elision rules are as follows:
   parameter.
 -->
 <ul>
-<li>入力ポジションの省略されたライフタイムは、それぞれ別のライフタイムパラメタになります。</li>
+<li>入力ポジションの省略されたライフタイムは、それぞれ別のライフタイムパラメータになります。</li>
 </ul>
 <!--
 * If there is exactly one input lifetime position (elided or not), that lifetime
@@ -2226,9 +2248,9 @@ will fail to typecheck, but the unbound lifetime will perfectly mold into
 `&'a &'a T` as needed. However for most intents and purposes, such an unbounded
 lifetime can be regarded as `'static`.
 -->
-<p>アンセーフなコードはときに、リファレンスやライフタイムを何も無いところから生み出したりします。
+<p>アンセーフなコードはときに、参照やライフタイムを何も無いところから生み出したりします。
 そのようなライフタイムは、<em>無制限</em> なライフタイムとして世界に登場します。
-最もよくあるのは、生のポインタのデリファンレンスし、無制限のライフタイムを持つ参照を作り出すというケースです。
+最もよくあるのは、生ポインタの参照外しをし、無制限のライフタイムを持つ参照を作り出すというケースです。
 このライフタイムは、そのコンテキストが必要とするだけ大きくなります。そしてこれは <code>'static</code> よりも強力なしくみです。
 <code>&amp;'static &amp;'a T</code> は型チェックをパスしませんが、無制限のライフタイムを使うと必要に応じて <code>&amp;'a &amp;'a T</code> となるからです。
 しかし、ほとんどの意図と目的においては、無制限のライフタイムを <code>'static</code> と解釈できます。</p>
@@ -2269,7 +2291,7 @@ in a function.
 -->
 <p>関数内部でライフタイムを制限することは、エラーを生みやすくなります。
 ライフタイムを制限する安全で簡単な方法は、制限つきライフタイムの関数から返される値を使うことです。
-しかし、これができない場合は、そのリファレンスを特定のライフタイムがついた場所に置くと良いでしょう。
+しかし、これができない場合は、その参照を特定のライフタイムがついた場所に置くと良いでしょう。
 残念ながら、関数内のすべてのライフタイムに名前をつけるのは不可能です。</p>
 <!--
 # Higher-Rank Trait Bounds (HRTBs)
@@ -2460,13 +2482,14 @@ expected.</p>
 <p>However what should happen when passing <em>by-value</em> is less obvious. It turns out
 that, yes, you can use subtyping when passing by-value. That is, this works:</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-fn get_box&lt;'a&gt;(str: &amp;'a str) -&gt; Box&lt;&amp;'a str&gt; {
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>fn get_box&lt;'a&gt;(str: &amp;'a str) -&gt; Box&lt;&amp;'a str&gt; {
     // string literals are `&amp;'static str`s
     Box::new(&quot;hello&quot;)
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>Weakening when you pass by-value is fine because there's no one else who
 &quot;remembers&quot; the old lifetime in the Box. The reason a variant <code>&amp;mut</code> was
 trouble was because there's always someone else who remembers the original
@@ -2514,9 +2537,9 @@ in multiple fields.</p>
 <li>Otherwise, Foo is invariant over A</li>
 </ul>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-use std::cell::Cell;
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>use std::cell::Cell;
 
 struct Foo&lt;'a, 'b, A: 'a, B: 'b, C, D, E, F, G, H&gt; {
     a: &amp;'a A,     // variant over 'a and A
@@ -2529,7 +2552,8 @@ struct Foo&lt;'a, 'b, A: 'a, B: 'b, C, D, E, F, G, H&gt; {
     h1: H,        // would also be variant over H except...
     h2: Cell&lt;H&gt;,  // invariant over H, because invariance wins
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <h1><a class="header" href="#drop-check" id="drop-check">Drop Check</a></h1>
 <p>We have seen how lifetimes provide us some fairly simple rules for ensuring
 that we never read dangling references. However up to this point we have only ever
@@ -2843,9 +2867,9 @@ stuff, but will fall over pretty easily. It does understand structs
 sufficiently to know that it's possible to borrow disjoint fields of a struct
 simultaneously. So this works today:</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-struct Foo {
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>struct Foo {
     a: i32,
     b: i32,
     c: i32,
@@ -2859,7 +2883,8 @@ let c = &amp;x.c;
 let c2 = &amp;x.c;
 *a += 10;
 println!(&quot;{} {} {} {}&quot;, a, b, c, c2);
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>However borrowck doesn't understand arrays or slices in any way, so this doesn't
 work:</p>
 <pre><code class="language-rust ignore">let mut x = [1, 2, 3];
@@ -2908,14 +2933,15 @@ same value, we explicitly construct brand-new slices through raw pointers.</p>
 <p>However more subtle is how iterators that yield mutable references work.
 The iterator trait is defined as follows:</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-trait Iterator {
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>trait Iterator {
     type Item;
 
     fn next(&amp;mut self) -&gt; Option&lt;Self::Item&gt;;
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>Given this definition, Self::Item has <em>no</em> connection to <code>self</code>. This means that
 we can call <code>next</code> several times in a row, and hold onto all the results
 <em>concurrently</em>. This is perfectly fine for by-value iterators, which have
@@ -2931,8 +2957,8 @@ actually ever yield multiple mutable references to the same piece of data.</p>
 <p>Perhaps surprisingly, mutable iterators don't require unsafe code to be
 implemented for many types!</p>
 <p>For instance here's a singly linked list:</p>
-<pre><pre class="playpen"><code class="language-rust"># fn main() {}
-type Link&lt;T&gt; = Option&lt;Box&lt;Node&lt;T&gt;&gt;&gt;;
+<pre><pre class="playpen"><code class="language-rust"><span class="boring">fn main() {}
+</span>type Link&lt;T&gt; = Option&lt;Box&lt;Node&lt;T&gt;&gt;&gt;;
 
 struct Node&lt;T&gt; {
     elem: T,
@@ -2963,8 +2989,8 @@ impl&lt;'a, T&gt; Iterator for IterMut&lt;'a, T&gt; {
 }
 </code></pre></pre>
 <p>Here's a mutable slice:</p>
-<pre><pre class="playpen"><code class="language-rust"># fn main() {}
-use std::mem;
+<pre><pre class="playpen"><code class="language-rust"><span class="boring">fn main() {}
+</span>use std::mem;
 
 pub struct IterMut&lt;'a, T: 'a&gt;(&amp;'a mut[T]);
 
@@ -2994,8 +3020,8 @@ impl&lt;'a, T&gt; DoubleEndedIterator for IterMut&lt;'a, T&gt; {
 }
 </code></pre></pre>
 <p>And here's a binary tree:</p>
-<pre><pre class="playpen"><code class="language-rust"># fn main() {}
-use std::collections::VecDeque;
+<pre><pre class="playpen"><code class="language-rust"><span class="boring">fn main() {}
+</span>use std::collections::VecDeque;
 
 type Link&lt;T&gt; = Option&lt;Box&lt;Node&lt;T&gt;&gt;&gt;;
 
@@ -3115,9 +3141,9 @@ consequently gives you several ways to solve them.</p>
 The most trivial way to do this is to just destructure a value into its
 constituent parts and then build a new type out of them. e.g.</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-struct Foo {
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>struct Foo {
     x: u32,
     y: u16,
 }
@@ -3131,7 +3157,8 @@ fn reinterpret(foo: Foo) -&gt; Bar {
     let Foo { x, y } = foo;
     Bar { a: x, b: y }
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>But this is, at best, annoying. For common conversions, Rust provides
 more ergonomic alternatives.</p>
 <h1><a class="header" href="#coercions" id="coercions">Coercions</a></h1>
@@ -3377,9 +3404,9 @@ src/main.rs:6   println!(&quot;{}&quot;, x);
 have a relatively sophisticated understanding of dependencies and control
 flow. For instance, this works:</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-let x: i32;
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>let x: i32;
 
 loop {
     // Rust doesn't understand that this branch will be taken unconditionally,
@@ -3395,7 +3422,8 @@ loop {
 // It also knows that it's impossible to get here without reaching the break.
 // And therefore that `x` must be initialized here!
 println!(&quot;{}&quot;, x);
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>If a value is moved out of a variable, that variable becomes logically
 uninitialized if the type of the value isn't Copy. That is:</p>
 <pre><pre class="playpen"><code class="language-rust">fn main() {
@@ -3440,22 +3468,23 @@ statically known at every point in the program. If this is the case, then the
 compiler can theoretically generate more efficient code! For instance, straight-
 line code has such <em>static drop semantics</em>:</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-let mut x = Box::new(0); // x was uninit; just overwrite.
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>let mut x = Box::new(0); // x was uninit; just overwrite.
 let mut y = x;           // y was uninit; just overwrite and make x uninit.
 x = Box::new(0);         // x was uninit; just overwrite.
 y = x;                   // y was init; Drop y, overwrite it, and make x uninit!
                          // y goes out of scope; y was init; Drop y!
                          // x goes out of scope; x was uninit; do nothing.
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>Similarly, branched code where all branches have the same behavior with respect
 to initialization has static drop semantics:</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-# let condition = true;
-let mut x = Box::new(0);    // x was uninit; just overwrite.
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span><span class="boring">let condition = true;
+</span>let mut x = Box::new(0);    // x was uninit; just overwrite.
 if condition {
     drop(x)                 // x gets moved out; make x uninit.
 } else {
@@ -3464,30 +3493,33 @@ if condition {
 }
 x = Box::new(0);            // x was uninit; just overwrite.
                             // x goes out of scope; x was init; Drop x!
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>However code like this <em>requires</em> runtime information to correctly Drop:</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-# let condition = true;
-let x;
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span><span class="boring">let condition = true;
+</span>let x;
 if condition {
     x = Box::new(0);        // x was uninit; just overwrite.
     println!(&quot;{}&quot;, x);
 }
                             // x goes out of scope; x might be uninit;
                             // check the flag!
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>Of course, in this case it's trivial to retrieve static drop semantics:</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-# let condition = true;
-if condition {
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span><span class="boring">let condition = true;
+</span>if condition {
     let x = Box::new(0);
     println!(&quot;{}&quot;, x);
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>The drop flags are tracked on the stack and no longer stashed in types that
 implement drop.</p>
 <h1><a class="header" href="#unchecked-uninitialized-memory" id="unchecked-uninitialized-memory">Unchecked Uninitialized Memory</a></h1>
@@ -3531,9 +3563,9 @@ are allocated. However the ways writing arbitrary bits to arbitrary
 locations of memory can break things are basically uncountable!</p>
 <p>Putting this all together, we get the following:</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-use std::mem;
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>use std::mem;
 use std::ptr;
 
 // size of the array is hard-coded but easy to change. This means we can't
@@ -3553,7 +3585,8 @@ unsafe {
 }
 
 println!(&quot;{:?}&quot;, x);
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>It's worth noting that you don't need to worry about <code>ptr::write</code>-style
 shenanigans with types which don't implement <code>Drop</code> or contain <code>Drop</code> types,
 because Rust knows not to try to drop them. Similarly you should be able to
@@ -3600,9 +3633,9 @@ Rustの根幹です。それは何もメモリに限った話ではありませ�
 <p>There is exactly one way to create an instance of a user-defined type: name it,
 and initialize all its fields at once:</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-struct Foo {
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>struct Foo {
     a: u8,
     b: u32,
     c: bool,
@@ -3618,7 +3651,8 @@ struct Unit;
 let foo = Foo { a: 0, b: 1, c: false };
 let bar = Bar::X(0);
 let empty = Unit;
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>That's it. Every other way you make an instance of a type is just calling a
 totally vanilla function that does some stuff and eventually bottoms out to The
 One True Constructor.</p>
@@ -3685,8 +3719,8 @@ impl&lt;T&gt; Drop for Box&lt;T&gt; {
         }
     }
 }
-# fn main() {}
-</code></pre></pre>
+<span class="boring">fn main() {}
+</span></code></pre></pre>
 <p>and this works fine because when Rust goes to drop the <code>ptr</code> field it just sees
 a <a href="phantom-data.html">Unique</a> that has no actual <code>Drop</code> implementation. Similarly nothing can
 use-after-free the <code>ptr</code> because when drop exits, it becomes inaccessible.</p>
@@ -3726,34 +3760,36 @@ impl&lt;T&gt; Drop for SuperBox&lt;T&gt; {
         }
     }
 }
-# fn main() {}
-</code></pre></pre>
+<span class="boring">fn main() {}
+</span></code></pre></pre>
 <p>After we deallocate the <code>box</code>'s ptr in SuperBox's destructor, Rust will
 happily proceed to tell the box to Drop itself and everything will blow up with
 use-after-frees and double-frees.</p>
 <p>Note that the recursive drop behavior applies to all structs and enums
 regardless of whether they implement Drop. Therefore something like</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-struct Boxy&lt;T&gt; {
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>struct Boxy&lt;T&gt; {
     data1: Box&lt;T&gt;,
     data2: Box&lt;T&gt;,
     info: u32,
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>will have its data1 and data2's fields destructors whenever it &quot;would&quot; be
 dropped, even though it itself doesn't implement Drop. We say that such a type
 <em>needs Drop</em>, even though it is not itself Drop.</p>
 <p>Similarly,</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-enum Link {
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>enum Link {
     Next(Box&lt;Link&gt;),
     None,
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>will have its inner Box field dropped if and only if an instance stores the
 Next variant.</p>
 <p>In general this works really nicely because you don't need to worry about
@@ -3800,8 +3836,8 @@ impl&lt;T&gt; Drop for SuperBox&lt;T&gt; {
         }
     }
 }
-# fn main() {}
-</code></pre></pre>
+<span class="boring">fn main() {}
+</span></code></pre></pre>
 <p>However this has fairly odd semantics: you're saying that a field that <em>should</em>
 always be Some <em>may</em> be None, just because that happens in the destructor. Of
 course this conversely makes a lot of sense: you can call arbitrary methods on
@@ -4409,9 +4445,9 @@ condition can't violate memory safety in a Rust program on its own. Only in
 conjunction with some other unsafe code can a race condition actually violate
 memory safety. For instance:</p>
 <pre><pre class="playpen"><code class="language-rust no_run">
-# #![allow(unused_variables)]
-#fn main() {
-use std::thread;
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>use std::thread;
 use std::sync::atomic::{AtomicUsize, Ordering};
 use std::sync::Arc;
 
@@ -4439,11 +4475,12 @@ thread::spawn(move || {
 // program execution (panicking is rarely correct) depends on order of
 // thread execution.
 println!(&quot;{}&quot;, data[idx.load(Ordering::SeqCst)]);
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <pre><pre class="playpen"><code class="language-rust no_run">
-# #![allow(unused_variables)]
-#fn main() {
-use std::thread;
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>use std::thread;
 use std::sync::atomic::{AtomicUsize, Ordering};
 use std::sync::Arc;
 
@@ -4467,7 +4504,8 @@ if idx.load(Ordering::SeqCst) &lt; data.len() {
         println!(&quot;{}&quot;, data.get_unchecked(idx.load(Ordering::SeqCst)));
     }
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <h1><a class="header" href="#send-and-sync" id="send-and-sync">Send and Sync</a></h1>
 <p>Not everything obeys inherited mutability, though. Some types allow you to
 multiply alias a location in memory while mutating it. Unless these types use
@@ -4508,26 +4546,28 @@ necessarily thinking hard about thread safety. In the case of Rc, we have a nice
 example of a type that contains a <code>*mut</code> that is definitely not thread safe.</p>
 <p>Types that aren't automatically derived can simply implement them if desired:</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-struct MyBox(*mut u8);
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>struct MyBox(*mut u8);
 
 unsafe impl Send for MyBox {}
 unsafe impl Sync for MyBox {}
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>In the <em>incredibly rare</em> case that a type is inappropriately automatically
 derived to be Send or Sync, then one can also unimplement Send and Sync:</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#![feature(optin_builtin_traits)]
+<span class="boring">#![allow(unused_variables)]
+</span>#![feature(optin_builtin_traits)]
 
-#fn main() {
-// I have some magic semantics for some synchronization primitive!
+<span class="boring">fn main() {
+</span>// I have some magic semantics for some synchronization primitive!
 struct SpecialThreadToken(u8);
 
 impl !Send for SpecialThreadToken {}
 impl !Sync for SpecialThreadToken {}
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>Note that <em>in and of itself</em> it is impossible to incorrectly derive Send and
 Sync. Only types that are ascribed special meaning by other unsafe code can
 possible cause trouble by being incorrectly Send or Sync.</p>
@@ -4760,8 +4800,8 @@ elements that have been initialized.</p>
     cap: usize,
     len: usize,
 }
-# fn main() {}
-</code></pre></pre>
+<span class="boring">fn main() {}
+</span></code></pre></pre>
 <p>And indeed this would compile. Unfortunately, it would be incorrect. First, the
 compiler will give us too strict variance. So a <code>&amp;Vec&lt;&amp;'static str&gt;</code>
 couldn't be used where an <code>&amp;Vec&lt;&amp;'a str&gt;</code> was expected. More importantly, it
@@ -4811,8 +4851,8 @@ impl&lt;T&gt; Deref for Unique&lt;T&gt; {
         unsafe { mem::transmute(&amp;self.ptr) }
     }
 }
-# fn main() {}
-</code></pre></pre>
+<span class="boring">fn main() {}
+</span></code></pre></pre>
 <p>Unfortunately the mechanism for stating that your value is non-zero is
 unstable and unlikely to be stabilized soon. As such we're just going to
 take the hit and use std's Unique:</p>
@@ -4826,8 +4866,8 @@ pub struct Vec&lt;T&gt; {
     len: usize,
 }
 
-# fn main() {}
-</code></pre></pre>
+<span class="boring">fn main() {}
+</span></code></pre></pre>
 <p>If you don't care about the null-pointer optimization, then you can use the
 stable code. However we will be designing the rest of the code around enabling
 the optimization. In particular, <code>Unique::new</code> is unsafe to call, because
@@ -4889,12 +4929,13 @@ program.</p>
 <p>We said we don't want to use intrinsics, so doing exactly what <code>std</code> does is
 out. Instead, we'll call <code>std::process::exit</code> with some random number.</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-fn oom() {
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>fn oom() {
     ::std::process::exit(-9999);
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>Okay, now we can write growing. Roughly, we want to have this logic:</p>
 <pre><code class="language-text">if cap == 0:
     allocate()
@@ -4913,13 +4954,14 @@ analysis, alias analysis, alias analysis. It's super important to an optimizing
 compiler to be able to reason about data dependencies and aliasing.</p>
 <p>As a simple example, consider the following fragment of code:</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-# let x = &amp;mut 0;
-# let y = &amp;mut 0;
-*x *= 7;
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span><span class="boring">let x = &amp;mut 0;
+</span><span class="boring">let y = &amp;mut 0;
+</span>*x *= 7;
 *y *= 3;
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>If the compiler can prove that <code>x</code> and <code>y</code> point to different locations in
 memory, the two operations can in theory be executed in parallel (by e.g.
 loading them into different registers and working on them independently).
@@ -5442,9 +5484,9 @@ impl&lt;'a, T&gt; Iterator for Drain&lt;'a, T&gt; {
 <p>-- wait, this is seeming familiar. Let's do some more compression. Both
 IntoIter and Drain have the exact same structure, let's just factor it out.</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-struct RawValIter&lt;T&gt; {
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>struct RawValIter&lt;T&gt; {
     start: *const T,
     end: *const T,
 }
@@ -5470,7 +5512,8 @@ impl&lt;T&gt; RawValIter&lt;T&gt; {
 }
 
 // Iterator and DoubleEndedIterator impls identical to IntoIter.
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>And IntoIter becomes the following:</p>
 <pre><code class="language-rust ignore">pub struct IntoIter&lt;T&gt; {
     _buf: RawVec&lt;T&gt;, // we don't actually care about this. Just need it to live.
@@ -6028,8 +6071,8 @@ fn oom() {
     ::std::process::exit(-9999);
 }
 
-# fn main() {}
-</code></pre></pre>
+<span class="boring">fn main() {}
+</span></code></pre></pre>
 <h1><a class="header" href="#implementing-arc-and-mutex" id="implementing-arc-and-mutex">Implementing Arc and Mutex</a></h1>
 <p>Knowing the theory is all fine and good, but the <em>best</em> way to understand
 something is to use it. To better understand atomics and interior mutability,
@@ -6061,6 +6104,12 @@ we'll be implementing versions of the standard library's Arc and Mutex types.</p
 
         
 
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
         
 
         

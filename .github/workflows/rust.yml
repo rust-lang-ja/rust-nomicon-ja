@@ -1,0 +1,47 @@
+name: mdbook updater
+
+on:
+  push
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: rust-mdbook
+      uses: ryankurte/action-mdbook@0.1.1
+
+    # `ryankurte/action-mdbook@0.1.1` doesn't seem to respect
+    # the argument `outputDir` which would specify the output directory.
+    # Thus, explicitly rename here.
+    - name: Rename
+      run: |
+        rm -rf docs
+        mv book docs
+
+    - name: Git Commit docs
+      run: |
+        ref=${GITHUB_REF#refs/heads/}
+        committer=$(git show -s --format='%ae')
+
+        # Although this guard seems unnecessary because git-push by a bot does not seem to trigger actions,
+        # I'll keep it here for peace of my mind.
+        if [ $committer != "rust-lang-ja.nomicon-admin@users.noreply.github.com" ]; then
+          git config --global user.name 'Document updater'
+          git config --global user.email 'rust-lang-ja.nomicon-admin@users.noreply.github.com'
+          git add docs
+          if git commit -m "Automated docs update"; then
+            git fetch
+            git merge origin/master
+            git push origin HEAD:$ref
+          fi
+        fi
