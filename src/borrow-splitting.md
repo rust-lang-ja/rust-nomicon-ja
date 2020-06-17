@@ -112,8 +112,13 @@ fn split_at_mut(&mut self, mid: usize) -> (&mut [T], &mut [T]) {
 }
 ```
 
+<!--
 This is actually a bit subtle. So as to avoid ever making two `&mut`'s to the
 same value, we explicitly construct brand-new slices through raw pointers.
+-->
+
+これは実際、ちょっと細かくて難しいです。 同じ値に対する 2 つの `&mut` を生成するのを
+常に避けるため、生ポインタを通じて明確に完全に新しいスライスを構築します。
 
 However more subtle is how iterators that yield mutable references work.
 The iterator trait is defined as follows:
