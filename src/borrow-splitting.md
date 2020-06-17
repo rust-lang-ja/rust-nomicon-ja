@@ -219,7 +219,11 @@ impl<'a, T> Iterator for IterMut<'a, T> {
 }
 ```
 
+<!--
 Here's a mutable slice:
+-->
+
+これは可変スライスです。
 
 ```rust
 # fn main() {}
