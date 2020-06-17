@@ -1,4 +1,8 @@
+<!--
 # Splitting Borrows
+-->
+
+# 借用の分割
 
 The mutual exclusion property of mutable references can be very limiting when
 working with a composite structure. The borrow checker understands some basic
