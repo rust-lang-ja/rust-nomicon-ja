@@ -136,12 +136,21 @@ trait Iterator {
 }
 ```
 
+<!--
 Given this definition, Self::Item has *no* connection to `self`. This means that
 we can call `next` several times in a row, and hold onto all the results
 *concurrently*. This is perfectly fine for by-value iterators, which have
 exactly these semantics. It's also actually fine for shared references, as they
 admit arbitrarily many references to the same thing (although the iterator needs
 to be a separate object from the thing being shared).
+-->
+
+上記の定義によれば、 Self::Item は `self` と何のつながりも持ち*ません*。
+これは、 `next` を続けて何回か呼ぶことができ、そしてそれらに対する全ての結果を
+*同時に*保持することができることを意味します。これは値渡しのイテレータに対しては
+全く問題ありません。値渡しのイテレータも全く同じセマンティクスを持つからです。
+そして、共有参照に対しても問題ありません。これらも同じものに対する任意の数の
+参照を認めているからです (イテレータは共有されるオブジェクトと分離されている必要がありますが) 。
 
 But mutable references make this a mess. At first glance, they might seem
 completely incompatible with this API, as it would produce multiple mutable
