@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js">
+<html lang="en" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>ライフタイム - </title>
+        <title>ライフタイム</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -32,7 +32,7 @@
 
         
     </head>
-    <body class="light">
+    <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
             var path_to_root = "";
@@ -60,8 +60,11 @@
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
-            document.body.className = theme;
-            document.querySelector('html').className = theme + ' js';
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
@@ -77,8 +80,8 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="affix"><a href="index.html">はじめに</a></li><li><a href="meet-safe-and-unsafe.html"><strong aria-hidden="true">1.</strong> 安全と危険のご紹介</a></li><li><ol class="section"><li><a href="safe-unsafe-meaning.html"><strong aria-hidden="true">1.1.</strong> 安全と危険の相互作用</a></li><li><a href="working-with-unsafe.html"><strong aria-hidden="true">1.2.</strong> Unsafe と連携する</a></li></ol></li><li><a href="data.html"><strong aria-hidden="true">2.</strong> データレイアウト</a></li><li><ol class="section"><li><a href="repr-rust.html"><strong aria-hidden="true">2.1.</strong> repr(Rust)</a></li><li><a href="exotic-sizes.html"><strong aria-hidden="true">2.2.</strong> 奇妙なサイズの型</a></li><li><a href="other-reprs.html"><strong aria-hidden="true">2.3.</strong> 代替メモリレイアウト</a></li></ol></li><li><a href="ownership.html"><strong aria-hidden="true">3.</strong> 所有権とライフタイム</a></li><li><ol class="section"><li><a href="references.html"><strong aria-hidden="true">3.1.</strong> リファレンス</a></li><li><a href="lifetimes.html" class="active"><strong aria-hidden="true">3.2.</strong> ライフタイム</a></li><li><a href="lifetime-mismatch.html"><strong aria-hidden="true">3.3.</strong> ライフタイムシステムの限界</a></li><li><a href="lifetime-elision.html"><strong aria-hidden="true">3.4.</strong> ライフタイムの省略</a></li><li><a href="unbounded-lifetimes.html"><strong aria-hidden="true">3.5.</strong> 無制限のライフタイム</a></li><li><a href="hrtb.html"><strong aria-hidden="true">3.6.</strong> 高階トレイト境界</a></li><li><a href="subtyping.html"><strong aria-hidden="true">3.7.</strong> Subtyping and Variance</a></li><li><a href="dropck.html"><strong aria-hidden="true">3.8.</strong> Drop Check</a></li><li><a href="phantom-data.html"><strong aria-hidden="true">3.9.</strong> PhantomData</a></li><li><a href="borrow-splitting.html"><strong aria-hidden="true">3.10.</strong> Splitting Borrows</a></li></ol></li><li><a href="conversions.html"><strong aria-hidden="true">4.</strong> Type Conversions</a></li><li><ol class="section"><li><a href="coercions.html"><strong aria-hidden="true">4.1.</strong> Coercions</a></li><li><a href="dot-operator.html"><strong aria-hidden="true">4.2.</strong> The Dot Operator</a></li><li><a href="casts.html"><strong aria-hidden="true">4.3.</strong> Casts</a></li><li><a href="transmutes.html"><strong aria-hidden="true">4.4.</strong> Transmutes</a></li></ol></li><li><a href="uninitialized.html"><strong aria-hidden="true">5.</strong> Uninitialized Memory</a></li><li><ol class="section"><li><a href="checked-uninit.html"><strong aria-hidden="true">5.1.</strong> Checked</a></li><li><a href="drop-flags.html"><strong aria-hidden="true">5.2.</strong> Drop Flags</a></li><li><a href="unchecked-uninit.html"><strong aria-hidden="true">5.3.</strong> Unchecked</a></li></ol></li><li><a href="obrm.html"><strong aria-hidden="true">6.</strong> 所有権に基づいたリソース管理</a></li><li><ol class="section"><li><a href="constructors.html"><strong aria-hidden="true">6.1.</strong> Constructors</a></li><li><a href="destructors.html"><strong aria-hidden="true">6.2.</strong> Destructors</a></li><li><a href="leaking.html"><strong aria-hidden="true">6.3.</strong> Leaking</a></li></ol></li><li><a href="unwinding.html"><strong aria-hidden="true">7.</strong> Unwinding</a></li><li><ol class="section"><li><a href="exception-safety.html"><strong aria-hidden="true">7.1.</strong> 例外安全性</a></li><li><a href="poisoning.html"><strong aria-hidden="true">7.2.</strong> Poisoning</a></li></ol></li><li><a href="concurrency.html"><strong aria-hidden="true">8.</strong> Concurrency</a></li><li><ol class="section"><li><a href="races.html"><strong aria-hidden="true">8.1.</strong> Races</a></li><li><a href="send-and-sync.html"><strong aria-hidden="true">8.2.</strong> Send and Sync</a></li><li><a href="atomics.html"><strong aria-hidden="true">8.3.</strong> Atomics</a></li></ol></li><li><a href="vec.html"><strong aria-hidden="true">9.</strong> Implementing Vec</a></li><li><ol class="section"><li><a href="vec-layout.html"><strong aria-hidden="true">9.1.</strong> Layout</a></li><li><a href="vec-alloc.html"><strong aria-hidden="true">9.2.</strong> Allocating</a></li><li><a href="vec-push-pop.html"><strong aria-hidden="true">9.3.</strong> Push and Pop</a></li><li><a href="vec-dealloc.html"><strong aria-hidden="true">9.4.</strong> Deallocating</a></li><li><a href="vec-deref.html"><strong aria-hidden="true">9.5.</strong> Deref</a></li><li><a href="vec-insert-remove.html"><strong aria-hidden="true">9.6.</strong> Insert and Remove</a></li><li><a href="vec-into-iter.html"><strong aria-hidden="true">9.7.</strong> IntoIter</a></li><li><a href="vec-raw.html"><strong aria-hidden="true">9.8.</strong> RawVec</a></li><li><a href="vec-drain.html"><strong aria-hidden="true">9.9.</strong> Drain</a></li><li><a href="vec-zsts.html"><strong aria-hidden="true">9.10.</strong> Handling Zero-Sized Types</a></li><li><a href="vec-final.html"><strong aria-hidden="true">9.11.</strong> Final Code</a></li></ol></li><li><a href="arc-and-mutex.html"><strong aria-hidden="true">10.</strong> Implementing Arc and Mutex</a></li></ol>
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">はじめに</a></li><li class="chapter-item expanded "><a href="meet-safe-and-unsafe.html"><strong aria-hidden="true">1.</strong> 安全と危険のご紹介</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="safe-unsafe-meaning.html"><strong aria-hidden="true">1.1.</strong> 安全と危険の相互作用</a></li><li class="chapter-item expanded "><a href="working-with-unsafe.html"><strong aria-hidden="true">1.2.</strong> Unsafe と連携する</a></li></ol></li><li class="chapter-item expanded "><a href="data.html"><strong aria-hidden="true">2.</strong> データレイアウト</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="repr-rust.html"><strong aria-hidden="true">2.1.</strong> repr(Rust)</a></li><li class="chapter-item expanded "><a href="exotic-sizes.html"><strong aria-hidden="true">2.2.</strong> 奇妙なサイズの型</a></li><li class="chapter-item expanded "><a href="other-reprs.html"><strong aria-hidden="true">2.3.</strong> 代替メモリレイアウト</a></li></ol></li><li class="chapter-item expanded "><a href="ownership.html"><strong aria-hidden="true">3.</strong> 所有権とライフタイム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">3.1.</strong> リファレンス</a></li><li class="chapter-item expanded "><a href="lifetimes.html" class="active"><strong aria-hidden="true">3.2.</strong> ライフタイム</a></li><li class="chapter-item expanded "><a href="lifetime-mismatch.html"><strong aria-hidden="true">3.3.</strong> ライフタイムシステムの限界</a></li><li class="chapter-item expanded "><a href="lifetime-elision.html"><strong aria-hidden="true">3.4.</strong> ライフタイムの省略</a></li><li class="chapter-item expanded "><a href="unbounded-lifetimes.html"><strong aria-hidden="true">3.5.</strong> 無制限のライフタイム</a></li><li class="chapter-item expanded "><a href="hrtb.html"><strong aria-hidden="true">3.6.</strong> 高階トレイト境界</a></li><li class="chapter-item expanded "><a href="subtyping.html"><strong aria-hidden="true">3.7.</strong> Subtyping and Variance</a></li><li class="chapter-item expanded "><a href="dropck.html"><strong aria-hidden="true">3.8.</strong> Drop Check</a></li><li class="chapter-item expanded "><a href="phantom-data.html"><strong aria-hidden="true">3.9.</strong> PhantomData</a></li><li class="chapter-item expanded "><a href="borrow-splitting.html"><strong aria-hidden="true">3.10.</strong> Splitting Borrows</a></li></ol></li><li class="chapter-item expanded "><a href="conversions.html"><strong aria-hidden="true">4.</strong> Type Conversions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="coercions.html"><strong aria-hidden="true">4.1.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="dot-operator.html"><strong aria-hidden="true">4.2.</strong> The Dot Operator</a></li><li class="chapter-item expanded "><a href="casts.html"><strong aria-hidden="true">4.3.</strong> Casts</a></li><li class="chapter-item expanded "><a href="transmutes.html"><strong aria-hidden="true">4.4.</strong> Transmutes</a></li></ol></li><li class="chapter-item expanded "><a href="uninitialized.html"><strong aria-hidden="true">5.</strong> Uninitialized Memory</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="checked-uninit.html"><strong aria-hidden="true">5.1.</strong> Checked</a></li><li class="chapter-item expanded "><a href="drop-flags.html"><strong aria-hidden="true">5.2.</strong> Drop Flags</a></li><li class="chapter-item expanded "><a href="unchecked-uninit.html"><strong aria-hidden="true">5.3.</strong> Unchecked</a></li></ol></li><li class="chapter-item expanded "><a href="obrm.html"><strong aria-hidden="true">6.</strong> 所有権に基づいたリソース管理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="constructors.html"><strong aria-hidden="true">6.1.</strong> Constructors</a></li><li class="chapter-item expanded "><a href="destructors.html"><strong aria-hidden="true">6.2.</strong> Destructors</a></li><li class="chapter-item expanded "><a href="leaking.html"><strong aria-hidden="true">6.3.</strong> Leaking</a></li></ol></li><li class="chapter-item expanded "><a href="unwinding.html"><strong aria-hidden="true">7.</strong> Unwinding</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="exception-safety.html"><strong aria-hidden="true">7.1.</strong> 例外安全性</a></li><li class="chapter-item expanded "><a href="poisoning.html"><strong aria-hidden="true">7.2.</strong> Poisoning</a></li></ol></li><li class="chapter-item expanded "><a href="concurrency.html"><strong aria-hidden="true">8.</strong> Concurrency</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="races.html"><strong aria-hidden="true">8.1.</strong> Races</a></li><li class="chapter-item expanded "><a href="send-and-sync.html"><strong aria-hidden="true">8.2.</strong> Send and Sync</a></li><li class="chapter-item expanded "><a href="atomics.html"><strong aria-hidden="true">8.3.</strong> Atomics</a></li></ol></li><li class="chapter-item expanded "><a href="vec.html"><strong aria-hidden="true">9.</strong> Implementing Vec</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="vec-layout.html"><strong aria-hidden="true">9.1.</strong> Layout</a></li><li class="chapter-item expanded "><a href="vec-alloc.html"><strong aria-hidden="true">9.2.</strong> Allocating</a></li><li class="chapter-item expanded "><a href="vec-push-pop.html"><strong aria-hidden="true">9.3.</strong> Push and Pop</a></li><li class="chapter-item expanded "><a href="vec-dealloc.html"><strong aria-hidden="true">9.4.</strong> Deallocating</a></li><li class="chapter-item expanded "><a href="vec-deref.html"><strong aria-hidden="true">9.5.</strong> Deref</a></li><li class="chapter-item expanded "><a href="vec-insert-remove.html"><strong aria-hidden="true">9.6.</strong> Insert and Remove</a></li><li class="chapter-item expanded "><a href="vec-into-iter.html"><strong aria-hidden="true">9.7.</strong> IntoIter</a></li><li class="chapter-item expanded "><a href="vec-raw.html"><strong aria-hidden="true">9.8.</strong> RawVec</a></li><li class="chapter-item expanded "><a href="vec-drain.html"><strong aria-hidden="true">9.9.</strong> Drain</a></li><li class="chapter-item expanded "><a href="vec-zsts.html"><strong aria-hidden="true">9.10.</strong> Handling Zero-Sized Types</a></li><li class="chapter-item expanded "><a href="vec-final.html"><strong aria-hidden="true">9.11.</strong> Final Code</a></li></ol></li><li class="chapter-item expanded "><a href="arc-and-mutex.html"><strong aria-hidden="true">10.</strong> Implementing Arc and Mutex</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -87,37 +90,36 @@
 
             <div class="page">
                 
-                <div id="menu-bar" class="menu-bar">
-                    <div id="menu-bar-sticky-container">
-                        <div class="left-buttons">
-                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                                <i class="fa fa-bars"></i>
-                            </button>
-                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                                <i class="fa fa-paint-brush"></i>
-                            </button>
-                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
-                            </ul>
-                            
-                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                                <i class="fa fa-search"></i>
-                            </button>
-                            
-                        </div>
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
 
-                        <h1 class="menu-title"></h1>
+                    <h1 class="menu-title"></h1>
 
-                        <div class="right-buttons">
-                            <a href="print.html" title="Print this book" aria-label="Print this book">
-                                <i id="print-button" class="fa fa-print"></i>
-                            </a>
-                            
-                        </div>
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
                     </div>
                 </div>
 
@@ -157,7 +159,7 @@ the scope it's valid for.
 -->
 <p>Rust は今まで説明してきたルールを<em>ライフタイム</em>を使って強制します。
 ライフタイムとは、要するにプログラム中のスコープの名前です。
-リファレンスと、リファレンスを含むものとは、有効なスコープを示すライフタイムでタグづけられています。</p>
+参照と、参照を含むものとは、有効なスコープを示すライフタイムでタグ付けられています。</p>
 <!--
 Within a function body, Rust generally doesn't let you explicitly name the
 lifetimes involved. This is because it's generally not really necessary
@@ -204,17 +206,18 @@ completely desugar this simple piece of Rust code:
 しかし、複数の変数がお互いを参照している場合は問題になります。
 簡単な例として、この単純な Rust コードを脱糖してみましょう。</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-let x = 0;
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>let x = 0;
 let y = &amp;x;
 let z = &amp;y;
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <!--
 The borrow checker always tries to minimize the extent of a lifetime, so it will
 likely desugar to the following:
 -->
-<p>ボローチェッカーは、ライフタイムの長さを最小にしようとするので、
+<p>借用チェッカは、ライフタイムの長さを最小にしようとするので、
 これは次のように脱糖されるでしょう。</p>
 <pre><code class="language-rust ignore">// `'a: {` と `&amp;'b x` は正当な構文ではないことに注意してください!
 'a: {
@@ -238,21 +241,22 @@ Wow. That's... awful. Let's all take a moment to thank Rust for making this easi
 Actually passing references to outer scopes will cause Rust to infer
 a larger lifetime:
 -->
-<p>リファレンスを外のスコープに返す場合は、Rust はより大きいライフタイムを推論することになります。</p>
+<p>参照を外のスコープに返す場合は、Rust はより大きいライフタイムを推論することになります。</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-let x = 0;
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>let x = 0;
 let z;
 let y = &amp;x;
 z = y;
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <pre><code class="language-rust ignore">'a: {
     let x: i32 = 0;
     'b: {
         let z: &amp;'b i32;
         'c: {
-            // ここでは 'b を使う必要があります。なぜならこのリファレンスは
+            // ここでは 'b を使う必要があります。なぜならこの参照は
             // スコープ `b に渡されるからです。
             let y: &amp;'b i32 = &amp;'b x;
             z = y;
@@ -263,7 +267,7 @@ z = y;
 <!--
 # Example: references that outlive referents
 -->
-<h1><a class="header" href="#例参照先より長く生きるリファレンス" id="例参照先より長く生きるリファレンス">例：参照先より長く生きるリファレンス</a></h1>
+<h1><a class="header" href="#例参照先より長く生きる参照" id="例参照先より長く生きる参照">例：参照先より長く生きる参照</a></h1>
 <!--
 Alright, let's look at some of those examples from before:
 -->
@@ -292,10 +296,10 @@ that we're going to find a str somewhere in the scope the reference
 to the u32 originated in, or somewhere *even earlier*. That's a bit of a tall
 order.
 -->
-<p><code>as_str</code> のシグネチャは、<em>ある</em>ライフタイムを持つ u32 へのリファレンスをとり、
-そのリファレンスと<em>同じ長さだけ</em>生きる str へのリファレンスを生成することを約束します。
+<p><code>as_str</code> のシグネチャは、<em>ある</em>ライフタイムを持つ u32 への参照をとり、
+その参照と<em>同じ長さだけ</em>生きる str への参照を生成することを約束します。
 このシグネチャが問題になるかもしれないと、すでに話しました。
-このシグネチャは、引数の u32 を指すリファレンスが生成されたスコープか、もしくは<em>それより以前のスコープ</em>で、str を探すことを意味します。これはなかなか難しい注文です。</p>
+このシグネチャは、引数の u32 を指す参照が生成されたスコープか、もしくは<em>それより以前のスコープ</em>で、str を探すことを意味します。これはなかなか難しい注文です。</p>
 <!--
 We then proceed to compute the string `s`, and return a reference to it. Since
 the contract of our function says the reference must outlive `'a`, that's the
@@ -306,13 +310,13 @@ created a reference whose lifetime outlives its referent, which is *literally*
 the first thing we said that references can't do. The compiler rightfully blows
 up in our face.
 -->
-<p>それから文字列 <code>s</code> を計算し、そのリファレンスを返します。
-この関数は、返されるリファレンスが <code>'a</code> より長生きすることを約束しているので、このリファレンスのライフタイムとして <code>'a</code> を使うことを推論します。
+<p>それから文字列 <code>s</code> を計算し、その参照を返します。
+この関数は、返される参照が <code>'a</code> より長生きすることを約束しているので、この参照のライフタイムとして <code>'a</code> を使うことを推論します。
 残念なことに、<code>s</code> はスコープ <code>'b</code> の中で定義されているので、
 この推論が妥当になるためには、<code>'b</code> が <code>'a</code> を含んでいなくてはなりません。
 ところがこれは明らかに成立しません。<code>'a</code> はこの関数呼び出しそものを含んでいるからです。
-結局、この関数は参照先より長生きするリファレンスを生成してしまいました。
-そしてこれは<em>文字通り</em>、リファレンスがやってはいけないことの一番目でした。
+結局、この関数は参照先より長生きする参照を生成してしまいました。
+そしてこれは<em>文字通り</em>、参照がやってはいけないことの一番目でした。
 コンパイラは正当に怒りだします。</p>
 <!--
 To make this more clear, we can expand the example:
@@ -346,12 +350,13 @@ Of course, the right way to write this function is as follows:
 -->
 <p>この関数を正しく書くと、当然次のようになります。</p>
 <pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-fn to_string(data: &amp;u32) -&gt; String {
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>fn to_string(data: &amp;u32) -&gt; String {
     format!(&quot;{}&quot;, data)
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <!--
 We must produce an owned value inside the function to return it! The only way
 we could have returned an `&'a str` would have been if it was in a field of the
@@ -371,7 +376,7 @@ our implementation *just a bit*.)
 <!--
 # Example: aliasing a mutable reference
 -->
-<h1><a class="header" href="#例可変リファレンスの別名付け" id="例可変リファレンスの別名付け">例：可変リファレンスの別名付け</a></h1>
+<h1><a class="header" href="#例可変参照の別名付け" id="例可変参照の別名付け">例：可変参照の別名付け</a></h1>
 <!--
 How about the other example:
 -->
@@ -404,9 +409,9 @@ violate the *second* rule of references.
 -->
 <p>これは、すこし分かりにくいですが面白い問題です。
 私たちは、Rust が次のような理由で、このプログラムを拒否するだろうと思っています。
-つまり、<code>push</code> するために <code>data</code> への可変リファレンスを取ろうとするとき、
-<code>data</code> の子孫への共有リファレンス <code>x</code> が生存中です。
-これは可変リファレンスの別名となり、リファレンスの<em>二番目</em>のルールに違反します。</p>
+つまり、<code>push</code> するために <code>data</code> への可変参照を取ろうとするとき、
+<code>data</code> の子孫への共有参照 <code>x</code> が生存中です。
+これは可変参照の別名となり、参照の<em>二番目</em>のルールに違反します。</p>
 <!--
 However this is *not at all* how Rust reasons that this program is bad. Rust
 doesn't understand that `x` is a reference to a subpath of `data`. It doesn't
@@ -417,10 +422,10 @@ it then sees us try to make an `&'c mut data`. Rust knows that `'c` is contained
 within `'b`, and rejects our program because the `&'b data` must still be live!
 -->
 <p>ところが、Rust がこのプログラムを悪いと推論するやり方は<em>全く違う</em>のです。
-Rust は、<code>x</code> が <code>data</code> の部分パスへのリファレンスであることは理解しません。
+Rust は、<code>x</code> が <code>data</code> の部分パスへの参照であることは理解しません。
 Rust は Vec のことなど何も知らないのです。
 Rust に<em>見えている</em>のは、<code>x</code> は println! のためにスコープ <code>'b</code> の中で生存しなくてはならないことです。
-さらに、<code>Index::index</code> のシグネチャは、<code>data</code> を参照するリファレンスが
+さらに、<code>Index::index</code> のシグネチャは、<code>data</code> を参照する参照が
 スコープ <code>'b</code> の中で生存することを要求します。
 <code>push</code> を呼び出すときに、<code>&amp;'c mut data</code> を取ろうとすることを Rust は理解します。
 Rust はスコープ <code>'c</code> が スコープ <code>'b</code> に含まれていることを知っているので、
@@ -434,7 +439,7 @@ to the compiler. However it does mean that several programs that are totally
 correct with respect to Rust's *true* semantics are rejected because lifetimes
 are too dumb.
 -->
-<p>ここでは、ライフタイムをチェックするシステムは、私たちが維持したいリファレンスの意味論に比べて
+<p>ここでは、ライフタイムをチェックするシステムは、私たちが維持したい参照の意味論に比べて
 とても荒いことを見てきました。
 ほとんどの場合、<em>これで全く大丈夫</em>です。
 私たちが書いたコードをコンパイラに説明するために丸一日費やさなくてもいいからです。
@@ -463,13 +468,13 @@ are too dumb.
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="references.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="references.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a href="lifetime-mismatch.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="lifetime-mismatch.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
@@ -481,6 +486,12 @@ are too dumb.
 
         
 
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
         
 
         
