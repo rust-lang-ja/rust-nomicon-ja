@@ -34,8 +34,13 @@ let c2 = &x.c;
 println!("{} {} {} {}", a, b, c, c2);
 ```
 
+<!--
 However borrowck doesn't understand arrays or slices in any way, so this doesn't
 work:
+-->
+
+しかし借用チェッカは、配列やスライスについてはどんな状況でも理解しないため、
+このコードは動きません。
 
 ```rust,ignore
 let mut x = [1, 2, 3];
