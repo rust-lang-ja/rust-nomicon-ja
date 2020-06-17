@@ -180,7 +180,11 @@ implemented for many types!
 もしかすると驚くかもしれませんが、可変のイテレータは多くの型に対して
 実装する際、アンセーフなコードを必要としないのです!
 
+<!--
 For instance here's a singly linked list:
+-->
+
+例えばこれは、片方向リストです。
 
 ```rust
 # fn main() {}
