@@ -162,9 +162,15 @@ references to the same object!
 この API に全く対応できないように見えるかもしれません。この API が同じオブジェクトに対する
 複数の可変参照を生成するからです!
 
+<!--
 However it actually *does* work, exactly because iterators are one-shot objects.
 Everything an IterMut yields will be yielded at most once, so we don't
 actually ever yield multiple mutable references to the same piece of data.
+-->
+
+しかし、この API は*本当に*動作します。まさにイテレータがその場限りのオブジェクトであるからです。
+IterMut が生成するすべてのものは高々 1 回しか生成されません。ですから実際には、
+常に何らかのひとかけらのデータに対する可変参照を複数回生成していないのです。
 
 Perhaps surprisingly, mutable iterators don't require unsafe code to be
 implemented for many types!
