@@ -257,7 +257,11 @@ impl<'a, T> DoubleEndedIterator for IterMut<'a, T> {
 }
 ```
 
+<!--
 And here's a binary tree:
+-->
+
+そしてこれは二分木です。
 
 ```rust
 # fn main() {}
