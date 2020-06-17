@@ -51,12 +51,15 @@ println!("{} {}", a, b);
 
 ```text
 <anon>:4:14: 4:18 error: cannot borrow `x[..]` as mutable more than once at a time
+(エラー: 一度に `x[..]` を可変として 2 回以上借用することはできません)
 <anon>:4 let b = &mut x[1];
                       ^~~~
 <anon>:3:14: 3:18 note: previous borrow of `x[..]` occurs here; the mutable borrow prevents subsequent moves, borrows, or modification of `x[..]` until the borrow ends
+(注釈: 以前の `x[..]` の借用はここで起きています。可変での借用は、その借用が終わるまで、その後のムーブや、借用、 `x[..]` の変更を防ぎます)
 <anon>:3 let a = &mut x[0];
                       ^~~~
 <anon>:6:2: 6:2 note: previous borrow ends here
+(注釈: 以前の借用はここで終了しています)
 <anon>:1 fn main() {
 <anon>:2 let mut x = [1, 2, 3];
 <anon>:3 let a = &mut x[0];
@@ -65,6 +68,7 @@ println!("{} {}", a, b);
 <anon>:6 }
          ^
 error: aborting due to 2 previous errors
+(エラー: 上記の 2 つのエラーのため中止)
 ```
 
 While it was plausible that borrowck could understand this simple case, it's
