@@ -83,12 +83,22 @@ to the same value.
 木のような一般的なコンテナ内の、各値の素集合性を借用チェッカが理解することを望むのは、
 明らかに無駄です。
 
+<!--
 In order to "teach" borrowck that what we're doing is ok, we need to drop down
 to unsafe code. For instance, mutable slices expose a `split_at_mut` function
 that consumes the slice and returns two mutable slices. One for everything to
 the left of the index, and one for everything to the right. Intuitively we know
 this is safe because the slices don't overlap, and therefore alias. However
 the implementation requires some unsafety:
+-->
+
+借用チェッカに我々が行なっていることが問題ないと "教える" ためには、
+アンセーフなコードに落とす必要があります。例えば、可変なスライスには、
+スライスを消費し 2 つの可変なスライスを返す `split_at_mut` 関数を使用します。
+片方のスライスはインデックスの左側全てを、もう片方のスライスはインデックスの右側全てを
+使用するためのものです。直感的に、これは安全と分かります。互いのスライスが重ならなず、それゆえ
+これらのスライスは元のスライスのエイリアスとなるからです。
+しかし、その実装には少しアンセーフなコードを必要とします。
 
 ```rust,ignore
 fn split_at_mut(&mut self, mid: usize) -> (&mut [T], &mut [T]) {
