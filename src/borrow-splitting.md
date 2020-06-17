@@ -172,8 +172,13 @@ actually ever yield multiple mutable references to the same piece of data.
 IterMut が生成するすべてのものは高々 1 回しか生成されません。ですから実際には、
 常に何らかのひとかけらのデータに対する可変参照を複数回生成していないのです。
 
+<!--
 Perhaps surprisingly, mutable iterators don't require unsafe code to be
 implemented for many types!
+-->
+
+もしかすると驚くかもしれませんが、可変のイテレータは多くの型に対して
+実装する際、アンセーフなコードを必要としないのです!
 
 For instance here's a singly linked list:
 
