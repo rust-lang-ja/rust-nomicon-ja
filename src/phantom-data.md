@@ -124,7 +124,7 @@ drop some T's when *we* drop, we must add an extra PhantomData saying exactly
 that:
 -->
 
-ドロップチェックに、型 T の値を*本当に*保持していて、それ故に *Vec* が
+ドロップチェックに、 Vec が型 T の値を*本当に*保持していて、それ故に *Vec* が
 ドロップする際、なにか T の値もドロップするかもしれないと伝えるために、
 追加の PhantomData を加えなければなりません。
 
