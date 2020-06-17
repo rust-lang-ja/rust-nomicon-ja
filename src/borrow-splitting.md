@@ -4,11 +4,18 @@
 
 # 借用の分割
 
+<!--
 The mutual exclusion property of mutable references can be very limiting when
 working with a composite structure. The borrow checker understands some basic
 stuff, but will fall over pretty easily. It does understand structs
 sufficiently to know that it's possible to borrow disjoint fields of a struct
 simultaneously. So this works today:
+-->
+
+可変参照の相互排他性は、複合構造体を使用している時に非常に制限を課してくる存在となります。
+借用チェッカはいくつか基本事項を理解していますが、本当に簡単にすっ転びます。
+借用チェッカは構造体について十分理解しているため、構造体の別々のフィールドを同時に借用することは可能です。
+ですから、このコードは今日動作します。
 
 ```rust
 struct Foo {
