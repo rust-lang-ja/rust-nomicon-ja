@@ -152,9 +152,15 @@ to be a separate object from the thing being shared).
 そして、共有参照に対しても問題ありません。これらも同じものに対する任意の数の
 参照を認めているからです (イテレータは共有されるオブジェクトと分離されている必要がありますが) 。
 
+<!--
 But mutable references make this a mess. At first glance, they might seem
 completely incompatible with this API, as it would produce multiple mutable
 references to the same object!
+-->
+
+しかし、可変参照はこれをごちゃごちゃにします。ひと目見ただけでも、可変参照は
+この API に全く対応できないように見えるかもしれません。この API が同じオブジェクトに対する
+複数の可変参照を生成するからです!
 
 However it actually *does* work, exactly because iterators are one-shot objects.
 Everything an IterMut yields will be yielded at most once, so we don't
