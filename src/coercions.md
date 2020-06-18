@@ -28,6 +28,7 @@ Coercion is allowed between the following types:
 
 型強制は以下の型の間で認められています:
 
+<!--
 * Transitivity: `T_1` to `T_3` where `T_1` coerces to `T_2` and `T_2` coerces to
   `T_3`
 * Pointer Weakening:
@@ -37,6 +38,16 @@ Coercion is allowed between the following types:
     * `&mut T` to `*mut T`
 * Unsizing: `T` to `U` if `T` implements `CoerceUnsized<U>`
 * Deref coercion: Expression `&x` of type `&T` to `&*x` of type `&U` if `T` derefs to `U` (i.e. `T: Deref<Target=U>`)
+-->
+
+* 推移性: `T_1` から `T_3` 但し `T_1` が `T_2` に型強制可能で、 `T_2` が `T_3` に型強制可能な場合
+* ポインタの弱化:
+    * `&mut T` から `&T`
+    * `*mut T` から `*const T`
+    * `&T` から `*const T`
+    * `&mut T` から `*mut T`
+* アンサイジング: `T` から `U` 但し `T` が `CoerceUnsized<U>` を実装している場合
+* 参照外しの型強制: 型 `&T` の式 `&x` から型 `&U` の式 `&'x` 但し `T` が `U` に参照外しされる場合 (例: `T: Deref<Target=U>`)
 
 `CoerceUnsized<Pointer<U>> for Pointer<T> where T: Unsize<U>` is implemented
 for all pointer types (including smart pointers like Box and Rc). Unsize is
