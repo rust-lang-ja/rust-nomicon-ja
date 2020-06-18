@@ -4,10 +4,17 @@
 
 # 型強制
 
+<!--
 Types can implicitly be coerced to change in certain contexts. These changes are
 generally just *weakening* of types, largely focused around pointers and
 lifetimes. They mostly exist to make Rust "just work" in more cases, and are
 largely harmless.
+-->
+
+特定の状況では、暗黙に型変換を強制することが出来ます。これらの変換は、一般には
+単に型を*弱く*していて、主にポインタやライフタイム周りに着目されます。
+これらはほとんどが、より多くのケースで Rust が "単に動く" ようにするために存在し、
+そして大部分において、ほとんど害はありません。
 
 Here's all the kinds of coercion:
 
