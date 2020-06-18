@@ -21,9 +21,15 @@ consequently gives you several ways to solve them.
 これらの問題は信じられないほど蔓延しています。ですから、 Rust では結果的に、
 これらの問題を解決する複数の方法があります。
 
+<!--
 First we'll look at the ways that Safe Rust gives you to reinterpret values.
 The most trivial way to do this is to just destructure a value into its
 constituent parts and then build a new type out of them. e.g.
+-->
+
+まず、安全な Rust が提供する、値を再解釈する方法について見ていきます。
+最も平凡なやり方は、単に値をその構成要素に分配し、そしてそれらを用いて
+新しい型の値を構築する方法です。
 
 ```rust
 struct Foo {
