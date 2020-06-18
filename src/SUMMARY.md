@@ -17,7 +17,7 @@
 	* [無制限のライフタイム](unbounded-lifetimes.md)
 	* [高階トレイト境界](hrtb.md)
 	* [Subtyping and Variance](subtyping.md)
-	* [Drop Check](dropck.md)
+	* [ドロップチェック](dropck.md)
 	* [PhantomData](phantom-data.md)
 	* [Splitting Borrows](borrow-splitting.md)
 * [Type Conversions](conversions.md)
