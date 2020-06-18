@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Subtyping and Variance</title>
+        <title>派生型と変性</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">はじめに</a></li><li class="chapter-item expanded "><a href="meet-safe-and-unsafe.html"><strong aria-hidden="true">1.</strong> 安全と危険のご紹介</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="safe-unsafe-meaning.html"><strong aria-hidden="true">1.1.</strong> 安全と危険の相互作用</a></li><li class="chapter-item expanded "><a href="working-with-unsafe.html"><strong aria-hidden="true">1.2.</strong> Unsafe と連携する</a></li></ol></li><li class="chapter-item expanded "><a href="data.html"><strong aria-hidden="true">2.</strong> データレイアウト</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="repr-rust.html"><strong aria-hidden="true">2.1.</strong> repr(Rust)</a></li><li class="chapter-item expanded "><a href="exotic-sizes.html"><strong aria-hidden="true">2.2.</strong> 奇妙なサイズの型</a></li><li class="chapter-item expanded "><a href="other-reprs.html"><strong aria-hidden="true">2.3.</strong> 代替メモリレイアウト</a></li></ol></li><li class="chapter-item expanded "><a href="ownership.html"><strong aria-hidden="true">3.</strong> 所有権とライフタイム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">3.1.</strong> リファレンス</a></li><li class="chapter-item expanded "><a href="lifetimes.html"><strong aria-hidden="true">3.2.</strong> ライフタイム</a></li><li class="chapter-item expanded "><a href="lifetime-mismatch.html"><strong aria-hidden="true">3.3.</strong> ライフタイムシステムの限界</a></li><li class="chapter-item expanded "><a href="lifetime-elision.html"><strong aria-hidden="true">3.4.</strong> ライフタイムの省略</a></li><li class="chapter-item expanded "><a href="unbounded-lifetimes.html"><strong aria-hidden="true">3.5.</strong> 無制限のライフタイム</a></li><li class="chapter-item expanded "><a href="hrtb.html"><strong aria-hidden="true">3.6.</strong> 高階トレイト境界</a></li><li class="chapter-item expanded "><a href="subtyping.html" class="active"><strong aria-hidden="true">3.7.</strong> Subtyping and Variance</a></li><li class="chapter-item expanded "><a href="dropck.html"><strong aria-hidden="true">3.8.</strong> Drop Check</a></li><li class="chapter-item expanded "><a href="phantom-data.html"><strong aria-hidden="true">3.9.</strong> PhantomData</a></li><li class="chapter-item expanded "><a href="borrow-splitting.html"><strong aria-hidden="true">3.10.</strong> Splitting Borrows</a></li></ol></li><li class="chapter-item expanded "><a href="conversions.html"><strong aria-hidden="true">4.</strong> Type Conversions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="coercions.html"><strong aria-hidden="true">4.1.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="dot-operator.html"><strong aria-hidden="true">4.2.</strong> The Dot Operator</a></li><li class="chapter-item expanded "><a href="casts.html"><strong aria-hidden="true">4.3.</strong> Casts</a></li><li class="chapter-item expanded "><a href="transmutes.html"><strong aria-hidden="true">4.4.</strong> Transmutes</a></li></ol></li><li class="chapter-item expanded "><a href="uninitialized.html"><strong aria-hidden="true">5.</strong> Uninitialized Memory</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="checked-uninit.html"><strong aria-hidden="true">5.1.</strong> Checked</a></li><li class="chapter-item expanded "><a href="drop-flags.html"><strong aria-hidden="true">5.2.</strong> Drop Flags</a></li><li class="chapter-item expanded "><a href="unchecked-uninit.html"><strong aria-hidden="true">5.3.</strong> Unchecked</a></li></ol></li><li class="chapter-item expanded "><a href="obrm.html"><strong aria-hidden="true">6.</strong> 所有権に基づいたリソース管理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="constructors.html"><strong aria-hidden="true">6.1.</strong> Constructors</a></li><li class="chapter-item expanded "><a href="destructors.html"><strong aria-hidden="true">6.2.</strong> Destructors</a></li><li class="chapter-item expanded "><a href="leaking.html"><strong aria-hidden="true">6.3.</strong> Leaking</a></li></ol></li><li class="chapter-item expanded "><a href="unwinding.html"><strong aria-hidden="true">7.</strong> Unwinding</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="exception-safety.html"><strong aria-hidden="true">7.1.</strong> 例外安全性</a></li><li class="chapter-item expanded "><a href="poisoning.html"><strong aria-hidden="true">7.2.</strong> Poisoning</a></li></ol></li><li class="chapter-item expanded "><a href="concurrency.html"><strong aria-hidden="true">8.</strong> Concurrency</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="races.html"><strong aria-hidden="true">8.1.</strong> Races</a></li><li class="chapter-item expanded "><a href="send-and-sync.html"><strong aria-hidden="true">8.2.</strong> Send and Sync</a></li><li class="chapter-item expanded "><a href="atomics.html"><strong aria-hidden="true">8.3.</strong> Atomics</a></li></ol></li><li class="chapter-item expanded "><a href="vec.html"><strong aria-hidden="true">9.</strong> Implementing Vec</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="vec-layout.html"><strong aria-hidden="true">9.1.</strong> Layout</a></li><li class="chapter-item expanded "><a href="vec-alloc.html"><strong aria-hidden="true">9.2.</strong> Allocating</a></li><li class="chapter-item expanded "><a href="vec-push-pop.html"><strong aria-hidden="true">9.3.</strong> Push and Pop</a></li><li class="chapter-item expanded "><a href="vec-dealloc.html"><strong aria-hidden="true">9.4.</strong> Deallocating</a></li><li class="chapter-item expanded "><a href="vec-deref.html"><strong aria-hidden="true">9.5.</strong> Deref</a></li><li class="chapter-item expanded "><a href="vec-insert-remove.html"><strong aria-hidden="true">9.6.</strong> Insert and Remove</a></li><li class="chapter-item expanded "><a href="vec-into-iter.html"><strong aria-hidden="true">9.7.</strong> IntoIter</a></li><li class="chapter-item expanded "><a href="vec-raw.html"><strong aria-hidden="true">9.8.</strong> RawVec</a></li><li class="chapter-item expanded "><a href="vec-drain.html"><strong aria-hidden="true">9.9.</strong> Drain</a></li><li class="chapter-item expanded "><a href="vec-zsts.html"><strong aria-hidden="true">9.10.</strong> Handling Zero-Sized Types</a></li><li class="chapter-item expanded "><a href="vec-final.html"><strong aria-hidden="true">9.11.</strong> Final Code</a></li></ol></li><li class="chapter-item expanded "><a href="arc-and-mutex.html"><strong aria-hidden="true">10.</strong> Implementing Arc and Mutex</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">はじめに</a></li><li class="chapter-item expanded "><a href="meet-safe-and-unsafe.html"><strong aria-hidden="true">1.</strong> 安全と危険のご紹介</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="safe-unsafe-meaning.html"><strong aria-hidden="true">1.1.</strong> 安全と危険の相互作用</a></li><li class="chapter-item expanded "><a href="working-with-unsafe.html"><strong aria-hidden="true">1.2.</strong> Unsafe と連携する</a></li></ol></li><li class="chapter-item expanded "><a href="data.html"><strong aria-hidden="true">2.</strong> データレイアウト</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="repr-rust.html"><strong aria-hidden="true">2.1.</strong> repr(Rust)</a></li><li class="chapter-item expanded "><a href="exotic-sizes.html"><strong aria-hidden="true">2.2.</strong> 奇妙なサイズの型</a></li><li class="chapter-item expanded "><a href="other-reprs.html"><strong aria-hidden="true">2.3.</strong> 代替メモリレイアウト</a></li></ol></li><li class="chapter-item expanded "><a href="ownership.html"><strong aria-hidden="true">3.</strong> 所有権とライフタイム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">3.1.</strong> リファレンス</a></li><li class="chapter-item expanded "><a href="lifetimes.html"><strong aria-hidden="true">3.2.</strong> ライフタイム</a></li><li class="chapter-item expanded "><a href="lifetime-mismatch.html"><strong aria-hidden="true">3.3.</strong> ライフタイムシステムの限界</a></li><li class="chapter-item expanded "><a href="lifetime-elision.html"><strong aria-hidden="true">3.4.</strong> ライフタイムの省略</a></li><li class="chapter-item expanded "><a href="unbounded-lifetimes.html"><strong aria-hidden="true">3.5.</strong> 無制限のライフタイム</a></li><li class="chapter-item expanded "><a href="hrtb.html"><strong aria-hidden="true">3.6.</strong> 高階トレイト境界</a></li><li class="chapter-item expanded "><a href="subtyping.html" class="active"><strong aria-hidden="true">3.7.</strong> 派生型と変性</a></li><li class="chapter-item expanded "><a href="dropck.html"><strong aria-hidden="true">3.8.</strong> Drop Check</a></li><li class="chapter-item expanded "><a href="phantom-data.html"><strong aria-hidden="true">3.9.</strong> PhantomData</a></li><li class="chapter-item expanded "><a href="borrow-splitting.html"><strong aria-hidden="true">3.10.</strong> Splitting Borrows</a></li></ol></li><li class="chapter-item expanded "><a href="conversions.html"><strong aria-hidden="true">4.</strong> Type Conversions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="coercions.html"><strong aria-hidden="true">4.1.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="dot-operator.html"><strong aria-hidden="true">4.2.</strong> The Dot Operator</a></li><li class="chapter-item expanded "><a href="casts.html"><strong aria-hidden="true">4.3.</strong> Casts</a></li><li class="chapter-item expanded "><a href="transmutes.html"><strong aria-hidden="true">4.4.</strong> Transmutes</a></li></ol></li><li class="chapter-item expanded "><a href="uninitialized.html"><strong aria-hidden="true">5.</strong> Uninitialized Memory</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="checked-uninit.html"><strong aria-hidden="true">5.1.</strong> Checked</a></li><li class="chapter-item expanded "><a href="drop-flags.html"><strong aria-hidden="true">5.2.</strong> Drop Flags</a></li><li class="chapter-item expanded "><a href="unchecked-uninit.html"><strong aria-hidden="true">5.3.</strong> Unchecked</a></li></ol></li><li class="chapter-item expanded "><a href="obrm.html"><strong aria-hidden="true">6.</strong> 所有権に基づいたリソース管理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="constructors.html"><strong aria-hidden="true">6.1.</strong> Constructors</a></li><li class="chapter-item expanded "><a href="destructors.html"><strong aria-hidden="true">6.2.</strong> Destructors</a></li><li class="chapter-item expanded "><a href="leaking.html"><strong aria-hidden="true">6.3.</strong> Leaking</a></li></ol></li><li class="chapter-item expanded "><a href="unwinding.html"><strong aria-hidden="true">7.</strong> Unwinding</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="exception-safety.html"><strong aria-hidden="true">7.1.</strong> 例外安全性</a></li><li class="chapter-item expanded "><a href="poisoning.html"><strong aria-hidden="true">7.2.</strong> Poisoning</a></li></ol></li><li class="chapter-item expanded "><a href="concurrency.html"><strong aria-hidden="true">8.</strong> Concurrency</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="races.html"><strong aria-hidden="true">8.1.</strong> Races</a></li><li class="chapter-item expanded "><a href="send-and-sync.html"><strong aria-hidden="true">8.2.</strong> Send and Sync</a></li><li class="chapter-item expanded "><a href="atomics.html"><strong aria-hidden="true">8.3.</strong> Atomics</a></li></ol></li><li class="chapter-item expanded "><a href="vec.html"><strong aria-hidden="true">9.</strong> Implementing Vec</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="vec-layout.html"><strong aria-hidden="true">9.1.</strong> Layout</a></li><li class="chapter-item expanded "><a href="vec-alloc.html"><strong aria-hidden="true">9.2.</strong> Allocating</a></li><li class="chapter-item expanded "><a href="vec-push-pop.html"><strong aria-hidden="true">9.3.</strong> Push and Pop</a></li><li class="chapter-item expanded "><a href="vec-dealloc.html"><strong aria-hidden="true">9.4.</strong> Deallocating</a></li><li class="chapter-item expanded "><a href="vec-deref.html"><strong aria-hidden="true">9.5.</strong> Deref</a></li><li class="chapter-item expanded "><a href="vec-insert-remove.html"><strong aria-hidden="true">9.6.</strong> Insert and Remove</a></li><li class="chapter-item expanded "><a href="vec-into-iter.html"><strong aria-hidden="true">9.7.</strong> IntoIter</a></li><li class="chapter-item expanded "><a href="vec-raw.html"><strong aria-hidden="true">9.8.</strong> RawVec</a></li><li class="chapter-item expanded "><a href="vec-drain.html"><strong aria-hidden="true">9.9.</strong> Drain</a></li><li class="chapter-item expanded "><a href="vec-zsts.html"><strong aria-hidden="true">9.10.</strong> Handling Zero-Sized Types</a></li><li class="chapter-item expanded "><a href="vec-final.html"><strong aria-hidden="true">9.11.</strong> Final Code</a></li></ol></li><li class="chapter-item expanded "><a href="arc-and-mutex.html"><strong aria-hidden="true">10.</strong> Implementing Arc and Mutex</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -147,66 +147,157 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#subtyping-and-variance" id="subtyping-and-variance">Subtyping and Variance</a></h1>
-<p>Although Rust doesn't have any notion of structural inheritance, it <em>does</em>
+                        <!--
+# Subtyping and Variance
+-->
+<h1><a class="header" href="#派生型と変性" id="派生型と変性">派生型と変性</a></h1>
+<!--
+Although Rust doesn't have any notion of structural inheritance, it *does*
 include subtyping. In Rust, subtyping derives entirely from lifetimes. Since
-lifetimes are scopes, we can partially order them based on the <em>contains</em>
-(outlives) relationship. We can even express this as a generic bound.</p>
-<p>Subtyping on lifetimes is in terms of that relationship: if <code>'a: 'b</code> (&quot;a contains
-b&quot; or &quot;a outlives b&quot;), then <code>'a</code> is a subtype of <code>'b</code>. This is a large source of
+lifetimes are scopes, we can partially order them based on the *contains*
+(outlives) relationship. We can even express this as a generic bound.
+-->
+<p>Rust には構造継承の概念はありませんが、派生型の概念は<em>あります</em>。
+Rust では、派生型は完全にライフタイムに由来します。ライフタイムはスコープですので、
+包含関係によって部分的にライフタイムを定めることが出来ます。
+ジェネリック境界として表現することも可能です。</p>
+<!--
+Subtyping on lifetimes is in terms of that relationship: if `'a: 'b` ("a contains
+b" or "a outlives b"), then `'a` is a subtype of `'b`. This is a large source of
 confusion, because it seems intuitively backwards to many: the bigger scope is a
-<em>subtype</em> of the smaller scope.</p>
-<p>This does in fact make sense, though. The intuitive reason for this is that if
-you expect an <code>&amp;'a u8</code>, then it's totally fine for me to hand you an <code>&amp;'static u8</code>, in the same way that if you expect an Animal in Java, it's totally fine for
-me to hand you a Cat. Cats are just Animals <em>and more</em>, just as <code>'static</code> is
-just <code>'a</code> <em>and more</em>.</p>
-<p>(Note, the subtyping relationship and typed-ness of lifetimes is a fairly
+*subtype* of the smaller scope.
+-->
+<p>ライフタイムにおける派生型を、ライフタイムの関係から見ます。
+もし <code>'a: 'b</code> （「 a は b を含む」あるいは「 a は b より長生きする」）ならば、
+<code>'a</code> は <code>'b</code> の派生型です。これは混乱の大きな原因です。というのも、
+多くの人にとっては、
+この関係は直感的に逆のように感じるからです: より大きいスコープは小さい方のスコープの<em>派生型</em>となる。</p>
+<!--
+This does in fact make sense, though. The intuitive reason for this is that if
+you expect an `&'a u8`, then it's totally fine for me to hand you an `&'static
+u8`, in the same way that if you expect an Animal in Java, it's totally fine for
+me to hand you a Cat. Cats are just Animals *and more*, just as `'static` is
+just `'a` *and more*.
+-->
+<p>それでもこれは実際、理にかなっています。
+Java において、 Animal が期待される場合に Cat を渡しても問題ないのと全く同じように、
+もし <code>&amp;'a u8</code> が期待されるとき、 <code>&amp;'static u8</code> を渡しても問題ないということが
+これに対する直感的な理由になります。  <code>'static</code> が <code>'a</code> <em>以上</em>のものであるように、
+Cat も Animal <em>以上</em>のものであるからです。</p>
+<!--
+(Note, the subtyping relationship and typed-ness of lifetimes is a fairly
 arbitrary construct that some disagree with. However it simplifies our analysis
-to treat lifetimes and types uniformly.)</p>
-<p>Higher-ranked lifetimes are also subtypes of every concrete lifetime. This is
+to treat lifetimes and types uniformly.)
+-->
+<p>（派生型の関係とライフタイムの型付けはかなり無理やりな構成で、これに反対する人もいることに注意してください。
+しかしながら、この構成によって分析が単純となり、ライフタイムと型を同じように扱えます。）</p>
+<!--
+Higher-ranked lifetimes are also subtypes of every concrete lifetime. This is
 because taking an arbitrary lifetime is strictly more general than taking a
-specific one.</p>
-<h1><a class="header" href="#variance" id="variance">Variance</a></h1>
-<p>Variance is where things get a bit complicated.</p>
-<p>Variance is a property that <em>type constructors</em> have with respect to their
+specific one.
+-->
+<p>高階ライフタイムもまた、あらゆる具象ライフタイムの派生型です。
+これは、任意のライフタイムを受け取ることは、
+ある特定のライフタイムを受け取ることよりも厳密により一般的であるからです。</p>
+<!--
+# Variance
+-->
+<h1><a class="header" href="#変性" id="変性">変性</a></h1>
+<!--
+Variance is where things get a bit complicated.
+-->
+<p>変性はちょっと複雑です。</p>
+<!--
+Variance is a property that *type constructors* have with respect to their
 arguments. A type constructor in Rust is a generic type with unbound arguments.
-For instance <code>Vec</code> is a type constructor that takes a <code>T</code> and returns a
-<code>Vec&lt;T&gt;</code>. <code>&amp;</code> and <code>&amp;mut</code> are type constructors that take two inputs: a
-lifetime, and a type to point to.</p>
-<p>A type constructor's <em>variance</em> is how the subtyping of its inputs affects the
-subtyping of its outputs. There are two kinds of variance in Rust:</p>
+For instance `Vec` is a type constructor that takes a `T` and returns a
+`Vec<T>`. `&` and `&mut` are type constructors that take two inputs: a
+lifetime, and a type to point to.
+-->
+<p>変性は、<em>型コンストラクタ</em>がその引数に関して持つ性質です。
+Rust において型コンストラクタは、無制限の引数を持つジェネリックな型です。
+例えば、 <code>Vec</code> は <code>T</code> を受け取り <code>Vec&lt;T&gt;</code> を返す型コンストラクタです。
+<code>&amp;</code> や <code>&amp;mut</code> は 2 つの入力を受け取ります: ライフタイムと、指し示すための型です。</p>
+<!--
+A type constructor's *variance* is how the subtyping of its inputs affects the
+subtyping of its outputs. There are two kinds of variance in Rust:
+-->
+<p>型コンストラクタの<em>変性</em>は、どのように型コンストラクタの入力の派生型が出力の派生型に
+影響するかということです。 Rust では 2 種類の変性があります。</p>
+<!--
+* F is *variant* over `T` if `T` being a subtype of `U` implies
+  `F<T>` is a subtype of `F<U>` (subtyping "passes through")
+* F is *invariant* over `T` otherwise (no subtyping relation can be derived)
+-->
 <ul>
-<li>F is <em>variant</em> over <code>T</code> if <code>T</code> being a subtype of <code>U</code> implies
-<code>F&lt;T&gt;</code> is a subtype of <code>F&lt;U&gt;</code> (subtyping &quot;passes through&quot;)</li>
-<li>F is <em>invariant</em> over <code>T</code> otherwise (no subtyping relation can be derived)</li>
+<li>もし <code>T</code> が <code>U</code> の派生型であるとき、 <code>F&lt;T&gt;</code> が <code>F&lt;U&gt;</code> の派生型であるならば、 F は
+<code>T</code> において<em>変性</em>です。（派生型の「パススルー」）</li>
+<li>それ以外の場合、 F は <code>T</code> において<em>非変性</em>です。（いかなる派生型の関係も継承されません）</li>
 </ul>
-<p>(For those of you who are familiar with variance from other languages, what we
-refer to as &quot;just&quot; variance is in fact <em>covariance</em>. Rust has <em>contravariance</em>
+<!--
+(For those of you who are familiar with variance from other languages, what we
+refer to as "just" variance is in fact *covariance*. Rust has *contravariance*
 for functions. The future of contravariance is uncertain and it may be
-scrapped. For now, <code>fn(T)</code> is contravariant in <code>T</code>, which is used in matching
+scrapped. For now, `fn(T)` is contravariant in `T`, which is used in matching
 methods in trait implementations to the trait definition. Traits don't have
-inferred variance, so <code>Fn(T)</code> is invariant in <code>T</code>).</p>
-<p>Some important variances:</p>
+inferred variance, so `Fn(T)` is invariant in `T`).
+-->
+<p>（他の言語で変性に慣れている方にとって、この本で「単に」変性と言及しているものは実は<em>共変性</em>です。
+Rust では関数に<em>反変性</em>が存在します。将来的に反変性がどうなるかは未定で、
+反変性が廃止されるかもしれません。今の所、 <code>fn(T)</code> は <code>T</code> の反変性で、これは
+トレイトの定義に対してトレイトの実装内のメソッドをマッチさせるのに使われます。
+トレイトは推論された変性を持たないため、 <code>fn(T)</code> は <code>T</code> において変性ではありません。）</p>
+<!--
+Some important variances:
+-->
+<p>いくつか重要な変性があります。</p>
+<!--
+* `&'a T` is variant over `'a` and `T` (as is `*const T` by metaphor)
+* `&'a mut T` is variant over `'a` but invariant over `T`
+* `Fn(T) -> U` is invariant over `T`, but variant over `U`
+* `Box`, `Vec`, and all other collections are variant over the types of
+  their contents
+* `UnsafeCell<T>`, `Cell<T>`, `RefCell<T>`, `Mutex<T>` and all other
+  interior mutability types are invariant over T (as is `*mut T` by metaphor)
+-->
 <ul>
-<li><code>&amp;'a T</code> is variant over <code>'a</code> and <code>T</code> (as is <code>*const T</code> by metaphor)</li>
-<li><code>&amp;'a mut T</code> is variant over <code>'a</code> but invariant over <code>T</code></li>
-<li><code>Fn(T) -&gt; U</code> is invariant over <code>T</code>, but variant over <code>U</code></li>
-<li><code>Box</code>, <code>Vec</code>, and all other collections are variant over the types of
-their contents</li>
-<li><code>UnsafeCell&lt;T&gt;</code>, <code>Cell&lt;T&gt;</code>, <code>RefCell&lt;T&gt;</code>, <code>Mutex&lt;T&gt;</code> and all other
-interior mutability types are invariant over T (as is <code>*mut T</code> by metaphor)</li>
+<li><code>&amp;'a T</code> は <code>'a</code> と <code>T</code> において変性です（ <code>*const T</code> も同じということがわかるでしょう）</li>
+<li><code>&amp;'a mut T</code> は <code>'a</code> において変性ですが、 <code>T</code> においては非変性です</li>
+<li><code>Fn(T) -&gt; U</code> は <code>T</code> において非変性ですが、 <code>U</code> においては変性です</li>
+<li><code>Box</code> や <code>Vec</code> や他の全てのコレクションは、要素の型において変性です</li>
+<li><code>UnsafeCell&lt;T&gt;</code>、<code>Cell&lt;T&gt;</code>、<code>RefCell&lt;T&gt;</code>、<code>Mutex&lt;T&gt;</code> や他の内部可変性型は <code>T</code> において
+非変性です（ <code>*mut T</code> も同じということがわかるでしょう）</li>
 </ul>
-<p>To understand why these variances are correct and desirable, we will consider
-several examples.</p>
-<p>We have already covered why <code>&amp;'a T</code> should be variant over <code>'a</code> when
+<!--
+To understand why these variances are correct and desirable, we will consider
+several examples.
+-->
+<p>これらの変性がなぜ正しくそして望ましいかを理解するために、いくつかの例を考えましょう。</p>
+<!--
+We have already covered why `&'a T` should be variant over `'a` when
 introducing subtyping: it's desirable to be able to pass longer-lived things
-where shorter-lived things are needed.</p>
-<p>Similar reasoning applies to why it should be variant over T. It is reasonable
-to be able to pass <code>&amp;&amp;'static str</code> where an <code>&amp;&amp;'a str</code> is expected. The
+where shorter-lived things are needed.
+-->
+<p>派生型を導入するときに、なぜ <code>&amp;'a T</code> が <code>'a</code> において変性であるべきか、既にカバーしました。
+これは、短く生きるものが必要なときに、より長く生きるものを渡せるようにするために、
+望ましいものなのです。</p>
+<!--
+Similar reasoning applies to why it should be variant over T. It is reasonable
+to be able to pass `&&'static str` where an `&&'a str` is expected. The
 additional level of indirection does not change the desire to be able to pass
-longer lived things where shorted lived things are expected.</p>
-<p>However this logic doesn't apply to <code>&amp;mut</code>. To see why <code>&amp;mut</code> should
-be invariant over T, consider the following code:</p>
+longer lived things where shorted lived things are expected.
+-->
+<p>似た理由が、なぜ <code>&amp;'a T</code> が T において変性であるべきかについて適用できます。
+<code>&amp;&amp;'a str</code> が求められている場所で <code>&amp;&amp;'static str</code> を渡せるようにすることが
+合理的であるからです。間接参照の段階が増えても、短く生きるものが求められている
+場合により長く生きるものを渡せるようにするという要望は変わりません。</p>
+<!--
+However this logic doesn't apply to `&mut`. To see why `&mut` should
+be invariant over T, consider the following code:
+-->
+<p>しかしながら、この論理は <code>&amp;mut</code> には適用できません。
+なぜ <code>&amp;mut</code> が T において非変性であるべきかを確認するために、
+次のコードを考えてみましょう。</p>
 <pre><code class="language-rust ignore">fn overwrite&lt;T: Copy&gt;(input: &amp;mut T, new: &amp;mut T) {
     *input = *new;
 }
@@ -217,92 +308,185 @@ fn main() {
         let string = String::from(&quot;world&quot;);
         overwrite(&amp;mut forever_str, &amp;mut &amp;*string);
     }
-    // Oops, printing free'd memory
+    // しまった、解放されたメモリを出力しようとしている
     println!(&quot;{}&quot;, forever_str);
 }
 </code></pre>
-<p>The signature of <code>overwrite</code> is clearly valid: it takes mutable references to
-two values of the same type, and overwrites one with the other. If <code>&amp;mut T</code> was
-variant over T, then <code>&amp;mut &amp;'static str</code> would be a subtype of <code>&amp;mut &amp;'a str</code>,
-since <code>&amp;'static str</code> is a subtype of <code>&amp;'a str</code>. Therefore the lifetime of
-<code>forever_str</code> would successfully be &quot;shrunk&quot; down to the shorter lifetime of
-<code>string</code>, and <code>overwrite</code> would be called successfully. <code>string</code> would
-subsequently be dropped, and <code>forever_str</code> would point to freed memory when we
-print it! Therefore <code>&amp;mut</code> should be invariant.</p>
-<p>This is the general theme of variance vs invariance: if variance would allow you
+<!--
+The signature of `overwrite` is clearly valid: it takes mutable references to
+two values of the same type, and overwrites one with the other. If `&mut T` was
+variant over T, then `&mut &'static str` would be a subtype of `&mut &'a str`,
+since `&'static str` is a subtype of `&'a str`. Therefore the lifetime of
+`forever_str` would successfully be "shrunk" down to the shorter lifetime of
+`string`, and `overwrite` would be called successfully. `string` would
+subsequently be dropped, and `forever_str` would point to freed memory when we
+print it! Therefore `&mut` should be invariant.
+-->
+<p><code>overwrite</code> のシグネチャは明らかに文法的に正しいです。これは、同じ型の 2 つの値の
+可変参照を受け取り、片方の値をもう一つの値で上書きします。
+もし <code>&amp;mut T</code> が T において変性だったなら、 <code>&amp;mut &amp;'static str</code> は <code>&amp;mut &amp;'a str</code> の
+派生型だったでしょう。 <code>&amp;'static str</code> が <code>&amp;'a str</code> の派生型であるからです。
+それ故に、 <code>forever_str</code> のライフタイムは、見事により短い <code>string</code> のライフタイムに
+「縮まる」でしょう。そして、 <code>overwrite</code> の呼び出しは成功するでしょう。後に <code>string</code> は
+ドロップされ、 <code>forever_str</code> は出力の際に解放されたメモリを指していたでしょう!
+それ故に <code>&amp;mut</code> は非変性である必要があるのです。</p>
+<!--
+This is the general theme of variance vs invariance: if variance would allow you
 to store a short-lived value into a longer-lived slot, then you must be
-invariant.</p>
-<p>However it <em>is</em> sound for <code>&amp;'a mut T</code> to be variant over <code>'a</code>. The key difference
-between <code>'a</code> and T is that <code>'a</code> is a property of the reference itself,
+invariant.
+-->
+<p>変性か非変性かの一般的な主題はこちらです: もし変性によって、短く生きる値がより長く生きる
+スロットに保存されるようなことが起きてしまうならば、非変性でなければなりません。</p>
+<!--
+However it *is* sound for `&'a mut T` to be variant over `'a`. The key difference
+between `'a` and T is that `'a` is a property of the reference itself,
 while T is something the reference is borrowing. If you change T's type, then
 the source still remembers the original type. However if you change the
 lifetime's type, no one but the reference knows this information, so it's fine.
-Put another way: <code>&amp;'a mut T</code> owns <code>'a</code>, but only <em>borrows</em> T.</p>
-<p><code>Box</code> and <code>Vec</code> are interesting cases because they're variant, but you can
+Put another way: `&'a mut T` owns `'a`, but only *borrows* T.
+-->
+<p>しかし、 <code>&amp;'a mut T</code> は <code>'a</code> において変性のように<em>見えます</em>。 <code>&amp;'a</code> と T の
+重要な違いは、 <code>'a</code> は参照それ自体の性質ですが、 T は参照が借用しているものである、ということです。
+もし T の型を変えても、借用元は元の型を記憶しています。
+しかし、もしライフタイムの型を変えると、参照以外のものはこの情報を記憶していないので、
+問題ないのです。
+言い換えると、 <code>&amp;'a mut T</code> は <code>'a</code> を所有しますが、 T を単に<em>借用している</em>だけなのです。</p>
+<!--
+`Box` and `Vec` are interesting cases because they're variant, but you can
 definitely store values in them! This is where Rust gets really clever: it's
 fine for them to be variant because you can only store values
-in them <em>via a mutable reference</em>! The mutable reference makes the whole type
+in them *via a mutable reference*! The mutable reference makes the whole type
 invariant, and therefore prevents you from smuggling a short-lived type into
-them.</p>
-<p>Being variant allows <code>Box</code> and <code>Vec</code> to be weakened when shared
-immutably. So you can pass a <code>&amp;Box&lt;&amp;'static str&gt;</code> where a <code>&amp;Box&lt;&amp;'a str&gt;</code> is
-expected.</p>
-<p>However what should happen when passing <em>by-value</em> is less obvious. It turns out
-that, yes, you can use subtyping when passing by-value. That is, this works:</p>
+them.
+-->
+<p><code>Box</code> と <code>Vec</code> は興味深いケースです。なぜなら、これらは変性であるのに、
+この中に値を保存できるからです! これは Rust が本当に賢いところです: これらにとって、
+変性であることは問題ないのです。なぜなら、<em>可変参照を通して</em>、
+値の保存だけができるからです! 可変参照はすべての型を非変性にします。そしてそれ故に
+短く生きる型をこっそり入れることを防ぐのです。</p>
+<!--
+Being variant allows `Box` and `Vec` to be weakened when shared
+immutably. So you can pass a `&Box<&'static str>` where a `&Box<&'a str>` is
+expected.
+-->
+<p>変性であることで、イミュータブルで共有されるときに <code>Box</code> や <code>Vec</code> を弱くすることができます。
+よって <code>&amp;Box&lt;&amp;'a str&gt;</code> が期待される場合に <code>&amp;Box&lt;&amp;'static str&gt;</code> を渡すことができるのです。</p>
+<!--
+However what should happen when passing *by-value* is less obvious. It turns out
+that, yes, you can use subtyping when passing by-value. That is, this works:
+-->
+<p>しかし、<em>値</em>渡しが起きるとき、何が起きるかはあまり明らかではありません。
+ええ、値渡しされるときに派生型を使用することは可能だとわかります。
+つまり、このコードは動作します。</p>
 <pre><pre class="playpen"><code class="language-rust">
 <span class="boring">#![allow(unused_variables)]
 </span><span class="boring">fn main() {
 </span>fn get_box&lt;'a&gt;(str: &amp;'a str) -&gt; Box&lt;&amp;'a str&gt; {
-    // string literals are `&amp;'static str`s
+    // 文字列リテラルは `&amp;'static str` です
     Box::new(&quot;hello&quot;)
 }
 <span class="boring">}
 </span></code></pre></pre>
-<p>Weakening when you pass by-value is fine because there's no one else who
-&quot;remembers&quot; the old lifetime in the Box. The reason a variant <code>&amp;mut</code> was
+<!--
+Weakening when you pass by-value is fine because there's no one else who
+"remembers" the old lifetime in the Box. The reason a variant `&mut` was
 trouble was because there's always someone else who remembers the original
-subtype: the actual owner.</p>
-<p>The invariance of the cell types can be seen as follows: <code>&amp;</code> is like an <code>&amp;mut</code>
-for a cell, because you can still store values in them through an <code>&amp;</code>. Therefore
-cells must be invariant to avoid lifetime smuggling.</p>
-<p><code>Fn</code> is the most subtle case because it has mixed variance. To see why
-<code>Fn(T) -&gt; U</code> should be invariant over T, consider the following function
-signature:</p>
-<pre><code class="language-rust ignore">// 'a is derived from some parent scope
+subtype: the actual owner.
+-->
+<p>Box の古いライフタイムを「記憶」するものが他に存在しないので、値渡しの際に Box を
+弱くするのは問題ありません。変性の <code>&amp;mut</code> が問題である理由は、元々の派生型を
+記憶している他のものが存在するからです: 実際の所有者です。</p>
+<!--
+The invariance of the cell types can be seen as follows: `&` is like an `&mut`
+for a cell, because you can still store values in them through an `&`. Therefore
+cells must be invariant to avoid lifetime smuggling.
+-->
+<p>cell 型の非変性は次のように見ることが出来ます。すなわち、 <code>&amp;</code> は cell における <code>&amp;mut</code> のようになります。
+なぜなら、 <code>&amp;</code> を通して値を保存することも可能だからです。
+したがって、ライフタイムをこっそり導入することがないよう、 cell は非変性でなければなりません。</p>
+<!--
+`Fn` is the most subtle case because it has mixed variance. To see why
+`Fn(T) -> U` should be invariant over T, consider the following function
+signature:
+-->
+<p><code>Fn</code> はまぜこぜの変性を持っているので、最も見分けのつかないケースです。
+なぜ <code>Fn(T) -&gt; U</code> が T において非変性であるべきかを確認するために、
+次の関数シグネチャを考えてみましょう。</p>
+<pre><code class="language-rust ignore">// 'a はある親スコープから継承されます
 fn foo(&amp;'a str) -&gt; usize;
 </code></pre>
-<p>This signature claims that it can handle any <code>&amp;str</code> that lives at least as
-long as <code>'a</code>. Now if this signature was variant over <code>&amp;'a str</code>, that
-would mean</p>
+<!--
+This signature claims that it can handle any `&str` that lives at least as
+long as `'a`. Now if this signature was variant over `&'a str`, that
+would mean
+-->
+<p>このシグネチャは、少なくとも <code>'a</code> は生きる、いかなる <code>&amp;str</code> も扱うことができると
+主張します。この時、もしシグネチャが <code>&amp;'a str</code> において変性であるならば、これは
+次のシグネチャ</p>
 <pre><code class="language-rust ignore">fn foo(&amp;'static str) -&gt; usize;
 </code></pre>
-<p>could be provided in its place, as it would be a subtype. However this function
-has a stronger requirement: it says that it can only handle <code>&amp;'static str</code>s,
-and nothing else. Giving <code>&amp;'a str</code>s to it would be unsound, as it's free to
+<!--
+could be provided in its place, as it would be a subtype. However this function
+has a stronger requirement: it says that it can only handle `&'static str`s,
+and nothing else. Giving `&'a str`s to it would be unsound, as it's free to
 assume that what it's given lives forever. Therefore functions are not variant
-over their arguments.</p>
-<p>To see why <code>Fn(T) -&gt; U</code> should be variant over U, consider the following
-function signature:</p>
-<pre><code class="language-rust ignore">// 'a is derived from some parent scope
+over their arguments.
+-->
+<p>が同じ場所に現れうるということを意味するでしょう。 <code>&amp;'static str</code> が派生型だからです。
+しかし、この関数にはより強い要件があります。 <code>&amp;'static str</code> のみを扱い、他のものは
+扱わないということです。 <code>&amp;'a str</code> などを渡すと健全ではなくなるでしょう。
+なぜなら、この関数シグネチャは自由に、渡されたものが永遠に生きると見なすことが
+できるからです。
+それゆえに、関数はその引数において、変性ではないのです。</p>
+<!--
+To see why `Fn(T) -> U` should be variant over U, consider the following
+function signature:
+-->
+<p>なぜ <code>Fn(T) -&gt; U</code> が U において変性であるべきかを確認するために、次の関数シグネチャを
+考えてみましょう。</p>
+<pre><code class="language-rust ignore">// 'a はある親スコープから継承されます
 fn foo(usize) -&gt; &amp;'a str;
 </code></pre>
-<p>This signature claims that it will return something that outlives <code>'a</code>. It is
-therefore completely reasonable to provide</p>
+<!--
+This signature claims that it will return something that outlives `'a`. It is
+therefore completely reasonable to provide
+-->
+<p>このシグネチャは、関数が <code>'a</code> より長生きする何かを返すと主張しています。
+それゆえに、この場所に</p>
 <pre><code class="language-rust ignore">fn foo(usize) -&gt; &amp;'static str;
 </code></pre>
-<p>in its place. Therefore functions are variant over their return type.</p>
-<p><code>*const</code> has the exact same semantics as <code>&amp;</code>, so variance follows. <code>*mut</code> on the
-other hand can dereference to an <code>&amp;mut</code> whether shared or not, so it is marked
-as invariant just like cells.</p>
-<p>This is all well and good for the types the standard library provides, but
-how is variance determined for type that <em>you</em> define? A struct, informally
-speaking, inherits the variance of its fields. If a struct <code>Foo</code>
-has a generic argument <code>A</code> that is used in a field <code>a</code>, then Foo's variance
-over <code>A</code> is exactly <code>a</code>'s variance. However this is complicated if <code>A</code> is used
-in multiple fields.</p>
+<!--
+in its place. Therefore functions are variant over their return type.
+-->
+<p>が置かれても全く問題ありません。ゆえに、関数は、そのリターン型において変性なのです。</p>
+<!--
+`*const` has the exact same semantics as `&`, so variance follows. `*mut` on the
+other hand can dereference to an `&mut` whether shared or not, so it is marked
+as invariant just like cells.
+-->
+<p><code>*const</code> は <code>&amp;</code> と全く同じセマンティクスを持ちます。つまり変性も <code>&amp;</code> に従います。
+他方で、 <code>*mut</code> は、共有の有無に関わらず <code>&amp;mut</code> に参照外し可能です。よって
+<code>*mut</code> は cell と同じように非変性です。</p>
+<!--
+This is all well and good for the types the standard library provides, but
+how is variance determined for type that *you* define? A struct, informally
+speaking, inherits the variance of its fields. If a struct `Foo`
+has a generic argument `A` that is used in a field `a`, then Foo's variance
+over `A` is exactly `a`'s variance. However this is complicated if `A` is used
+in multiple fields.
+-->
+<p>これは標準ライブラリが提供する型にとっては上手くいくのですが、
+<em>あなたが</em>定義した型の変性はどのように決定されるのでしょうか? 簡単に言えば、
+構造体はフィールドの変性を受け継ぎます。もし構造体 <code>Foo</code> が、フィールド <code>a</code> に使われる
+ジェネリックな引数 <code>A</code> を持つならば、 Foo の <code>A</code> における変性は <code>a</code> の変性と全く同じです。
+しかしながら、もし <code>A</code> が複数のフィールドで使用されている場合、これは複雑になります。</p>
+<!--
+* If all uses of A are variant, then Foo is variant over A
+* Otherwise, Foo is invariant over A
+-->
 <ul>
-<li>If all uses of A are variant, then Foo is variant over A</li>
-<li>Otherwise, Foo is invariant over A</li>
+<li>もし A を使用しているすべてのものが変性である場合、 Foo は A において変性です</li>
+<li>そうでなければ、 Foo は A において非変性です</li>
 </ul>
 <pre><pre class="playpen"><code class="language-rust">
 <span class="boring">#![allow(unused_variables)]
@@ -310,15 +494,15 @@ in multiple fields.</p>
 </span>use std::cell::Cell;
 
 struct Foo&lt;'a, 'b, A: 'a, B: 'b, C, D, E, F, G, H&gt; {
-    a: &amp;'a A,     // variant over 'a and A
-    b: &amp;'b mut B, // variant over 'b and invariant over B
-    c: *const C,  // variant over C
-    d: *mut D,    // invariant over D
-    e: Vec&lt;E&gt;,    // variant over E
-    f: Cell&lt;F&gt;,   // invariant over F
-    g: G,         // variant over G
-    h1: H,        // would also be variant over H except...
-    h2: Cell&lt;H&gt;,  // invariant over H, because invariance wins
+    a: &amp;'a A,     // 'a と A において変性
+    b: &amp;'b mut B, // 'b において変性、 B において非変性
+    c: *const C,  // C において変性
+    d: *mut D,    // D において非変性
+    e: Vec&lt;E&gt;,    // E において変性
+    f: Cell&lt;F&gt;,   // F において非変性
+    g: G,         // G において変性
+    h1: H,        // これも H において変性に見えるでしょうが...
+    h2: Cell&lt;H&gt;,  // H において非変性です。非変性が勝つのです
 }
 <span class="boring">}
 </span></code></pre></pre>
