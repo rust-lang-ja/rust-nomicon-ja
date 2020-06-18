@@ -1,4 +1,8 @@
+<!--
 # Coercions
+-->
+
+# 型強制
 
 Types can implicitly be coerced to change in certain contexts. These changes are
 generally just *weakening* of types, largely focused around pointers and
