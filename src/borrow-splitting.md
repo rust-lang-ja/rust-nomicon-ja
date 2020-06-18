@@ -369,8 +369,16 @@ impl<'a, T> DoubleEndedIterator for IterMut<'a, T> {
 }
 ```
 
+<!--
 All of these are completely safe and work on stable Rust! This ultimately
 falls out of the simple struct case we saw before: Rust understands that you
 can safely split a mutable reference into subfields. We can then encode
 permanently consuming a reference via Options (or in the case of slices,
 replacing with an empty slice).
+-->
+
+これらは全て、完全に安全で、安定版の Rust で動作します! これは究極には、
+前に見た単純な構造体のケースから外れています。すなわち、 Rust は、
+可変参照を複数の副フィールドに安全に分割できると理解しているのです。
+ですから Option を通じて、参照を消費することで、永続的にエンコードすることができます。
+(あるいはスライスの場合、空のスライスで置き換えます)
