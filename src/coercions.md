@@ -22,7 +22,11 @@ Here's all the kinds of coercion:
 
 これらは全ての種類の型強制です:
 
+<!--
 Coercion is allowed between the following types:
+-->
+
+型強制は以下の型の間で認められています:
 
 * Transitivity: `T_1` to `T_3` where `T_1` coerces to `T_2` and `T_2` coerces to
   `T_3`
