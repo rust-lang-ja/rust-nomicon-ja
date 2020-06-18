@@ -1,7 +1,9 @@
 name: mdbook updater
 
 on:
-  push
+  push:
+    branches:
+      - master
 
 env:
   CARGO_TERM_COLOR: always
