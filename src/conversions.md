@@ -48,6 +48,11 @@ fn reinterpret(foo: Foo) -> Bar {
 }
 ```
 
+<!--
 But this is, at best, annoying. For common conversions, Rust provides
 more ergonomic alternatives.
+-->
+
+しかしこれは、たとえ最良の方法だとしても、煩わしいです。
+一般的な変換に関しては、 Rust はよりエルゴノミックな方法を提供しています。
 
