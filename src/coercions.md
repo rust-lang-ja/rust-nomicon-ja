@@ -16,7 +16,11 @@ largely harmless.
 これらはほとんどが、より多くのケースで Rust が "単に動く" ようにするために存在し、
 そして大部分において、ほとんど害はありません。
 
+<!--
 Here's all the kinds of coercion:
+-->
+
+これらは全ての種類の型強制です:
 
 Coercion is allowed between the following types:
 
