@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Drop Check</title>
+        <title>ドロップチェック</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">はじめに</a></li><li class="chapter-item expanded "><a href="meet-safe-and-unsafe.html"><strong aria-hidden="true">1.</strong> 安全と危険のご紹介</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="safe-unsafe-meaning.html"><strong aria-hidden="true">1.1.</strong> 安全と危険の相互作用</a></li><li class="chapter-item expanded "><a href="working-with-unsafe.html"><strong aria-hidden="true">1.2.</strong> Unsafe と連携する</a></li></ol></li><li class="chapter-item expanded "><a href="data.html"><strong aria-hidden="true">2.</strong> データレイアウト</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="repr-rust.html"><strong aria-hidden="true">2.1.</strong> repr(Rust)</a></li><li class="chapter-item expanded "><a href="exotic-sizes.html"><strong aria-hidden="true">2.2.</strong> 奇妙なサイズの型</a></li><li class="chapter-item expanded "><a href="other-reprs.html"><strong aria-hidden="true">2.3.</strong> 代替メモリレイアウト</a></li></ol></li><li class="chapter-item expanded "><a href="ownership.html"><strong aria-hidden="true">3.</strong> 所有権とライフタイム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">3.1.</strong> リファレンス</a></li><li class="chapter-item expanded "><a href="lifetimes.html"><strong aria-hidden="true">3.2.</strong> ライフタイム</a></li><li class="chapter-item expanded "><a href="lifetime-mismatch.html"><strong aria-hidden="true">3.3.</strong> ライフタイムシステムの限界</a></li><li class="chapter-item expanded "><a href="lifetime-elision.html"><strong aria-hidden="true">3.4.</strong> ライフタイムの省略</a></li><li class="chapter-item expanded "><a href="unbounded-lifetimes.html"><strong aria-hidden="true">3.5.</strong> 無制限のライフタイム</a></li><li class="chapter-item expanded "><a href="hrtb.html"><strong aria-hidden="true">3.6.</strong> 高階トレイト境界</a></li><li class="chapter-item expanded "><a href="subtyping.html"><strong aria-hidden="true">3.7.</strong> Subtyping and Variance</a></li><li class="chapter-item expanded "><a href="dropck.html" class="active"><strong aria-hidden="true">3.8.</strong> Drop Check</a></li><li class="chapter-item expanded "><a href="phantom-data.html"><strong aria-hidden="true">3.9.</strong> PhantomData</a></li><li class="chapter-item expanded "><a href="borrow-splitting.html"><strong aria-hidden="true">3.10.</strong> Splitting Borrows</a></li></ol></li><li class="chapter-item expanded "><a href="conversions.html"><strong aria-hidden="true">4.</strong> Type Conversions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="coercions.html"><strong aria-hidden="true">4.1.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="dot-operator.html"><strong aria-hidden="true">4.2.</strong> The Dot Operator</a></li><li class="chapter-item expanded "><a href="casts.html"><strong aria-hidden="true">4.3.</strong> Casts</a></li><li class="chapter-item expanded "><a href="transmutes.html"><strong aria-hidden="true">4.4.</strong> Transmutes</a></li></ol></li><li class="chapter-item expanded "><a href="uninitialized.html"><strong aria-hidden="true">5.</strong> Uninitialized Memory</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="checked-uninit.html"><strong aria-hidden="true">5.1.</strong> Checked</a></li><li class="chapter-item expanded "><a href="drop-flags.html"><strong aria-hidden="true">5.2.</strong> Drop Flags</a></li><li class="chapter-item expanded "><a href="unchecked-uninit.html"><strong aria-hidden="true">5.3.</strong> Unchecked</a></li></ol></li><li class="chapter-item expanded "><a href="obrm.html"><strong aria-hidden="true">6.</strong> 所有権に基づいたリソース管理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="constructors.html"><strong aria-hidden="true">6.1.</strong> Constructors</a></li><li class="chapter-item expanded "><a href="destructors.html"><strong aria-hidden="true">6.2.</strong> Destructors</a></li><li class="chapter-item expanded "><a href="leaking.html"><strong aria-hidden="true">6.3.</strong> Leaking</a></li></ol></li><li class="chapter-item expanded "><a href="unwinding.html"><strong aria-hidden="true">7.</strong> Unwinding</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="exception-safety.html"><strong aria-hidden="true">7.1.</strong> 例外安全性</a></li><li class="chapter-item expanded "><a href="poisoning.html"><strong aria-hidden="true">7.2.</strong> Poisoning</a></li></ol></li><li class="chapter-item expanded "><a href="concurrency.html"><strong aria-hidden="true">8.</strong> Concurrency</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="races.html"><strong aria-hidden="true">8.1.</strong> Races</a></li><li class="chapter-item expanded "><a href="send-and-sync.html"><strong aria-hidden="true">8.2.</strong> Send and Sync</a></li><li class="chapter-item expanded "><a href="atomics.html"><strong aria-hidden="true">8.3.</strong> Atomics</a></li></ol></li><li class="chapter-item expanded "><a href="vec.html"><strong aria-hidden="true">9.</strong> Implementing Vec</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="vec-layout.html"><strong aria-hidden="true">9.1.</strong> Layout</a></li><li class="chapter-item expanded "><a href="vec-alloc.html"><strong aria-hidden="true">9.2.</strong> Allocating</a></li><li class="chapter-item expanded "><a href="vec-push-pop.html"><strong aria-hidden="true">9.3.</strong> Push and Pop</a></li><li class="chapter-item expanded "><a href="vec-dealloc.html"><strong aria-hidden="true">9.4.</strong> Deallocating</a></li><li class="chapter-item expanded "><a href="vec-deref.html"><strong aria-hidden="true">9.5.</strong> Deref</a></li><li class="chapter-item expanded "><a href="vec-insert-remove.html"><strong aria-hidden="true">9.6.</strong> Insert and Remove</a></li><li class="chapter-item expanded "><a href="vec-into-iter.html"><strong aria-hidden="true">9.7.</strong> IntoIter</a></li><li class="chapter-item expanded "><a href="vec-raw.html"><strong aria-hidden="true">9.8.</strong> RawVec</a></li><li class="chapter-item expanded "><a href="vec-drain.html"><strong aria-hidden="true">9.9.</strong> Drain</a></li><li class="chapter-item expanded "><a href="vec-zsts.html"><strong aria-hidden="true">9.10.</strong> Handling Zero-Sized Types</a></li><li class="chapter-item expanded "><a href="vec-final.html"><strong aria-hidden="true">9.11.</strong> Final Code</a></li></ol></li><li class="chapter-item expanded "><a href="arc-and-mutex.html"><strong aria-hidden="true">10.</strong> Implementing Arc and Mutex</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">はじめに</a></li><li class="chapter-item expanded "><a href="meet-safe-and-unsafe.html"><strong aria-hidden="true">1.</strong> 安全と危険のご紹介</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="safe-unsafe-meaning.html"><strong aria-hidden="true">1.1.</strong> 安全と危険の相互作用</a></li><li class="chapter-item expanded "><a href="working-with-unsafe.html"><strong aria-hidden="true">1.2.</strong> Unsafe と連携する</a></li></ol></li><li class="chapter-item expanded "><a href="data.html"><strong aria-hidden="true">2.</strong> データレイアウト</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="repr-rust.html"><strong aria-hidden="true">2.1.</strong> repr(Rust)</a></li><li class="chapter-item expanded "><a href="exotic-sizes.html"><strong aria-hidden="true">2.2.</strong> 奇妙なサイズの型</a></li><li class="chapter-item expanded "><a href="other-reprs.html"><strong aria-hidden="true">2.3.</strong> 代替メモリレイアウト</a></li></ol></li><li class="chapter-item expanded "><a href="ownership.html"><strong aria-hidden="true">3.</strong> 所有権とライフタイム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">3.1.</strong> リファレンス</a></li><li class="chapter-item expanded "><a href="lifetimes.html"><strong aria-hidden="true">3.2.</strong> ライフタイム</a></li><li class="chapter-item expanded "><a href="lifetime-mismatch.html"><strong aria-hidden="true">3.3.</strong> ライフタイムシステムの限界</a></li><li class="chapter-item expanded "><a href="lifetime-elision.html"><strong aria-hidden="true">3.4.</strong> ライフタイムの省略</a></li><li class="chapter-item expanded "><a href="unbounded-lifetimes.html"><strong aria-hidden="true">3.5.</strong> 無制限のライフタイム</a></li><li class="chapter-item expanded "><a href="hrtb.html"><strong aria-hidden="true">3.6.</strong> 高階トレイト境界</a></li><li class="chapter-item expanded "><a href="subtyping.html"><strong aria-hidden="true">3.7.</strong> Subtyping and Variance</a></li><li class="chapter-item expanded "><a href="dropck.html" class="active"><strong aria-hidden="true">3.8.</strong> ドロップチェック</a></li><li class="chapter-item expanded "><a href="phantom-data.html"><strong aria-hidden="true">3.9.</strong> PhantomData</a></li><li class="chapter-item expanded "><a href="borrow-splitting.html"><strong aria-hidden="true">3.10.</strong> Splitting Borrows</a></li></ol></li><li class="chapter-item expanded "><a href="conversions.html"><strong aria-hidden="true">4.</strong> Type Conversions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="coercions.html"><strong aria-hidden="true">4.1.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="dot-operator.html"><strong aria-hidden="true">4.2.</strong> The Dot Operator</a></li><li class="chapter-item expanded "><a href="casts.html"><strong aria-hidden="true">4.3.</strong> Casts</a></li><li class="chapter-item expanded "><a href="transmutes.html"><strong aria-hidden="true">4.4.</strong> Transmutes</a></li></ol></li><li class="chapter-item expanded "><a href="uninitialized.html"><strong aria-hidden="true">5.</strong> Uninitialized Memory</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="checked-uninit.html"><strong aria-hidden="true">5.1.</strong> Checked</a></li><li class="chapter-item expanded "><a href="drop-flags.html"><strong aria-hidden="true">5.2.</strong> Drop Flags</a></li><li class="chapter-item expanded "><a href="unchecked-uninit.html"><strong aria-hidden="true">5.3.</strong> Unchecked</a></li></ol></li><li class="chapter-item expanded "><a href="obrm.html"><strong aria-hidden="true">6.</strong> 所有権に基づいたリソース管理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="constructors.html"><strong aria-hidden="true">6.1.</strong> Constructors</a></li><li class="chapter-item expanded "><a href="destructors.html"><strong aria-hidden="true">6.2.</strong> Destructors</a></li><li class="chapter-item expanded "><a href="leaking.html"><strong aria-hidden="true">6.3.</strong> Leaking</a></li></ol></li><li class="chapter-item expanded "><a href="unwinding.html"><strong aria-hidden="true">7.</strong> Unwinding</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="exception-safety.html"><strong aria-hidden="true">7.1.</strong> 例外安全性</a></li><li class="chapter-item expanded "><a href="poisoning.html"><strong aria-hidden="true">7.2.</strong> Poisoning</a></li></ol></li><li class="chapter-item expanded "><a href="concurrency.html"><strong aria-hidden="true">8.</strong> Concurrency</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="races.html"><strong aria-hidden="true">8.1.</strong> Races</a></li><li class="chapter-item expanded "><a href="send-and-sync.html"><strong aria-hidden="true">8.2.</strong> Send and Sync</a></li><li class="chapter-item expanded "><a href="atomics.html"><strong aria-hidden="true">8.3.</strong> Atomics</a></li></ol></li><li class="chapter-item expanded "><a href="vec.html"><strong aria-hidden="true">9.</strong> Implementing Vec</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="vec-layout.html"><strong aria-hidden="true">9.1.</strong> Layout</a></li><li class="chapter-item expanded "><a href="vec-alloc.html"><strong aria-hidden="true">9.2.</strong> Allocating</a></li><li class="chapter-item expanded "><a href="vec-push-pop.html"><strong aria-hidden="true">9.3.</strong> Push and Pop</a></li><li class="chapter-item expanded "><a href="vec-dealloc.html"><strong aria-hidden="true">9.4.</strong> Deallocating</a></li><li class="chapter-item expanded "><a href="vec-deref.html"><strong aria-hidden="true">9.5.</strong> Deref</a></li><li class="chapter-item expanded "><a href="vec-insert-remove.html"><strong aria-hidden="true">9.6.</strong> Insert and Remove</a></li><li class="chapter-item expanded "><a href="vec-into-iter.html"><strong aria-hidden="true">9.7.</strong> IntoIter</a></li><li class="chapter-item expanded "><a href="vec-raw.html"><strong aria-hidden="true">9.8.</strong> RawVec</a></li><li class="chapter-item expanded "><a href="vec-drain.html"><strong aria-hidden="true">9.9.</strong> Drain</a></li><li class="chapter-item expanded "><a href="vec-zsts.html"><strong aria-hidden="true">9.10.</strong> Handling Zero-Sized Types</a></li><li class="chapter-item expanded "><a href="vec-final.html"><strong aria-hidden="true">9.11.</strong> Final Code</a></li></ol></li><li class="chapter-item expanded "><a href="arc-and-mutex.html"><strong aria-hidden="true">10.</strong> Implementing Arc and Mutex</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -147,14 +147,25 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#drop-check" id="drop-check">Drop Check</a></h1>
-<p>We have seen how lifetimes provide us some fairly simple rules for ensuring
+                        <!--
+# Drop Check
+-->
+<h1><a class="header" href="#ドロップチェック" id="ドロップチェック">ドロップチェック</a></h1>
+<!--
+We have seen how lifetimes provide us some fairly simple rules for ensuring
 that we never read dangling references. However up to this point we have only ever
-interacted with the <em>outlives</em> relationship in an inclusive manner. That is,
-when we talked about <code>'a: 'b</code>, it was ok for <code>'a</code> to live <em>exactly</em> as long as
-<code>'b</code>. At first glance, this seems to be a meaningless distinction. Nothing ever
+interacted with the *outlives* relationship in an inclusive manner. That is,
+when we talked about `'a: 'b`, it was ok for `'a` to live *exactly* as long as
+`'b`. At first glance, this seems to be a meaningless distinction. Nothing ever
 gets dropped at the same time as another, right? This is why we used the
-following desugaring of <code>let</code> statements:</p>
+following desugaring of `let` statements:
+-->
+<p>タングリング参照を絶対に読み込まないよう、ライフタイムが提供しているいくつかのかなり単純な規則を
+確認してきました。しかしここまで、片方のライフタイムが<em>より長生きする</em>関係についてのみ、包括的な方法で取り組んできました。
+つまり、 <code>'a: 'b</code> についてお話したとき、 <code>'a</code> が <code>'b</code> と<em>全く</em>同じだけ生きても問題なかったのです。
+ひと目見ただけでも、これは無意味な区別のように感じます。
+他のものと同時にドロップされるものって今まで存在していないですよね?
+これが、以下の <code>let</code> 文の脱糖を使用した理由です:</p>
 <pre><code class="language-rust ignore">let x;
 let y;
 </code></pre>
@@ -165,23 +176,46 @@ let y;
     }
 }
 </code></pre>
-<p>Each creates its own scope, clearly establishing that one drops before the
-other. However, what if we do the following?</p>
+<!--
+Each creates its own scope, clearly establishing that one drops before the
+other. However, what if we do the following?
+-->
+<p>それぞれがスコープを生成しているので、明らかに片方がもう片方よりも先にドロップすることが確認できます。
+しかし、次の場合はどうでしょう?</p>
 <pre><code class="language-rust ignore">let (x, y) = (vec![], vec![]);
 </code></pre>
-<p>Does either value strictly outlive the other? The answer is in fact <em>no</em>,
+<!--
+Does either value strictly outlive the other? The answer is in fact *no*,
 neither value strictly outlives the other. Of course, one of x or y will be
 dropped before the other, but the actual order is not specified. Tuples aren't
 special in this regard; composite structures just don't guarantee their
-destruction order as of Rust 1.0.</p>
-<p>We <em>could</em> specify this for the fields of built-in composites like tuples and
+destruction order as of Rust 1.0.
+-->
+<p>片方の値が厳密にもう片方よりも長生きするのでしょうか? 実は、答えは<em>いいえ</em>です。つまり、
+どちらの値も厳密に、他方より長生きしません。勿論、 x と y のどちらかが他方よりも
+先にドロップするでしょうが、実際の順番は定められていません。
+タプルはこの点において特別ではありません。 Rust 1.0 の時点で、
+複合構造体は単にデストラクションの順番を保証していないだけです。</p>
+<!--
+We *could* specify this for the fields of built-in composites like tuples and
 structs. However, what about something like Vec? Vec has to manually drop its
 elements via pure-library code. In general, anything that implements Drop has
 a chance to fiddle with its innards during its final death knell. Therefore
 the compiler can't sufficiently reason about the actual destruction order
-of the contents of any type that implements Drop.</p>
-<p>So why do we care? We care because if the type system isn't careful, it could
-accidentally make dangling pointers. Consider the following simple program:</p>
+of the contents of any type that implements Drop.
+-->
+<p>タプルや構造体といった組み込みの複合体のフィールドに、デストラクションの順番を
+定めることは<em>出来ました</em>。しかし、 Vec のようなものの場合どうでしょうか? Vec は
+純粋なライブラリのコードを通してその要素を手動でドロップする必要があります。
+一般に、 Drop を実装しているものは、破棄される際にその内部をいじくる機会があります。
+それゆえに、コンパイラは Drop を実装しているいかなる型の内容の、実際の
+デストラクションの順番を十分に推論できないのです。</p>
+<!--
+So why do we care? We care because if the type system isn't careful, it could
+accidentally make dangling pointers. Consider the following simple program:
+-->
+<p>ではなぜこれを気にするのでしょうか? 型システムが丁寧でない場合、誤ってダングリングポインタを
+生成しうるからです。次の単純なプログラムを考えてみましょう。</p>
 <pre><pre class="playpen"><code class="language-rust">struct Inspector&lt;'a&gt;(&amp;'a u8);
 
 fn main() {
@@ -190,14 +224,23 @@ fn main() {
     inspector = Inspector(&amp;days);
 }
 </code></pre></pre>
-<p>This program is totally sound and compiles today. The fact that <code>days</code> does
-not <em>strictly</em> outlive <code>inspector</code> doesn't matter. As long as the <code>inspector</code>
-is alive, so is days.</p>
-<p>However if we add a destructor, the program will no longer compile!</p>
+<!--
+This program is totally sound and compiles today. The fact that `days` does
+not *strictly* outlive `inspector` doesn't matter. As long as the `inspector`
+is alive, so is days.
+-->
+<p>このプログラムは今日完全に問題なく、コンパイルすることが出来ます。 <code>days</code> が
+<em>厳密に</em> <code>inspector</code> より長くは生きないということは問題ではありません。
+<code>inspector</code> が生きている限り、 <code>days</code> も生きています。</p>
+<!--
+However if we add a destructor, the program will no longer compile!
+-->
+<p>しかし、もしデストラクタを追加したら、プログラムはもうコンパイルできないでしょう!</p>
 <pre><code class="language-rust ignore">struct Inspector&lt;'a&gt;(&amp;'a u8);
 
 impl&lt;'a&gt; Drop for Inspector&lt;'a&gt; {
     fn drop(&amp;mut self) {
+        // 退職からたった{}日でした!
         println!(&quot;I was only {} days from retirement!&quot;, self.0);
     }
 }
@@ -206,54 +249,88 @@ fn main() {
     let (inspector, days);
     days = Box::new(1);
     inspector = Inspector(&amp;days);
-    // Let's say `days` happens to get dropped first.
-    // Then when Inspector is dropped, it will try to read free'd memory!
+    // `days` が先にドロップするとしましょう。
+    // すると、 Inspector がドロップされる時、解放されたメモリを読もうとします!
 }
 </code></pre>
 <pre><code class="language-text">&lt;anon&gt;:12:28: 12:32 error: `days` does not live long enough
+(エラー: `days` は十分長生きしません)
 &lt;anon&gt;:12     inspector = Inspector(&amp;days);
                                      ^~~~
 &lt;anon&gt;:9:11: 15:2 note: reference must be valid for the block at 9:10...
+(注釈: 参照は 9:10 にあるブロックに対して有効でなければなりません)
 &lt;anon&gt;:9 fn main() {
 &lt;anon&gt;:10     let (inspector, days);
 &lt;anon&gt;:11     days = Box::new(1);
 &lt;anon&gt;:12     inspector = Inspector(&amp;days);
-&lt;anon&gt;:13     // Let's say `days` happens to get dropped first.
-&lt;anon&gt;:14     // Then when Inspector is dropped, it will try to read free'd memory!
+&lt;anon&gt;:13     // `days` が先にドロップするとしましょう。
+&lt;anon&gt;:14     // すると、 Inspector がドロップされる時、解放されたメモリを読もうとします!
           ...
 &lt;anon&gt;:10:27: 15:2 note: ...but borrowed value is only valid for the block suffix following statement 0 at 10:26
+(注釈: ...しかし、借用された値は 10:26 にある、文 0 に続くブロックサフィックスに対してのみ有効です)
 &lt;anon&gt;:10     let (inspector, days);
 &lt;anon&gt;:11     days = Box::new(1);
 &lt;anon&gt;:12     inspector = Inspector(&amp;days);
-&lt;anon&gt;:13     // Let's say `days` happens to get dropped first.
-&lt;anon&gt;:14     // Then when Inspector is dropped, it will try to read free'd memory!
+&lt;anon&gt;:13     // `days` が先にドロップするとしましょう。
+&lt;anon&gt;:14     // すると、 Inspector がドロップされる時、解放されたメモリを読もうとします!
 &lt;anon&gt;:15 }
 </code></pre>
-<p>Implementing Drop lets the Inspector execute some arbitrary code during its
+<!--
+Implementing Drop lets the Inspector execute some arbitrary code during its
 death. This means it can potentially observe that types that are supposed to
-live as long as it does actually were destroyed first.</p>
-<p>Interestingly, only generic types need to worry about this. If they aren't
-generic, then the only lifetimes they can harbor are <code>'static</code>, which will truly
-live <em>forever</em>. This is why this problem is referred to as <em>sound generic drop</em>.
-Sound generic drop is enforced by the <em>drop checker</em>. As of this writing, some
+live as long as it does actually were destroyed first.
+-->
+<p>Drop トレイトを実装することで、 Inspector が破棄される際に任意のコードを実行するようにできます。
+これは、 Inspector と同じだけ生きる型が、実際にはそれより先に破棄されると Inspector が
+潜在的に認識できることを意味します。</p>
+<!--
+Interestingly, only generic types need to worry about this. If they aren't
+generic, then the only lifetimes they can harbor are `'static`, which will truly
+live *forever*. This is why this problem is referred to as *sound generic drop*.
+Sound generic drop is enforced by the *drop checker*. As of this writing, some
 of the finer details of how the drop checker validates types is totally up in
 the air. However The Big Rule is the subtlety that we have focused on this whole
-section:</p>
-<p><strong>For a generic type to soundly implement drop, its generics arguments must
-strictly outlive it.</strong></p>
-<p>Obeying this rule is (usually) necessary to satisfy the borrow
+section:
+-->
+<p>興味深いことに、ジェネリックな型だけがこれを気に掛ける必要があります。
+もし型がジェネリックでなければ、型が隠蔽できる唯一のライフタイムは <code>'static</code> です。
+このライフタイムは本当に<em>永遠に</em>生き続けます。これが、この問題が<em>健全ジェネリックドロップ</em>として
+呼ばれている理由です。健全ジェネリックドロップは<em>ドロップチェッカ</em>によって実行されます。
+Rust nomicon の英語版のこの章が書かれた時点で、ドロップチェッカがどのように型の有効性を
+確かめるかについて、いくつかのより細かい部分については全く決まっていません。しかし、大まかな規則は、
+この章全体で注目してきた僅かなものです。</p>
+<!--
+**For a generic type to soundly implement drop, its generics arguments must
+strictly outlive it.**
+-->
+<p><strong>ジェネリックな型に、健全なドロップを実装するためには、その型のジェネリックな引数は厳密に
+ジェネリックな型よりも長生きしなければなりません</strong></p>
+<!--
+Obeying this rule is (usually) necessary to satisfy the borrow
 checker; obeying it is sufficient but not necessary to be
 sound. That is, if your type obeys this rule then it's definitely
-sound to drop.</p>
-<p>The reason that it is not always necessary to satisfy the above rule
+sound to drop.
+-->
+<p>この規則に従うことは、 (通常) 借用チェッカを満足させるために必要です。
+この規則に従うことは十分条件ですが、健全であるためには不必要です。
+つまり、もし型がこの規則に則っている場合、その型は疑いなく安全にドロップできます。</p>
+<!--
+The reason that it is not always necessary to satisfy the above rule
 is that some Drop implementations will not access borrowed data even
-though their type gives them the capability for such access.</p>
-<p>For example, this variant of the above <code>Inspector</code> example will never
-access borrowed data:</p>
+though their type gives them the capability for such access.
+-->
+<p>この規則を必ずしも満足させる必要がない理由は、借用されたデータにアクセス
+できるにも関わらず、データにアクセスしない Drop の実装が存在するからです。</p>
+<!--
+For example, this variant of the above `Inspector` example will never
+access borrowed data:
+-->
+<p>例えばこの、上記の <code>Inspector</code> の変種の例では、借用されたデータにアクセスしません。</p>
 <pre><code class="language-rust ignore">struct Inspector&lt;'a&gt;(&amp;'a u8, &amp;'static str);
 
 impl&lt;'a&gt; Drop for Inspector&lt;'a&gt; {
     fn drop(&amp;mut self) {
+        // Inspector(_, {}) はいつ調査を*しない*かを知っています。
         println!(&quot;Inspector(_, {}) knows when *not* to inspect.&quot;, self.1);
     }
 }
@@ -262,18 +339,22 @@ fn main() {
     let (inspector, days);
     days = Box::new(1);
     inspector = Inspector(&amp;days, &quot;gadget&quot;);
-    // Let's say `days` happens to get dropped first.
-    // Even when Inspector is dropped, its destructor will not access the
-    // borrowed `days`.
+    // `days` が先にドロップするとしましょう。
+    // Inspector がドロップしたとしても、デストラクタは
+    // 借用された `days` にアクセスしません。
 }
 </code></pre>
-<p>Likewise, this variant will also never access borrowed data:</p>
+<!--
+Likewise, this variant will also never access borrowed data:
+-->
+<p>同様に、この変種も、借用されたデータにアクセスしません。</p>
 <pre><code class="language-rust ignore">use std::fmt;
 
 struct Inspector&lt;T: fmt::Display&gt;(T, &amp;'static str);
 
 impl&lt;T: fmt::Display&gt; Drop for Inspector&lt;T&gt; {
     fn drop(&amp;mut self) {
+        // Inspector(_, {}) はいつ調査を*しない*かを知っています。
         println!(&quot;Inspector(_, {}) knows when *not* to inspect.&quot;, self.1);
     }
 }
@@ -282,52 +363,104 @@ fn main() {
     let (inspector, days): (Inspector&lt;&amp;u8&gt;, Box&lt;u8&gt;);
     days = Box::new(1);
     inspector = Inspector(&amp;days, &quot;gadget&quot;);
-    // Let's say `days` happens to get dropped first.
-    // Even when Inspector is dropped, its destructor will not access the
-    // borrowed `days`.
+    // `days` が先にドロップするとしましょう。
+    // Inspector がドロップしたとしても、デストラクタは
+    // 借用された `days` にアクセスしません
 }
 </code></pre>
-<p>However, <em>both</em> of the above variants are rejected by the borrow
-checker during the analysis of <code>fn main</code>, saying that <code>days</code> does not
-live long enough.</p>
-<p>The reason is that the borrow checking analysis of <code>main</code> does not
+<!--
+However, *both* of the above variants are rejected by the borrow
+checker during the analysis of `fn main`, saying that `days` does not
+live long enough.
+-->
+<p>しかしながら、上記の<em>両方の</em>変種は、 <code>fn main</code> の分析中に、 <code>days</code> が
+十分長生きしないと言われ、借用チェッカに弾かれるでしょう。</p>
+<!--
+The reason is that the borrow checking analysis of `main` does not
 know about the internals of each Inspector's Drop implementation.  As
-far as the borrow checker knows while it is analyzing <code>main</code>, the body
-of an inspector's destructor might access that borrowed data.</p>
-<p>Therefore, the drop checker forces all borrowed data in a value to
-strictly outlive that value.</p>
-<h1><a class="header" href="#an-escape-hatch" id="an-escape-hatch">An Escape Hatch</a></h1>
-<p>The precise rules that govern drop checking may be less restrictive in
-the future.</p>
-<p>The current analysis is deliberately conservative and trivial; it forces all
-borrowed data in a value to outlive that value, which is certainly sound.</p>
-<p>Future versions of the language may make the analysis more precise, to
+far as the borrow checker knows while it is analyzing `main`, the body
+of an inspector's destructor might access that borrowed data.
+-->
+<p>理由は、 <code>main</code> の借用チェックの際、 借用チェッカは上記 2 つの例の、それぞれの Inspector の Drop の実装の
+内部については知らないからです。借用チェッカが <code>main</code> の分析をしている間、 inspector の
+デストラクタの本体が、借用されたデータにアクセスするかもしれないと借用チェッカが認識しているからです。</p>
+<!--
+Therefore, the drop checker forces all borrowed data in a value to
+strictly outlive that value.
+-->
+<p>それゆえにドロップチェッカは、ある値の中の全ての借用されたデータが、
+その値よりも厳密に長生きするよう強制するのです。</p>
+<!--
+# An Escape Hatch
+-->
+<h1><a class="header" href="#脱出口" id="脱出口">脱出口</a></h1>
+<!--
+The precise rules that govern drop checking may be less restrictive in
+the future.
+-->
+<p>ドロップチェックを制御する正確な規則は、将来緩和される可能性があります。</p>
+<!--
+The current analysis is deliberately conservative and trivial; it forces all
+borrowed data in a value to outlive that value, which is certainly sound.
+-->
+<p>現在の分析方法は、わざと保守的で、自明なものにしています。
+ある値の中の全ての借用されたデータが、その値よりも長生きするよう強制するのです。
+これは明らかに健全です。</p>
+<!--
+Future versions of the language may make the analysis more precise, to
 reduce the number of cases where sound code is rejected as unsafe.
 This would help address cases such as the two Inspectors above that
-know not to inspect during destruction.</p>
-<p>In the meantime, there is an unstable attribute that one can use to
-assert (unsafely) that a generic type's destructor is <em>guaranteed</em> to
+know not to inspect during destruction.
+-->
+<p>将来の Rust のバージョンでは、健全なコードがアンセーフとして弾かれるケースの
+数を減らすため、分析がより正確になるかもしれません。
+これは、デストラクションの際にデータにアクセスしないと分かっている、
+上記の 2 つの Inspector のようなケースに対処するのを手助けしてくれるでしょう。</p>
+<!--
+In the meantime, there is an unstable attribute that one can use to
+assert (unsafely) that a generic type's destructor is *guaranteed* to
 not access any expired data, even if its type gives it the capability
-to do so.</p>
-<p>That attribute is called <code>may_dangle</code> and was introduced in [RFC 1327]
+to do so.
+-->
+<p>それまでは、 (アンセーフではあるが) ジェネリックな型のデストラクタが、
+たとえ破棄されたデータにアクセス出来るとしても、そのようなアクセスをしないと<em>保証する</em>と見なす、
+アンステーブルなアトリビュートを使用することが出来ます。</p>
+<!--
+That attribute is called `may_dangle` and was introduced in [RFC 1327]
 (https://github.com/rust-lang/rfcs/blob/master/text/1327-dropck-param-eyepatch.md).
-To deploy it on the Inspector example from above, we would write:</p>
+To deploy it on the Inspector example from above, we would write:
+-->
+<p>そのアトリビュートは <code>may_dangle</code> と呼ばれ、 <a href="https://github.com/rust-lang/rfcs/blob/master/text/1327-dropck-param-eyepatch.md">RFC 1327</a> で
+導入されました。上記の Inspector の例でこのアトリビュートを使用する場合、以下のように書きます。</p>
 <pre><code class="language-rust ignore">struct Inspector&lt;'a&gt;(&amp;'a u8, &amp;'static str);
 
 unsafe impl&lt;#[may_dangle] 'a&gt; Drop for Inspector&lt;'a&gt; {
     fn drop(&amp;mut self) {
+        // Inspector(_, {}) はいつ調査を*しない*かを知っています。
         println!(&quot;Inspector(_, {}) knows when *not* to inspect.&quot;, self.1);
     }
 }
 </code></pre>
-<p>Use of this attribute requires the <code>Drop</code> impl to be marked <code>unsafe</code> because the
+<!--
+Use of this attribute requires the `Drop` impl to be marked `unsafe` because the
 compiler is not checking the implicit assertion that no potentially expired data
-(e.g. <code>self.0</code> above) is accessed.</p>
-<p>The attribute can be applied to any number of lifetime and type parameters. In
+(e.g. `self.0` above) is accessed.
+-->
+<p>このアトリビュートを使用する場合、 <code>Drop</code> の impl が <code>unsafe</code> でマークされる必要があります。
+なぜならコンパイラは、いかなる既に破棄されているかもしれないデータ (例えば上記の <code>self.0</code>) にアクセスしないという、
+暗黙の主張について検査しないからです。</p>
+<!--
+The attribute can be applied to any number of lifetime and type parameters. In
 the following example, we assert that we access no data behind a reference of
-lifetime <code>'b</code> and that the only uses of <code>T</code> will be moves or drops, but omit
-the attribute from <code>'a</code> and <code>U</code>, because we do access data with that lifetime
-and that type:</p>
+lifetime `'b` and that the only uses of `T` will be moves or drops, but omit
+the attribute from `'a` and `U`, because we do access data with that lifetime
+and that type:
+-->
+<p>このアトリビュートは、ライフタイムや型パラメータにいくつでも適用することが出来ます。
+以下の例では、 <code>'b</code> のライフタイムを持つ参照の先にあるデータにアクセスしないこと、
+そして、 <code>T</code> がムーブやドロップにのみ使用されることを主張します。
+しかし、 <code>'a</code> と <code>U</code> にはこのアトリビュートは省略します。なぜなら、これらのライフタイムや
+型を持つデータに実際にアクセスするからです。</p>
 <pre><code class="language-rust ignore">use std::fmt::Display;
 
 struct Inspector&lt;'a, 'b, T, U: Display&gt;(&amp;'a u8, &amp;'b u8, T, U);
@@ -338,53 +471,94 @@ unsafe impl&lt;'a, #[may_dangle] 'b, #[may_dangle] T, U: Display&gt; Drop for In
     }
 }
 </code></pre>
-<p>It is sometimes obvious that no such access can occur, like the case above.
+<!--
+It is sometimes obvious that no such access can occur, like the case above.
 However, when dealing with a generic type parameter, such access can
-occur indirectly. Examples of such indirect access are:</p>
+occur indirectly. Examples of such indirect access are:
+-->
+<p>時々、上記のように、このようなアクセスが起こらないことが明白な場合があります。
+しかし、ジェネリックな型パラメータに対処する際、このようなアクセスは
+間接的に起こりえます。このような間接的なアクセスの例です。</p>
+<!--
+ * invoking a callback,
+ * via a trait method call.
+-->
 <ul>
-<li>invoking a callback,</li>
-<li>via a trait method call.</li>
+<li>コールバックを呼び出す場合</li>
+<li>トレイトメソッドの呼び出しを経由する場合</li>
 </ul>
-<p>(Future changes to the language, such as impl specialization, may add
-other avenues for such indirect access.)</p>
-<p>Here is an example of invoking a callback:</p>
+<!--
+(Future changes to the language, such as impl specialization, may add
+other avenues for such indirect access.)
+-->
+<p>(impl の特殊化など、言語仕様の将来の変更によっては、このような間接的なアクセスの
+方法が追加されるかもしれません。)</p>
+<!--
+Here is an example of invoking a callback:
+-->
+<p>これは、コールバックを呼び出す例です。</p>
 <pre><code class="language-rust ignore">struct Inspector&lt;T&gt;(T, &amp;'static str, Box&lt;for &lt;'r&gt; fn(&amp;'r T) -&gt; String&gt;);
 
 impl&lt;T&gt; Drop for Inspector&lt;T&gt; {
     fn drop(&amp;mut self) {
-        // The `self.2` call could access a borrow e.g. if `T` is `&amp;'a _`.
+        // 例えば `T` が `&amp;'a _` である場合、`self.2` の呼び出しによって借用されたデータにアクセス出来てしまうでしょう。
+
+        // Inspector({}, {}) はうっかり破棄されたデータにアクセスしてしまいます。
         println!(&quot;Inspector({}, {}) unwittingly inspects expired data.&quot;,
                  (self.2)(&amp;self.0), self.1);
     }
 }
 </code></pre>
-<p>Here is an example of a trait method call:</p>
+<!--
+Here is an example of a trait method call:
+-->
+<p>これは、トレイトメソッドの呼び出しの例です。</p>
 <pre><code class="language-rust ignore">use std::fmt;
 
 struct Inspector&lt;T: fmt::Display&gt;(T, &amp;'static str);
 
 impl&lt;T: fmt::Display&gt; Drop for Inspector&lt;T&gt; {
     fn drop(&amp;mut self) {
-        // There is a hidden call to `&lt;T as Display&gt;::fmt` below, which
-        // could access a borrow e.g. if `T` is `&amp;'a _`
+        // 以下のコードには隠れている、 `&lt;T as Display&gt;::fmt` の呼び出しがあります。
+        // もし `T` が `&amp;'a _` である場合、この呼び出しで借用されたデータにアクセス出来てしまうでしょう。
+
+        // Inspector({}, {}) はうっかり破棄されたデータにアクセスしてしまいます。
         println!(&quot;Inspector({}, {}) unwittingly inspects expired data.&quot;,
                  self.0, self.1);
     }
 }
 </code></pre>
-<p>And of course, all of these accesses could be further hidden within
+<!--
+And of course, all of these accesses could be further hidden within
 some other method invoked by the destructor, rather than being written
-directly within it.</p>
-<p>In all of the above cases where the <code>&amp;'a u8</code> is accessed in the
-destructor, adding the <code>#[may_dangle]</code>
+directly within it.
+-->
+<p>そして勿論、これら全てのアクセスは、何か他のメソッド内に直接書かれるよりも、
+デストラクタによって呼び出されたメソッドの内部に更に隠されうる事があります。</p>
+<!--
+In all of the above cases where the `&'a u8` is accessed in the
+destructor, adding the `#[may_dangle]`
 attribute makes the type vulnerable to misuse that the borrower
 checker will not catch, inviting havoc. It is better to avoid adding
-the attribute.</p>
-<h1><a class="header" href="#is-that-all-about-drop-checker" id="is-that-all-about-drop-checker">Is that all about drop checker?</a></h1>
-<p>It turns out that when writing unsafe code, we generally don't need to
+the attribute.
+-->
+<p>デストラクタ内の <code>&amp;'a u8</code> にアクセスされる上記の全てのケースにおいて、
+<code>#[may_dangle]</code> アトリビュートを付け足すことで、借用チェッカが捕捉しないような
+誤用に対して型が脆弱になり、これによって惨事を引き起こします。
+このアトリビュートを付け足すのは避ける方がよいでしょう。</p>
+<!--
+# Is that all about drop checker?
+-->
+<h1><a class="header" href="#これがドロップチェッカについてのすべてですか" id="これがドロップチェッカについてのすべてですか">これがドロップチェッカについてのすべてですか?</a></h1>
+<!--
+It turns out that when writing unsafe code, we generally don't need to
 worry at all about doing the right thing for the drop checker. However there
 is one special case that you need to worry about, which we will look at in
-the next section.</p>
+the next section.
+-->
+<p>アンセーフなコードを書いているとき、一般的にはドロップチェッカに対して正しいことをする
+ことに関する心配は全く必要ないことが分かります。しかし、心配しなければいけない1つ特別な
+ケースが存在します。これは次のセクションで見ていきます。</p>
 
                     </main>
 
