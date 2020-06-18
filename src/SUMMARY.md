@@ -20,7 +20,7 @@
 	* [Drop Check](dropck.md)
 	* [PhantomData](phantom-data.md)
 	* [Splitting Borrows](borrow-splitting.md)
-* [Type Conversions](conversions.md)
+* [型変換](conversions.md)
 	* [Coercions](coercions.md)
 	* [The Dot Operator](dot-operator.md)
 	* [Casts](casts.md)
