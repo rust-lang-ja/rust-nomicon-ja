@@ -170,7 +170,7 @@ actually ever yield multiple mutable references to the same piece of data.
 
 しかし、この API は*本当に*動作します。まさにイテレータがその場限りのオブジェクトであるからです。
 IterMut が生成するすべてのものは高々 1 回しか生成されません。ですから実際には、
-常に何らかのひとかけらのデータに対する可変参照を複数回生成していないのです。
+常に、何らかのひとかけらのデータに対する可変参照を、複数回生成していないのです。
 
 <!--
 Perhaps surprisingly, mutable iterators don't require unsafe code to be
