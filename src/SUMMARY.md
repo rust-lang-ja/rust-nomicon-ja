@@ -19,7 +19,7 @@
 	* [Subtyping and Variance](subtyping.md)
 	* [Drop Check](dropck.md)
 	* [PhantomData](phantom-data.md)
-	* [Splitting Borrows](borrow-splitting.md)
+	* [借用の分割](borrow-splitting.md)
 * [型変換](conversions.md)
 	* [型強制](coercions.md)
 	* [ドットオペレータ](dot-operator.md)
