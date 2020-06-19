@@ -137,6 +137,7 @@ fn main() {
 
 ```text
 <anon>:10:5: 10:8 error: the trait bound `&mut i32 : Trait` is not satisfied [E0277]
+(エラー: トレイト境界 `&mut i32: Trait` が満たされていません)
 <anon>:10     foo(t);
               ^~~
 ```
