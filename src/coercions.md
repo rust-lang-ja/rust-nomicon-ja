@@ -90,6 +90,7 @@ type `U` are:
 その型への型強制が発生します。もし推論が必要ならば、型強制は行われません。
 余すことなく言えば、式 `e` に対する型 `U` への型強制サイトは以下の通りです。
 
+<!--
 * let statements, statics, and consts: `let x: U = e`
 * Arguments to functions: `takes_a_U(e)`
 * Any expression that will be returned: `fn foo() -> U { e }`
@@ -97,6 +98,15 @@ type `U` are:
 * Array literals: `let x: [U; 10] = [e, ..]`
 * Tuple literals: `let x: (U, ..) = (e, ..)`
 * The last expression in a block: `let x: U = { ..; e }`
+-->
+
+* let 文、 static、 const: `let x: U = e`
+* 関数に対する引数: `takes_a_U(e)`
+* 返される全ての式: `fn foo() -> U { e }`
+* 構造体リテラル: `Foo { some_u: e }`
+* 配列リテラル: `let x: [U; 10] = [e, ..]`
+* タプルリテラル: `let x: (U, ..) = (e, ..)`
+* ブロックの最後の式: `let x: U = { ..; e }`
 
 Note that we do not perform coercions when matching traits (except for
 receivers, see below). If there is an impl for some type `U` and `T` coerces to
