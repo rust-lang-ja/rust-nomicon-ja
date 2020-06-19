@@ -59,6 +59,7 @@ only implemented automatically, and enables the following transformations:
 全てのポインタ型 (Box や Rc のようなスマートポインタを含む) で実装されています。
 アンサイズは自動的にのみ実装され、以下の変換を有効にします。
 
+<!--
 * `[T; n]` => `[T]`
 * `T` => `Trait` where `T: Trait`
 * `Foo<..., T, ...>` => `Foo<..., U, ...>` where:
@@ -67,6 +68,16 @@ only implemented automatically, and enables the following transformations:
     * Only the last field of `Foo` has type involving `T`
     * `T` is not part of the type of any other fields
     * `Bar<T>: Unsize<Bar<U>>`, if the last field of `Foo` has type `Bar<T>`
+-->
+
+* `[T; n]` => `[T]`
+* `T` => `Trait` 但し `T: Trait`
+* `Foo<..., T, ...>` => `Foo<..., U, ...>` 但し
+    * `T: Unsize<U>`
+    * `Foo` は構造体
+    * `Foo` の最後のフィールドだけが `T` を含む型である
+    * `T` は他のフィールドの一部となっていない
+    * `Bar<T>: Unsize<Bar<U>>` 但し `Foo` の最後のフィールドが `Bar<T>` の型である場合
 
 Coercions occur at a *coercion site*. Any location that is explicitly typed
 will cause a coercion to its type. If inference is necessary, the coercion will
