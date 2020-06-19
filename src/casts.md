@@ -1,4 +1,8 @@
+<!--
 # Casts
+-->
+
+# キャスト
 
 Casts are a superset of coercions: every coercion can be explicitly
 invoked via a cast. However some conversions require a cast.
