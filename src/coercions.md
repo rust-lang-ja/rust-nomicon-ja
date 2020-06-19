@@ -108,11 +108,18 @@ type `U` are:
 * タプルリテラル: `let x: (U, ..) = (e, ..)`
 * ブロックの最後の式: `let x: U = { ..; e }`
 
+<!--
 Note that we do not perform coercions when matching traits (except for
 receivers, see below). If there is an impl for some type `U` and `T` coerces to
 `U`, that does not constitute an implementation for `T`. For example, the
 following will not type check, even though it is OK to coerce `t` to `&T` and
 there is an impl for `&T`:
+-->
+
+トレイトをマッチさせる場合、型強制が行われないことに注意してください (レシーバに対しては例外です、
+以下を見てください) 。もしある型 `U` に対する impl が存在し、 `T` が `U` に型強制される場合、 `T` に対しては
+実装が構成されません。例えば、以下の例では `t` が `&T` に型強制されても問題なく、 `&T` に対する impl が存在するにも関わらず、
+型チェックに通りません。
 
 ```rust,ignore
 trait Trait {}
