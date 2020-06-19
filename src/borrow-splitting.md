@@ -1,10 +1,21 @@
+<!--
 # Splitting Borrows
+-->
 
+# 借用の分割
+
+<!--
 The mutual exclusion property of mutable references can be very limiting when
 working with a composite structure. The borrow checker understands some basic
 stuff, but will fall over pretty easily. It does understand structs
 sufficiently to know that it's possible to borrow disjoint fields of a struct
 simultaneously. So this works today:
+-->
+
+可変参照の相互排他性は、複合構造体を使用している時に非常に制限を課してくる存在となります。
+借用チェッカはいくつか基本事項を理解していますが、本当に簡単にすっ転びます。
+借用チェッカは構造体について十分理解しているため、構造体の別々のフィールドを同時に借用することは可能です。
+ですから、このコードは今日動作します。
 
 ```rust
 struct Foo {
@@ -23,8 +34,13 @@ let c2 = &x.c;
 println!("{} {} {} {}", a, b, c, c2);
 ```
 
+<!--
 However borrowck doesn't understand arrays or slices in any way, so this doesn't
 work:
+-->
+
+しかし借用チェッカは、配列やスライスについてはどんな状況でも理解しないため、
+このコードは動きません。
 
 ```rust,ignore
 let mut x = [1, 2, 3];
@@ -35,12 +51,15 @@ println!("{} {}", a, b);
 
 ```text
 <anon>:4:14: 4:18 error: cannot borrow `x[..]` as mutable more than once at a time
+(エラー: 一度に `x[..]` を可変として 2 回以上借用することはできません)
 <anon>:4 let b = &mut x[1];
                       ^~~~
 <anon>:3:14: 3:18 note: previous borrow of `x[..]` occurs here; the mutable borrow prevents subsequent moves, borrows, or modification of `x[..]` until the borrow ends
+(注釈: 以前の `x[..]` の借用はここで起きています。可変での借用は、その借用が終わるまで、その後のムーブや、借用、 `x[..]` の変更を防ぎます)
 <anon>:3 let a = &mut x[0];
                       ^~~~
 <anon>:6:2: 6:2 note: previous borrow ends here
+(注釈: 以前の借用はここで終了しています)
 <anon>:1 fn main() {
 <anon>:2 let mut x = [1, 2, 3];
 <anon>:3 let a = &mut x[0];
@@ -49,19 +68,37 @@ println!("{} {}", a, b);
 <anon>:6 }
          ^
 error: aborting due to 2 previous errors
+(エラー: 上記の 2 つのエラーのため中止)
 ```
 
+<!--
 While it was plausible that borrowck could understand this simple case, it's
 pretty clearly hopeless for borrowck to understand disjointness in general
 container types like a tree, especially if distinct keys actually *do* map
 to the same value.
+-->
 
+仮に借用チェッカがこの単純なケースを理解しても良さそうに見えるかもしれませんが、
+特に、異なるキーが*本当に*同じ値にマップされているときなど、
+木のような一般的なコンテナ内の、各値の素集合性を借用チェッカが理解することを望むのは、
+明らかに無駄です。
+
+<!--
 In order to "teach" borrowck that what we're doing is ok, we need to drop down
 to unsafe code. For instance, mutable slices expose a `split_at_mut` function
 that consumes the slice and returns two mutable slices. One for everything to
 the left of the index, and one for everything to the right. Intuitively we know
 this is safe because the slices don't overlap, and therefore alias. However
 the implementation requires some unsafety:
+-->
+
+借用チェッカに我々が行なっていることが問題ないと "教える" ためには、
+アンセーフなコードに落とす必要があります。例えば、可変スライスには、
+スライスを消費し 2 つの可変スライスを返す `split_at_mut` 関数を使用します。
+片方のスライスはインデックスの左側全てを、もう片方のスライスはインデックスの右側全てを
+使用するためのものです。直感的に、これは安全と分かります。互いのスライスが重ならなず、それゆえ
+これらのスライスは元のスライスのエイリアスとなるからです。
+しかし、その実装には少しアンセーフなコードを必要とします。
 
 ```rust,ignore
 fn split_at_mut(&mut self, mid: usize) -> (&mut [T], &mut [T]) {
@@ -75,11 +112,21 @@ fn split_at_mut(&mut self, mid: usize) -> (&mut [T], &mut [T]) {
 }
 ```
 
+<!--
 This is actually a bit subtle. So as to avoid ever making two `&mut`'s to the
 same value, we explicitly construct brand-new slices through raw pointers.
+-->
 
+これは実際、ちょっと微妙です。 同じ値に対する 2 つの `&mut` を生成するのを
+常に避けるため、生ポインタを通じて明確に完全に新しいスライスを構築します。
+
+<!--
 However more subtle is how iterators that yield mutable references work.
 The iterator trait is defined as follows:
+-->
+
+しかし、もっと微妙なのは、可変参照を生成するイテレータが
+どのように動作するかについてです。イテレータのトレイトは以下のように定義されます。
 
 ```rust
 trait Iterator {
@@ -89,25 +136,55 @@ trait Iterator {
 }
 ```
 
+<!--
 Given this definition, Self::Item has *no* connection to `self`. This means that
 we can call `next` several times in a row, and hold onto all the results
 *concurrently*. This is perfectly fine for by-value iterators, which have
 exactly these semantics. It's also actually fine for shared references, as they
 admit arbitrarily many references to the same thing (although the iterator needs
 to be a separate object from the thing being shared).
+-->
 
+上記の定義によれば、 Self::Item は `self` と何のつながりも持ち*ません*。
+これは、 `next` を続けて何回か呼ぶことができ、そしてそれらに対する全ての結果を
+*同時に*保持することができることを意味します。これは、値渡しのイテレータに対しては
+全く問題ありません。値渡しのイテレータも全く同じセマンティクスを持つからです。
+そして、共有参照に対しても問題ありません。これらも同じものに対する任意の数の
+参照を認めているからです (イテレータは共有されるオブジェクトと分離されている必要がありますが) 。
+
+<!--
 But mutable references make this a mess. At first glance, they might seem
 completely incompatible with this API, as it would produce multiple mutable
 references to the same object!
+-->
 
+しかし、可変参照はこれをごちゃごちゃにします。ひと目見ただけでも、可変参照は
+この API に全く対応できないように見えるかもしれません。この API が同じオブジェクトに対する
+複数の可変参照を生成するからです!
+
+<!--
 However it actually *does* work, exactly because iterators are one-shot objects.
 Everything an IterMut yields will be yielded at most once, so we don't
 actually ever yield multiple mutable references to the same piece of data.
+-->
 
+しかし、この API は*本当に*動作します。まさにイテレータがその場限りのオブジェクトであるからです。
+IterMut が生成するすべてのものは高々 1 回しか生成されません。ですから実際には、
+常に、何らかのひとかけらのデータに対する可変参照を、複数回生成していないのです。
+
+<!--
 Perhaps surprisingly, mutable iterators don't require unsafe code to be
 implemented for many types!
+-->
 
+もしかすると驚くかもしれませんが、可変のイテレータは多くの型に対して
+実装する際、アンセーフなコードを必要としないのです!
+
+<!--
 For instance here's a singly linked list:
+-->
+
+例えばこれは、片方向リストです。
 
 ```rust
 # fn main() {}
@@ -142,7 +219,11 @@ impl<'a, T> Iterator for IterMut<'a, T> {
 }
 ```
 
+<!--
 Here's a mutable slice:
+-->
+
+これは可変スライスです。
 
 ```rust
 # fn main() {}
@@ -176,7 +257,11 @@ impl<'a, T> DoubleEndedIterator for IterMut<'a, T> {
 }
 ```
 
+<!--
 And here's a binary tree:
+-->
+
+そしてこれは二分木です。
 
 ```rust
 # fn main() {}
@@ -284,8 +369,16 @@ impl<'a, T> DoubleEndedIterator for IterMut<'a, T> {
 }
 ```
 
+<!--
 All of these are completely safe and work on stable Rust! This ultimately
 falls out of the simple struct case we saw before: Rust understands that you
 can safely split a mutable reference into subfields. We can then encode
 permanently consuming a reference via Options (or in the case of slices,
 replacing with an empty slice).
+-->
+
+これらは全て、完全に安全で、安定版の Rust で動作します! これは究極には、
+前に見た単純な構造体のケースから外れています。すなわち、 Rust は、
+可変参照を複数の副フィールドに安全に分割できると理解しているのです。
+ですから Option を通じて、参照を消費することで、永続的にエンコードすることができます。
+(あるいはスライスの場合、空のスライスで置き換えます)
