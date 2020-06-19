@@ -21,7 +21,7 @@
 	* [PhantomData](phantom-data.md)
 	* [Splitting Borrows](borrow-splitting.md)
 * [型変換](conversions.md)
-	* [Coercions](coercions.md)
+	* [型強制](coercions.md)
 	* [ドットオペレータ](dot-operator.md)
 	* [Casts](casts.md)
 	* [Transmutes](transmutes.md)
