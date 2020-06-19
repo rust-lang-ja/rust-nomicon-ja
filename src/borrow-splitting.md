@@ -117,7 +117,7 @@ This is actually a bit subtle. So as to avoid ever making two `&mut`'s to the
 same value, we explicitly construct brand-new slices through raw pointers.
 -->
 
-これは実際、ちょっと細かくて難しいです。 同じ値に対する 2 つの `&mut` を生成するのを
+これは実際、ちょっと微妙です。 同じ値に対する 2 つの `&mut` を生成するのを
 常に避けるため、生ポインタを通じて明確に完全に新しいスライスを構築します。
 
 <!--
@@ -125,7 +125,7 @@ However more subtle is how iterators that yield mutable references work.
 The iterator trait is defined as follows:
 -->
 
-しかし、もっと細かくて難しいのは、可変参照を生成するイテレータが
+しかし、もっと微妙なのは、可変参照を生成するイテレータが
 どのように動作するかについてです。イテレータのトレイトは以下のように定義されます。
 
 ```rust
