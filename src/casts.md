@@ -18,12 +18,21 @@ using the `as` keyword: `expr as Type`.
 潜在的に危険です。ですから、キャストは `as` キーワードを用いて、明示的に
 呼び起こさなければなりません: `expr as Type`
 
+<!--
 True casts generally revolve around raw pointers and the primitive numeric
 types. Even though they're dangerous, these casts are infallible at runtime.
 If a cast triggers some subtle corner case no indication will be given that
 this occurred. The cast will simply succeed. That said, casts must be valid
 at the type level, or else they will be prevented statically. For instance,
 `7u8 as bool` will not compile.
+-->
+
+真のキャストは一般的に、生ポインタやプリミティブ型の数値型に関係します。
+真のキャストは危険ですが、これらのキャストは実行時に失敗しません。
+もしキャストが何か微妙なコーナーケースを引き起こしたとしても、
+何の指摘もされないでしょう。キャストは単に成功します。そうは言ったものの、
+キャストは型レベルで正しくなければなりません。でなければそのキャストは静的に
+防がれます。例えば、 `7u8 as bool` はコンパイルされません。
 
 That said, casts aren't `unsafe` because they generally can't violate memory
 safety *on their own*. For instance, converting an integer to a raw pointer can
