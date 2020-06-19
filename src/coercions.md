@@ -79,10 +79,16 @@ only implemented automatically, and enables the following transformations:
     * `T` は他のフィールドの一部となっていない
     * `Bar<T>: Unsize<Bar<U>>` 但し `Foo` の最後のフィールドが `Bar<T>` の型である場合
 
+<!--
 Coercions occur at a *coercion site*. Any location that is explicitly typed
 will cause a coercion to its type. If inference is necessary, the coercion will
 not be performed. Exhaustively, the coercion sites for an expression `e` to
 type `U` are:
+-->
+
+型強制は、*型強制サイト*で起こります。明確に型が指定されている全ての場所で、
+その型への型強制が発生します。もし推論が必要ならば、型強制は行われません。
+余すことなく言えば、式 `e` に対する型 `U` への型強制サイトは以下の通りです。
 
 * let statements, statics, and consts: `let x: U = e`
 * Arguments to functions: `takes_a_U(e)`
