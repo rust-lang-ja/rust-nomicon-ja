@@ -49,9 +49,15 @@ Coercion is allowed between the following types:
 * アンサイジング: `T` から `U` 但し `T` が `CoerceUnsized<U>` を実装している場合
 * 参照外しの型強制: 型 `&T` の式 `&x` から型 `&U` の式 `&'x` 但し `T` が `U` に参照外しされる場合 (例: `T: Deref<Target=U>`)
 
+<!--
 `CoerceUnsized<Pointer<U>> for Pointer<T> where T: Unsize<U>` is implemented
 for all pointer types (including smart pointers like Box and Rc). Unsize is
 only implemented automatically, and enables the following transformations:
+-->
+
+`CoerceUnsized<Pointer<U>> for Pointer<T> where T: Unsize<U>` は
+全てのポインタ型 (Box や Rc のようなスマートポインタを含む) で実装されています。
+アンサイズは自動的にのみ実装され、以下の変換を有効にします。
 
 * `[T; n]` => `[T]`
 * `T` => `Trait` where `T: Trait`
