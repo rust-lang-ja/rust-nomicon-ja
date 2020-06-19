@@ -4,11 +4,19 @@
 
 # キャスト
 
+<!--
 Casts are a superset of coercions: every coercion can be explicitly
 invoked via a cast. However some conversions require a cast.
 While coercions are pervasive and largely harmless, these "true casts"
 are rare and potentially dangerous. As such, casts must be explicitly invoked
 using the `as` keyword: `expr as Type`.
+-->
+
+キャストは型強制のスーパーセットです。すなわち、全ての型強制は、キャストを通じて
+明示的に引き起こすことが出来ます。しかし、いくつかの変換はキャストを必要とします。
+型強制は普及していて、大体の場合、害はないのですが、これらの "真のキャスト" は稀で、
+潜在的に危険です。ですから、キャストは `as` キーワードを用いて、明示的に
+呼び起こさなければなりません: `expr as Type`
 
 True casts generally revolve around raw pointers and the primitive numeric
 types. Even though they're dangerous, these casts are infallible at runtime.
