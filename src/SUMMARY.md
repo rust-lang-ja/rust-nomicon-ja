@@ -22,7 +22,7 @@
 	* [Splitting Borrows](borrow-splitting.md)
 * [型変換](conversions.md)
 	* [Coercions](coercions.md)
-	* [The Dot Operator](dot-operator.md)
+	* [ドットオペレータ](dot-operator.md)
 	* [Casts](casts.md)
 	* [Transmutes](transmutes.md)
 * [Uninitialized Memory](uninitialized.md)
