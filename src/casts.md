@@ -94,8 +94,13 @@ half of the original memory.
 生スライスをキャストする時、その長さは調整されないことに注意してください。 `*const [u16] as *const [u8]` は、
 元のメモリの半分しか含まないスライスを生成します。
 
+<!--
 Casting is not transitive, that is, even if `e as U1 as U2` is a valid
 expression, `e as U2` is not necessarily so.
+-->
+
+キャストは推移的ではありません。つまり、 `e as U1 as U2` が有効な式だとしても、 `e as U2` は
+有効な式である必要はありません。
 
 For numeric casts, there are quite a few cases to consider:
 
