@@ -102,7 +102,11 @@ expression, `e as U2` is not necessarily so.
 キャストは推移的ではありません。つまり、 `e as U1 as U2` が有効な式だとしても、 `e as U2` は
 有効な式である必要はありません。
 
+<!--
 For numeric casts, there are quite a few cases to consider:
+-->
+
+数値のキャストに関しては、かなり多くの事項について考える必要があります。
 
 * casting between two integers of the same size (e.g. i32 -> u32) is a no-op
 * casting from a larger integer to a smaller integer (e.g. u32 -> u8) will
