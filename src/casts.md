@@ -100,7 +100,7 @@ expression, `e as U2` is not necessarily so.
 -->
 
 キャストは推移的ではありません。つまり、 `e as U1 as U2` が有効な式だとしても、 `e as U2` は
-有効な式である必要はありません。
+必ずしも有効とは限りません。
 
 <!--
 For numeric casts, there are quite a few cases to consider:
