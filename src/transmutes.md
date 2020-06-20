@@ -18,9 +18,15 @@ horribly unsafe thing you can do in Rust. The railguards here are dental floss.
 いくら強調しようとも、強調しきれません。これは本当に、マジで、 Rust で出来る
 最も恐ろしいアンセーフなことです。ここではガードレールは爪楊枝のようなものです。
 
+<!--
 `mem::transmute<T, U>` takes a value of type `T` and reinterprets it to have
 type `U`. The only restriction is that the `T` and `U` are verified to have the
 same size. The ways to cause Undefined Behavior with this are mind boggling.
+-->
+
+`mem::transmute<T, U>` は型 `T` の値を受け取り、その値が型 `U` であると再解釈します。
+唯一の制約は、 `T` と `U` が同じサイズを持つとされていることです。
+この操作によって未定義動作が起こる方法には気が遠くなります。
 
 * First and foremost, creating an instance of *any* type with an invalid state
   is going to cause arbitrary chaos that can't really be predicted.
