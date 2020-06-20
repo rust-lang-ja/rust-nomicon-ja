@@ -34,11 +34,19 @@ at the type level, or else they will be prevented statically. For instance,
 キャストは型レベルで正しくなければなりません。でなければそのキャストは静的に
 防がれます。例えば、 `7u8 as bool` はコンパイルされません。
 
+<!--
 That said, casts aren't `unsafe` because they generally can't violate memory
 safety *on their own*. For instance, converting an integer to a raw pointer can
 very easily lead to terrible things. However the act of creating the pointer
 itself is safe, because actually using a raw pointer is already marked as
 `unsafe`.
+-->
+
+そうは言っていますが、キャストは `unsafe` ではありません。なぜなら、
+キャストは一般的に、*それ自体で*メモリ安全性を侵害しないからです。
+例えば、整数を生ポインタに変換すると、非常に簡単にひどい問題を引き起しうるでしょう。
+しかしながら、ポインタを生成する事自体は安全です。なぜなら、実際に生ポインタを使用すること
+が既に `unsafe` としてマークされているからです。
 
 Here's an exhaustive list of all the true casts. For brevity, we will use `*`
 to denote either a `*const` or `*mut`, and `integer` to denote any integral
