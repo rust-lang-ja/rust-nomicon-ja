@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Splitting Borrows</title>
+        <title>借用の分割</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">はじめに</a></li><li class="chapter-item expanded "><a href="meet-safe-and-unsafe.html"><strong aria-hidden="true">1.</strong> 安全と危険のご紹介</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="safe-unsafe-meaning.html"><strong aria-hidden="true">1.1.</strong> 安全と危険の相互作用</a></li><li class="chapter-item expanded "><a href="working-with-unsafe.html"><strong aria-hidden="true">1.2.</strong> Unsafe と連携する</a></li></ol></li><li class="chapter-item expanded "><a href="data.html"><strong aria-hidden="true">2.</strong> データレイアウト</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="repr-rust.html"><strong aria-hidden="true">2.1.</strong> repr(Rust)</a></li><li class="chapter-item expanded "><a href="exotic-sizes.html"><strong aria-hidden="true">2.2.</strong> 奇妙なサイズの型</a></li><li class="chapter-item expanded "><a href="other-reprs.html"><strong aria-hidden="true">2.3.</strong> 代替メモリレイアウト</a></li></ol></li><li class="chapter-item expanded "><a href="ownership.html"><strong aria-hidden="true">3.</strong> 所有権とライフタイム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">3.1.</strong> リファレンス</a></li><li class="chapter-item expanded "><a href="lifetimes.html"><strong aria-hidden="true">3.2.</strong> ライフタイム</a></li><li class="chapter-item expanded "><a href="lifetime-mismatch.html"><strong aria-hidden="true">3.3.</strong> ライフタイムシステムの限界</a></li><li class="chapter-item expanded "><a href="lifetime-elision.html"><strong aria-hidden="true">3.4.</strong> ライフタイムの省略</a></li><li class="chapter-item expanded "><a href="unbounded-lifetimes.html"><strong aria-hidden="true">3.5.</strong> 無制限のライフタイム</a></li><li class="chapter-item expanded "><a href="hrtb.html"><strong aria-hidden="true">3.6.</strong> 高階トレイト境界</a></li><li class="chapter-item expanded "><a href="subtyping.html"><strong aria-hidden="true">3.7.</strong> Subtyping and Variance</a></li><li class="chapter-item expanded "><a href="dropck.html"><strong aria-hidden="true">3.8.</strong> Drop Check</a></li><li class="chapter-item expanded "><a href="phantom-data.html"><strong aria-hidden="true">3.9.</strong> PhantomData</a></li><li class="chapter-item expanded "><a href="borrow-splitting.html" class="active"><strong aria-hidden="true">3.10.</strong> Splitting Borrows</a></li></ol></li><li class="chapter-item expanded "><a href="conversions.html"><strong aria-hidden="true">4.</strong> 型変換</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="coercions.html"><strong aria-hidden="true">4.1.</strong> 型強制</a></li><li class="chapter-item expanded "><a href="dot-operator.html"><strong aria-hidden="true">4.2.</strong> The Dot Operator</a></li><li class="chapter-item expanded "><a href="casts.html"><strong aria-hidden="true">4.3.</strong> Casts</a></li><li class="chapter-item expanded "><a href="transmutes.html"><strong aria-hidden="true">4.4.</strong> Transmutes</a></li></ol></li><li class="chapter-item expanded "><a href="uninitialized.html"><strong aria-hidden="true">5.</strong> Uninitialized Memory</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="checked-uninit.html"><strong aria-hidden="true">5.1.</strong> Checked</a></li><li class="chapter-item expanded "><a href="drop-flags.html"><strong aria-hidden="true">5.2.</strong> Drop Flags</a></li><li class="chapter-item expanded "><a href="unchecked-uninit.html"><strong aria-hidden="true">5.3.</strong> Unchecked</a></li></ol></li><li class="chapter-item expanded "><a href="obrm.html"><strong aria-hidden="true">6.</strong> 所有権に基づいたリソース管理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="constructors.html"><strong aria-hidden="true">6.1.</strong> Constructors</a></li><li class="chapter-item expanded "><a href="destructors.html"><strong aria-hidden="true">6.2.</strong> Destructors</a></li><li class="chapter-item expanded "><a href="leaking.html"><strong aria-hidden="true">6.3.</strong> Leaking</a></li></ol></li><li class="chapter-item expanded "><a href="unwinding.html"><strong aria-hidden="true">7.</strong> Unwinding</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="exception-safety.html"><strong aria-hidden="true">7.1.</strong> 例外安全性</a></li><li class="chapter-item expanded "><a href="poisoning.html"><strong aria-hidden="true">7.2.</strong> Poisoning</a></li></ol></li><li class="chapter-item expanded "><a href="concurrency.html"><strong aria-hidden="true">8.</strong> Concurrency</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="races.html"><strong aria-hidden="true">8.1.</strong> Races</a></li><li class="chapter-item expanded "><a href="send-and-sync.html"><strong aria-hidden="true">8.2.</strong> Send and Sync</a></li><li class="chapter-item expanded "><a href="atomics.html"><strong aria-hidden="true">8.3.</strong> Atomics</a></li></ol></li><li class="chapter-item expanded "><a href="vec.html"><strong aria-hidden="true">9.</strong> Implementing Vec</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="vec-layout.html"><strong aria-hidden="true">9.1.</strong> Layout</a></li><li class="chapter-item expanded "><a href="vec-alloc.html"><strong aria-hidden="true">9.2.</strong> Allocating</a></li><li class="chapter-item expanded "><a href="vec-push-pop.html"><strong aria-hidden="true">9.3.</strong> Push and Pop</a></li><li class="chapter-item expanded "><a href="vec-dealloc.html"><strong aria-hidden="true">9.4.</strong> Deallocating</a></li><li class="chapter-item expanded "><a href="vec-deref.html"><strong aria-hidden="true">9.5.</strong> Deref</a></li><li class="chapter-item expanded "><a href="vec-insert-remove.html"><strong aria-hidden="true">9.6.</strong> Insert and Remove</a></li><li class="chapter-item expanded "><a href="vec-into-iter.html"><strong aria-hidden="true">9.7.</strong> IntoIter</a></li><li class="chapter-item expanded "><a href="vec-raw.html"><strong aria-hidden="true">9.8.</strong> RawVec</a></li><li class="chapter-item expanded "><a href="vec-drain.html"><strong aria-hidden="true">9.9.</strong> Drain</a></li><li class="chapter-item expanded "><a href="vec-zsts.html"><strong aria-hidden="true">9.10.</strong> Handling Zero-Sized Types</a></li><li class="chapter-item expanded "><a href="vec-final.html"><strong aria-hidden="true">9.11.</strong> Final Code</a></li></ol></li><li class="chapter-item expanded "><a href="arc-and-mutex.html"><strong aria-hidden="true">10.</strong> Implementing Arc and Mutex</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">はじめに</a></li><li class="chapter-item expanded "><a href="meet-safe-and-unsafe.html"><strong aria-hidden="true">1.</strong> 安全と危険のご紹介</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="safe-unsafe-meaning.html"><strong aria-hidden="true">1.1.</strong> 安全と危険の相互作用</a></li><li class="chapter-item expanded "><a href="working-with-unsafe.html"><strong aria-hidden="true">1.2.</strong> Unsafe と連携する</a></li></ol></li><li class="chapter-item expanded "><a href="data.html"><strong aria-hidden="true">2.</strong> データレイアウト</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="repr-rust.html"><strong aria-hidden="true">2.1.</strong> repr(Rust)</a></li><li class="chapter-item expanded "><a href="exotic-sizes.html"><strong aria-hidden="true">2.2.</strong> 奇妙なサイズの型</a></li><li class="chapter-item expanded "><a href="other-reprs.html"><strong aria-hidden="true">2.3.</strong> 代替メモリレイアウト</a></li></ol></li><li class="chapter-item expanded "><a href="ownership.html"><strong aria-hidden="true">3.</strong> 所有権とライフタイム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">3.1.</strong> リファレンス</a></li><li class="chapter-item expanded "><a href="lifetimes.html"><strong aria-hidden="true">3.2.</strong> ライフタイム</a></li><li class="chapter-item expanded "><a href="lifetime-mismatch.html"><strong aria-hidden="true">3.3.</strong> ライフタイムシステムの限界</a></li><li class="chapter-item expanded "><a href="lifetime-elision.html"><strong aria-hidden="true">3.4.</strong> ライフタイムの省略</a></li><li class="chapter-item expanded "><a href="unbounded-lifetimes.html"><strong aria-hidden="true">3.5.</strong> 無制限のライフタイム</a></li><li class="chapter-item expanded "><a href="hrtb.html"><strong aria-hidden="true">3.6.</strong> 高階トレイト境界</a></li><li class="chapter-item expanded "><a href="subtyping.html"><strong aria-hidden="true">3.7.</strong> Subtyping and Variance</a></li><li class="chapter-item expanded "><a href="dropck.html"><strong aria-hidden="true">3.8.</strong> Drop Check</a></li><li class="chapter-item expanded "><a href="phantom-data.html"><strong aria-hidden="true">3.9.</strong> PhantomData</a></li><li class="chapter-item expanded "><a href="borrow-splitting.html" class="active"><strong aria-hidden="true">3.10.</strong> 借用の分割</a></li></ol></li><li class="chapter-item expanded "><a href="conversions.html"><strong aria-hidden="true">4.</strong> 型変換</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="coercions.html"><strong aria-hidden="true">4.1.</strong> 型強制</a></li><li class="chapter-item expanded "><a href="dot-operator.html"><strong aria-hidden="true">4.2.</strong> ドットオペレータ</a></li><li class="chapter-item expanded "><a href="casts.html"><strong aria-hidden="true">4.3.</strong> キャスト</a></li><li class="chapter-item expanded "><a href="transmutes.html"><strong aria-hidden="true">4.4.</strong> Transmutes</a></li></ol></li><li class="chapter-item expanded "><a href="uninitialized.html"><strong aria-hidden="true">5.</strong> Uninitialized Memory</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="checked-uninit.html"><strong aria-hidden="true">5.1.</strong> Checked</a></li><li class="chapter-item expanded "><a href="drop-flags.html"><strong aria-hidden="true">5.2.</strong> Drop Flags</a></li><li class="chapter-item expanded "><a href="unchecked-uninit.html"><strong aria-hidden="true">5.3.</strong> Unchecked</a></li></ol></li><li class="chapter-item expanded "><a href="obrm.html"><strong aria-hidden="true">6.</strong> 所有権に基づいたリソース管理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="constructors.html"><strong aria-hidden="true">6.1.</strong> Constructors</a></li><li class="chapter-item expanded "><a href="destructors.html"><strong aria-hidden="true">6.2.</strong> Destructors</a></li><li class="chapter-item expanded "><a href="leaking.html"><strong aria-hidden="true">6.3.</strong> Leaking</a></li></ol></li><li class="chapter-item expanded "><a href="unwinding.html"><strong aria-hidden="true">7.</strong> Unwinding</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="exception-safety.html"><strong aria-hidden="true">7.1.</strong> 例外安全性</a></li><li class="chapter-item expanded "><a href="poisoning.html"><strong aria-hidden="true">7.2.</strong> Poisoning</a></li></ol></li><li class="chapter-item expanded "><a href="concurrency.html"><strong aria-hidden="true">8.</strong> Concurrency</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="races.html"><strong aria-hidden="true">8.1.</strong> Races</a></li><li class="chapter-item expanded "><a href="send-and-sync.html"><strong aria-hidden="true">8.2.</strong> Send and Sync</a></li><li class="chapter-item expanded "><a href="atomics.html"><strong aria-hidden="true">8.3.</strong> Atomics</a></li></ol></li><li class="chapter-item expanded "><a href="vec.html"><strong aria-hidden="true">9.</strong> Implementing Vec</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="vec-layout.html"><strong aria-hidden="true">9.1.</strong> Layout</a></li><li class="chapter-item expanded "><a href="vec-alloc.html"><strong aria-hidden="true">9.2.</strong> Allocating</a></li><li class="chapter-item expanded "><a href="vec-push-pop.html"><strong aria-hidden="true">9.3.</strong> Push and Pop</a></li><li class="chapter-item expanded "><a href="vec-dealloc.html"><strong aria-hidden="true">9.4.</strong> Deallocating</a></li><li class="chapter-item expanded "><a href="vec-deref.html"><strong aria-hidden="true">9.5.</strong> Deref</a></li><li class="chapter-item expanded "><a href="vec-insert-remove.html"><strong aria-hidden="true">9.6.</strong> Insert and Remove</a></li><li class="chapter-item expanded "><a href="vec-into-iter.html"><strong aria-hidden="true">9.7.</strong> IntoIter</a></li><li class="chapter-item expanded "><a href="vec-raw.html"><strong aria-hidden="true">9.8.</strong> RawVec</a></li><li class="chapter-item expanded "><a href="vec-drain.html"><strong aria-hidden="true">9.9.</strong> Drain</a></li><li class="chapter-item expanded "><a href="vec-zsts.html"><strong aria-hidden="true">9.10.</strong> Handling Zero-Sized Types</a></li><li class="chapter-item expanded "><a href="vec-final.html"><strong aria-hidden="true">9.11.</strong> Final Code</a></li></ol></li><li class="chapter-item expanded "><a href="arc-and-mutex.html"><strong aria-hidden="true">10.</strong> Implementing Arc and Mutex</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -147,12 +147,21 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#splitting-borrows" id="splitting-borrows">Splitting Borrows</a></h1>
-<p>The mutual exclusion property of mutable references can be very limiting when
+                        <!--
+# Splitting Borrows
+-->
+<h1><a class="header" href="#借用の分割" id="借用の分割">借用の分割</a></h1>
+<!--
+The mutual exclusion property of mutable references can be very limiting when
 working with a composite structure. The borrow checker understands some basic
 stuff, but will fall over pretty easily. It does understand structs
 sufficiently to know that it's possible to borrow disjoint fields of a struct
-simultaneously. So this works today:</p>
+simultaneously. So this works today:
+-->
+<p>可変参照の相互排他性は、複合構造体を使用している時に非常に制限を課してくる存在となります。
+借用チェッカはいくつか基本事項を理解していますが、本当に簡単にすっ転びます。
+借用チェッカは構造体について十分理解しているため、構造体の別々のフィールドを同時に借用することは可能です。
+ですから、このコードは今日動作します。</p>
 <pre><pre class="playpen"><code class="language-rust">
 <span class="boring">#![allow(unused_variables)]
 </span><span class="boring">fn main() {
@@ -172,20 +181,27 @@ let c2 = &amp;x.c;
 println!(&quot;{} {} {} {}&quot;, a, b, c, c2);
 <span class="boring">}
 </span></code></pre></pre>
-<p>However borrowck doesn't understand arrays or slices in any way, so this doesn't
-work:</p>
+<!--
+However borrowck doesn't understand arrays or slices in any way, so this doesn't
+work:
+-->
+<p>しかし借用チェッカは、配列やスライスについてはどんな状況でも理解しないため、
+このコードは動きません。</p>
 <pre><code class="language-rust ignore">let mut x = [1, 2, 3];
 let a = &amp;mut x[0];
 let b = &amp;mut x[1];
 println!(&quot;{} {}&quot;, a, b);
 </code></pre>
 <pre><code class="language-text">&lt;anon&gt;:4:14: 4:18 error: cannot borrow `x[..]` as mutable more than once at a time
+(エラー: 一度に `x[..]` を可変として 2 回以上借用することはできません)
 &lt;anon&gt;:4 let b = &amp;mut x[1];
                       ^~~~
 &lt;anon&gt;:3:14: 3:18 note: previous borrow of `x[..]` occurs here; the mutable borrow prevents subsequent moves, borrows, or modification of `x[..]` until the borrow ends
+(注釈: 以前の `x[..]` の借用はここで起きています。可変での借用は、その借用が終わるまで、その後のムーブや、借用、 `x[..]` の変更を防ぎます)
 &lt;anon&gt;:3 let a = &amp;mut x[0];
                       ^~~~
 &lt;anon&gt;:6:2: 6:2 note: previous borrow ends here
+(注釈: 以前の借用はここで終了しています)
 &lt;anon&gt;:1 fn main() {
 &lt;anon&gt;:2 let mut x = [1, 2, 3];
 &lt;anon&gt;:3 let a = &amp;mut x[0];
@@ -194,17 +210,33 @@ println!(&quot;{} {}&quot;, a, b);
 &lt;anon&gt;:6 }
          ^
 error: aborting due to 2 previous errors
+(エラー: 上記の 2 つのエラーのため中止)
 </code></pre>
-<p>While it was plausible that borrowck could understand this simple case, it's
+<!--
+While it was plausible that borrowck could understand this simple case, it's
 pretty clearly hopeless for borrowck to understand disjointness in general
-container types like a tree, especially if distinct keys actually <em>do</em> map
-to the same value.</p>
-<p>In order to &quot;teach&quot; borrowck that what we're doing is ok, we need to drop down
-to unsafe code. For instance, mutable slices expose a <code>split_at_mut</code> function
+container types like a tree, especially if distinct keys actually *do* map
+to the same value.
+-->
+<p>仮に借用チェッカがこの単純なケースを理解しても良さそうに見えるかもしれませんが、
+特に、異なるキーが<em>本当に</em>同じ値にマップされているときなど、
+木のような一般的なコンテナ内の、各値の素集合性を借用チェッカが理解することを望むのは、
+明らかに無駄です。</p>
+<!--
+In order to "teach" borrowck that what we're doing is ok, we need to drop down
+to unsafe code. For instance, mutable slices expose a `split_at_mut` function
 that consumes the slice and returns two mutable slices. One for everything to
 the left of the index, and one for everything to the right. Intuitively we know
 this is safe because the slices don't overlap, and therefore alias. However
-the implementation requires some unsafety:</p>
+the implementation requires some unsafety:
+-->
+<p>借用チェッカに我々が行なっていることが問題ないと &quot;教える&quot; ためには、
+アンセーフなコードに落とす必要があります。例えば、可変スライスには、
+スライスを消費し 2 つの可変スライスを返す <code>split_at_mut</code> 関数を使用します。
+片方のスライスはインデックスの左側全てを、もう片方のスライスはインデックスの右側全てを
+使用するためのものです。直感的に、これは安全と分かります。互いのスライスが重ならなず、それゆえ
+これらのスライスは元のスライスのエイリアスとなるからです。
+しかし、その実装には少しアンセーフなコードを必要とします。</p>
 <pre><code class="language-rust ignore">fn split_at_mut(&amp;mut self, mid: usize) -&gt; (&amp;mut [T], &amp;mut [T]) {
     let len = self.len();
     let ptr = self.as_mut_ptr();
@@ -215,10 +247,18 @@ the implementation requires some unsafety:</p>
     }
 }
 </code></pre>
-<p>This is actually a bit subtle. So as to avoid ever making two <code>&amp;mut</code>'s to the
-same value, we explicitly construct brand-new slices through raw pointers.</p>
-<p>However more subtle is how iterators that yield mutable references work.
-The iterator trait is defined as follows:</p>
+<!--
+This is actually a bit subtle. So as to avoid ever making two `&mut`'s to the
+same value, we explicitly construct brand-new slices through raw pointers.
+-->
+<p>これは実際、ちょっと微妙です。 同じ値に対する 2 つの <code>&amp;mut</code> を生成するのを
+常に避けるため、生ポインタを通じて明確に完全に新しいスライスを構築します。</p>
+<!--
+However more subtle is how iterators that yield mutable references work.
+The iterator trait is defined as follows:
+-->
+<p>しかし、もっと微妙なのは、可変参照を生成するイテレータが
+どのように動作するかについてです。イテレータのトレイトは以下のように定義されます。</p>
 <pre><pre class="playpen"><code class="language-rust">
 <span class="boring">#![allow(unused_variables)]
 </span><span class="boring">fn main() {
@@ -229,21 +269,46 @@ The iterator trait is defined as follows:</p>
 }
 <span class="boring">}
 </span></code></pre></pre>
-<p>Given this definition, Self::Item has <em>no</em> connection to <code>self</code>. This means that
-we can call <code>next</code> several times in a row, and hold onto all the results
-<em>concurrently</em>. This is perfectly fine for by-value iterators, which have
+<!--
+Given this definition, Self::Item has *no* connection to `self`. This means that
+we can call `next` several times in a row, and hold onto all the results
+*concurrently*. This is perfectly fine for by-value iterators, which have
 exactly these semantics. It's also actually fine for shared references, as they
 admit arbitrarily many references to the same thing (although the iterator needs
-to be a separate object from the thing being shared).</p>
-<p>But mutable references make this a mess. At first glance, they might seem
+to be a separate object from the thing being shared).
+-->
+<p>上記の定義によれば、 Self::Item は <code>self</code> と何のつながりも持ち<em>ません</em>。
+これは、 <code>next</code> を続けて何回か呼ぶことができ、そしてそれらに対する全ての結果を
+<em>同時に</em>保持することができることを意味します。これは、値渡しのイテレータに対しては
+全く問題ありません。値渡しのイテレータも全く同じセマンティクスを持つからです。
+そして、共有参照に対しても問題ありません。これらも同じものに対する任意の数の
+参照を認めているからです (イテレータは共有されるオブジェクトと分離されている必要がありますが) 。</p>
+<!--
+But mutable references make this a mess. At first glance, they might seem
 completely incompatible with this API, as it would produce multiple mutable
-references to the same object!</p>
-<p>However it actually <em>does</em> work, exactly because iterators are one-shot objects.
+references to the same object!
+-->
+<p>しかし、可変参照はこれをごちゃごちゃにします。ひと目見ただけでも、可変参照は
+この API に全く対応できないように見えるかもしれません。この API が同じオブジェクトに対する
+複数の可変参照を生成するからです!</p>
+<!--
+However it actually *does* work, exactly because iterators are one-shot objects.
 Everything an IterMut yields will be yielded at most once, so we don't
-actually ever yield multiple mutable references to the same piece of data.</p>
-<p>Perhaps surprisingly, mutable iterators don't require unsafe code to be
-implemented for many types!</p>
-<p>For instance here's a singly linked list:</p>
+actually ever yield multiple mutable references to the same piece of data.
+-->
+<p>しかし、この API は<em>本当に</em>動作します。まさにイテレータがその場限りのオブジェクトであるからです。
+IterMut が生成するすべてのものは高々 1 回しか生成されません。ですから実際には、
+常に、何らかのひとかけらのデータに対する可変参照を、複数回生成していないのです。</p>
+<!--
+Perhaps surprisingly, mutable iterators don't require unsafe code to be
+implemented for many types!
+-->
+<p>もしかすると驚くかもしれませんが、可変のイテレータは多くの型に対して
+実装する際、アンセーフなコードを必要としないのです!</p>
+<!--
+For instance here's a singly linked list:
+-->
+<p>例えばこれは、片方向リストです。</p>
 <pre><pre class="playpen"><code class="language-rust"><span class="boring">fn main() {}
 </span>type Link&lt;T&gt; = Option&lt;Box&lt;Node&lt;T&gt;&gt;&gt;;
 
@@ -275,7 +340,10 @@ impl&lt;'a, T&gt; Iterator for IterMut&lt;'a, T&gt; {
     }
 }
 </code></pre></pre>
-<p>Here's a mutable slice:</p>
+<!--
+Here's a mutable slice:
+-->
+<p>これは可変スライスです。</p>
 <pre><pre class="playpen"><code class="language-rust"><span class="boring">fn main() {}
 </span>use std::mem;
 
@@ -306,7 +374,10 @@ impl&lt;'a, T&gt; DoubleEndedIterator for IterMut&lt;'a, T&gt; {
     }
 }
 </code></pre></pre>
-<p>And here's a binary tree:</p>
+<!--
+And here's a binary tree:
+-->
+<p>そしてこれは二分木です。</p>
 <pre><pre class="playpen"><code class="language-rust"><span class="boring">fn main() {}
 </span>use std::collections::VecDeque;
 
@@ -411,11 +482,18 @@ impl&lt;'a, T&gt; DoubleEndedIterator for IterMut&lt;'a, T&gt; {
     }
 }
 </code></pre></pre>
-<p>All of these are completely safe and work on stable Rust! This ultimately
+<!--
+All of these are completely safe and work on stable Rust! This ultimately
 falls out of the simple struct case we saw before: Rust understands that you
 can safely split a mutable reference into subfields. We can then encode
 permanently consuming a reference via Options (or in the case of slices,
-replacing with an empty slice).</p>
+replacing with an empty slice).
+-->
+<p>これらは全て、完全に安全で、安定版の Rust で動作します! これは究極には、
+前に見た単純な構造体のケースから外れています。すなわち、 Rust は、
+可変参照を複数の副フィールドに安全に分割できると理解しているのです。
+ですから Option を通じて、参照を消費することで、永続的にエンコードすることができます。
+(あるいはスライスの場合、空のスライスで置き換えます)</p>
 
                     </main>
 
