@@ -57,6 +57,7 @@ primitive:
 これは、全ての真のキャストを網羅しているリストです。簡潔にするため、 `*` を `*const` か `*mut` の
 どちらかとして使い、 `integer` を整数型プリミティブの何かとして用います。
 
+<!--
  * `*T as *U` where `T, U: Sized`
  * `*T as *U` TODO: explain unsized situation
  * `*T as integer`
@@ -68,6 +69,20 @@ primitive:
  * `u8 as char`
  * `&[T; n] as *const T`
  * `fn as *T` where `T: Sized`
+ * `fn as integer`
+ -->
+
+ * `*T as *U` 但し `T, U: Sized`
+ * `*T as *U` TODO: アンサイズの場合について説明する
+ * `*T as integer`
+ * `integer as *T`
+ * `number as number`
+ * `C-like-enum as integer`
+ * `bool as integer`
+ * `char as integer`
+ * `u8 as char`
+ * `&[T; n] as *const T`
+ * `fn as *T` 但し `T: Sized`
  * `fn as integer`
 
 Note that lengths are not adjusted when casting raw slices -
