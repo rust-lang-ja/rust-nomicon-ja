@@ -23,7 +23,7 @@
 * [型変換](conversions.md)
 	* [型強制](coercions.md)
 	* [ドットオペレータ](dot-operator.md)
-	* [Casts](casts.md)
+	* [キャスト](casts.md)
 	* [Transmutes](transmutes.md)
 * [Uninitialized Memory](uninitialized.md)
 	* [Checked](checked-uninit.md)
