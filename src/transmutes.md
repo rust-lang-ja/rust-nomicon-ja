@@ -28,6 +28,7 @@ same size. The ways to cause Undefined Behavior with this are mind boggling.
 唯一の制約は、 `T` と `U` が同じサイズを持つとされていることです。
 この操作によって未定義動作が起こる方法には気が遠くなります。
 
+<!--
 * First and foremost, creating an instance of *any* type with an invalid state
   is going to cause arbitrary chaos that can't really be predicted.
 * Transmute has an overloaded return type. If you do not specify the return type
@@ -40,6 +41,18 @@ same size. The ways to cause Undefined Behavior with this are mind boggling.
     * No you're not special
 * Transmuting to a reference without an explicitly provided lifetime
   produces an [unbounded lifetime]
+-->
+
+* まず真っ先に、*いかなる*型においても、無効状態のインスタンスを作ることは、本当に予測不可能な混沌状態を引き起こすでしょう。
+* transmute はオーバーロードされたリターン型を持ちます。もしリターン型を指定しなかった場合、
+  推論を満たす、びっくりするような型を生成するかもしれません。
+* 無効なプリミティブを生成することは未定義動作を引き起こします。
+* repr(C) でない型の間でのトランスミュートは未定義動作を引き起こします。
+* & から &mut へのトランスミュートは未定義動作を引き起こします。
+    * & から &mut へのトランスミュートは*いつも*未定義動作を引き起こします。
+    * いいえ、これは出来ません。
+    * いいか、君は特別じゃないんだ。
+* 明確にライフタイムが指定されない参照へのトランスミュートは[無制限のライフタイム]を生成します。
 
 `mem::transmute_copy<T, U>` somehow manages to be *even more* wildly unsafe than
 this. It copies `size_of<U>` bytes out of an `&T` and interprets them as a `U`.
@@ -50,4 +63,4 @@ Also of course you can get most of the functionality of these functions using
 pointer casts.
 
 
-[unbounded lifetime]: unbounded-lifetimes.html
+[無制限のライフタイム]: unbounded-lifetimes.html
