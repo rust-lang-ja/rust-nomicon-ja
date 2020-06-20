@@ -85,9 +85,14 @@ primitive:
  * `fn as *T` 但し `T: Sized`
  * `fn as integer`
 
+ <!--
 Note that lengths are not adjusted when casting raw slices -
 `*const [u16] as *const [u8]` creates a slice that only includes
 half of the original memory.
+-->
+
+生スライスをキャストする時、その長さは調整されないことに注意してください。 `*const [u16] as *const [u8]` は、
+元のメモリの半分しか含まないスライスを生成します。
 
 Casting is not transitive, that is, even if `e as U1 as U2` is a valid
 expression, `e as U2` is not necessarily so.
