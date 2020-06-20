@@ -108,6 +108,7 @@ For numeric casts, there are quite a few cases to consider:
 
 数値のキャストに関しては、かなり多くの事項について考える必要があります。
 
+<!--
 * casting between two integers of the same size (e.g. i32 -> u32) is a no-op
 * casting from a larger integer to a smaller integer (e.g. u32 -> u8) will
   truncate
@@ -128,6 +129,21 @@ For numeric casts, there are quite a few cases to consider:
       is finite but larger or smaller than the largest or smallest finite
       value representable by f32][float-float]**. This is a bug and will
       be fixed.
+-->
+
+* 同じ大きさの 2 つの整数の間でのキャスト (例: i32 -> u32) は no-op です
+* 大きい方の整数から小さい方の整数へのキャスト (例: u32 -> u8) は切り捨てが発生します
+* 小さい方の整数から大きい方の整数へのキャスト (例: u8 -> u32) は
+    * もし小さい方の整数が符号なしの場合、ゼロ拡張されます
+    * もし小さい方の整数が符号ありの場合、符号拡張されます
+* 浮動小数点数から整数へのキャストは、小数点以下が切り捨てられます
+    * **[注意: 現在もし丸められた値が、キャスト先の整数型で表現できない場合、未定義動作を引き起こします][float-int]**。
+    これはバグで、将来修正されます。
+* 整数から浮動小数点数へのキャストは、整数を浮動小数点数で表現します。必要ならば丸められます (丸めの方針は指定されていません)
+* f32 から f64 へのキャストは完全で、損失はありません
+* f64 から f32 へのキャストは、最も近い表現可能な値となります (丸めの方針は指定されていません)
+    * **[注意: 現在もし値が f32 で表現可能な最大の値より大きい、あるいは最小の値より小さい有限の値である場合、未定義動作を引き起こします][float-float]**。
+    これはバグで、将来修正されます。
 
 
 [float-int]: https://github.com/rust-lang/rust/issues/10184
