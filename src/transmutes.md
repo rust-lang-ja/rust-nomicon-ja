@@ -4,11 +4,19 @@
 
 # トランスミュート
 
+<!--
 Get out of our way type system! We're going to reinterpret these bits or die
 trying! Even though this book is all about doing things that are unsafe, I
 really can't emphasize that you should deeply think about finding Another Way
 than the operations covered in this section. This is really, truly, the most
 horribly unsafe thing you can do in Rust. The railguards here are dental floss.
+-->
+
+型システムから抜け出しましょう! 何がなんでもビットを再解釈します! この本は
+アンセーフなもの全てについて書かれていますが、この章でカバーされている操作を
+やるよりも、他の方法を見つけるよう深刻に考えるべきだということは、
+いくら強調しようとも、強調しきれません。これは本当に、マジで、 Rust で出来る
+最も恐ろしいアンセーフなことです。ここではガードレールは爪楊枝のようなものです。
 
 `mem::transmute<T, U>` takes a value of type `T` and reinterprets it to have
 type `U`. The only restriction is that the `T` and `U` are verified to have the
