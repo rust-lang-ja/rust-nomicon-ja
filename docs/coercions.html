@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Coercions</title>
+        <title>型強制</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">はじめに</a></li><li class="chapter-item expanded "><a href="meet-safe-and-unsafe.html"><strong aria-hidden="true">1.</strong> 安全と危険のご紹介</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="safe-unsafe-meaning.html"><strong aria-hidden="true">1.1.</strong> 安全と危険の相互作用</a></li><li class="chapter-item expanded "><a href="working-with-unsafe.html"><strong aria-hidden="true">1.2.</strong> Unsafe と連携する</a></li></ol></li><li class="chapter-item expanded "><a href="data.html"><strong aria-hidden="true">2.</strong> データレイアウト</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="repr-rust.html"><strong aria-hidden="true">2.1.</strong> repr(Rust)</a></li><li class="chapter-item expanded "><a href="exotic-sizes.html"><strong aria-hidden="true">2.2.</strong> 奇妙なサイズの型</a></li><li class="chapter-item expanded "><a href="other-reprs.html"><strong aria-hidden="true">2.3.</strong> 代替メモリレイアウト</a></li></ol></li><li class="chapter-item expanded "><a href="ownership.html"><strong aria-hidden="true">3.</strong> 所有権とライフタイム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">3.1.</strong> リファレンス</a></li><li class="chapter-item expanded "><a href="lifetimes.html"><strong aria-hidden="true">3.2.</strong> ライフタイム</a></li><li class="chapter-item expanded "><a href="lifetime-mismatch.html"><strong aria-hidden="true">3.3.</strong> ライフタイムシステムの限界</a></li><li class="chapter-item expanded "><a href="lifetime-elision.html"><strong aria-hidden="true">3.4.</strong> ライフタイムの省略</a></li><li class="chapter-item expanded "><a href="unbounded-lifetimes.html"><strong aria-hidden="true">3.5.</strong> 無制限のライフタイム</a></li><li class="chapter-item expanded "><a href="hrtb.html"><strong aria-hidden="true">3.6.</strong> 高階トレイト境界</a></li><li class="chapter-item expanded "><a href="subtyping.html"><strong aria-hidden="true">3.7.</strong> Subtyping and Variance</a></li><li class="chapter-item expanded "><a href="dropck.html"><strong aria-hidden="true">3.8.</strong> Drop Check</a></li><li class="chapter-item expanded "><a href="phantom-data.html"><strong aria-hidden="true">3.9.</strong> PhantomData</a></li><li class="chapter-item expanded "><a href="borrow-splitting.html"><strong aria-hidden="true">3.10.</strong> Splitting Borrows</a></li></ol></li><li class="chapter-item expanded "><a href="conversions.html"><strong aria-hidden="true">4.</strong> 型変換</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="coercions.html" class="active"><strong aria-hidden="true">4.1.</strong> Coercions</a></li><li class="chapter-item expanded "><a href="dot-operator.html"><strong aria-hidden="true">4.2.</strong> The Dot Operator</a></li><li class="chapter-item expanded "><a href="casts.html"><strong aria-hidden="true">4.3.</strong> Casts</a></li><li class="chapter-item expanded "><a href="transmutes.html"><strong aria-hidden="true">4.4.</strong> Transmutes</a></li></ol></li><li class="chapter-item expanded "><a href="uninitialized.html"><strong aria-hidden="true">5.</strong> Uninitialized Memory</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="checked-uninit.html"><strong aria-hidden="true">5.1.</strong> Checked</a></li><li class="chapter-item expanded "><a href="drop-flags.html"><strong aria-hidden="true">5.2.</strong> Drop Flags</a></li><li class="chapter-item expanded "><a href="unchecked-uninit.html"><strong aria-hidden="true">5.3.</strong> Unchecked</a></li></ol></li><li class="chapter-item expanded "><a href="obrm.html"><strong aria-hidden="true">6.</strong> 所有権に基づいたリソース管理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="constructors.html"><strong aria-hidden="true">6.1.</strong> Constructors</a></li><li class="chapter-item expanded "><a href="destructors.html"><strong aria-hidden="true">6.2.</strong> Destructors</a></li><li class="chapter-item expanded "><a href="leaking.html"><strong aria-hidden="true">6.3.</strong> Leaking</a></li></ol></li><li class="chapter-item expanded "><a href="unwinding.html"><strong aria-hidden="true">7.</strong> Unwinding</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="exception-safety.html"><strong aria-hidden="true">7.1.</strong> 例外安全性</a></li><li class="chapter-item expanded "><a href="poisoning.html"><strong aria-hidden="true">7.2.</strong> Poisoning</a></li></ol></li><li class="chapter-item expanded "><a href="concurrency.html"><strong aria-hidden="true">8.</strong> Concurrency</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="races.html"><strong aria-hidden="true">8.1.</strong> Races</a></li><li class="chapter-item expanded "><a href="send-and-sync.html"><strong aria-hidden="true">8.2.</strong> Send and Sync</a></li><li class="chapter-item expanded "><a href="atomics.html"><strong aria-hidden="true">8.3.</strong> Atomics</a></li></ol></li><li class="chapter-item expanded "><a href="vec.html"><strong aria-hidden="true">9.</strong> Implementing Vec</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="vec-layout.html"><strong aria-hidden="true">9.1.</strong> Layout</a></li><li class="chapter-item expanded "><a href="vec-alloc.html"><strong aria-hidden="true">9.2.</strong> Allocating</a></li><li class="chapter-item expanded "><a href="vec-push-pop.html"><strong aria-hidden="true">9.3.</strong> Push and Pop</a></li><li class="chapter-item expanded "><a href="vec-dealloc.html"><strong aria-hidden="true">9.4.</strong> Deallocating</a></li><li class="chapter-item expanded "><a href="vec-deref.html"><strong aria-hidden="true">9.5.</strong> Deref</a></li><li class="chapter-item expanded "><a href="vec-insert-remove.html"><strong aria-hidden="true">9.6.</strong> Insert and Remove</a></li><li class="chapter-item expanded "><a href="vec-into-iter.html"><strong aria-hidden="true">9.7.</strong> IntoIter</a></li><li class="chapter-item expanded "><a href="vec-raw.html"><strong aria-hidden="true">9.8.</strong> RawVec</a></li><li class="chapter-item expanded "><a href="vec-drain.html"><strong aria-hidden="true">9.9.</strong> Drain</a></li><li class="chapter-item expanded "><a href="vec-zsts.html"><strong aria-hidden="true">9.10.</strong> Handling Zero-Sized Types</a></li><li class="chapter-item expanded "><a href="vec-final.html"><strong aria-hidden="true">9.11.</strong> Final Code</a></li></ol></li><li class="chapter-item expanded "><a href="arc-and-mutex.html"><strong aria-hidden="true">10.</strong> Implementing Arc and Mutex</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">はじめに</a></li><li class="chapter-item expanded "><a href="meet-safe-and-unsafe.html"><strong aria-hidden="true">1.</strong> 安全と危険のご紹介</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="safe-unsafe-meaning.html"><strong aria-hidden="true">1.1.</strong> 安全と危険の相互作用</a></li><li class="chapter-item expanded "><a href="working-with-unsafe.html"><strong aria-hidden="true">1.2.</strong> Unsafe と連携する</a></li></ol></li><li class="chapter-item expanded "><a href="data.html"><strong aria-hidden="true">2.</strong> データレイアウト</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="repr-rust.html"><strong aria-hidden="true">2.1.</strong> repr(Rust)</a></li><li class="chapter-item expanded "><a href="exotic-sizes.html"><strong aria-hidden="true">2.2.</strong> 奇妙なサイズの型</a></li><li class="chapter-item expanded "><a href="other-reprs.html"><strong aria-hidden="true">2.3.</strong> 代替メモリレイアウト</a></li></ol></li><li class="chapter-item expanded "><a href="ownership.html"><strong aria-hidden="true">3.</strong> 所有権とライフタイム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">3.1.</strong> リファレンス</a></li><li class="chapter-item expanded "><a href="lifetimes.html"><strong aria-hidden="true">3.2.</strong> ライフタイム</a></li><li class="chapter-item expanded "><a href="lifetime-mismatch.html"><strong aria-hidden="true">3.3.</strong> ライフタイムシステムの限界</a></li><li class="chapter-item expanded "><a href="lifetime-elision.html"><strong aria-hidden="true">3.4.</strong> ライフタイムの省略</a></li><li class="chapter-item expanded "><a href="unbounded-lifetimes.html"><strong aria-hidden="true">3.5.</strong> 無制限のライフタイム</a></li><li class="chapter-item expanded "><a href="hrtb.html"><strong aria-hidden="true">3.6.</strong> 高階トレイト境界</a></li><li class="chapter-item expanded "><a href="subtyping.html"><strong aria-hidden="true">3.7.</strong> Subtyping and Variance</a></li><li class="chapter-item expanded "><a href="dropck.html"><strong aria-hidden="true">3.8.</strong> Drop Check</a></li><li class="chapter-item expanded "><a href="phantom-data.html"><strong aria-hidden="true">3.9.</strong> PhantomData</a></li><li class="chapter-item expanded "><a href="borrow-splitting.html"><strong aria-hidden="true">3.10.</strong> Splitting Borrows</a></li></ol></li><li class="chapter-item expanded "><a href="conversions.html"><strong aria-hidden="true">4.</strong> 型変換</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="coercions.html" class="active"><strong aria-hidden="true">4.1.</strong> 型強制</a></li><li class="chapter-item expanded "><a href="dot-operator.html"><strong aria-hidden="true">4.2.</strong> The Dot Operator</a></li><li class="chapter-item expanded "><a href="casts.html"><strong aria-hidden="true">4.3.</strong> Casts</a></li><li class="chapter-item expanded "><a href="transmutes.html"><strong aria-hidden="true">4.4.</strong> Transmutes</a></li></ol></li><li class="chapter-item expanded "><a href="uninitialized.html"><strong aria-hidden="true">5.</strong> Uninitialized Memory</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="checked-uninit.html"><strong aria-hidden="true">5.1.</strong> Checked</a></li><li class="chapter-item expanded "><a href="drop-flags.html"><strong aria-hidden="true">5.2.</strong> Drop Flags</a></li><li class="chapter-item expanded "><a href="unchecked-uninit.html"><strong aria-hidden="true">5.3.</strong> Unchecked</a></li></ol></li><li class="chapter-item expanded "><a href="obrm.html"><strong aria-hidden="true">6.</strong> 所有権に基づいたリソース管理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="constructors.html"><strong aria-hidden="true">6.1.</strong> Constructors</a></li><li class="chapter-item expanded "><a href="destructors.html"><strong aria-hidden="true">6.2.</strong> Destructors</a></li><li class="chapter-item expanded "><a href="leaking.html"><strong aria-hidden="true">6.3.</strong> Leaking</a></li></ol></li><li class="chapter-item expanded "><a href="unwinding.html"><strong aria-hidden="true">7.</strong> Unwinding</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="exception-safety.html"><strong aria-hidden="true">7.1.</strong> 例外安全性</a></li><li class="chapter-item expanded "><a href="poisoning.html"><strong aria-hidden="true">7.2.</strong> Poisoning</a></li></ol></li><li class="chapter-item expanded "><a href="concurrency.html"><strong aria-hidden="true">8.</strong> Concurrency</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="races.html"><strong aria-hidden="true">8.1.</strong> Races</a></li><li class="chapter-item expanded "><a href="send-and-sync.html"><strong aria-hidden="true">8.2.</strong> Send and Sync</a></li><li class="chapter-item expanded "><a href="atomics.html"><strong aria-hidden="true">8.3.</strong> Atomics</a></li></ol></li><li class="chapter-item expanded "><a href="vec.html"><strong aria-hidden="true">9.</strong> Implementing Vec</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="vec-layout.html"><strong aria-hidden="true">9.1.</strong> Layout</a></li><li class="chapter-item expanded "><a href="vec-alloc.html"><strong aria-hidden="true">9.2.</strong> Allocating</a></li><li class="chapter-item expanded "><a href="vec-push-pop.html"><strong aria-hidden="true">9.3.</strong> Push and Pop</a></li><li class="chapter-item expanded "><a href="vec-dealloc.html"><strong aria-hidden="true">9.4.</strong> Deallocating</a></li><li class="chapter-item expanded "><a href="vec-deref.html"><strong aria-hidden="true">9.5.</strong> Deref</a></li><li class="chapter-item expanded "><a href="vec-insert-remove.html"><strong aria-hidden="true">9.6.</strong> Insert and Remove</a></li><li class="chapter-item expanded "><a href="vec-into-iter.html"><strong aria-hidden="true">9.7.</strong> IntoIter</a></li><li class="chapter-item expanded "><a href="vec-raw.html"><strong aria-hidden="true">9.8.</strong> RawVec</a></li><li class="chapter-item expanded "><a href="vec-drain.html"><strong aria-hidden="true">9.9.</strong> Drain</a></li><li class="chapter-item expanded "><a href="vec-zsts.html"><strong aria-hidden="true">9.10.</strong> Handling Zero-Sized Types</a></li><li class="chapter-item expanded "><a href="vec-final.html"><strong aria-hidden="true">9.11.</strong> Final Code</a></li></ol></li><li class="chapter-item expanded "><a href="arc-and-mutex.html"><strong aria-hidden="true">10.</strong> Implementing Arc and Mutex</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -147,61 +147,121 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#coercions" id="coercions">Coercions</a></h1>
-<p>Types can implicitly be coerced to change in certain contexts. These changes are
-generally just <em>weakening</em> of types, largely focused around pointers and
-lifetimes. They mostly exist to make Rust &quot;just work&quot; in more cases, and are
-largely harmless.</p>
-<p>Here's all the kinds of coercion:</p>
-<p>Coercion is allowed between the following types:</p>
+                        <!--
+# Coercions
+-->
+<h1><a class="header" href="#型強制" id="型強制">型強制</a></h1>
+<!--
+Types can implicitly be coerced to change in certain contexts. These changes are
+generally just *weakening* of types, largely focused around pointers and
+lifetimes. They mostly exist to make Rust "just work" in more cases, and are
+largely harmless.
+-->
+<p>特定の状況では、暗黙に型変換を強制することが出来ます。これらの変換は、一般には
+単に型を<em>弱く</em>していて、主にポインタやライフタイム周りに着目されます。
+これらはほとんどが、より多くのケースで Rust が &quot;単に動く&quot; ようにするために存在し、
+そして大部分において、ほとんど害はありません。</p>
+<!--
+Here's all the kinds of coercion:
+-->
+<p>これらは全ての種類の型強制です:</p>
+<!--
+Coercion is allowed between the following types:
+-->
+<p>型強制は以下の型の間で認められています:</p>
+<!--
+* Transitivity: `T_1` to `T_3` where `T_1` coerces to `T_2` and `T_2` coerces to
+  `T_3`
+* Pointer Weakening:
+    * `&mut T` to `&T`
+    * `*mut T` to `*const T`
+    * `&T` to `*const T`
+    * `&mut T` to `*mut T`
+* Unsizing: `T` to `U` if `T` implements `CoerceUnsized<U>`
+* Deref coercion: Expression `&x` of type `&T` to `&*x` of type `&U` if `T` derefs to `U` (i.e. `T: Deref<Target=U>`)
+-->
 <ul>
-<li>Transitivity: <code>T_1</code> to <code>T_3</code> where <code>T_1</code> coerces to <code>T_2</code> and <code>T_2</code> coerces to
-<code>T_3</code></li>
-<li>Pointer Weakening:
+<li>推移性: <code>T_1</code> から <code>T_3</code> 但し <code>T_1</code> が <code>T_2</code> に型強制可能で、 <code>T_2</code> が <code>T_3</code> に型強制可能な場合</li>
+<li>ポインタの弱化:
 <ul>
-<li><code>&amp;mut T</code> to <code>&amp;T</code></li>
-<li><code>*mut T</code> to <code>*const T</code></li>
-<li><code>&amp;T</code> to <code>*const T</code></li>
-<li><code>&amp;mut T</code> to <code>*mut T</code></li>
+<li><code>&amp;mut T</code> から <code>&amp;T</code></li>
+<li><code>*mut T</code> から <code>*const T</code></li>
+<li><code>&amp;T</code> から <code>*const T</code></li>
+<li><code>&amp;mut T</code> から <code>*mut T</code></li>
 </ul>
 </li>
-<li>Unsizing: <code>T</code> to <code>U</code> if <code>T</code> implements <code>CoerceUnsized&lt;U&gt;</code></li>
-<li>Deref coercion: Expression <code>&amp;x</code> of type <code>&amp;T</code> to <code>&amp;*x</code> of type <code>&amp;U</code> if <code>T</code> derefs to <code>U</code> (i.e. <code>T: Deref&lt;Target=U&gt;</code>)</li>
+<li>アンサイジング: <code>T</code> から <code>U</code> 但し <code>T</code> が <code>CoerceUnsized&lt;U&gt;</code> を実装している場合</li>
+<li>参照外しの型強制: 型 <code>&amp;T</code> の式 <code>&amp;x</code> から型 <code>&amp;U</code> の式 <code>&amp;'x</code> 但し <code>T</code> が <code>U</code> に参照外しされる場合 (例: <code>T: Deref&lt;Target=U&gt;</code>)</li>
 </ul>
-<p><code>CoerceUnsized&lt;Pointer&lt;U&gt;&gt; for Pointer&lt;T&gt; where T: Unsize&lt;U&gt;</code> is implemented
+<!--
+`CoerceUnsized<Pointer<U>> for Pointer<T> where T: Unsize<U>` is implemented
 for all pointer types (including smart pointers like Box and Rc). Unsize is
-only implemented automatically, and enables the following transformations:</p>
+only implemented automatically, and enables the following transformations:
+-->
+<p><code>CoerceUnsized&lt;Pointer&lt;U&gt;&gt; for Pointer&lt;T&gt; where T: Unsize&lt;U&gt;</code> は
+全てのポインタ型 (Box や Rc のようなスマートポインタを含む) で実装されています。
+アンサイズは自動的にのみ実装され、以下の変換を有効にします。</p>
+<!--
+* `[T; n]` => `[T]`
+* `T` => `Trait` where `T: Trait`
+* `Foo<..., T, ...>` => `Foo<..., U, ...>` where:
+    * `T: Unsize<U>`
+    * `Foo` is a struct
+    * Only the last field of `Foo` has type involving `T`
+    * `T` is not part of the type of any other fields
+    * `Bar<T>: Unsize<Bar<U>>`, if the last field of `Foo` has type `Bar<T>`
+-->
 <ul>
 <li><code>[T; n]</code> =&gt; <code>[T]</code></li>
-<li><code>T</code> =&gt; <code>Trait</code> where <code>T: Trait</code></li>
-<li><code>Foo&lt;..., T, ...&gt;</code> =&gt; <code>Foo&lt;..., U, ...&gt;</code> where:
+<li><code>T</code> =&gt; <code>Trait</code> 但し <code>T: Trait</code></li>
+<li><code>Foo&lt;..., T, ...&gt;</code> =&gt; <code>Foo&lt;..., U, ...&gt;</code> 但し
 <ul>
 <li><code>T: Unsize&lt;U&gt;</code></li>
-<li><code>Foo</code> is a struct</li>
-<li>Only the last field of <code>Foo</code> has type involving <code>T</code></li>
-<li><code>T</code> is not part of the type of any other fields</li>
-<li><code>Bar&lt;T&gt;: Unsize&lt;Bar&lt;U&gt;&gt;</code>, if the last field of <code>Foo</code> has type <code>Bar&lt;T&gt;</code></li>
+<li><code>Foo</code> は構造体</li>
+<li><code>Foo</code> の最後のフィールドだけが <code>T</code> を含む型である</li>
+<li><code>T</code> は他のフィールドの一部となっていない</li>
+<li><code>Bar&lt;T&gt;: Unsize&lt;Bar&lt;U&gt;&gt;</code> 但し <code>Foo</code> の最後のフィールドが <code>Bar&lt;T&gt;</code> の型である場合</li>
 </ul>
 </li>
 </ul>
-<p>Coercions occur at a <em>coercion site</em>. Any location that is explicitly typed
+<!--
+Coercions occur at a *coercion site*. Any location that is explicitly typed
 will cause a coercion to its type. If inference is necessary, the coercion will
-not be performed. Exhaustively, the coercion sites for an expression <code>e</code> to
-type <code>U</code> are:</p>
+not be performed. Exhaustively, the coercion sites for an expression `e` to
+type `U` are:
+-->
+<p>型強制は、<em>型強制サイト</em>で起こります。明確に型が指定されている全ての場所で、
+その型への型強制が発生します。もし推論が必要ならば、型強制は行われません。
+余すことなく言えば、式 <code>e</code> に対する型 <code>U</code> への型強制サイトは以下の通りです。</p>
+<!--
+* let statements, statics, and consts: `let x: U = e`
+* Arguments to functions: `takes_a_U(e)`
+* Any expression that will be returned: `fn foo() -> U { e }`
+* Struct literals: `Foo { some_u: e }`
+* Array literals: `let x: [U; 10] = [e, ..]`
+* Tuple literals: `let x: (U, ..) = (e, ..)`
+* The last expression in a block: `let x: U = { ..; e }`
+-->
 <ul>
-<li>let statements, statics, and consts: <code>let x: U = e</code></li>
-<li>Arguments to functions: <code>takes_a_U(e)</code></li>
-<li>Any expression that will be returned: <code>fn foo() -&gt; U { e }</code></li>
-<li>Struct literals: <code>Foo { some_u: e }</code></li>
-<li>Array literals: <code>let x: [U; 10] = [e, ..]</code></li>
-<li>Tuple literals: <code>let x: (U, ..) = (e, ..)</code></li>
-<li>The last expression in a block: <code>let x: U = { ..; e }</code></li>
+<li>let 文、 static、 const: <code>let x: U = e</code></li>
+<li>関数に対する引数: <code>takes_a_U(e)</code></li>
+<li>返される全ての式: <code>fn foo() -&gt; U { e }</code></li>
+<li>構造体リテラル: <code>Foo { some_u: e }</code></li>
+<li>配列リテラル: <code>let x: [U; 10] = [e, ..]</code></li>
+<li>タプルリテラル: <code>let x: (U, ..) = (e, ..)</code></li>
+<li>ブロックの最後の式: <code>let x: U = { ..; e }</code></li>
 </ul>
-<p>Note that we do not perform coercions when matching traits (except for
-receivers, see below). If there is an impl for some type <code>U</code> and <code>T</code> coerces to
-<code>U</code>, that does not constitute an implementation for <code>T</code>. For example, the
-following will not type check, even though it is OK to coerce <code>t</code> to <code>&amp;T</code> and
-there is an impl for <code>&amp;T</code>:</p>
+<!--
+Note that we do not perform coercions when matching traits (except for
+receivers, see below). If there is an impl for some type `U` and `T` coerces to
+`U`, that does not constitute an implementation for `T`. For example, the
+following will not type check, even though it is OK to coerce `t` to `&T` and
+there is an impl for `&T`:
+-->
+<p>トレイトをマッチさせる場合、型強制が行われないことに注意してください (レシーバは例外です、
+以下を見てください) 。もしある型 <code>U</code> に対する impl が存在し、 <code>T</code> が <code>U</code> に型強制される場合、 <code>T</code> に対しては
+実装が構成されません。例えば、以下の例では <code>t</code> が <code>&amp;T</code> に型強制されても問題なく、 <code>&amp;T</code> に対する impl が存在するにも関わらず、
+型チェックに通りません。</p>
 <pre><code class="language-rust ignore">trait Trait {}
 
 fn foo&lt;X: Trait&gt;(t: X) {}
@@ -215,6 +275,7 @@ fn main() {
 }
 </code></pre>
 <pre><code class="language-text">&lt;anon&gt;:10:5: 10:8 error: the trait bound `&amp;mut i32 : Trait` is not satisfied [E0277]
+(エラー: トレイト境界 `&amp;mut i32: Trait` が満たされていません)
 &lt;anon&gt;:10     foo(t);
               ^~~
 </code></pre>
