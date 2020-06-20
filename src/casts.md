@@ -48,9 +48,14 @@ itself is safe, because actually using a raw pointer is already marked as
 しかしながら、ポインタを生成する事自体は安全です。なぜなら、実際に生ポインタを使用すること
 が既に `unsafe` としてマークされているからです。
 
+<!--
 Here's an exhaustive list of all the true casts. For brevity, we will use `*`
 to denote either a `*const` or `*mut`, and `integer` to denote any integral
 primitive:
+-->
+
+これは、全ての真のキャストを網羅しているリストです。簡潔にするため、 `*` を `*const` か `*mut` の
+どちらかとして使い、 `integer` を整数型プリミティブの何かとして用います。
 
  * `*T as *U` where `T, U: Sized`
  * `*T as *U` TODO: explain unsized situation
