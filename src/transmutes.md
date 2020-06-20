@@ -1,4 +1,8 @@
+<!--
 # Transmutes
+-->
+
+# トランスミュート
 
 Get out of our way type system! We're going to reinterpret these bits or die
 trying! Even though this book is all about doing things that are unsafe, I
