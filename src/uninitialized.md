@@ -1,4 +1,8 @@
+<!--
 # Working With Uninitialized Memory
+-->
+
+# 初期化されないメモリを扱う
 
 All runtime-allocated memory in a Rust program begins its life as
 *uninitialized*. In this state the value of the memory is an indeterminate pile
