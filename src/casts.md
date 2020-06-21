@@ -73,7 +73,7 @@ primitive:
  -->
 
  * `*T as *U` 但し `T, U: Sized`
- * `*T as *U` TODO: アンサイズの場合について説明する
+ * `*T as *U` TODO: サイズが不定の場合について説明する
  * `*T as integer`
  * `integer as *T`
  * `number as number`
