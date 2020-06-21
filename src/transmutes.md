@@ -66,8 +66,13 @@ out a prefix), though it is Undefined Behavior for `U` to be larger than `T`.
 もし `U` が `T` よりも大きい場合、未定義動作を引き起こしますが、 `mem::transmute` の
 サイズチェックはなくなっています ( `T` のプレフィックスをコピーすることが有効である場合があるためです) 。
 
+<!--
 Also of course you can get most of the functionality of these functions using
 pointer casts.
+-->
+
+そしてもちろん、これらの関数の機能のほとんどを、ポインタのキャストを利用することで
+得ることができます。
 
 
 [無制限のライフタイム]: unbounded-lifetimes.html
