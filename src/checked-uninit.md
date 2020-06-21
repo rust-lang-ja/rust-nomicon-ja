@@ -1,4 +1,8 @@
+<!--
 # Checked Uninitialized Memory
+-->
+
+# チェックされる初期化されないメモリ
 
 Like C, all stack variables in Rust are uninitialized until a value is
 explicitly assigned to them. Unlike C, Rust statically prevents you from ever
