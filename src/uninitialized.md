@@ -18,5 +18,10 @@ as a value of *any* type will cause Undefined Behavior. Do Not Do This.
 このメモリを*いかなる*型の値として解釈しようとしても、未定義動作を引き起こすでしょう。
 絶対にしないでください。
 
+<!--
 Rust provides mechanisms to work with uninitialized memory in checked (safe) and
 unchecked (unsafe) ways.
+-->
+
+Rust では、初期化されていないメモリを扱う、チェックが入る (安全な) 方法と、
+チェックされない (アンセーフな) やり方があります。
