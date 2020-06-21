@@ -54,10 +54,17 @@ same size. The ways to cause Undefined Behavior with this are mind boggling.
     * いいか、君は特別じゃないんだ。
 * 明確にライフタイムが指定されていない参照へのトランスミュートは[無制限のライフタイム]を生成します。
 
+<!--
 `mem::transmute_copy<T, U>` somehow manages to be *even more* wildly unsafe than
 this. It copies `size_of<U>` bytes out of an `&T` and interprets them as a `U`.
 The size check that `mem::transmute` has is gone (as it may be valid to copy
 out a prefix), though it is Undefined Behavior for `U` to be larger than `T`.
+-->
+
+`mem::transmute_copy<T, U>` は、どうにかして transmute よりも*本当に更に*アンセーフな事をしようとします。
+この関数は `&T` から `size_of<U>` バイトコピーし、これらを `U` として解釈します。
+もし `U` が `T` よりも大きい場合、未定義動作を引き起こしますが、 `mem::transmute` の
+サイズチェックはなくなっています ( `T` のプレフィックスをコピーすることが有効である場合があるためです) 。
 
 Also of course you can get most of the functionality of these functions using
 pointer casts.
