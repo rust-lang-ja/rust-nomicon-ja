@@ -52,7 +52,7 @@ same size. The ways to cause Undefined Behavior with this are mind boggling.
     * & から &mut へのトランスミュートは*いつも*未定義動作を引き起こします。
     * いいえ、これは出来ません。
     * いいか、君は特別じゃないんだ。
-* 明確にライフタイムが指定されない参照へのトランスミュートは[無制限のライフタイム]を生成します。
+* 明確にライフタイムが指定されていない参照へのトランスミュートは[無制限のライフタイム]を生成します。
 
 `mem::transmute_copy<T, U>` somehow manages to be *even more* wildly unsafe than
 this. It copies `size_of<U>` bytes out of an `&T` and interprets them as a `U`.
