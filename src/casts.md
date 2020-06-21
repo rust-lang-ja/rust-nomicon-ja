@@ -32,7 +32,7 @@ at the type level, or else they will be prevented statically. For instance,
 もしキャストが何か微妙なコーナーケースを引き起こしたとしても、
 何の指摘もされないでしょう。キャストは単に成功します。そうは言ったものの、
 キャストは型レベルで正しくなければなりません。でなければそのキャストは静的に
-防がれます。例えば、 `7u8 as bool` はコンパイルされません。
+防がれます。例えば、 `7u8 as bool` はコンパイルできません。
 
 <!--
 That said, casts aren't `unsafe` because they generally can't violate memory
