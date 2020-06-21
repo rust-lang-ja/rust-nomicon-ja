@@ -64,7 +64,7 @@ out a prefix), though it is Undefined Behavior for `U` to be larger than `T`.
 `mem::transmute_copy<T, U>` は、どうにかして transmute よりも*本当に更に*アンセーフな事をしようとします。
 この関数は `&T` から `size_of<U>` バイトコピーし、これらを `U` として解釈します。
 もし `U` が `T` よりも大きい場合、未定義動作を引き起こしますが、 `mem::transmute` の
-サイズチェックはなくなっています ( `T` のプレフィックスをコピーすることが有効である場合があるためです) 。
+サイズチェックはなくなっています ( `T` の先頭部分をコピーすることが有効である場合があるためです) 。
 
 <!--
 Also of course you can get most of the functionality of these functions using
