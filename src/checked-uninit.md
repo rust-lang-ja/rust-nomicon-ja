@@ -4,9 +4,14 @@
 
 # チェックされる初期化されないメモリ
 
+<!--
 Like C, all stack variables in Rust are uninitialized until a value is
 explicitly assigned to them. Unlike C, Rust statically prevents you from ever
 reading them until you do:
+-->
+
+C のように、 Rust の全てのスタック上の変数は、値が明示的に代入されるまでは初期化されません。 C とは違い、 Rust では、
+値が代入されるまで、初期化されていない変数を読み込もうとするのを静的に防ぎます。
 
 ```rust,ignore
 fn main() {
