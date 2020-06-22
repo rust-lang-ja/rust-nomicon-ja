@@ -23,9 +23,15 @@ How can it do this with conditional initialization?
 あるいは変数がスコープを外れたときは毎回、デストラクタを呼ぶかを知る必要があります。
 これを、状況に応じた初期化と共に、どのように行えばよいのでしょうか?
 
+<!--
 Note that this is not a problem that all assignments need worry about. In
 particular, assigning through a dereference unconditionally drops, and assigning
 in a `let` unconditionally doesn't drop:
+-->
+
+全ての代入において心配する必要がある問題ではないことに注意してください。
+特に、参照外しを通した代入では、状況によらずドロップしますし、 `let` を使用した
+代入では、状況によらずドロップしません。
 
 ```
 let mut x = Box::new(0); // let makes a fresh variable, so never need to drop
