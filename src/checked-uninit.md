@@ -156,4 +156,8 @@ fn main() {
 }
 ```
 
+<!--
 Otherwise it's like `y` is a brand new variable.
+-->
+
+そうでなければ、 `y` は全く新しい変数のようなものです。
