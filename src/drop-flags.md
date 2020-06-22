@@ -4,6 +4,7 @@
 
 # ドロップフラグ
 
+<!--
 The examples in the previous section introduce an interesting problem for Rust.
 We have seen that it's possible to conditionally initialize, deinitialize, and
 reinitialize locations of memory totally safely. For Copy types, this isn't
@@ -11,6 +12,16 @@ particularly notable since they're just a random pile of bits. However types
 with destructors are a different story: Rust needs to know whether to call a
 destructor whenever a variable is assigned to, or a variable goes out of scope.
 How can it do this with conditional initialization?
+-->
+
+前章の例では、 Rust における興味深い問題を紹介しました。
+状況によって、メモリの場所を初期化したり、初期化されていない状態に戻したり、
+再初期化したりすることを、完全に安全に行なうことが可能だということを
+確認してきました。 Copy を実装している型に関しては、メモリの場所にあるものは
+単なるビットのランダムな山であるため、これは特に重要なことではありません。
+しかし、デストラクタを備えている型に関しては話が違います。 Rust は変数が代入されたときや、
+あるいは変数がスコープを外れたときは毎回、デストラクタを呼ぶかを知る必要があります。
+これを、状況に応じた初期化と共に、どのように行えばよいのでしょうか?
 
 Note that this is not a problem that all assignments need worry about. In
 particular, assigning through a dereference unconditionally drops, and assigning
