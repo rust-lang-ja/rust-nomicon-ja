@@ -76,7 +76,11 @@ src/main.rs:6:17: 6:18 error: use of possibly uninitialized variable: `x`
 src/main.rs:6   println!("{}", x);
 ```
 
+<!--
 while this does:
+-->
+
+一方でこのコードはコンパイルできます。
 
 ```rust
 fn main() {
@@ -85,8 +89,8 @@ fn main() {
         x = 1;
         println!("{}", x);
     }
-    // Don't care that there are branches where it's not initialized
-    // since we don't use the value in those branches
+    // 初期化されない分岐があっても構いません。
+    // 値をその分岐で使用しないからです。
 }
 ```
 
