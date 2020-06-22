@@ -94,9 +94,14 @@ fn main() {
 }
 ```
 
+<!--
 Of course, while the analysis doesn't consider actual values, it does
 have a relatively sophisticated understanding of dependencies and control
 flow. For instance, this works:
+-->
+
+もちろん、分析では実際の値は考慮されませんが、比較的洗練された、依存関係や制御フローに関する
+分析は行われます。例えば、このコードは動作します。
 
 ```rust
 let x: i32;
