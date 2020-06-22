@@ -25,7 +25,7 @@
 	* [ドットオペレータ](dot-operator.md)
 	* [キャスト](casts.md)
 	* [Transmutes](transmutes.md)
-* [Uninitialized Memory](uninitialized.md)
+* [初期化されないメモリ](uninitialized.md)
 	* [チェックされるメモリ](checked-uninit.md)
 	* [Drop Flags](drop-flags.md)
 	* [Unchecked](unchecked-uninit.md)
