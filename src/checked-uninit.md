@@ -2,7 +2,7 @@
 # Checked Uninitialized Memory
 -->
 
-# チェックされる初期化されないメモリ
+# チェックされる初期化されていないメモリ
 
 <!--
 Like C, all stack variables in Rust are uninitialized until a value is
