@@ -107,12 +107,12 @@ flow. For instance, this works:
 let x: i32;
 
 loop {
-    // Rust doesn't understand that this branch will be taken unconditionally,
-    // because it relies on actual values.
+    // Rust は、この分岐が状況によらず選択されることは理解しません。
+    // なぜならこれは、実際の値に依存するためです。
     if true {
-        // But it does understand that it will only be taken once because
-        // we unconditionally break out of it. Therefore `x` doesn't
-        // need to be marked as mutable.
+        // しかし Rust は、この分岐がたった一回しか選択されないと理解しています。
+        // なぜなら、状況によらず、この分岐を抜け出すからです。
+        // それゆえ、`x` はミュータブルとしてマークされる必要がないのです。
         x = 0;
         break;
     }
