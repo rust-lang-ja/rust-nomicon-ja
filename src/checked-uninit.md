@@ -72,6 +72,7 @@ fn main() {
 
 ```text
 src/main.rs:6:17: 6:18 error: use of possibly uninitialized variable: `x`
+(エラー: 初期化されていないかもしれない変数 `x` を使用しています)
 src/main.rs:6   println!("{}", x);
 ```
 
