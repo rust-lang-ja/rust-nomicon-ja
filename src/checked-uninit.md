@@ -139,8 +139,14 @@ fn main() {
 }
 ```
 
+<!--
 However reassigning `y` in this example *would* require `y` to be marked as
 mutable, as a Safe Rust program could observe that the value of `y` changed:
+-->
+
+しかしながらこの例では、 `y` に値を再代入しようとするのであれば、 `y` を
+ミュータブルとしてマークする必要が*あるでしょう*。
+安全な Rust のプログラムは `y` の値が変わったと認識出来るからです。
 
 ```rust
 fn main() {
