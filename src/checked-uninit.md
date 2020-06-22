@@ -54,7 +54,11 @@ fn main() {
 }
 ```
 
+<!--
 but this doesn't:
+-->
+
+しかし、このコードはコンパイルできません。
 
 ```rust,ignore
 fn main() {
