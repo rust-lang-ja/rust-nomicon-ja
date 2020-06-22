@@ -26,7 +26,7 @@
 	* [キャスト](casts.md)
 	* [Transmutes](transmutes.md)
 * [初期化されないメモリ](uninitialized.md)
-	* [Checked](checked-uninit.md)
+	* [チェックされるメモリ](checked-uninit.md)
 	* [Drop Flags](drop-flags.md)
 	* [Unchecked](unchecked-uninit.md)
 * [所有権に基づいたリソース管理](obrm.md)
