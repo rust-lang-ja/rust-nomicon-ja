@@ -122,8 +122,13 @@ loop {
 println!("{}", x);
 ```
 
+<!--
 If a value is moved out of a variable, that variable becomes logically
 uninitialized if the type of the value isn't Copy. That is:
+-->
+
+もし値の型が Copy を実装しておらず、値が変数からムーブされたら、
+論理的にはその変数は初期化されていない事になります。
 
 ```rust
 fn main() {
