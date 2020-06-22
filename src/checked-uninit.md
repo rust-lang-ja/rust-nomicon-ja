@@ -27,11 +27,18 @@ src/main.rs:3     println!("{}", x);
                                  ^
 ```
 
+<!--
 This is based off of a basic branch analysis: every branch must assign a value
 to `x` before it is first used. Interestingly, Rust doesn't require the variable
 to be mutable to perform a delayed initialization if every branch assigns
 exactly once. However the analysis does not take advantage of constant analysis
 or anything like that. So this compiles:
+-->
+
+これは、基本的な分岐分析に基づいています。すなわち、全ての分岐は、 `x` が初めに
+使用される前に、値を代入しなければなりません。興味深いことに、 Rust では、もし全ての分岐の中で
+値がちょうど一回しか代入されない場合、遅延初期化を行なうために、変数をミュータブルにする必要がありません。
+しかし、この分析は定数の分析や、それに似たものを利用していないため、このコードはコンパイルできます。
 
 ```rust
 fn main() {
