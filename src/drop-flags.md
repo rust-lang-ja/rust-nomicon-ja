@@ -1,4 +1,8 @@
+<!--
 # Drop Flags
+-->
+
+# ドロップフラグ
 
 The examples in the previous section introduce an interesting problem for Rust.
 We have seen that it's possible to conditionally initialize, deinitialize, and
