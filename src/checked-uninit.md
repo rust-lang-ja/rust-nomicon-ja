@@ -134,8 +134,8 @@ uninitialized if the type of the value isn't Copy. That is:
 fn main() {
     let x = 0;
     let y = Box::new(0);
-    let z1 = x; // x is still valid because i32 is Copy
-    let z2 = y; // y is now logically uninitialized because Box isn't Copy
+    let z1 = x; // i32 は Copy を実装しているため、 x はまだ有効です
+    let z2 = y; // Box は Copy を実装していないため、もはや y は論理的には初期化されていません
 }
 ```
 
