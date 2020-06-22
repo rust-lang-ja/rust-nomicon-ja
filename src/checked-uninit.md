@@ -117,8 +117,8 @@ loop {
         break;
     }
 }
-// It also knows that it's impossible to get here without reaching the break.
-// And therefore that `x` must be initialized here!
+// Rust はまた、 break に到達せずに、ここに来ることが不可能だということを知っています。
+// そしてそれゆえに、 `x` はこの場所に於いて初期化されなければならないと知っているのです!
 println!("{}", x);
 ```
 
