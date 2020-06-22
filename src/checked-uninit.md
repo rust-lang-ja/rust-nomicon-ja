@@ -151,8 +151,8 @@ mutable, as a Safe Rust program could observe that the value of `y` changed:
 ```rust
 fn main() {
     let mut y = Box::new(0);
-    let z = y; // y is now logically uninitialized because Box isn't Copy
-    y = Box::new(1); // reinitialize y
+    let z = y; // Box が Copy を実装していないため、もはや y は論理的には初期化されていません
+    y = Box::new(1); // y を再初期化します
 }
 ```
 
