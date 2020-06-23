@@ -117,7 +117,11 @@ if condition {
                             // フラグを確認!
 ```
 
+<!--
 Of course, in this case it's trivial to retrieve static drop semantics:
+-->
+
+勿論この場合、静的ドロップセマンティクスを復活させるのは些細なことです。
 
 ```rust
 # let condition = true;
