@@ -58,10 +58,17 @@ flag is evaluated to determine if it should be dropped.
 切り替わります。もし変数がドロップされる必要があるかもしれない状況になると、
 本当にドロップされるべきかを決定するため、このフラグが評価されます。
 
+<!--
 Of course, it is often the case that a value's initialization state can be
 statically known at every point in the program. If this is the case, then the
 compiler can theoretically generate more efficient code! For instance, straight-
 line code has such *static drop semantics*:
+-->
+
+勿論、しばしば値の初期化に関する状況は、プログラムのどの地点においても
+知ることが出来ます。もしこれが本当なら、コンパイラは理論的には、
+もっと効率的なコードを生成できます! 例えば、分岐のない真っ直ぐなコードは、
+このような*静的ドロップセマンティクス*を持っています。
 
 ```rust
 let mut x = Box::new(0); // x was uninit; just overwrite.
