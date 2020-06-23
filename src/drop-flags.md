@@ -39,8 +39,12 @@ let y = &mut x;
 *y = Box::new(1); // 参照外しでは、参照される側の変数は初期化されていると見なされているため、この参照されている変数はいつもドロップします
 ```
 
+<!--
 This is only a problem when overwriting a previously initialized variable or
 one of its subfields.
+-->
+
+これは、以前に初期化された変数や、その副フィールドの1つを上書きする時のみ問題となります。
 
 It turns out that Rust actually tracks whether a type should be dropped or not
 *at runtime*. As a variable becomes initialized and uninitialized, a *drop flag*
