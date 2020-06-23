@@ -16,7 +16,7 @@ using the `as` keyword: `expr as Type`.
 明示的に引き起こすことが出来ます。しかし、いくつかの変換はキャストを必要とします。
 型強制は普及していて、大体の場合、害はないのですが、これらの "真のキャスト" は稀で、
 潜在的に危険です。ですから、キャストは `as` キーワードを用いて、明示的に
-呼び起こさなければなりません: `expr as Type`
+実行しなければなりません: `expr as Type`
 
 <!--
 True casts generally revolve around raw pointers and the primitive numeric
@@ -32,7 +32,7 @@ at the type level, or else they will be prevented statically. For instance,
 もしキャストが何か微妙なコーナーケースを引き起こしたとしても、
 何の指摘もされないでしょう。キャストは単に成功します。そうは言ったものの、
 キャストは型レベルで正しくなければなりません。でなければそのキャストは静的に
-防がれます。例えば、 `7u8 as bool` はコンパイルされません。
+防がれます。例えば、 `7u8 as bool` はコンパイルできません。
 
 <!--
 That said, casts aren't `unsafe` because they generally can't violate memory
@@ -73,7 +73,7 @@ primitive:
  -->
 
  * `*T as *U` 但し `T, U: Sized`
- * `*T as *U` TODO: アンサイズの場合について説明する
+ * `*T as *U` TODO: サイズが不定の場合について説明する
  * `*T as integer`
  * `integer as *T`
  * `number as number`
