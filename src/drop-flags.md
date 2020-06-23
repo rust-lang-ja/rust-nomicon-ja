@@ -65,7 +65,7 @@ compiler can theoretically generate more efficient code! For instance, straight-
 line code has such *static drop semantics*:
 -->
 
-勿論、しばしば値の初期化に関する状況は、プログラムのどの地点においても
+勿論、しばしば値の初期化に関する状態は、プログラムのどの地点においても
 知ることが出来ます。もしこれが本当なら、コンパイラは理論的には、
 もっと効率的なコードを生成できます! 例えば、分岐のない真っ直ぐなコードは、
 このような*静的ドロップセマンティクス*を持っています。
