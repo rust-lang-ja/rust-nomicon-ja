@@ -16,7 +16,7 @@ horribly unsafe thing you can do in Rust. The railguards here are dental floss.
 アンセーフなもの全てについて書かれていますが、この章でカバーされている操作を
 やるよりも、他の方法を見つけるよう深刻に考えるべきだということは、
 いくら強調しようとも、強調しきれません。これは本当に、マジで、 Rust で出来る
-最も恐ろしいアンセーフなことです。ここではガードレールは爪楊枝のようなものです。
+最も恐ろしいアンセーフなことです。ここではガードレールは爪楊枝のように脆いです。
 
 <!--
 `mem::transmute<T, U>` takes a value of type `T` and reinterprets it to have
