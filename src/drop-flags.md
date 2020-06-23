@@ -44,7 +44,7 @@ This is only a problem when overwriting a previously initialized variable or
 one of its subfields.
 -->
 
-これは、以前に初期化された変数や、その副フィールドの1つを上書きする時のみ問題となります。
+これは、以前に初期化された変数や、その副フィールドの 1 つを上書きする時のみ問題となります。
 
 <!--
 It turns out that Rust actually tracks whether a type should be dropped or not
