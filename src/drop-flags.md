@@ -89,15 +89,15 @@ to initialization has static drop semantics:
 
 ```rust
 # let condition = true;
-let mut x = Box::new(0);    // x was uninit; just overwrite.
+let mut x = Box::new(0);    // x は初期化されていないので、単に上書きします。
 if condition {
-    drop(x)                 // x gets moved out; make x uninit.
+    drop(x)                 // x はムーブされたので、 x を初期化前の状態にします。
 } else {
     println!("{}", x);
-    drop(x)                 // x gets moved out; make x uninit.
+    drop(x)                 // x はムーブされたので、 x を初期化前の状態にします。
 }
-x = Box::new(0);            // x was uninit; just overwrite.
-                            // x goes out of scope; x was init; Drop x!
+x = Box::new(0);            // x は初期化されていない状態なので、単に上書きします。
+                            // x はスコープを抜けました。 x は初期化されているので、 x をドロップします!
 ```
 
 However code like this *requires* runtime information to correctly Drop:
