@@ -110,11 +110,11 @@ However code like this *requires* runtime information to correctly Drop:
 # let condition = true;
 let x;
 if condition {
-    x = Box::new(0);        // x was uninit; just overwrite.
+    x = Box::new(0);        // x は初期化されていないので、単に上書きします。
     println!("{}", x);
 }
-                            // x goes out of scope; x might be uninit;
-                            // check the flag!
+                            // x はスコープを抜けました。 x は初期化されていないかもしれません。
+                            // フラグを確認!
 ```
 
 Of course, in this case it's trivial to retrieve static drop semantics:
