@@ -131,5 +131,10 @@ if condition {
 }
 ```
 
+<!--
 The drop flags are tracked on the stack and no longer stashed in types that
 implement drop.
+-->
+
+ドロップフラグはスタック上で追跡され、ドロップを実装している型に
+隠されることはもはやありません。
