@@ -104,7 +104,7 @@ x = Box::new(0);            // x は初期化されていない状態なので�
 However code like this *requires* runtime information to correctly Drop:
 -->
 
-しかしながらこのようなコードでは、正しくドロップするために実行時に情報が必要となります。
+しかしながら以下のようなコードでは、正しくドロップするために実行時に情報が必要となります。
 
 ```rust
 # let condition = true;
