@@ -3420,7 +3420,7 @@ using the `as` keyword: `expr as Type`.
 明示的に引き起こすことが出来ます。しかし、いくつかの変換はキャストを必要とします。
 型強制は普及していて、大体の場合、害はないのですが、これらの &quot;真のキャスト&quot; は稀で、
 潜在的に危険です。ですから、キャストは <code>as</code> キーワードを用いて、明示的に
-呼び起こさなければなりません: <code>expr as Type</code></p>
+実行しなければなりません: <code>expr as Type</code></p>
 <!--
 True casts generally revolve around raw pointers and the primitive numeric
 types. Even though they're dangerous, these casts are infallible at runtime.
@@ -3434,7 +3434,7 @@ at the type level, or else they will be prevented statically. For instance,
 もしキャストが何か微妙なコーナーケースを引き起こしたとしても、
 何の指摘もされないでしょう。キャストは単に成功します。そうは言ったものの、
 キャストは型レベルで正しくなければなりません。でなければそのキャストは静的に
-防がれます。例えば、 <code>7u8 as bool</code> はコンパイルされません。</p>
+防がれます。例えば、 <code>7u8 as bool</code> はコンパイルできません。</p>
 <!--
 That said, casts aren't `unsafe` because they generally can't violate memory
 safety *on their own*. For instance, converting an integer to a raw pointer can
@@ -3470,7 +3470,7 @@ primitive:
  -->
 <ul>
 <li><code>*T as *U</code> 但し <code>T, U: Sized</code></li>
-<li><code>*T as *U</code> TODO: アンサイズの場合について説明する</li>
+<li><code>*T as *U</code> TODO: サイズが不定の場合について説明する</li>
 <li><code>*T as integer</code></li>
 <li><code>integer as *T</code></li>
 <li><code>number as number</code></li>
