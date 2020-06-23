@@ -34,9 +34,9 @@ in a `let` unconditionally doesn't drop:
 代入では、状況によらずドロップしません。
 
 ```
-let mut x = Box::new(0); // let makes a fresh variable, so never need to drop
+let mut x = Box::new(0); // let によって新しい変数が生成されるので、ドロップの必要はありません
 let y = &mut x;
-*y = Box::new(1); // Deref assumes the referent is initialized, so always drops
+*y = Box::new(1); // 参照外しでは、参照される側の変数は初期化されていると見なされているため、この参照されている変数はいつもドロップします
 ```
 
 This is only a problem when overwriting a previously initialized variable or
