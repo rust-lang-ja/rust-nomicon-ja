@@ -46,10 +46,17 @@ one of its subfields.
 
 これは、以前に初期化された変数や、その副フィールドの1つを上書きする時のみ問題となります。
 
+<!--
 It turns out that Rust actually tracks whether a type should be dropped or not
 *at runtime*. As a variable becomes initialized and uninitialized, a *drop flag*
 for that variable is toggled. When a variable might need to be dropped, this
 flag is evaluated to determine if it should be dropped.
+-->
+
+実際には Rust は*実行時に*、型がドロップされるべきかそうでないかを追っていると分かります。
+変数が初期化されたり、初期化されてない状態になったりすると、その変数に対する*ドロップフラグ*が
+切り替わります。もし変数がドロップされる必要があるかもしれない状況になると、
+本当にドロップされるべきかを決定するため、このフラグが評価されます。
 
 Of course, it is often the case that a value's initialization state can be
 statically known at every point in the program. If this is the case, then the
