@@ -79,8 +79,13 @@ y = x;                   // y は初期化されていますので、 y をド�
                          // x はスコープを抜けました。 x は初期化されていない状態なので、何もしません。
 ```
 
+<!--
 Similarly, branched code where all branches have the same behavior with respect
 to initialization has static drop semantics:
+-->
+
+同じように、全ての分岐が初期化の点において、同一のことをする分岐があるコードでは、
+静的ドロップセマンティクスを持っています。
 
 ```rust
 # let condition = true;
