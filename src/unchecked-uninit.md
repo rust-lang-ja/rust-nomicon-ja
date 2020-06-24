@@ -111,18 +111,18 @@ Putting this all together, we get the following:
 use std::mem;
 use std::ptr;
 
-// size of the array is hard-coded but easy to change. This means we can't
-// use [a, b, c] syntax to initialize the array, though!
+// 配列の大きさはハードコードされていますが，簡単に変えられます。
+// これは、配列を初期化するのに [a, b, c] という構文を使えないことを意味しますがね!
 const SIZE: usize = 10;
 
 let mut x: [Box<u32>; SIZE];
 
 unsafe {
-	// convince Rust that x is Totally Initialized
+	// Rust に x が完全に初期化されたと思わせます
 	x = mem::uninitialized();
 	for i in 0..SIZE {
-		// very carefully overwrite each index without reading it
-		// NOTE: exception safety is not a concern; Box can't panic
+		// 非常に注意深く、それぞれのインデックスを読み込まずに上書きします
+		// 注意: 例外安全性は考慮されていません。 Box はパニックできません
 		ptr::write(&mut x[i], Box::new(i as u32));
 	}
 }
