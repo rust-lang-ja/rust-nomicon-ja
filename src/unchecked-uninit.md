@@ -33,6 +33,7 @@ initialization.
 変数が初期化されたと見なさせることができ、状況に応じた、インクリメンタル的な初期化を
 行ないトリッキーなことが出来ます。
 
+<!--
 Unfortunately, this opens us up to all kinds of problems. Assignment has a
 different meaning to Rust based on whether it believes that a variable is
 initialized or not. If it's believed uninitialized, then Rust will semantically
@@ -40,6 +41,15 @@ just memcopy the bits over the uninitialized ones, and do nothing else. However
 if Rust believes a value to be initialized, it will try to `Drop` the old value!
 Since we've tricked Rust into believing that the value is initialized, we can no
 longer safely use normal assignment.
+-->
+
+残念ながら、これによってあらゆる種類の問題が浮かび上がります。
+変数が初期化されていると Rust が思っているか、思っていないかによって、
+代入は異なる意味を持ちます。もし初期化していないと思っている場合、 Rust は、
+セマンティクス的には単にビットを初期化していないメモリにコピーし、他には
+何もしません。しかし、もし値が初期化していると思っている場合、 Rust は
+古い値を `Drop` しようとします! Rust に、値が初期化されていると信じ込ませるよう
+トリックをしたので、もはや安全には普通の代入は使えません。
 
 This is also a problem if you're working with a raw system allocator, which
 returns a pointer to uninitialized memory.
