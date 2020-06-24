@@ -59,9 +59,15 @@ returns a pointer to uninitialized memory.
 生のシステムアロケータを使用している場合も問題となります。このアロケータは、
 初期化されていないメモリへのポインタを返すからです。
 
+<!--
 To handle this, we must use the `ptr` module. In particular, it provides
 three functions that allow us to assign bytes to a location in memory without
 dropping the old value: `write`, `copy`, and `copy_nonoverlapping`.
+-->
+
+これに対処するには、 `ptr` モジュールを使用しなければなりません。
+特にこのモジュールは、古い値をドロップせずに、メモリ上の場所に値を代入することが
+可能となる 3 つの関数を提供しています: `write`、`copy`、`copy_nonoverlapping`です。
 
 * `ptr::write(ptr, val)` takes a `val` and moves it into the address pointed
   to by `ptr`.
