@@ -101,7 +101,11 @@ locations of memory can break things are basically uncountable!
 読み書きしたい場所がアロケートされているということです。しかし、
 任意のビットを任意のメモリの場所に書き込むことでものを壊すようなやり方は数え切れません!
 
+<!--
 Putting this all together, we get the following:
+-->
+
+これらを全部一緒にすると、以下のようなコードとなります。
 
 ```rust
 use std::mem;
