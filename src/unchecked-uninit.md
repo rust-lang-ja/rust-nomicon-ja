@@ -69,6 +69,7 @@ dropping the old value: `write`, `copy`, and `copy_nonoverlapping`.
 特にこのモジュールは、古い値をドロップせずに、メモリ上の場所に値を代入することが
 可能となる 3 つの関数を提供しています: `write`、`copy`、`copy_nonoverlapping`です。
 
+<!--
 * `ptr::write(ptr, val)` takes a `val` and moves it into the address pointed
   to by `ptr`.
 * `ptr::copy(src, dest, count)` copies the bits that `count` T's would occupy
@@ -77,6 +78,15 @@ dropping the old value: `write`, `copy`, and `copy_nonoverlapping`.
 * `ptr::copy_nonoverlapping(src, dest, count)` does what `copy` does, but a
   little faster on the assumption that the two ranges of memory don't overlap.
   (this is equivalent to memcpy -- note that the argument order is reversed!)
+-->
+
+* `ptr::write(ptr, val)` は `val` を受け取り、 `ptr` が指し示すアドレスに受け取った値を
+  移します。
+* `ptr::copy(src, dest, count)` は、 T 型の `count` が占有するビット数だけ、 src から dest に
+コピーします。 (これは memmove と同じです -- 引数の順序が逆転していることに注意してください!)
+* `ptr::copy_nonoverlapping(src, dest, count)` は `copy` と同じことをしますが、 2 つのメモリ領域が
+  重なっていないと見なしているため、若干高速です。 (これは memcpy と同じです -- 引数の
+  順序が逆転していることに注意してください!)
 
 It should go without saying that these functions, if misused, will cause serious
 havoc or just straight up Undefined Behavior. The only things that these
