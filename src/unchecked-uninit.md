@@ -156,6 +156,12 @@ before it ends, if it has a destructor.
 値がデストラクタを持つ場合、変数のスコープを通り抜ける全てのコントロールパスは、終了時までに
 その値を初期化する必要があります。*[これはコードパニックを含みます](unwinding.html)*
 
+<!--
 And that's about it for working with uninitialized memory! Basically nothing
 anywhere expects to be handed uninitialized memory, so if you're going to pass
 it around at all, be sure to be *really* careful.
+-->
+
+まあ、初期化されていないメモリを扱うことに関してはこんなものです。
+基本的にどのような場所でも、初期化されていないメモリが期待されることはありません。
+ですからもしそのようなメモリを分配する場合、確実に*本当に*注意深く行なってください。
