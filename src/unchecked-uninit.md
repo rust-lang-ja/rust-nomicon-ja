@@ -20,11 +20,18 @@ array in a more incremental or dynamic way.
 特によりインクリメンタル的なやり方や、動的な方法で配列を初期化したい場合、
 これは非常に融通が利きません。
 
+<!--
 Unsafe Rust gives us a powerful tool to handle this problem:
 `mem::uninitialized`. This function pretends to return a value when really
 it does nothing at all. Using it, we can convince Rust that we have initialized
 a variable, allowing us to do trickier things with conditional and incremental
 initialization.
+-->
+
+アンセーフな Rust では、この問題に対処するパワフルなツールが用意されています。 `mem::uninitialized` です。
+この関数は本当に何もせず、値を返すふりをします。これを利用することで、 Rust に
+変数が初期化されたと見なさせることができ、状況に応じた、インクリメンタル的な初期化を
+行ないトリッキーなことが出来ます。
 
 Unfortunately, this opens us up to all kinds of problems. Assignment has a
 different meaning to Rust based on whether it believes that a variable is
