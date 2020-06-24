@@ -130,11 +130,18 @@ unsafe {
 println!("{:?}", x);
 ```
 
+<!--
 It's worth noting that you don't need to worry about `ptr::write`-style
 shenanigans with types which don't implement `Drop` or contain `Drop` types,
 because Rust knows not to try to drop them. Similarly you should be able to
 assign to fields of partially initialized structs directly if those fields don't
 contain any `Drop` types.
+-->
+
+`Drop` を実装していない型や、 `Drop` を実装する型を含まない型との、`ptr::write` スタイルの
+いたずらを心配しなくてよいということは注目に値します。なぜなら Rust は、これらをドロップしようと
+しないと知っているからです。同じように、もし部分的に初期化されている構造体のフィールドに `Drop` を
+実装しているものが存在しない場合、このフィールド群に直接代入できるようにするべきです。
 
 However when working with uninitialized memory you need to be ever-vigilant for
 Rust trying to drop values you make like this before they're fully initialized.
