@@ -4,12 +4,21 @@
 
 # チェックされない初期化されていないメモリ
 
+<!--
 One interesting exception to this rule is working with arrays. Safe Rust doesn't
 permit you to partially initialize an array. When you initialize an array, you
 can either set every value to the same thing with `let x = [val; N]`, or you can
 specify each member individually with `let x = [val1, val2, val3]`.
 Unfortunately this is pretty rigid, especially if you need to initialize your
 array in a more incremental or dynamic way.
+-->
+
+この規則の興味深い例外に、配列があります。安全な Rust は、配列を部分的に初期化することを
+認めません。配列を初期化するとき、 `let x = [val; N]` を用いて、
+全ての値を初期化するか、 `let x = [val1, val2, val3]` を用いて、
+それぞれの要素の値を個別に指定することが出来ます。残念ながら、
+特によりインクリメンタル的なやり方や、動的な方法で配列を初期化したい場合、
+これは非常に融通が利きません。
 
 Unsafe Rust gives us a powerful tool to handle this problem:
 `mem::uninitialized`. This function pretends to return a value when really
