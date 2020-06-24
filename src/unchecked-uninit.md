@@ -51,8 +51,13 @@ longer safely use normal assignment.
 古い値を `Drop` しようとします! Rust に、値が初期化されていると信じ込ませるよう
 トリックをしたので、もはや安全には普通の代入は使えません。
 
+<!--
 This is also a problem if you're working with a raw system allocator, which
 returns a pointer to uninitialized memory.
+-->
+
+生のシステムアロケータを使用している場合も問題となります。このアロケータは、
+初期化されていないメモリへのポインタを返すからです。
 
 To handle this, we must use the `ptr` module. In particular, it provides
 three functions that allow us to assign bytes to a location in memory without
