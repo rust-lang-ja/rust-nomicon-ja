@@ -143,11 +143,18 @@ contain any `Drop` types.
 しないと知っているからです。同じように、もし部分的に初期化されている構造体のフィールドに `Drop` を
 実装しているものが存在しない場合、このフィールド群に直接代入できるようにするべきです。
 
+<!--
 However when working with uninitialized memory you need to be ever-vigilant for
 Rust trying to drop values you make like this before they're fully initialized.
 Every control path through that variable's scope must initialize the value
 before it ends, if it has a destructor.
 *[This includes code panicking](unwinding.html)*.
+-->
+
+しかし、初期化されていないメモリを扱うとき、生成した値を Rust が、以前に
+完全に初期化されたものと見なしてドロップしようとしてしまわないか、常に警戒する必要があります。
+値がデストラクタを持つ場合、変数のスコープを通り抜ける全てのコントロールパスは、終了時までに
+その値を初期化する必要があります。*[これはコードパニックを含みます](unwinding.html)*
 
 And that's about it for working with uninitialized memory! Basically nothing
 anywhere expects to be handed uninitialized memory, so if you're going to pass
