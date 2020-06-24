@@ -88,11 +88,18 @@ dropping the old value: `write`, `copy`, and `copy_nonoverlapping`.
   重なっていないと見なしているため、若干高速です。 (これは memcpy と同じです -- 引数の
   順序が逆転していることに注意してください!)
 
+<!--
 It should go without saying that these functions, if misused, will cause serious
 havoc or just straight up Undefined Behavior. The only things that these
 functions *themselves* require is that the locations you want to read and write
 are allocated. However the ways writing arbitrary bits to arbitrary
 locations of memory can break things are basically uncountable!
+-->
+
+言うまでもないのですが、もしこれらの関数が誤用されると、甚大な被害を引き起こしたり、
+未定義動作を引き起こすでしょう。これらの関数*自体*が必要とする唯一のものは、
+読み書きしたい場所がアロケートされているということです。しかし、
+任意のビットを任意のメモリの場所に書き込むことでものを壊すようなやり方は数え切れません!
 
 Putting this all together, we get the following:
 
