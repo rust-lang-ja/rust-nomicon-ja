@@ -52,10 +52,18 @@ C++ と違い、 Rust は沢山の組み込みコンストラクタを備えて�
 ありません。理由は様々ですが、大体 Rust の考え方である、*明確であること*、という事に
 落ち着きます。
 
+<!--
 Move constructors are meaningless in Rust because we don't enable types to
 "care" about their location in memory. Every type must be ready for it to be
 blindly memcopied to somewhere else in memory. This means pure on-the-stack-but-
 still-movable intrusive linked lists are simply not happening in Rust (safely).
+-->
+Move コンストラクタは Rust においては意味がありません。なぜなら、型が、自身の
+メモリ上の場所を "気にする" ようにはしないからです。すべての型は何もしなくても、
+メモリ中のどこか別の場所にコピー出来るよう準備されなければなりません。
+これは、純粋な、スタック上にあるけれどもそれでも動かすことの出来る、
+あるノードの次のノードへのポインタをそのノード自身が保持する線形リストは (安全には) 存在し得ない
+事を意味します。
 
 Assignment and copy constructors similarly don't exist because move semantics
 are the only semantics in Rust. At most `x = y` just moves the bits of y into
