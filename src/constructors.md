@@ -4,8 +4,13 @@
 
 # コンストラクタ
 
+<!--
 There is exactly one way to create an instance of a user-defined type: name it,
 and initialize all its fields at once:
+-->
+
+ユーザが定義した型のインスタンスを作る方法はただ一つしかありません: 型名を決めて、
+全てのフィールドをいっぺんに初期化することです。
 
 ```rust
 struct Foo {
