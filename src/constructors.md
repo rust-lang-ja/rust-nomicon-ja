@@ -31,9 +31,14 @@ let bar = Bar::X(0);
 let empty = Unit;
 ```
 
+<!--
 That's it. Every other way you make an instance of a type is just calling a
 totally vanilla function that does some stuff and eventually bottoms out to The
 One True Constructor.
+-->
+
+以上。これ以外の型のインスタンスを作る方法は皆、単にいくつかのことを行なう全く普通の
+関数を呼び、結局 1 つの真のコンストラクタに辿り着くのです。
 
 Unlike C++, Rust does not come with a slew of built-in kinds of constructor.
 There are no Copy, Default, Assignment, Move, or whatever constructors. The
