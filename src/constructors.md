@@ -87,6 +87,7 @@ Assignment コンストラクタや Copy コンストラクタも同様に存在
 ムーブが発生すると毎回クローンを生成*します*。しかし、 Copy の定義によって、
 これは、古いコピーを初期化されていないとは扱わない事を単に意味します。つまり no-op なのです。
 
+<!--
 While Rust provides a `Default` trait for specifying the moral equivalent of a
 default constructor, it's incredibly rare for this trait to be used. This is
 because variables [aren't implicitly initialized][uninit]. Default is basically
@@ -94,6 +95,15 @@ only useful for generic programming. In concrete contexts, a type will provide a
 static `new` method for any kind of "default" constructor. This has no relation
 to `new` in other languages and has no special meaning. It's just a naming
 convention.
+-->
+
+Rust は Default コンストラクタと同等のものを指定する、 `Default` トレイトを
+提供していますが、このトレイトが使用されるのは驚くほど稀です。なぜなら、
+変数は[暗黙には初期化されない][uninit]からです。 Default は、
+基本的にはジェネリックプログラミングでのみ有用です。具体例では、
+あらゆる種類の "デフォルトの" コンストラクタに対して、このトレイトを実装する型が静的な `new` メソッドを
+提供します。これは他の言語における `new` とは関係がなく、特に意味はありません。
+これはただの命名規則です。
 
 TODO: talk about "placement new"?
 
