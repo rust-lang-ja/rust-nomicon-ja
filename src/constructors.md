@@ -65,6 +65,7 @@ Move コンストラクタは Rust においては意味がありません。な
 あるノードの次のノードへのポインタをそのノード自身が保持する線形リストは (安全には) 存在し得ない
 事を意味します。
 
+<!--
 Assignment and copy constructors similarly don't exist because move semantics
 are the only semantics in Rust. At most `x = y` just moves the bits of y into
 the x variable. Rust does provide two facilities for providing C++'s copy-
@@ -74,6 +75,17 @@ constructor, but it's never implicitly invoked. You have to explicitly call
 where the implementation is just "copy the bits". Copy types *are* implicitly
 cloned whenever they're moved, but because of the definition of Copy this just
 means not treating the old copy as uninitialized -- a no-op.
+-->
+
+Assignment コンストラクタや Copy コンストラクタも同様に存在しません。
+なぜなら、ムーブセマンティクスは Rust における唯一のセマンティクスだからです。
+せいぜい `x = y` が単に y のビットを変数 x に移すくらいです。 Rust では C++ の
+コピー指向のセマンティクスを提供する、 2 つの機能があります。 `Copy` と `Clone` です。 Clone は Copy コンストラクタと
+同じようなものですが、暗黙に呼び出されることは一切ありません。クローンを生成したい要素に対して、
+明示的に `clone` を呼び出す必要があります。 Copy は Clone の特別なケースで、
+実装は単純に "ビットをコピーする" ことです。 Copy を実装する型は、
+ムーブが発生すると毎回クローンを生成*します*。しかし、 Copy の定義によって、
+これは、古いコピーを初期化されていないとは扱わない事を単に意味します。つまり no-op なのです。
 
 While Rust provides a `Default` trait for specifying the moral equivalent of a
 default constructor, it's incredibly rare for this trait to be used. This is
