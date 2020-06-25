@@ -40,10 +40,17 @@ One True Constructor.
 以上。これ以外の型のインスタンスを作る方法は皆、単にいくつかのことを行なう全く普通の
 関数を呼び、結局 1 つの真のコンストラクタに辿り着くのです。
 
+<!--
 Unlike C++, Rust does not come with a slew of built-in kinds of constructor.
 There are no Copy, Default, Assignment, Move, or whatever constructors. The
 reasons for this are varied, but it largely boils down to Rust's philosophy of
 *being explicit*.
+-->
+
+C++ と違い、 Rust は沢山の組み込みコンストラクタを備えていません。
+ Rust には、 Copy、 Default、 Assignment、 Moveやその他諸々のコンストラクタが
+ありません。理由は様々ですが、大体 Rust の考え方である、*明確であること*、という事に
+落ち着きます。
 
 Move constructors are meaningless in Rust because we don't enable types to
 "care" about their location in memory. Every type must be ready for it to be
