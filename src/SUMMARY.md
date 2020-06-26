@@ -28,7 +28,7 @@
 * [初期化されないメモリ](uninitialized.md)
 	* [チェックされるメモリ](checked-uninit.md)
 	* [ドロップフラグ](drop-flags.md)
-	* [Unchecked](unchecked-uninit.md)
+	* [チェックされないメモリ](unchecked-uninit.md)
 * [所有権に基づいたリソース管理](obrm.md)
 	* [Constructors](constructors.md)
 	* [Destructors](destructors.md)
