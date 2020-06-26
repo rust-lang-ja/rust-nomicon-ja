@@ -105,6 +105,10 @@ Rust は Default コンストラクタと同等のものを指定する、 `Defa
 提供します。これは他の言語における `new` とは関係がなく、特に意味はありません。
 これはただの命名規則です。
 
+<!--
 TODO: talk about "placement new"?
+-->
+
+TODO: "placement new" について話す?
 
 [uninit]: uninitialized.html
