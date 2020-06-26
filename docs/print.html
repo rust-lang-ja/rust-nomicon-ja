@@ -7,12 +7,19 @@
         
         <meta name="robots" content="noindex" />
         
+        
+
+
+        <!-- Custom HTML head -->
+        
+
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
+        <link rel="icon" href="favicon.svg">
         <link rel="shortcut icon" href="favicon.png">
         <link rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/general.css">
@@ -21,8 +28,9 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="highlight.css">
@@ -38,7 +46,7 @@
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
             var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -83,7 +91,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">はじめに</a></li><li class="chapter-item expanded "><a href="meet-safe-and-unsafe.html"><strong aria-hidden="true">1.</strong> 安全と危険のご紹介</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="safe-unsafe-meaning.html"><strong aria-hidden="true">1.1.</strong> 安全と危険の相互作用</a></li><li class="chapter-item expanded "><a href="working-with-unsafe.html"><strong aria-hidden="true">1.2.</strong> Unsafe と連携する</a></li></ol></li><li class="chapter-item expanded "><a href="data.html"><strong aria-hidden="true">2.</strong> データレイアウト</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="repr-rust.html"><strong aria-hidden="true">2.1.</strong> repr(Rust)</a></li><li class="chapter-item expanded "><a href="exotic-sizes.html"><strong aria-hidden="true">2.2.</strong> 奇妙なサイズの型</a></li><li class="chapter-item expanded "><a href="other-reprs.html"><strong aria-hidden="true">2.3.</strong> 代替メモリレイアウト</a></li></ol></li><li class="chapter-item expanded "><a href="ownership.html"><strong aria-hidden="true">3.</strong> 所有権とライフタイム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">3.1.</strong> リファレンス</a></li><li class="chapter-item expanded "><a href="lifetimes.html"><strong aria-hidden="true">3.2.</strong> ライフタイム</a></li><li class="chapter-item expanded "><a href="lifetime-mismatch.html"><strong aria-hidden="true">3.3.</strong> ライフタイムシステムの限界</a></li><li class="chapter-item expanded "><a href="lifetime-elision.html"><strong aria-hidden="true">3.4.</strong> ライフタイムの省略</a></li><li class="chapter-item expanded "><a href="unbounded-lifetimes.html"><strong aria-hidden="true">3.5.</strong> 無制限のライフタイム</a></li><li class="chapter-item expanded "><a href="hrtb.html"><strong aria-hidden="true">3.6.</strong> 高階トレイト境界</a></li><li class="chapter-item expanded "><a href="subtyping.html"><strong aria-hidden="true">3.7.</strong> Subtyping and Variance</a></li><li class="chapter-item expanded "><a href="dropck.html"><strong aria-hidden="true">3.8.</strong> Drop Check</a></li><li class="chapter-item expanded "><a href="phantom-data.html"><strong aria-hidden="true">3.9.</strong> PhantomData</a></li><li class="chapter-item expanded "><a href="borrow-splitting.html"><strong aria-hidden="true">3.10.</strong> 借用の分割</a></li></ol></li><li class="chapter-item expanded "><a href="conversions.html"><strong aria-hidden="true">4.</strong> 型変換</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="coercions.html"><strong aria-hidden="true">4.1.</strong> 型強制</a></li><li class="chapter-item expanded "><a href="dot-operator.html"><strong aria-hidden="true">4.2.</strong> ドットオペレータ</a></li><li class="chapter-item expanded "><a href="casts.html"><strong aria-hidden="true">4.3.</strong> キャスト</a></li><li class="chapter-item expanded "><a href="transmutes.html"><strong aria-hidden="true">4.4.</strong> トランスミュート</a></li></ol></li><li class="chapter-item expanded "><a href="uninitialized.html"><strong aria-hidden="true">5.</strong> 初期化されないメモリ</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="checked-uninit.html"><strong aria-hidden="true">5.1.</strong> チェックされるメモリ</a></li><li class="chapter-item expanded "><a href="drop-flags.html"><strong aria-hidden="true">5.2.</strong> ドロップフラグ</a></li><li class="chapter-item expanded "><a href="unchecked-uninit.html"><strong aria-hidden="true">5.3.</strong> Unchecked</a></li></ol></li><li class="chapter-item expanded "><a href="obrm.html"><strong aria-hidden="true">6.</strong> 所有権に基づいたリソース管理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="constructors.html"><strong aria-hidden="true">6.1.</strong> Constructors</a></li><li class="chapter-item expanded "><a href="destructors.html"><strong aria-hidden="true">6.2.</strong> Destructors</a></li><li class="chapter-item expanded "><a href="leaking.html"><strong aria-hidden="true">6.3.</strong> Leaking</a></li></ol></li><li class="chapter-item expanded "><a href="unwinding.html"><strong aria-hidden="true">7.</strong> Unwinding</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="exception-safety.html"><strong aria-hidden="true">7.1.</strong> 例外安全性</a></li><li class="chapter-item expanded "><a href="poisoning.html"><strong aria-hidden="true">7.2.</strong> Poisoning</a></li></ol></li><li class="chapter-item expanded "><a href="concurrency.html"><strong aria-hidden="true">8.</strong> Concurrency</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="races.html"><strong aria-hidden="true">8.1.</strong> Races</a></li><li class="chapter-item expanded "><a href="send-and-sync.html"><strong aria-hidden="true">8.2.</strong> Send and Sync</a></li><li class="chapter-item expanded "><a href="atomics.html"><strong aria-hidden="true">8.3.</strong> Atomics</a></li></ol></li><li class="chapter-item expanded "><a href="vec.html"><strong aria-hidden="true">9.</strong> Implementing Vec</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="vec-layout.html"><strong aria-hidden="true">9.1.</strong> Layout</a></li><li class="chapter-item expanded "><a href="vec-alloc.html"><strong aria-hidden="true">9.2.</strong> Allocating</a></li><li class="chapter-item expanded "><a href="vec-push-pop.html"><strong aria-hidden="true">9.3.</strong> Push and Pop</a></li><li class="chapter-item expanded "><a href="vec-dealloc.html"><strong aria-hidden="true">9.4.</strong> Deallocating</a></li><li class="chapter-item expanded "><a href="vec-deref.html"><strong aria-hidden="true">9.5.</strong> Deref</a></li><li class="chapter-item expanded "><a href="vec-insert-remove.html"><strong aria-hidden="true">9.6.</strong> Insert and Remove</a></li><li class="chapter-item expanded "><a href="vec-into-iter.html"><strong aria-hidden="true">9.7.</strong> IntoIter</a></li><li class="chapter-item expanded "><a href="vec-raw.html"><strong aria-hidden="true">9.8.</strong> RawVec</a></li><li class="chapter-item expanded "><a href="vec-drain.html"><strong aria-hidden="true">9.9.</strong> Drain</a></li><li class="chapter-item expanded "><a href="vec-zsts.html"><strong aria-hidden="true">9.10.</strong> Handling Zero-Sized Types</a></li><li class="chapter-item expanded "><a href="vec-final.html"><strong aria-hidden="true">9.11.</strong> Final Code</a></li></ol></li><li class="chapter-item expanded "><a href="arc-and-mutex.html"><strong aria-hidden="true">10.</strong> Implementing Arc and Mutex</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">はじめに</a></li><li class="chapter-item expanded "><a href="meet-safe-and-unsafe.html"><strong aria-hidden="true">1.</strong> 安全と危険のご紹介</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="safe-unsafe-meaning.html"><strong aria-hidden="true">1.1.</strong> 安全と危険の相互作用</a></li><li class="chapter-item expanded "><a href="working-with-unsafe.html"><strong aria-hidden="true">1.2.</strong> Unsafe と連携する</a></li></ol></li><li class="chapter-item expanded "><a href="data.html"><strong aria-hidden="true">2.</strong> データレイアウト</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="repr-rust.html"><strong aria-hidden="true">2.1.</strong> repr(Rust)</a></li><li class="chapter-item expanded "><a href="exotic-sizes.html"><strong aria-hidden="true">2.2.</strong> 奇妙なサイズの型</a></li><li class="chapter-item expanded "><a href="other-reprs.html"><strong aria-hidden="true">2.3.</strong> 代替メモリレイアウト</a></li></ol></li><li class="chapter-item expanded "><a href="ownership.html"><strong aria-hidden="true">3.</strong> 所有権とライフタイム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">3.1.</strong> リファレンス</a></li><li class="chapter-item expanded "><a href="lifetimes.html"><strong aria-hidden="true">3.2.</strong> ライフタイム</a></li><li class="chapter-item expanded "><a href="lifetime-mismatch.html"><strong aria-hidden="true">3.3.</strong> ライフタイムシステムの限界</a></li><li class="chapter-item expanded "><a href="lifetime-elision.html"><strong aria-hidden="true">3.4.</strong> ライフタイムの省略</a></li><li class="chapter-item expanded "><a href="unbounded-lifetimes.html"><strong aria-hidden="true">3.5.</strong> 無制限のライフタイム</a></li><li class="chapter-item expanded "><a href="hrtb.html"><strong aria-hidden="true">3.6.</strong> 高階トレイト境界</a></li><li class="chapter-item expanded "><a href="subtyping.html"><strong aria-hidden="true">3.7.</strong> Subtyping and Variance</a></li><li class="chapter-item expanded "><a href="dropck.html"><strong aria-hidden="true">3.8.</strong> Drop Check</a></li><li class="chapter-item expanded "><a href="phantom-data.html"><strong aria-hidden="true">3.9.</strong> PhantomData</a></li><li class="chapter-item expanded "><a href="borrow-splitting.html"><strong aria-hidden="true">3.10.</strong> 借用の分割</a></li></ol></li><li class="chapter-item expanded "><a href="conversions.html"><strong aria-hidden="true">4.</strong> 型変換</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="coercions.html"><strong aria-hidden="true">4.1.</strong> 型強制</a></li><li class="chapter-item expanded "><a href="dot-operator.html"><strong aria-hidden="true">4.2.</strong> ドットオペレータ</a></li><li class="chapter-item expanded "><a href="casts.html"><strong aria-hidden="true">4.3.</strong> キャスト</a></li><li class="chapter-item expanded "><a href="transmutes.html"><strong aria-hidden="true">4.4.</strong> トランスミュート</a></li></ol></li><li class="chapter-item expanded "><a href="uninitialized.html"><strong aria-hidden="true">5.</strong> 初期化されないメモリ</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="checked-uninit.html"><strong aria-hidden="true">5.1.</strong> チェックされるメモリ</a></li><li class="chapter-item expanded "><a href="drop-flags.html"><strong aria-hidden="true">5.2.</strong> ドロップフラグ</a></li><li class="chapter-item expanded "><a href="unchecked-uninit.html"><strong aria-hidden="true">5.3.</strong> チェックされないメモリ</a></li></ol></li><li class="chapter-item expanded "><a href="obrm.html"><strong aria-hidden="true">6.</strong> 所有権に基づいたリソース管理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="constructors.html"><strong aria-hidden="true">6.1.</strong> Constructors</a></li><li class="chapter-item expanded "><a href="destructors.html"><strong aria-hidden="true">6.2.</strong> Destructors</a></li><li class="chapter-item expanded "><a href="leaking.html"><strong aria-hidden="true">6.3.</strong> Leaking</a></li></ol></li><li class="chapter-item expanded "><a href="unwinding.html"><strong aria-hidden="true">7.</strong> Unwinding</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="exception-safety.html"><strong aria-hidden="true">7.1.</strong> 例外安全性</a></li><li class="chapter-item expanded "><a href="poisoning.html"><strong aria-hidden="true">7.2.</strong> Poisoning</a></li></ol></li><li class="chapter-item expanded "><a href="concurrency.html"><strong aria-hidden="true">8.</strong> Concurrency</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="races.html"><strong aria-hidden="true">8.1.</strong> Races</a></li><li class="chapter-item expanded "><a href="send-and-sync.html"><strong aria-hidden="true">8.2.</strong> Send and Sync</a></li><li class="chapter-item expanded "><a href="atomics.html"><strong aria-hidden="true">8.3.</strong> Atomics</a></li></ol></li><li class="chapter-item expanded "><a href="vec.html"><strong aria-hidden="true">9.</strong> Implementing Vec</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="vec-layout.html"><strong aria-hidden="true">9.1.</strong> Layout</a></li><li class="chapter-item expanded "><a href="vec-alloc.html"><strong aria-hidden="true">9.2.</strong> Allocating</a></li><li class="chapter-item expanded "><a href="vec-push-pop.html"><strong aria-hidden="true">9.3.</strong> Push and Pop</a></li><li class="chapter-item expanded "><a href="vec-dealloc.html"><strong aria-hidden="true">9.4.</strong> Deallocating</a></li><li class="chapter-item expanded "><a href="vec-deref.html"><strong aria-hidden="true">9.5.</strong> Deref</a></li><li class="chapter-item expanded "><a href="vec-insert-remove.html"><strong aria-hidden="true">9.6.</strong> Insert and Remove</a></li><li class="chapter-item expanded "><a href="vec-into-iter.html"><strong aria-hidden="true">9.7.</strong> IntoIter</a></li><li class="chapter-item expanded "><a href="vec-raw.html"><strong aria-hidden="true">9.8.</strong> RawVec</a></li><li class="chapter-item expanded "><a href="vec-drain.html"><strong aria-hidden="true">9.9.</strong> Drain</a></li><li class="chapter-item expanded "><a href="vec-zsts.html"><strong aria-hidden="true">9.10.</strong> Handling Zero-Sized Types</a></li><li class="chapter-item expanded "><a href="vec-final.html"><strong aria-hidden="true">9.11.</strong> Final Code</a></li></ol></li><li class="chapter-item expanded "><a href="arc-and-mutex.html"><strong aria-hidden="true">10.</strong> Implementing Arc and Mutex</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -517,8 +525,8 @@ type could theoretically require that keys implement a new trait called
 <p>この問題を解決するために <code>unsafe</code> なトレイトが存在します。理論上は、<code>BTreeMap</code> 型は
 キーが <code>Ord</code> ではなく、新しいトレイト<code>UnsafeOrd</code> を実装する事を要求する事ができます。
 このようなコードになるでしょう。</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::cmp::Ordering;
 
@@ -593,8 +601,8 @@ that. For instance, consider the following toy function:
 -->
 <p>たいていの場合、アンセーフな Rust を扱うツールは、限定された状況やバイナリでしか使えないようになっています。
 残念なことに、現実はそれよりも極めて複雑です。例えば、以下の簡単な関数を見てみましょう。</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn index(idx: usize, arr: &amp;[u8]) -&gt; Option&lt;u8&gt; {
     if idx &lt; arr.len() {
@@ -617,8 +625,8 @@ function, the scope of the unsafe block is questionable. Consider changing the
 範囲内であれば未チェックで配列をインデックス参照します。
 しかしこのような自明な関数でさえも、unsafe ブロックのスコープには疑問が残ります。
 <code>&lt;</code> を <code>&lt;=</code> に変えてみましょう。</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn index(idx: usize, arr: &amp;[u8]) -&gt; Option&lt;u8&gt; {
     if idx &lt;= arr.len() {
@@ -659,7 +667,7 @@ implementation of `Vec`:
 -->
 <p>実際にステートフルな状況を考えると、事態はもっと厄介になります。
 <code>Vec</code> の簡単な実装を見てみましょう。</p>
-<pre><pre class="playpen"><code class="language-rust">use std::ptr;
+<pre><pre class="playground"><code class="language-rust">use std::ptr;
 
 // この定義は不完全であることに注意してください。Vec の実装に関するセクションをみてください。
 pub struct Vec&lt;T&gt; {
@@ -826,8 +834,8 @@ type's size is a multiple of its alignment. For instance:
 すべてのフィールドが適切にアラインされ、
 また全体のサイズがアラインメントの倍数になるようにします。
 例えば、</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct A {
     a: u8,
@@ -844,8 +852,8 @@ of 32-bits. It will potentially become:
 <p>この構造体は、メンバーのプリミティブ型が対応するサイズにアラインされるアーキテクチャでは、
 32ビットにアラインされます。そのため全体の構造体のサイズも 32ビットの倍数になります。
 このようになるでしょう。</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct A {
     a: u8,
@@ -865,8 +873,8 @@ Rust. Given the two following struct definitions:
 <p>この構造体には <em>間接参照はありません</em>。C と同様に、すべてのデータは構造体の内部に格納されます。
 しかし、配列は例外（配列は隙間なく順にパックされます）ですが、Rust ではデータレイアウトは
 デフォルトでは規定されていません。以下の 2 つの構造体の定義を見てみましょう。</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct A {
     a: i32,
@@ -899,8 +907,8 @@ complex ways.
 For instance, consider this struct:
 -->
 <p>例えば、次の構造体を見てみましょう。</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct Foo&lt;T, U&gt; {
     count: u16,
@@ -948,8 +956,8 @@ requires different monomorphizations to have *different field orderings*.
 Enums make this consideration even more complicated. Naively, an enum such as:
 -->
 <p>Enum については、もっと複雑な検討が必要になります。つまり、この enum</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>enum Foo {
     A(u32),
@@ -962,8 +970,8 @@ Enums make this consideration even more complicated. Naively, an enum such as:
 would be laid out as:
 -->
 <p>は、次のようにレイアウトされるでしょう。</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct FooRepr {
     data: u64, // `tag` によって、u64, u32, u8 のいずれかになります
@@ -1060,8 +1068,8 @@ Structs can actually store a single DST directly as their last field, but this
 makes them a DST as well:
 -->
 <p>構造体は、最後のフィールドとして DST を直接含むことができますが、その構造体自体も DST になります。</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>// 直接スタックには置けません。
 struct Foo {
@@ -1084,8 +1092,8 @@ a variable position based on its alignment][dst-issue].**
 Rust actually allows types to be specified that occupy no space:
 -->
 <p>Rust ではなんと、スペースを持たない型を使うことができます。</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct Foo; // フィールドがない = サイズ 0
 
@@ -1163,8 +1171,8 @@ Empty types can be declared by specifying an enum with no variants:
 <p>Rust では、<em>インスタンスを生成できない</em>型を宣言することもできます。
 こういう型は、型レベルの話にのみ出てきて、値レベルには出てきません。
 空の型は、識別子を持たない enum として宣言できます。</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>enum Void {} // 識別子なし = 空
 <span class="boring">}
@@ -1612,8 +1620,8 @@ reborrowed to point to a field of its referent:
 <p>可変参照は、その子孫を他の共有参照または可変参照に又貸しすることができます。
 又貸しした参照は、派生したすべての又貸しの有効期限が切れると、再び生存することになります。
 例えば、可変参照は、その参照先の一つのフィールドを指す参照を又貸しすることができます。</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let x = &amp;mut (1, 2);
 {
@@ -1636,8 +1644,8 @@ disjointness can be statically proven:
 つまり、どの参照も他の参照の先祖であってはいけないということです。
 Rust は、構造体のフィールドが互いに素であることを静的に証明できるので、
 フィールドの又貸しが可能です。</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let x = &amp;mut (1, 2);
 {
@@ -1793,8 +1801,8 @@ completely desugar this simple piece of Rust code:
 ほとんどの場合、これは問題になりません。
 しかし、複数の変数がお互いを参照している場合は問題になります。
 簡単な例として、この単純な Rust コードを脱糖してみましょう。</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let x = 0;
 let y = &amp;x;
@@ -1830,8 +1838,8 @@ Actually passing references to outer scopes will cause Rust to infer
 a larger lifetime:
 -->
 <p>参照を外のスコープに返す場合は、Rust はより大きいライフタイムを推論することになります。</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let x = 0;
 let z;
@@ -1937,8 +1945,8 @@ Shoot!
 Of course, the right way to write this function is as follows:
 -->
 <p>この関数を正しく書くと、当然次のようになります。</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn to_string(data: &amp;u32) -&gt; String {
     format!(&quot;{}&quot;, data)
@@ -2302,7 +2310,7 @@ Rust's `Fn` traits are a little bit magic. For instance, we can write the
 following code:
 -->
 <p>Rust の <code>Fn</code> トレイトはちょっとした魔法です。例えば、次のように書くことができます。</p>
-<pre><pre class="playpen"><code class="language-rust">struct Closure&lt;F&gt; {
+<pre><pre class="playground"><code class="language-rust">struct Closure&lt;F&gt; {
     data: (u8, u16),
     func: F,
 }
@@ -2481,8 +2489,8 @@ immutably. So you can pass a <code>&amp;Box&lt;&amp;'static str&gt;</code> where
 expected.</p>
 <p>However what should happen when passing <em>by-value</em> is less obvious. It turns out
 that, yes, you can use subtyping when passing by-value. That is, this works:</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn get_box&lt;'a&gt;(str: &amp;'a str) -&gt; Box&lt;&amp;'a str&gt; {
     // string literals are `&amp;'static str`s
@@ -2536,8 +2544,8 @@ in multiple fields.</p>
 <li>If all uses of A are variant, then Foo is variant over A</li>
 <li>Otherwise, Foo is invariant over A</li>
 </ul>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::cell::Cell;
 
@@ -2589,7 +2597,7 @@ the compiler can't sufficiently reason about the actual destruction order
 of the contents of any type that implements Drop.</p>
 <p>So why do we care? We care because if the type system isn't careful, it could
 accidentally make dangling pointers. Consider the following simple program:</p>
-<pre><pre class="playpen"><code class="language-rust">struct Inspector&lt;'a&gt;(&amp;'a u8);
+<pre><pre class="playground"><code class="language-rust">struct Inspector&lt;'a&gt;(&amp;'a u8);
 
 fn main() {
     let (inspector, days);
@@ -2875,8 +2883,8 @@ simultaneously. So this works today:
 借用チェッカはいくつか基本事項を理解していますが、本当に簡単にすっ転びます。
 借用チェッカは構造体について十分理解しているため、構造体の別々のフィールドを同時に借用することは可能です。
 ですから、このコードは今日動作します。</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct Foo {
     a: i32,
@@ -2972,8 +2980,8 @@ The iterator trait is defined as follows:
 -->
 <p>しかし、もっと微妙なのは、可変参照を生成するイテレータが
 どのように動作するかについてです。イテレータのトレイトは以下のように定義されます。</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>trait Iterator {
     type Item;
@@ -3022,7 +3030,7 @@ implemented for many types!
 For instance here's a singly linked list:
 -->
 <p>例えばこれは、片方向リストです。</p>
-<pre><pre class="playpen"><code class="language-rust"><span class="boring">fn main() {}
+<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {}
 </span>type Link&lt;T&gt; = Option&lt;Box&lt;Node&lt;T&gt;&gt;&gt;;
 
 struct Node&lt;T&gt; {
@@ -3057,7 +3065,7 @@ impl&lt;'a, T&gt; Iterator for IterMut&lt;'a, T&gt; {
 Here's a mutable slice:
 -->
 <p>これは可変スライスです。</p>
-<pre><pre class="playpen"><code class="language-rust"><span class="boring">fn main() {}
+<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {}
 </span>use std::mem;
 
 pub struct IterMut&lt;'a, T: 'a&gt;(&amp;'a mut[T]);
@@ -3091,7 +3099,7 @@ impl&lt;'a, T&gt; DoubleEndedIterator for IterMut&lt;'a, T&gt; {
 And here's a binary tree:
 -->
 <p>そしてこれは二分木です。</p>
-<pre><pre class="playpen"><code class="language-rust"><span class="boring">fn main() {}
+<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {}
 </span>use std::collections::VecDeque;
 
 type Link&lt;T&gt; = Option&lt;Box&lt;Node&lt;T&gt;&gt;&gt;;
@@ -3234,8 +3242,8 @@ constituent parts and then build a new type out of them. e.g.
 <p>まず、安全な Rust が提供する、値を再解釈する方法について見ていきます。
 最も平凡なやり方は、単に値をその構成要素に分配し、そしてそれらを用いて
 新しい型の値を構築する方法です。</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct Foo {
     x: u32,
@@ -3668,7 +3676,7 @@ or anything like that. So this compiles:
 使用される前に、値を代入しなければなりません。興味深いことに、 Rust では、もし全ての分岐の中で
 値がちょうど一回しか代入されない場合、遅延初期化を行なうために変数をミュータブルにする必要がありません。
 しかし、この分析は定数の分析や、それに似たものを利用していないため、このコードはコンパイルできます。</p>
-<pre><pre class="playpen"><code class="language-rust">fn main() {
+<pre><pre class="playground"><code class="language-rust">fn main() {
     let x: i32;
 
     if true {
@@ -3700,7 +3708,7 @@ src/main.rs:6   println!(&quot;{}&quot;, x);
 while this does:
 -->
 <p>一方でこのコードはコンパイルできます。</p>
-<pre><pre class="playpen"><code class="language-rust">fn main() {
+<pre><pre class="playground"><code class="language-rust">fn main() {
     let x: i32;
     if true {
         x = 1;
@@ -3717,8 +3725,8 @@ flow. For instance, this works:
 -->
 <p>もちろん、分析では実際の値は考慮されませんが、比較的洗練された、依存関係や制御フローに関する
 分析は行われます。例えば、このコードは動作します。</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let x: i32;
 
@@ -3744,7 +3752,7 @@ uninitialized if the type of the value isn't Copy. That is:
 -->
 <p>もし値の型が Copy を実装しておらず、値が変数からムーブされたら、
 論理的にはその変数は初期化されていない事になります。</p>
-<pre><pre class="playpen"><code class="language-rust">fn main() {
+<pre><pre class="playground"><code class="language-rust">fn main() {
     let x = 0;
     let y = Box::new(0);
     let z1 = x; // i32 は Copy を実装しているため、 x はまだ有効です
@@ -3758,7 +3766,7 @@ mutable, as a Safe Rust program could observe that the value of `y` changed:
 <p>しかしながらこの例では、 <code>y</code> に値を再代入しようとするのであれば、 <code>y</code> を
 ミュータブルとしてマークする必要が<em>あるでしょう</em>。
 安全な Rust のプログラムは <code>y</code> の値が変わったと認識出来るからです。</p>
-<pre><pre class="playpen"><code class="language-rust">fn main() {
+<pre><pre class="playground"><code class="language-rust">fn main() {
     let mut y = Box::new(0);
     let z = y; // Box が Copy を実装していないため、もはや y は論理的には初期化されていません
     y = Box::new(1); // y を再初期化します
@@ -3826,8 +3834,8 @@ line code has such *static drop semantics*:
 知ることが出来ます。もしこれが本当なら、コンパイラは理論的には、
 もっと効率的なコードを生成できます! 例えば、分岐のない真っ直ぐなコードは、
 このような<em>静的ドロップセマンティクス</em>を持っています。</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let mut x = Box::new(0); // x は初期化されていないので、単に上書きします。
 let mut y = x;           // y は初期化されていないので、単に上書きします。そして x を初期化前の状態にします。
@@ -3843,8 +3851,8 @@ to initialization has static drop semantics:
 -->
 <p>同じように、全ての分岐が初期化の点において、同一のことをする分岐があるコードでは、
 静的ドロップセマンティクスを持っています。</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">let condition = true;
 </span>let mut x = Box::new(0);    // x は初期化されていないので、単に上書きします。
@@ -3862,8 +3870,8 @@ x = Box::new(0);            // x は初期化されていない状態なので�
 However code like this *requires* runtime information to correctly Drop:
 -->
 <p>しかしながら以下のようなコードでは、正しくドロップするために実行時の情報が必要となります。</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">let condition = true;
 </span>let x;
@@ -3879,8 +3887,8 @@ if condition {
 Of course, in this case it's trivial to retrieve static drop semantics:
 -->
 <p>勿論この場合、静的ドロップセマンティクスを復活させるのは些細なことです。</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">let condition = true;
 </span>if condition {
@@ -3895,64 +3903,117 @@ implement drop.
 -->
 <p>ドロップフラグはスタック上で追跡され、ドロップを実装している型に
 隠されることはもはやありません。</p>
-<h1><a class="header" href="#unchecked-uninitialized-memory" id="unchecked-uninitialized-memory">Unchecked Uninitialized Memory</a></h1>
-<p>One interesting exception to this rule is working with arrays. Safe Rust doesn't
+<!--
+# Unchecked Uninitialized Memory
+-->
+<h1><a class="header" href="#チェックされない初期化されていないメモリ" id="チェックされない初期化されていないメモリ">チェックされない初期化されていないメモリ</a></h1>
+<!--
+One interesting exception to this rule is working with arrays. Safe Rust doesn't
 permit you to partially initialize an array. When you initialize an array, you
-can either set every value to the same thing with <code>let x = [val; N]</code>, or you can
-specify each member individually with <code>let x = [val1, val2, val3]</code>.
+can either set every value to the same thing with `let x = [val; N]`, or you can
+specify each member individually with `let x = [val1, val2, val3]`.
 Unfortunately this is pretty rigid, especially if you need to initialize your
-array in a more incremental or dynamic way.</p>
-<p>Unsafe Rust gives us a powerful tool to handle this problem:
-<code>mem::uninitialized</code>. This function pretends to return a value when really
+array in a more incremental or dynamic way.
+-->
+<p>この規則の興味深い例外に、配列があります。安全な Rust は、配列を部分的に初期化することを
+認めません。配列を初期化するとき、 <code>let x = [val; N]</code> を用いて
+全ての値を初期化するか、 <code>let x = [val1, val2, val3]</code> を用いて、
+それぞれの要素の値を個別に指定するかのどちらかが出来ます。残念ながら、
+特によりインクリメンタルなやり方や、動的な方法で配列を初期化する必要がある場合、
+これは非常に融通が利きません。</p>
+<!--
+Unsafe Rust gives us a powerful tool to handle this problem:
+`mem::uninitialized`. This function pretends to return a value when really
 it does nothing at all. Using it, we can convince Rust that we have initialized
 a variable, allowing us to do trickier things with conditional and incremental
-initialization.</p>
-<p>Unfortunately, this opens us up to all kinds of problems. Assignment has a
+initialization.
+-->
+<p>アンセーフな Rust では、この問題に対処するパワフルなツールが用意されています。 <code>mem::uninitialized</code> です。
+この関数は本当に何もせず、値を返すふりをします。これを利用することで、 Rust に
+変数が初期化されたと見なさせることができ、状況に応じた、インクリメンタルな初期化を
+行ないトリッキーなことが出来ます。</p>
+<!--
+Unfortunately, this opens us up to all kinds of problems. Assignment has a
 different meaning to Rust based on whether it believes that a variable is
 initialized or not. If it's believed uninitialized, then Rust will semantically
 just memcopy the bits over the uninitialized ones, and do nothing else. However
-if Rust believes a value to be initialized, it will try to <code>Drop</code> the old value!
+if Rust believes a value to be initialized, it will try to `Drop` the old value!
 Since we've tricked Rust into believing that the value is initialized, we can no
-longer safely use normal assignment.</p>
-<p>This is also a problem if you're working with a raw system allocator, which
-returns a pointer to uninitialized memory.</p>
-<p>To handle this, we must use the <code>ptr</code> module. In particular, it provides
+longer safely use normal assignment.
+-->
+<p>残念ながら、これによってあらゆる種類の問題が浮かび上がります。
+変数が初期化されていると Rust が思っているか、思っていないかによって、
+代入は異なる意味を持ちます。もし初期化していないと思っている場合、 Rust は、
+セマンティクス的には単にビットを初期化していないメモリにコピーし、他には
+何もしません。しかし、もし値が初期化していると思っている場合、 Rust は
+古い値を <code>Drop</code> しようとします! Rust に、値が初期化されていると信じ込ませるよう
+トリックをしたので、もはや安全には普通の代入は使えません。</p>
+<!--
+This is also a problem if you're working with a raw system allocator, which
+returns a pointer to uninitialized memory.
+-->
+<p>生のシステムアロケータを使用している場合も問題となります。このアロケータは、
+初期化されていないメモリへのポインタを返すからです。</p>
+<!--
+To handle this, we must use the `ptr` module. In particular, it provides
 three functions that allow us to assign bytes to a location in memory without
-dropping the old value: <code>write</code>, <code>copy</code>, and <code>copy_nonoverlapping</code>.</p>
+dropping the old value: `write`, `copy`, and `copy_nonoverlapping`.
+-->
+<p>これに対処するには、 <code>ptr</code> モジュールを使用しなければなりません。
+特にこのモジュールは、古い値をドロップせずに、メモリ上の場所に値を代入することが
+可能となる 3 つの関数を提供しています: <code>write</code>、<code>copy</code>、<code>copy_nonoverlapping</code>です。</p>
+<!--
+* `ptr::write(ptr, val)` takes a `val` and moves it into the address pointed
+  to by `ptr`.
+* `ptr::copy(src, dest, count)` copies the bits that `count` T's would occupy
+  from src to dest. (this is equivalent to memmove -- note that the argument
+  order is reversed!)
+* `ptr::copy_nonoverlapping(src, dest, count)` does what `copy` does, but a
+  little faster on the assumption that the two ranges of memory don't overlap.
+  (this is equivalent to memcpy -- note that the argument order is reversed!)
+-->
 <ul>
-<li><code>ptr::write(ptr, val)</code> takes a <code>val</code> and moves it into the address pointed
-to by <code>ptr</code>.</li>
-<li><code>ptr::copy(src, dest, count)</code> copies the bits that <code>count</code> T's would occupy
-from src to dest. (this is equivalent to memmove -- note that the argument
-order is reversed!)</li>
-<li><code>ptr::copy_nonoverlapping(src, dest, count)</code> does what <code>copy</code> does, but a
-little faster on the assumption that the two ranges of memory don't overlap.
-(this is equivalent to memcpy -- note that the argument order is reversed!)</li>
+<li><code>ptr::write(ptr, val)</code> は <code>val</code> を受け取り、 <code>ptr</code> が指し示すアドレスに受け取った値を
+移します。</li>
+<li><code>ptr::copy(src, dest, count)</code> は、 T 型の <code>count</code> が占有するビット数だけ、 src から dest に
+コピーします。 (これは memmove と同じです -- 引数の順序が逆転していることに注意してください!)</li>
+<li><code>ptr::copy_nonoverlapping(src, dest, count)</code> は <code>copy</code> と同じことをしますが、 2 つのメモリ領域が
+重なっていないと見なしているため、若干高速です。 (これは memcpy と同じです -- 引数の
+順序が逆転していることに注意してください!)</li>
 </ul>
-<p>It should go without saying that these functions, if misused, will cause serious
+<!--
+It should go without saying that these functions, if misused, will cause serious
 havoc or just straight up Undefined Behavior. The only things that these
-functions <em>themselves</em> require is that the locations you want to read and write
+functions *themselves* require is that the locations you want to read and write
 are allocated. However the ways writing arbitrary bits to arbitrary
-locations of memory can break things are basically uncountable!</p>
-<p>Putting this all together, we get the following:</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+locations of memory can break things are basically uncountable!
+-->
+<p>言うまでもないのですが、もしこれらの関数が誤用されると、甚大な被害を引き起こしたり、
+未定義動作を引き起こすでしょう。これらの関数<em>自体</em>が必要とする唯一のものは、
+読み書きしたい場所がアロケートされているということです。しかし、
+任意のビットを任意のメモリの場所に書き込むことでものを壊すようなやり方は数え切れません!</p>
+<!--
+Putting this all together, we get the following:
+-->
+<p>これらを全部一緒にすると、以下のようなコードとなります。</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::mem;
 use std::ptr;
 
-// size of the array is hard-coded but easy to change. This means we can't
-// use [a, b, c] syntax to initialize the array, though!
+// 配列の大きさはハードコードされていますが，簡単に変えられます。
+// これは、配列を初期化するのに [a, b, c] という構文を使えないことを意味しますがね!
 const SIZE: usize = 10;
 
 let mut x: [Box&lt;u32&gt;; SIZE];
 
 unsafe {
-	// convince Rust that x is Totally Initialized
+	// Rust に x が完全に初期化されたと思わせます
 	x = mem::uninitialized();
 	for i in 0..SIZE {
-		// very carefully overwrite each index without reading it
-		// NOTE: exception safety is not a concern; Box can't panic
+		// 非常に注意深く、それぞれのインデックスを読み込まずに上書きします
+		// 注意: 例外安全性は考慮されていません。 Box はパニックできません
 		ptr::write(&amp;mut x[i], Box::new(i as u32));
 	}
 }
@@ -3960,19 +4021,36 @@ unsafe {
 println!(&quot;{:?}&quot;, x);
 <span class="boring">}
 </span></code></pre></pre>
-<p>It's worth noting that you don't need to worry about <code>ptr::write</code>-style
-shenanigans with types which don't implement <code>Drop</code> or contain <code>Drop</code> types,
+<!--
+It's worth noting that you don't need to worry about `ptr::write`-style
+shenanigans with types which don't implement `Drop` or contain `Drop` types,
 because Rust knows not to try to drop them. Similarly you should be able to
 assign to fields of partially initialized structs directly if those fields don't
-contain any <code>Drop</code> types.</p>
-<p>However when working with uninitialized memory you need to be ever-vigilant for
+contain any `Drop` types.
+-->
+<p><code>Drop</code> を実装していない型や、 <code>Drop</code> を実装する型を含まない型との、<code>ptr::write</code> スタイルの
+いたずらを心配しなくてよいということは注目に値します。なぜなら Rust は、これらをドロップしようと
+しないと知っているからです。同じように、もし部分的に初期化されている構造体のフィールドに <code>Drop</code> を
+実装しているものが存在しない場合、このフィールド群に直接代入できるようにするべきです。</p>
+<!--
+However when working with uninitialized memory you need to be ever-vigilant for
 Rust trying to drop values you make like this before they're fully initialized.
 Every control path through that variable's scope must initialize the value
 before it ends, if it has a destructor.
-<em><a href="unwinding.html">This includes code panicking</a></em>.</p>
-<p>And that's about it for working with uninitialized memory! Basically nothing
+*[This includes code panicking](unwinding.html)*.
+-->
+<p>しかし、初期化されていないメモリを扱うとき、生成した値を Rust が、以前に
+完全に初期化されたものと見なしてドロップしようとしてしまわないか、常に警戒する必要があります。
+値がデストラクタを持つ場合、変数のスコープを通り抜ける全てのコントロールパスは、終了時までに
+その値を初期化する必要があります。<em><a href="unwinding.html">これはコードパニックを含みます</a></em></p>
+<!--
+And that's about it for working with uninitialized memory! Basically nothing
 anywhere expects to be handed uninitialized memory, so if you're going to pass
-it around at all, be sure to be <em>really</em> careful.</p>
+it around at all, be sure to be *really* careful.
+-->
+<p>まあ、初期化されていないメモリを扱うことに関してはこんなものです。
+基本的にどのような場所でも、初期化されていないメモリが渡されることは予期していません。
+ですからもしそのようなメモリを分配する場合、確実に<em>本当に</em>注意深く行なってください。</p>
 <!-- # The Perils Of Ownership Based Resource Management (OBRM) -->
 <h1><a class="header" href="#所有権に基づいたリソース管理ownership-based-resource-management-obrmの危険性について" id="所有権に基づいたリソース管理ownership-based-resource-management-obrmの危険性について">所有権に基づいたリソース管理(Ownership Based Resource Management, OBRM)の危険性について</a></h1>
 <!--
@@ -4005,8 +4083,8 @@ Rustの根幹です。それは何もメモリに限った話ではありませ�
 <h1><a class="header" href="#constructors" id="constructors">Constructors</a></h1>
 <p>There is exactly one way to create an instance of a user-defined type: name it,
 and initialize all its fields at once:</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct Foo {
     a: u8,
@@ -4071,7 +4149,7 @@ be implemented at all!</p>
 Drop, Rust will prevent you from e.g. moving fields out of self. For most types,
 this is totally fine.</p>
 <p>For instance, a custom implementation of <code>Box</code> might write <code>Drop</code> like this:</p>
-<pre><pre class="playpen"><code class="language-rust">#![feature(alloc, heap_api, unique)]
+<pre><pre class="playground"><code class="language-rust">#![feature(alloc, heap_api, unique)]
 
 extern crate alloc;
 
@@ -4098,7 +4176,7 @@ impl&lt;T&gt; Drop for Box&lt;T&gt; {
 a <a href="phantom-data.html">Unique</a> that has no actual <code>Drop</code> implementation. Similarly nothing can
 use-after-free the <code>ptr</code> because when drop exits, it becomes inaccessible.</p>
 <p>However this wouldn't work:</p>
-<pre><pre class="playpen"><code class="language-rust">#![feature(alloc, heap_api, unique)]
+<pre><pre class="playground"><code class="language-rust">#![feature(alloc, heap_api, unique)]
 
 extern crate alloc;
 
@@ -4140,8 +4218,8 @@ happily proceed to tell the box to Drop itself and everything will blow up with
 use-after-frees and double-frees.</p>
 <p>Note that the recursive drop behavior applies to all structs and enums
 regardless of whether they implement Drop. Therefore something like</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct Boxy&lt;T&gt; {
     data1: Box&lt;T&gt;,
@@ -4154,8 +4232,8 @@ regardless of whether they implement Drop. Therefore something like</p>
 dropped, even though it itself doesn't implement Drop. We say that such a type
 <em>needs Drop</em>, even though it is not itself Drop.</p>
 <p>Similarly,</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>enum Link {
     Next(Box&lt;Link&gt;),
@@ -4171,7 +4249,7 @@ certainly many valid usecases for needing to do trickier things with
 destructors.</p>
 <p>The classic safe solution to overriding recursive drop and allowing moving out
 of Self during <code>drop</code> is to use an Option:</p>
-<pre><pre class="playpen"><code class="language-rust">#![feature(alloc, heap_api, unique)]
+<pre><pre class="playground"><code class="language-rust">#![feature(alloc, heap_api, unique)]
 
 extern crate alloc;
 
@@ -4817,8 +4895,8 @@ isn't very good, but Rust can only hold your hand so far. Still, a race
 condition can't violate memory safety in a Rust program on its own. Only in
 conjunction with some other unsafe code can a race condition actually violate
 memory safety. For instance:</p>
-<pre><pre class="playpen"><code class="language-rust no_run">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust no_run">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::thread;
 use std::sync::atomic::{AtomicUsize, Ordering};
@@ -4850,8 +4928,8 @@ thread::spawn(move || {
 println!(&quot;{}&quot;, data[idx.load(Ordering::SeqCst)]);
 <span class="boring">}
 </span></code></pre></pre>
-<pre><pre class="playpen"><code class="language-rust no_run">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust no_run">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::thread;
 use std::sync::atomic::{AtomicUsize, Ordering};
@@ -4918,8 +4996,8 @@ non-trivial untracked ownership, and it's unlikely that their author was
 necessarily thinking hard about thread safety. In the case of Rc, we have a nice
 example of a type that contains a <code>*mut</code> that is definitely not thread safe.</p>
 <p>Types that aren't automatically derived can simply implement them if desired:</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct MyBox(*mut u8);
 
@@ -4929,8 +5007,8 @@ unsafe impl Sync for MyBox {}
 </span></code></pre></pre>
 <p>In the <em>incredibly rare</em> case that a type is inappropriately automatically
 derived to be Send or Sync, then one can also unimplement Send and Sync:</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span>#![feature(optin_builtin_traits)]
 
 <span class="boring">fn main() {
@@ -5113,7 +5191,7 @@ causality is established if A and B access <em>different</em> locations in memor
 <p>Basic use of release-acquire is therefore simple: you acquire a location of
 memory to begin the critical section, and then release that location to end it.
 For instance, a simple spinlock might look like:</p>
-<pre><pre class="playpen"><code class="language-rust">use std::sync::Arc;
+<pre><pre class="playground"><code class="language-rust">use std::sync::Arc;
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::thread;
 
@@ -5168,7 +5246,7 @@ when the problem doesn't <em>really</em> merit it.</p>
 a pointer to the allocation, the size of the allocation, and the number of
 elements that have been initialized.</p>
 <p>Naively, this means we just want this design:</p>
-<pre><pre class="playpen"><code class="language-rust">pub struct Vec&lt;T&gt; {
+<pre><pre class="playground"><code class="language-rust">pub struct Vec&lt;T&gt; {
     ptr: *mut T,
     cap: usize,
     len: usize,
@@ -5195,7 +5273,7 @@ so we'd like to not use it if possible, though.</p>
 </ul>
 <p>We can implement all of the above requirements except for the last
 one in stable Rust:</p>
-<pre><pre class="playpen"><code class="language-rust">use std::marker::PhantomData;
+<pre><pre class="playground"><code class="language-rust">use std::marker::PhantomData;
 use std::ops::Deref;
 use std::mem;
 
@@ -5229,7 +5307,7 @@ impl&lt;T&gt; Deref for Unique&lt;T&gt; {
 <p>Unfortunately the mechanism for stating that your value is non-zero is
 unstable and unlikely to be stabilized soon. As such we're just going to
 take the hit and use std's Unique:</p>
-<pre><pre class="playpen"><code class="language-rust">#![feature(unique)]
+<pre><pre class="playground"><code class="language-rust">#![feature(unique)]
 
 use std::ptr::{Unique, self};
 
@@ -5301,8 +5379,8 @@ like the standard library as much as possible, so we'll just kill the whole
 program.</p>
 <p>We said we don't want to use intrinsics, so doing exactly what <code>std</code> does is
 out. Instead, we'll call <code>std::process::exit</code> with some random number.</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn oom() {
     ::std::process::exit(-9999);
@@ -5326,8 +5404,8 @@ not have dealt with this instruction, here's the basic story with GEP: alias
 analysis, alias analysis, alias analysis. It's super important to an optimizing
 compiler to be able to reason about data dependencies and aliasing.</p>
 <p>As a simple example, consider the following fragment of code:</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">let x = &amp;mut 0;
 </span><span class="boring">let y = &amp;mut 0;
@@ -5856,8 +5934,8 @@ impl&lt;'a, T&gt; Iterator for Drain&lt;'a, T&gt; {
 </code></pre>
 <p>-- wait, this is seeming familiar. Let's do some more compression. Both
 IntoIter and Drain have the exact same structure, let's just factor it out.</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct RawValIter&lt;T&gt; {
     start: *const T,
@@ -6128,7 +6206,7 @@ impl&lt;T&gt; DoubleEndedIterator for RawValIter&lt;T&gt; {
 </code></pre>
 <p>And that's it. Iteration works!</p>
 <h1><a class="header" href="#the-final-code" id="the-final-code">The Final Code</a></h1>
-<pre><pre class="playpen"><code class="language-rust">#![feature(unique)]
+<pre><pre class="playground"><code class="language-rust">#![feature(unique)]
 #![feature(alloc, heap_api)]
 
 extern crate alloc;
@@ -6478,10 +6556,10 @@ we'll be implementing versions of the standard library's Arc and Mutex types.</p
         
 
         
-        
+
         
         <script type="text/javascript">
-            window.playpen_copyable = true;
+            window.playground_copyable = true;
         </script>
         
 

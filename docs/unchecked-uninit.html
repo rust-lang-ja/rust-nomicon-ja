@@ -3,14 +3,21 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Unchecked</title>
+        <title>チェックされないメモリ</title>
         
+        
+
+
+        <!-- Custom HTML head -->
+        
+
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
+        <link rel="icon" href="favicon.svg">
         <link rel="shortcut icon" href="favicon.png">
         <link rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/general.css">
@@ -19,8 +26,9 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="highlight.css">
@@ -36,7 +44,7 @@
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
             var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -81,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">はじめに</a></li><li class="chapter-item expanded "><a href="meet-safe-and-unsafe.html"><strong aria-hidden="true">1.</strong> 安全と危険のご紹介</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="safe-unsafe-meaning.html"><strong aria-hidden="true">1.1.</strong> 安全と危険の相互作用</a></li><li class="chapter-item expanded "><a href="working-with-unsafe.html"><strong aria-hidden="true">1.2.</strong> Unsafe と連携する</a></li></ol></li><li class="chapter-item expanded "><a href="data.html"><strong aria-hidden="true">2.</strong> データレイアウト</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="repr-rust.html"><strong aria-hidden="true">2.1.</strong> repr(Rust)</a></li><li class="chapter-item expanded "><a href="exotic-sizes.html"><strong aria-hidden="true">2.2.</strong> 奇妙なサイズの型</a></li><li class="chapter-item expanded "><a href="other-reprs.html"><strong aria-hidden="true">2.3.</strong> 代替メモリレイアウト</a></li></ol></li><li class="chapter-item expanded "><a href="ownership.html"><strong aria-hidden="true">3.</strong> 所有権とライフタイム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">3.1.</strong> リファレンス</a></li><li class="chapter-item expanded "><a href="lifetimes.html"><strong aria-hidden="true">3.2.</strong> ライフタイム</a></li><li class="chapter-item expanded "><a href="lifetime-mismatch.html"><strong aria-hidden="true">3.3.</strong> ライフタイムシステムの限界</a></li><li class="chapter-item expanded "><a href="lifetime-elision.html"><strong aria-hidden="true">3.4.</strong> ライフタイムの省略</a></li><li class="chapter-item expanded "><a href="unbounded-lifetimes.html"><strong aria-hidden="true">3.5.</strong> 無制限のライフタイム</a></li><li class="chapter-item expanded "><a href="hrtb.html"><strong aria-hidden="true">3.6.</strong> 高階トレイト境界</a></li><li class="chapter-item expanded "><a href="subtyping.html"><strong aria-hidden="true">3.7.</strong> Subtyping and Variance</a></li><li class="chapter-item expanded "><a href="dropck.html"><strong aria-hidden="true">3.8.</strong> Drop Check</a></li><li class="chapter-item expanded "><a href="phantom-data.html"><strong aria-hidden="true">3.9.</strong> PhantomData</a></li><li class="chapter-item expanded "><a href="borrow-splitting.html"><strong aria-hidden="true">3.10.</strong> 借用の分割</a></li></ol></li><li class="chapter-item expanded "><a href="conversions.html"><strong aria-hidden="true">4.</strong> 型変換</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="coercions.html"><strong aria-hidden="true">4.1.</strong> 型強制</a></li><li class="chapter-item expanded "><a href="dot-operator.html"><strong aria-hidden="true">4.2.</strong> ドットオペレータ</a></li><li class="chapter-item expanded "><a href="casts.html"><strong aria-hidden="true">4.3.</strong> キャスト</a></li><li class="chapter-item expanded "><a href="transmutes.html"><strong aria-hidden="true">4.4.</strong> トランスミュート</a></li></ol></li><li class="chapter-item expanded "><a href="uninitialized.html"><strong aria-hidden="true">5.</strong> 初期化されないメモリ</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="checked-uninit.html"><strong aria-hidden="true">5.1.</strong> チェックされるメモリ</a></li><li class="chapter-item expanded "><a href="drop-flags.html"><strong aria-hidden="true">5.2.</strong> ドロップフラグ</a></li><li class="chapter-item expanded "><a href="unchecked-uninit.html" class="active"><strong aria-hidden="true">5.3.</strong> Unchecked</a></li></ol></li><li class="chapter-item expanded "><a href="obrm.html"><strong aria-hidden="true">6.</strong> 所有権に基づいたリソース管理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="constructors.html"><strong aria-hidden="true">6.1.</strong> Constructors</a></li><li class="chapter-item expanded "><a href="destructors.html"><strong aria-hidden="true">6.2.</strong> Destructors</a></li><li class="chapter-item expanded "><a href="leaking.html"><strong aria-hidden="true">6.3.</strong> Leaking</a></li></ol></li><li class="chapter-item expanded "><a href="unwinding.html"><strong aria-hidden="true">7.</strong> Unwinding</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="exception-safety.html"><strong aria-hidden="true">7.1.</strong> 例外安全性</a></li><li class="chapter-item expanded "><a href="poisoning.html"><strong aria-hidden="true">7.2.</strong> Poisoning</a></li></ol></li><li class="chapter-item expanded "><a href="concurrency.html"><strong aria-hidden="true">8.</strong> Concurrency</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="races.html"><strong aria-hidden="true">8.1.</strong> Races</a></li><li class="chapter-item expanded "><a href="send-and-sync.html"><strong aria-hidden="true">8.2.</strong> Send and Sync</a></li><li class="chapter-item expanded "><a href="atomics.html"><strong aria-hidden="true">8.3.</strong> Atomics</a></li></ol></li><li class="chapter-item expanded "><a href="vec.html"><strong aria-hidden="true">9.</strong> Implementing Vec</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="vec-layout.html"><strong aria-hidden="true">9.1.</strong> Layout</a></li><li class="chapter-item expanded "><a href="vec-alloc.html"><strong aria-hidden="true">9.2.</strong> Allocating</a></li><li class="chapter-item expanded "><a href="vec-push-pop.html"><strong aria-hidden="true">9.3.</strong> Push and Pop</a></li><li class="chapter-item expanded "><a href="vec-dealloc.html"><strong aria-hidden="true">9.4.</strong> Deallocating</a></li><li class="chapter-item expanded "><a href="vec-deref.html"><strong aria-hidden="true">9.5.</strong> Deref</a></li><li class="chapter-item expanded "><a href="vec-insert-remove.html"><strong aria-hidden="true">9.6.</strong> Insert and Remove</a></li><li class="chapter-item expanded "><a href="vec-into-iter.html"><strong aria-hidden="true">9.7.</strong> IntoIter</a></li><li class="chapter-item expanded "><a href="vec-raw.html"><strong aria-hidden="true">9.8.</strong> RawVec</a></li><li class="chapter-item expanded "><a href="vec-drain.html"><strong aria-hidden="true">9.9.</strong> Drain</a></li><li class="chapter-item expanded "><a href="vec-zsts.html"><strong aria-hidden="true">9.10.</strong> Handling Zero-Sized Types</a></li><li class="chapter-item expanded "><a href="vec-final.html"><strong aria-hidden="true">9.11.</strong> Final Code</a></li></ol></li><li class="chapter-item expanded "><a href="arc-and-mutex.html"><strong aria-hidden="true">10.</strong> Implementing Arc and Mutex</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">はじめに</a></li><li class="chapter-item expanded "><a href="meet-safe-and-unsafe.html"><strong aria-hidden="true">1.</strong> 安全と危険のご紹介</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="safe-unsafe-meaning.html"><strong aria-hidden="true">1.1.</strong> 安全と危険の相互作用</a></li><li class="chapter-item expanded "><a href="working-with-unsafe.html"><strong aria-hidden="true">1.2.</strong> Unsafe と連携する</a></li></ol></li><li class="chapter-item expanded "><a href="data.html"><strong aria-hidden="true">2.</strong> データレイアウト</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="repr-rust.html"><strong aria-hidden="true">2.1.</strong> repr(Rust)</a></li><li class="chapter-item expanded "><a href="exotic-sizes.html"><strong aria-hidden="true">2.2.</strong> 奇妙なサイズの型</a></li><li class="chapter-item expanded "><a href="other-reprs.html"><strong aria-hidden="true">2.3.</strong> 代替メモリレイアウト</a></li></ol></li><li class="chapter-item expanded "><a href="ownership.html"><strong aria-hidden="true">3.</strong> 所有権とライフタイム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">3.1.</strong> リファレンス</a></li><li class="chapter-item expanded "><a href="lifetimes.html"><strong aria-hidden="true">3.2.</strong> ライフタイム</a></li><li class="chapter-item expanded "><a href="lifetime-mismatch.html"><strong aria-hidden="true">3.3.</strong> ライフタイムシステムの限界</a></li><li class="chapter-item expanded "><a href="lifetime-elision.html"><strong aria-hidden="true">3.4.</strong> ライフタイムの省略</a></li><li class="chapter-item expanded "><a href="unbounded-lifetimes.html"><strong aria-hidden="true">3.5.</strong> 無制限のライフタイム</a></li><li class="chapter-item expanded "><a href="hrtb.html"><strong aria-hidden="true">3.6.</strong> 高階トレイト境界</a></li><li class="chapter-item expanded "><a href="subtyping.html"><strong aria-hidden="true">3.7.</strong> Subtyping and Variance</a></li><li class="chapter-item expanded "><a href="dropck.html"><strong aria-hidden="true">3.8.</strong> Drop Check</a></li><li class="chapter-item expanded "><a href="phantom-data.html"><strong aria-hidden="true">3.9.</strong> PhantomData</a></li><li class="chapter-item expanded "><a href="borrow-splitting.html"><strong aria-hidden="true">3.10.</strong> 借用の分割</a></li></ol></li><li class="chapter-item expanded "><a href="conversions.html"><strong aria-hidden="true">4.</strong> 型変換</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="coercions.html"><strong aria-hidden="true">4.1.</strong> 型強制</a></li><li class="chapter-item expanded "><a href="dot-operator.html"><strong aria-hidden="true">4.2.</strong> ドットオペレータ</a></li><li class="chapter-item expanded "><a href="casts.html"><strong aria-hidden="true">4.3.</strong> キャスト</a></li><li class="chapter-item expanded "><a href="transmutes.html"><strong aria-hidden="true">4.4.</strong> トランスミュート</a></li></ol></li><li class="chapter-item expanded "><a href="uninitialized.html"><strong aria-hidden="true">5.</strong> 初期化されないメモリ</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="checked-uninit.html"><strong aria-hidden="true">5.1.</strong> チェックされるメモリ</a></li><li class="chapter-item expanded "><a href="drop-flags.html"><strong aria-hidden="true">5.2.</strong> ドロップフラグ</a></li><li class="chapter-item expanded "><a href="unchecked-uninit.html" class="active"><strong aria-hidden="true">5.3.</strong> チェックされないメモリ</a></li></ol></li><li class="chapter-item expanded "><a href="obrm.html"><strong aria-hidden="true">6.</strong> 所有権に基づいたリソース管理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="constructors.html"><strong aria-hidden="true">6.1.</strong> Constructors</a></li><li class="chapter-item expanded "><a href="destructors.html"><strong aria-hidden="true">6.2.</strong> Destructors</a></li><li class="chapter-item expanded "><a href="leaking.html"><strong aria-hidden="true">6.3.</strong> Leaking</a></li></ol></li><li class="chapter-item expanded "><a href="unwinding.html"><strong aria-hidden="true">7.</strong> Unwinding</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="exception-safety.html"><strong aria-hidden="true">7.1.</strong> 例外安全性</a></li><li class="chapter-item expanded "><a href="poisoning.html"><strong aria-hidden="true">7.2.</strong> Poisoning</a></li></ol></li><li class="chapter-item expanded "><a href="concurrency.html"><strong aria-hidden="true">8.</strong> Concurrency</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="races.html"><strong aria-hidden="true">8.1.</strong> Races</a></li><li class="chapter-item expanded "><a href="send-and-sync.html"><strong aria-hidden="true">8.2.</strong> Send and Sync</a></li><li class="chapter-item expanded "><a href="atomics.html"><strong aria-hidden="true">8.3.</strong> Atomics</a></li></ol></li><li class="chapter-item expanded "><a href="vec.html"><strong aria-hidden="true">9.</strong> Implementing Vec</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="vec-layout.html"><strong aria-hidden="true">9.1.</strong> Layout</a></li><li class="chapter-item expanded "><a href="vec-alloc.html"><strong aria-hidden="true">9.2.</strong> Allocating</a></li><li class="chapter-item expanded "><a href="vec-push-pop.html"><strong aria-hidden="true">9.3.</strong> Push and Pop</a></li><li class="chapter-item expanded "><a href="vec-dealloc.html"><strong aria-hidden="true">9.4.</strong> Deallocating</a></li><li class="chapter-item expanded "><a href="vec-deref.html"><strong aria-hidden="true">9.5.</strong> Deref</a></li><li class="chapter-item expanded "><a href="vec-insert-remove.html"><strong aria-hidden="true">9.6.</strong> Insert and Remove</a></li><li class="chapter-item expanded "><a href="vec-into-iter.html"><strong aria-hidden="true">9.7.</strong> IntoIter</a></li><li class="chapter-item expanded "><a href="vec-raw.html"><strong aria-hidden="true">9.8.</strong> RawVec</a></li><li class="chapter-item expanded "><a href="vec-drain.html"><strong aria-hidden="true">9.9.</strong> Drain</a></li><li class="chapter-item expanded "><a href="vec-zsts.html"><strong aria-hidden="true">9.10.</strong> Handling Zero-Sized Types</a></li><li class="chapter-item expanded "><a href="vec-final.html"><strong aria-hidden="true">9.11.</strong> Final Code</a></li></ol></li><li class="chapter-item expanded "><a href="arc-and-mutex.html"><strong aria-hidden="true">10.</strong> Implementing Arc and Mutex</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -147,64 +155,117 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#unchecked-uninitialized-memory" id="unchecked-uninitialized-memory">Unchecked Uninitialized Memory</a></h1>
-<p>One interesting exception to this rule is working with arrays. Safe Rust doesn't
+                        <!--
+# Unchecked Uninitialized Memory
+-->
+<h1><a class="header" href="#チェックされない初期化されていないメモリ" id="チェックされない初期化されていないメモリ">チェックされない初期化されていないメモリ</a></h1>
+<!--
+One interesting exception to this rule is working with arrays. Safe Rust doesn't
 permit you to partially initialize an array. When you initialize an array, you
-can either set every value to the same thing with <code>let x = [val; N]</code>, or you can
-specify each member individually with <code>let x = [val1, val2, val3]</code>.
+can either set every value to the same thing with `let x = [val; N]`, or you can
+specify each member individually with `let x = [val1, val2, val3]`.
 Unfortunately this is pretty rigid, especially if you need to initialize your
-array in a more incremental or dynamic way.</p>
-<p>Unsafe Rust gives us a powerful tool to handle this problem:
-<code>mem::uninitialized</code>. This function pretends to return a value when really
+array in a more incremental or dynamic way.
+-->
+<p>この規則の興味深い例外に、配列があります。安全な Rust は、配列を部分的に初期化することを
+認めません。配列を初期化するとき、 <code>let x = [val; N]</code> を用いて
+全ての値を初期化するか、 <code>let x = [val1, val2, val3]</code> を用いて、
+それぞれの要素の値を個別に指定するかのどちらかが出来ます。残念ながら、
+特によりインクリメンタルなやり方や、動的な方法で配列を初期化する必要がある場合、
+これは非常に融通が利きません。</p>
+<!--
+Unsafe Rust gives us a powerful tool to handle this problem:
+`mem::uninitialized`. This function pretends to return a value when really
 it does nothing at all. Using it, we can convince Rust that we have initialized
 a variable, allowing us to do trickier things with conditional and incremental
-initialization.</p>
-<p>Unfortunately, this opens us up to all kinds of problems. Assignment has a
+initialization.
+-->
+<p>アンセーフな Rust では、この問題に対処するパワフルなツールが用意されています。 <code>mem::uninitialized</code> です。
+この関数は本当に何もせず、値を返すふりをします。これを利用することで、 Rust に
+変数が初期化されたと見なさせることができ、状況に応じた、インクリメンタルな初期化を
+行ないトリッキーなことが出来ます。</p>
+<!--
+Unfortunately, this opens us up to all kinds of problems. Assignment has a
 different meaning to Rust based on whether it believes that a variable is
 initialized or not. If it's believed uninitialized, then Rust will semantically
 just memcopy the bits over the uninitialized ones, and do nothing else. However
-if Rust believes a value to be initialized, it will try to <code>Drop</code> the old value!
+if Rust believes a value to be initialized, it will try to `Drop` the old value!
 Since we've tricked Rust into believing that the value is initialized, we can no
-longer safely use normal assignment.</p>
-<p>This is also a problem if you're working with a raw system allocator, which
-returns a pointer to uninitialized memory.</p>
-<p>To handle this, we must use the <code>ptr</code> module. In particular, it provides
+longer safely use normal assignment.
+-->
+<p>残念ながら、これによってあらゆる種類の問題が浮かび上がります。
+変数が初期化されていると Rust が思っているか、思っていないかによって、
+代入は異なる意味を持ちます。もし初期化していないと思っている場合、 Rust は、
+セマンティクス的には単にビットを初期化していないメモリにコピーし、他には
+何もしません。しかし、もし値が初期化していると思っている場合、 Rust は
+古い値を <code>Drop</code> しようとします! Rust に、値が初期化されていると信じ込ませるよう
+トリックをしたので、もはや安全には普通の代入は使えません。</p>
+<!--
+This is also a problem if you're working with a raw system allocator, which
+returns a pointer to uninitialized memory.
+-->
+<p>生のシステムアロケータを使用している場合も問題となります。このアロケータは、
+初期化されていないメモリへのポインタを返すからです。</p>
+<!--
+To handle this, we must use the `ptr` module. In particular, it provides
 three functions that allow us to assign bytes to a location in memory without
-dropping the old value: <code>write</code>, <code>copy</code>, and <code>copy_nonoverlapping</code>.</p>
+dropping the old value: `write`, `copy`, and `copy_nonoverlapping`.
+-->
+<p>これに対処するには、 <code>ptr</code> モジュールを使用しなければなりません。
+特にこのモジュールは、古い値をドロップせずに、メモリ上の場所に値を代入することが
+可能となる 3 つの関数を提供しています: <code>write</code>、<code>copy</code>、<code>copy_nonoverlapping</code>です。</p>
+<!--
+* `ptr::write(ptr, val)` takes a `val` and moves it into the address pointed
+  to by `ptr`.
+* `ptr::copy(src, dest, count)` copies the bits that `count` T's would occupy
+  from src to dest. (this is equivalent to memmove -- note that the argument
+  order is reversed!)
+* `ptr::copy_nonoverlapping(src, dest, count)` does what `copy` does, but a
+  little faster on the assumption that the two ranges of memory don't overlap.
+  (this is equivalent to memcpy -- note that the argument order is reversed!)
+-->
 <ul>
-<li><code>ptr::write(ptr, val)</code> takes a <code>val</code> and moves it into the address pointed
-to by <code>ptr</code>.</li>
-<li><code>ptr::copy(src, dest, count)</code> copies the bits that <code>count</code> T's would occupy
-from src to dest. (this is equivalent to memmove -- note that the argument
-order is reversed!)</li>
-<li><code>ptr::copy_nonoverlapping(src, dest, count)</code> does what <code>copy</code> does, but a
-little faster on the assumption that the two ranges of memory don't overlap.
-(this is equivalent to memcpy -- note that the argument order is reversed!)</li>
+<li><code>ptr::write(ptr, val)</code> は <code>val</code> を受け取り、 <code>ptr</code> が指し示すアドレスに受け取った値を
+移します。</li>
+<li><code>ptr::copy(src, dest, count)</code> は、 T 型の <code>count</code> が占有するビット数だけ、 src から dest に
+コピーします。 (これは memmove と同じです -- 引数の順序が逆転していることに注意してください!)</li>
+<li><code>ptr::copy_nonoverlapping(src, dest, count)</code> は <code>copy</code> と同じことをしますが、 2 つのメモリ領域が
+重なっていないと見なしているため、若干高速です。 (これは memcpy と同じです -- 引数の
+順序が逆転していることに注意してください!)</li>
 </ul>
-<p>It should go without saying that these functions, if misused, will cause serious
+<!--
+It should go without saying that these functions, if misused, will cause serious
 havoc or just straight up Undefined Behavior. The only things that these
-functions <em>themselves</em> require is that the locations you want to read and write
+functions *themselves* require is that the locations you want to read and write
 are allocated. However the ways writing arbitrary bits to arbitrary
-locations of memory can break things are basically uncountable!</p>
-<p>Putting this all together, we get the following:</p>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
+locations of memory can break things are basically uncountable!
+-->
+<p>言うまでもないのですが、もしこれらの関数が誤用されると、甚大な被害を引き起こしたり、
+未定義動作を引き起こすでしょう。これらの関数<em>自体</em>が必要とする唯一のものは、
+読み書きしたい場所がアロケートされているということです。しかし、
+任意のビットを任意のメモリの場所に書き込むことでものを壊すようなやり方は数え切れません!</p>
+<!--
+Putting this all together, we get the following:
+-->
+<p>これらを全部一緒にすると、以下のようなコードとなります。</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::mem;
 use std::ptr;
 
-// size of the array is hard-coded but easy to change. This means we can't
-// use [a, b, c] syntax to initialize the array, though!
+// 配列の大きさはハードコードされていますが，簡単に変えられます。
+// これは、配列を初期化するのに [a, b, c] という構文を使えないことを意味しますがね!
 const SIZE: usize = 10;
 
 let mut x: [Box&lt;u32&gt;; SIZE];
 
 unsafe {
-	// convince Rust that x is Totally Initialized
+	// Rust に x が完全に初期化されたと思わせます
 	x = mem::uninitialized();
 	for i in 0..SIZE {
-		// very carefully overwrite each index without reading it
-		// NOTE: exception safety is not a concern; Box can't panic
+		// 非常に注意深く、それぞれのインデックスを読み込まずに上書きします
+		// 注意: 例外安全性は考慮されていません。 Box はパニックできません
 		ptr::write(&amp;mut x[i], Box::new(i as u32));
 	}
 }
@@ -212,19 +273,36 @@ unsafe {
 println!(&quot;{:?}&quot;, x);
 <span class="boring">}
 </span></code></pre></pre>
-<p>It's worth noting that you don't need to worry about <code>ptr::write</code>-style
-shenanigans with types which don't implement <code>Drop</code> or contain <code>Drop</code> types,
+<!--
+It's worth noting that you don't need to worry about `ptr::write`-style
+shenanigans with types which don't implement `Drop` or contain `Drop` types,
 because Rust knows not to try to drop them. Similarly you should be able to
 assign to fields of partially initialized structs directly if those fields don't
-contain any <code>Drop</code> types.</p>
-<p>However when working with uninitialized memory you need to be ever-vigilant for
+contain any `Drop` types.
+-->
+<p><code>Drop</code> を実装していない型や、 <code>Drop</code> を実装する型を含まない型との、<code>ptr::write</code> スタイルの
+いたずらを心配しなくてよいということは注目に値します。なぜなら Rust は、これらをドロップしようと
+しないと知っているからです。同じように、もし部分的に初期化されている構造体のフィールドに <code>Drop</code> を
+実装しているものが存在しない場合、このフィールド群に直接代入できるようにするべきです。</p>
+<!--
+However when working with uninitialized memory you need to be ever-vigilant for
 Rust trying to drop values you make like this before they're fully initialized.
 Every control path through that variable's scope must initialize the value
 before it ends, if it has a destructor.
-<em><a href="unwinding.html">This includes code panicking</a></em>.</p>
-<p>And that's about it for working with uninitialized memory! Basically nothing
+*[This includes code panicking](unwinding.html)*.
+-->
+<p>しかし、初期化されていないメモリを扱うとき、生成した値を Rust が、以前に
+完全に初期化されたものと見なしてドロップしようとしてしまわないか、常に警戒する必要があります。
+値がデストラクタを持つ場合、変数のスコープを通り抜ける全てのコントロールパスは、終了時までに
+その値を初期化する必要があります。<em><a href="unwinding.html">これはコードパニックを含みます</a></em></p>
+<!--
+And that's about it for working with uninitialized memory! Basically nothing
 anywhere expects to be handed uninitialized memory, so if you're going to pass
-it around at all, be sure to be <em>really</em> careful.</p>
+it around at all, be sure to be *really* careful.
+-->
+<p>まあ、初期化されていないメモリを扱うことに関してはこんなものです。
+基本的にどのような場所でも、初期化されていないメモリが渡されることは予期していません。
+ですからもしそのようなメモリを分配する場合、確実に<em>本当に</em>注意深く行なってください。</p>
 
                     </main>
 
@@ -268,10 +346,10 @@ it around at all, be sure to be <em>really</em> careful.</p>
         
 
         
-        
+
         
         <script type="text/javascript">
-            window.playpen_copyable = true;
+            window.playground_copyable = true;
         </script>
         
 
