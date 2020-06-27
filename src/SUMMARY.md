@@ -31,7 +31,7 @@
 	* [チェックされないメモリ](unchecked-uninit.md)
 * [所有権に基づいたリソース管理](obrm.md)
 	* [コンストラクタ](constructors.md)
-	* [Destructors](destructors.md)
+	* [デストラクタ](destructors.md)
 	* [Leaking](leaking.md)
 * [Unwinding](unwinding.md)
 	* [例外安全性](exception-safety.md)
