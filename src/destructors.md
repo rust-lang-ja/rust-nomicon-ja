@@ -88,9 +88,16 @@ impl<T> Drop for Box<T> {
 # fn main() {}
 ```
 
+<!--
 and this works fine because when Rust goes to drop the `ptr` field it just sees
 a [Unique] that has no actual `Drop` implementation. Similarly nothing can
 use-after-free the `ptr` because when drop exits, it becomes inaccessible.
+-->
+
+そしてこれは、 Rust が `ptr` フィールドをドロップする際、単に、実際の `Drop` 実装が
+ない [Unique] に着目するため、このコードは問題なく動くのです。
+同様に、解放後は `ptr` を使用することが出来ません。なぜならドロップが存在する場合、
+そのドロップ実装にアクセス不可能となるからです。
 
 However this wouldn't work:
 
