@@ -47,9 +47,15 @@ be implemented at all!
 
 **この振る舞いを防ぐ安全な方法は、 Rust 1.0 の時点で存在しません**
 
+<!--
 Note that taking `&mut self` means that even if you could suppress recursive
 Drop, Rust will prevent you from e.g. moving fields out of self. For most types,
 this is totally fine.
+-->
+
+`&mut self` を受け取ることは、再帰ドロップを防ぐことが出来たとしても、例えば self から
+そのフィールドをムーブすることが妨げられることに注意してください。
+ほとんどの型にとっては、全く問題ありません。
 
 For instance, a custom implementation of `Box` might write `Drop` like this:
 
