@@ -99,7 +99,11 @@ use-after-free the `ptr` because when drop exits, it becomes inaccessible.
 同様に、解放後は `ptr` を使用することが出来ません。なぜならドロップが存在する場合、
 そのドロップ実装にアクセス不可能となるからです。
 
+<!--
 However this wouldn't work:
+-->
+
+しかし、このコードは動かないでしょう。
 
 ```rust
 #![feature(alloc, heap_api, unique)]
