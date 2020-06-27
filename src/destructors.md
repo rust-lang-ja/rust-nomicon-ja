@@ -153,8 +153,14 @@ use-after-frees and double-frees.
 SuperBox のデストラクタで `box` の ptr をデアロケートした後、 Rust は適切に box に、
 自身をドロップするよう通達し、その結果、解放後の使用や二重解放によって全部消し飛びます。
 
+<!--
 Note that the recursive drop behavior applies to all structs and enums
 regardless of whether they implement Drop. Therefore something like
+-->
+
+再帰ドロップは、構造体や列挙型が Drop を定義しているかしていないかによらず、
+全ての構造体や列挙型に適用されることに注意してください。
+ですから、以下のような
 
 ```rust
 struct Boxy<T> {
