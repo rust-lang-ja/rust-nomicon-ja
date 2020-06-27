@@ -57,7 +57,11 @@ this is totally fine.
 そのフィールドをムーブすることが妨げられることに注意してください。
 ほとんどの型にとっては、全く問題ありません。
 
+<!--
 For instance, a custom implementation of `Box` might write `Drop` like this:
+-->
+
+例えば `Box` のカスタム実装では、以下のような `Drop` を書くかもしれません。
 
 ```rust
 #![feature(alloc, heap_api, unique)]
