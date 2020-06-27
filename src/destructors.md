@@ -41,7 +41,11 @@ be implemented at all!
 書く必要がありません。もし構造体に、子フィールドをドロップする以外の、ドロップされる際の
 特別なロジックが存在しなければ、 `Drop` を実装する必要が全くありません!
 
+<!--
 **There is no stable way to prevent this behavior in Rust 1.0.**
+-->
+
+**この振る舞いを防ぐ安全な方法は、 Rust 1.0 の時点で存在しません**
 
 Note that taking `&mut self` means that even if you could suppress recursive
 Drop, Rust will prevent you from e.g. moving fields out of self. For most types,
