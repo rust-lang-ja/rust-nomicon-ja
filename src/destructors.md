@@ -4,8 +4,13 @@
 
 # デストラクタ
 
+<!--
 What the language *does* provide is full-blown automatic destructors through the
 `Drop` trait, which provides the following method:
+-->
+
+言語が*実際に*提供しているものは、 `Drop` トレイトを通じた完全に自動的な
+デストラクタで、以下のメソッドを提供しています。
 
 ```rust,ignore
 fn drop(&mut self);
