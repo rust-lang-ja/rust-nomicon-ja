@@ -144,9 +144,14 @@ impl<T> Drop for SuperBox<T> {
 # fn main() {}
 ```
 
+<!--
 After we deallocate the `box`'s ptr in SuperBox's destructor, Rust will
 happily proceed to tell the box to Drop itself and everything will blow up with
 use-after-frees and double-frees.
+-->
+
+SuperBox のデストラクタで `box` の ptr をデアロケートした後、 Rust は適切に box に、
+自身をドロップするよう通達し、その結果、解放後の使用や二重解放によって全部消し飛びます。
 
 Note that the recursive drop behavior applies to all structs and enums
 regardless of whether they implement Drop. Therefore something like
