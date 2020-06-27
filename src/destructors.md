@@ -16,7 +16,12 @@ What the language *does* provide is full-blown automatic destructors through the
 fn drop(&mut self);
 ```
 
+<!--
 This method gives the type time to somehow finish what it was doing.
+-->
+
+このメソッドは、型が行なっていたことをなんとか終わらせるための時間を、型に
+与えます。
 
 **After `drop` is run, Rust will recursively try to drop all of the fields
 of `self`.**
