@@ -30,10 +30,16 @@ of `self`.**
 
 **`drop` が実行された後、 Rust は `self` の全てのフィールドのドロップを再帰的に実行しようとします。**
 
+<!--
 This is a convenience feature so that you don't have to write "destructor
 boilerplate" to drop children. If a struct has no special logic for being
 dropped other than dropping its children, then it means `Drop` doesn't need to
 be implemented at all!
+-->
+
+これは便利な機能で、子フィールドをドロップするための "デストラクタの標準モデル" を
+書く必要がありません。もし構造体に、子フィールドをドロップする以外の、ドロップされる際の
+特別なロジックが存在しなければ、 `Drop` を実装する必要が全くありません!
 
 **There is no stable way to prevent this behavior in Rust 1.0.**
 
