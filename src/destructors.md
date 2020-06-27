@@ -23,8 +23,12 @@ This method gives the type time to somehow finish what it was doing.
 このメソッドは、型が行なっていたことをなんとか終わらせるための時間を、型に
 与えます。
 
+<!--
 **After `drop` is run, Rust will recursively try to drop all of the fields
 of `self`.**
+-->
+
+**`drop` が実行された後、 Rust は `self` の全てのフィールドのドロップを再帰的に実行しようとします。**
 
 This is a convenience feature so that you don't have to write "destructor
 boilerplate" to drop children. If a struct has no special logic for being
