@@ -64,12 +64,22 @@ then doesn't run its destructor*.
 *これを行なう関数があります*。 `mem::forget` です。この関数は渡された値を消費し、
 *そしてその値のデストラクタを実行しません*。
 
+<!--
 In the past `mem::forget` was marked as unsafe as a sort of lint against using
 it, since failing to call a destructor is generally not a well-behaved thing to
 do (though useful for some special unsafe code). However this was generally
 determined to be an untenable stance to take: there are many ways to fail to
 call a destructor in safe code. The most famous example is creating a cycle of
 reference-counted pointers using interior mutability.
+-->
+
+過去に `mem::forget` は、リントにおいてアンセーフとしてマークされていました。
+デストラクタを呼ばないことは、通常行儀の良い方法ではないからです (いくつかの
+特別なアンセーフのコードにおいては便利ですが) 。
+しかしこれは、一般的に次の意見に対して擁護できない考えだと決定されました。
+すなわち、 安全なコードでデストラクタを呼びそこねる方法が沢山存在するのです。
+最も有名な例は、内部可変性を使用した、参照カウント方式のポインタの循環を生成
+することです。
 
 It is reasonable for safe code to assume that destructor leaks do not happen, as
 any program that leaks destructors is probably wrong. However *unsafe* code
