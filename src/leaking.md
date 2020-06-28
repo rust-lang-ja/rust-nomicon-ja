@@ -1,4 +1,8 @@
+<!--
 # Leaking
+-->
+
+# リーク
 
 Ownership-based resource management is intended to simplify composition. You
 acquire resources when you create the object, and you release the resources when
