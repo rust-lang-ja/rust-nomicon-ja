@@ -176,7 +176,7 @@ dropped, even though it itself doesn't implement Drop. We say that such a type
 *needs Drop*, even though it is not itself Drop.
 -->
 
-ものは、それ自体が Drop を実装していなくても、それがドロップ*される*ときには、 data1 と data2 の
+ものは、それ自体が Drop を実装していなくても、それがドロップ*される*ときには毎回、 data1 と data2 の
 フィールドをデストラクトします。これを、そのような型が* Drop を必要とする*と言います。型が Drop を
 実装していなくてもです。
 
