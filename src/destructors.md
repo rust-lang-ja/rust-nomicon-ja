@@ -263,12 +263,21 @@ impl<T> Drop for SuperBox<T> {
 # fn main() {}
 ```
 
+<!--
 However this has fairly odd semantics: you're saying that a field that *should*
 always be Some *may* be None, just because that happens in the destructor. Of
 course this conversely makes a lot of sense: you can call arbitrary methods on
 self during the destructor, and this should prevent you from ever doing so after
 deinitializing the field. Not that it will prevent you from producing any other
 arbitrarily invalid state in there.
+-->
+
+しかしながら、これはかなり奇妙なセマンティクスです。すなわち、常に Some である*べき*
+フィールドが、 None に*なりうる*と言っているからです。なぜならこれが、
+デストラクタで起こっているからです。勿論、これは逆に大いに納得がいきます。
+デストラクタ内で self に対して任意のメソッドを呼ぶことができ、同じことが、
+フィールドが未初期化状態に戻されたあとに行われるのを防ぐはずですから。
+だからといって、そこで何か他の不正状態を生成することを防ぐわけではありませんが。
 
 On balance this is an ok choice. Certainly what you should reach for by default.
 However, in the future we expect there to be a first-class way to announce that
