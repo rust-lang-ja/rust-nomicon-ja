@@ -98,11 +98,19 @@ then you waste some memory but that's hardly going to violate memory-safety.
 そうですよね? 例えば、 `Box<u8>` をリークしても、いくらかのメモリを無駄にはしますが、
 メモリ安全性はほとんど侵害することがないでしょう。
 
+<!--
 However where we must be careful with destructor leaks are *proxy* types. These
 are types which manage access to a distinct object, but don't actually own it.
 Proxy objects are quite rare. Proxy objects you'll need to care about are even
 rarer. However we'll focus on three interesting examples in the standard
 library:
+-->
+
+しかし、デストラクタのリークに対して注意深くならなければいけない場合は、*プロキシ*型です。
+これらは、なんとかして異なったオブジェクトにアクセスするものの、そのオブジェクトを
+実際には所有しない型です。プロキシオブジェクトは極めて稀です。気を付ける必要のある
+プロキシオブジェクトに至っては殊更稀です。しかし、ここでは標準ライブラリにある 3 つの
+興味深い例について着目していきます。
 
 * `vec::Drain`
 * `Rc`
