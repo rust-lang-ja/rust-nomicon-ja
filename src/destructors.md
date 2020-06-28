@@ -45,7 +45,7 @@ be implemented at all!
 **There is no stable way to prevent this behavior in Rust 1.0.**
 -->
 
-**この振る舞いを防ぐ安全な方法は、 Rust 1.0 の時点で存在しません**
+**この振る舞いを防ぐステーブルな方法は、 Rust 1.0 の時点で存在しません**
 
 <!--
 Note that taking `&mut self` means that even if you could suppress recursive
