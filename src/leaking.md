@@ -18,7 +18,11 @@ is perfect and all of our problems are solved.
 リソースの解法を忘れることは出来ません。そしてできるだけ早く解放するのです!
 確実にこれは完全で、我々の全ての問題は解決します。
 
+<!--
 Everything is terrible and we have new and exotic problems to try to solve.
+-->
+
+全ては最悪で、我々には新しくそして風変わりな問題があります。
 
 Many people like to believe that Rust eliminates resource leaks. In practice,
 this is basically true. You would be surprised to see a Safe Rust program
