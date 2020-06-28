@@ -180,7 +180,11 @@ dropped, even though it itself doesn't implement Drop. We say that such a type
 フィールドをデストラクトします。これを、そのような型が* Drop を必要とする*と言います。型が Drop を
 実装していなくてもです。
 
+<!--
 Similarly,
+-->
+
+同様に
 
 ```rust
 enum Link {
