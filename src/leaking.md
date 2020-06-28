@@ -52,10 +52,17 @@ which point all those resources would have been reclaimed by the OS anyway).
 貴重な資源を保持し続けたまま、使われず無駄に浪費し続けます (そして OS によって
 結局全ての資源は返還されますが) 。
 
+<!--
 We may consider a more restricted form of leak: failing to drop a value that is
 unreachable. Rust also doesn't prevent this. In fact Rust *has a function for
 doing this*: `mem::forget`. This function consumes the value it is passed *and
 then doesn't run its destructor*.
+-->
+
+より厳密なリークの形式を考えたほうが良いかもしれません。到達できない値を
+ドロップし損ねることです。 Rust はこれも防ぐことが出来ません。実際 Rust には、
+*これを行なう関数があります*。 `mem::forget` です。この関数は渡された値を消費し、
+*そしてその値のデストラクタを実行しません*。
 
 In the past `mem::forget` was marked as unsafe as a sort of lint against using
 it, since failing to call a destructor is generally not a well-behaved thing to
