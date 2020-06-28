@@ -24,9 +24,15 @@ Everything is terrible and we have new and exotic problems to try to solve.
 
 全ては最悪で、我々には新しくそして風変わりな問題があります。
 
+<!--
 Many people like to believe that Rust eliminates resource leaks. In practice,
 this is basically true. You would be surprised to see a Safe Rust program
 leak resources in an uncontrolled way.
+-->
+
+多くの人々は、 Rust はリソースのリークを取り除いたと信じることが好きです。
+実際、これは基本的には正しいです。安全な Rust のプログラムが、制御不能なやり方で、
+リソースをリークしたら驚かれるでしょう。
 
 However from a theoretical perspective this is absolutely not the case, no
 matter how you look at it. In the strictest sense, "leaking" is so abstract as
