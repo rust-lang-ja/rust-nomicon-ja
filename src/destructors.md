@@ -248,9 +248,10 @@ struct SuperBox<T> { my_box: Option<Box<T>> }
 impl<T> Drop for SuperBox<T> {
     fn drop(&mut self) {
         unsafe {
-            // Hyper-optimized: deallocate the box's contents for it
-            // without `drop`ing the contents. Need to set the `box`
-            // field as `None` to prevent Rust from trying to Drop it.
+            // 超最適化: Box の内容を `drop` せずに
+            // 内容をデアロケートします
+            // Rust が `box` フィールドをドロップしようとさせないために、
+            // `box` フィールドを `None` と設定する必要があります
             let my_box = self.my_box.take().unwrap();
             heap::deallocate((*my_box.ptr) as *mut u8,
                              mem::size_of::<T>(),
