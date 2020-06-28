@@ -212,8 +212,13 @@ destructors.
 ドロップを追加あるいは削除する心配が必要ないからです。それでも、デストラクタに対して
 何かトリッキーなことをする必要性のために、明らかに多くの妥当なユースケースが存在します。
 
+<!--
 The classic safe solution to overriding recursive drop and allowing moving out
 of Self during `drop` is to use an Option:
+-->
+
+再帰ドロップを上書きし、 `drop` の最中に Self からのムーブを可能にする、
+古典的で安全な解決策は、 Option を使うことです。
 
 ```rust
 #![feature(alloc, heap_api, unique)]
