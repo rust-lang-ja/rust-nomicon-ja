@@ -279,8 +279,14 @@ arbitrarily invalid state in there.
 フィールドが未初期化状態に戻されたあとに行われるのを防ぐはずですから。
 だからといって、そこで何か他の不正状態を生成することを防ぐわけではありませんが。
 
+<!--
 On balance this is an ok choice. Certainly what you should reach for by default.
 However, in the future we expect there to be a first-class way to announce that
 a field shouldn't be automatically dropped.
+-->
+
+結局、これは大丈夫なのです。明らかに、デフォルトで到達すべきものなのです。
+しかしながら将来、あるフィールドが自動的にドロップされるべきでないと知らせる、
+素晴らしい方法が現れると期待しています。
 
 [Unique]: phantom-data.html
