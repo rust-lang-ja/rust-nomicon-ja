@@ -81,12 +81,22 @@ reference-counted pointers using interior mutability.
 最も有名な例は、内部可変性を使用した、参照カウント方式のポインタの循環を生成
 することです。
 
+<!--
 It is reasonable for safe code to assume that destructor leaks do not happen, as
 any program that leaks destructors is probably wrong. However *unsafe* code
 cannot rely on destructors to be run in order to be safe. For most types this
 doesn't matter: if you leak the destructor then the type is by definition
 inaccessible, so it doesn't matter, right? For instance, if you leak a `Box<u8>`
 then you waste some memory but that's hardly going to violate memory-safety.
+-->
+
+安全なコードが、デストラクタのリークが起こらないと見なすことは理に適っています。
+いかなるプログラムにおいても、デストラクタをリークするようなものは大体間違っていますから。
+しかし、*アンセーフな*コードは、デストラクタがきちんと安全に実行されると信用できません。
+ほとんどの型にとっては、これは問題ではありません。もしデストラクタをリークしたら、
+当然その型へはアクセス不可能となります。ですからこれは問題ではありません。
+そうですよね? 例えば、 `Box<u8>` をリークしても、いくらかのメモリを無駄にはしますが、
+メモリ安全性はほとんど侵害することがないでしょう。
 
 However where we must be careful with destructor leaks are *proxy* types. These
 are types which manage access to a distinct object, but don't actually own it.
