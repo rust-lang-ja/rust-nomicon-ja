@@ -34,6 +34,7 @@ leak resources in an uncontrolled way.
 実際、これは基本的には正しいです。安全な Rust のプログラムが、制御不能なやり方で、
 リソースをリークしたら驚かれるでしょう。
 
+<!--
 However from a theoretical perspective this is absolutely not the case, no
 matter how you look at it. In the strictest sense, "leaking" is so abstract as
 to be unpreventable. It's quite trivial to initialize a collection at the start
@@ -41,6 +42,15 @@ of a program, fill it with tons of objects with destructors, and then enter an
 infinite event loop that never refers to it. The collection will sit around
 uselessly, holding on to its precious resources until the program terminates (at
 which point all those resources would have been reclaimed by the OS anyway).
+-->
+
+しかしながら理論的な観点から見れば、どのように見ても、これは全く真実ではありません。
+最も厳密な意味では、 "リーク" は非常に抽象的で、防げるものではありません。
+プログラムの始めでコレクションを初期化し、デストラクタと共に沢山のオブジェクトで
+いっぱいにし、そしてこのコレクションを絶対に参照しない無限イベントループに
+突入することは極めて些細なことです。コレクションはプログラムが終わるまで、
+貴重な資源を保持し続けたまま、使われず無駄に浪費し続けます (そして OS によって
+結局全ての資源は返還されますが) 。
 
 We may consider a more restricted form of leak: failing to drop a value that is
 unreachable. Rust also doesn't prevent this. In fact Rust *has a function for
