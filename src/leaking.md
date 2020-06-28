@@ -4,11 +4,19 @@
 
 # リーク
 
+<!--
 Ownership-based resource management is intended to simplify composition. You
 acquire resources when you create the object, and you release the resources when
 it gets destroyed. Since destruction is handled for you, it means you can't
 forget to release the resources, and it happens as soon as possible! Surely this
 is perfect and all of our problems are solved.
+-->
+
+所有権に基づいたリソース管理は、構成を単純にすることを意図しています。
+オブジェクトを生成すると、リソースを獲得します。そして、オブジェクトが
+破棄されるとリソースを解放します。オブジェクトの破棄はプログラマの責任ですので、
+リソースの解法を忘れることは出来ません。そしてできるだけ早く解放するのです!
+確実にこれは完全で、我々の全ての問題は解決します。
 
 Everything is terrible and we have new and exotic problems to try to solve.
 
