@@ -201,10 +201,16 @@ Next variant.
 これは、インスタンスが Next を格納しているとき、そのときだけ内部の Box フィールドを
 ドロップします。
 
+<!--
 In general this works really nicely because you don't need to worry about
 adding/removing drops when you refactor your data layout. Still there's
 certainly many valid usecases for needing to do trickier things with
 destructors.
+-->
+
+一般に、これは非常に上手く動きます。なぜなら、データレイアウトをリファクタリングするときに、
+ドロップを追加あるいは削除する心配が必要ないからです。それでも、デストラクタに対して
+何かトリッキーなことをする必要性のために、明らかに多くの妥当なユースケースが存在します。
 
 The classic safe solution to overriding recursive drop and allowing moving out
 of Self during `drop` is to use an Option:
