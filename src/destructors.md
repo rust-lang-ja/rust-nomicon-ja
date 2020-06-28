@@ -193,8 +193,13 @@ enum Link {
 }
 ```
 
+<!--
 will have its inner Box field dropped if and only if an instance stores the
 Next variant.
+-->
+
+これは、インスタンスが Next を格納しているとき、そのときだけ内部の Box フィールドを
+ドロップします。
 
 In general this works really nicely because you don't need to worry about
 adding/removing drops when you refactor your data layout. Still there's
