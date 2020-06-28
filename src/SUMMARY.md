@@ -32,7 +32,7 @@
 * [所有権に基づいたリソース管理](obrm.md)
 	* [コンストラクタ](constructors.md)
 	* [Destructors](destructors.md)
-	* [Leaking](leaking.md)
+	* [リーク](leaking.md)
 * [Unwinding](unwinding.md)
 	* [例外安全性](exception-safety.md)
 	* [Poisoning](poisoning.md)
