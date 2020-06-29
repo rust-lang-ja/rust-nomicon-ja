@@ -182,11 +182,19 @@ let mut vec = vec![Box::new(0); 4];
 println!("{}", vec[0]);
 ```
 
+<!--
 This is pretty clearly Not Good. Unfortunately, we're kind of stuck between a
 rock and a hard place: maintaining consistent state at every step has an
 enormous cost (and would negate any benefits of the API). Failing to maintain
 consistent state gives us Undefined Behavior in safe code (making the API
 unsound).
+-->
+
+これは本当に明らかに良くないです。残念ながら、ある種の板挟みになっています。
+すなわち、毎回のステップで一貫性のある状態を維持することは、膨大なコストが
+発生するのです (そして API のあらゆる利点を消してしまうでしょう) 。
+一貫性のある状態を維持できないことで、安全なコードで未定義動作を起こしてしまいます (これにより API が
+不健全となってしまいます) 。
 
 So what can we do? Well, we can pick a trivially consistent state: set the Vec's
 len to be 0 when we start the iteration, and fix it up if necessary in the
