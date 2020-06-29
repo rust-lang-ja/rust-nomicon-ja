@@ -120,10 +120,17 @@ library:
 
 ## Drain
 
+<!--
 `drain` is a collections API that moves data out of the container without
 consuming the container. This enables us to reuse the allocation of a `Vec`
 after claiming ownership over all of its contents. It produces an iterator
 (Drain) that returns the contents of the Vec by-value.
+-->
+
+`drain` は、コンテナを消費せずにコンテナからデータをムーブする、
+コレクションの API です。これによって、 `Vec` の全ての内容の所有権を獲得した後に、 `Vec` の
+アロケーションを再利用することが出来ます。 `drain` は Vec の内容を値で返すイテレータ (Drain) を
+生成します。
 
 Now, consider Drain in the middle of iteration: some values have been moved out,
 and others haven't. This means that part of the Vec is now full of logically
