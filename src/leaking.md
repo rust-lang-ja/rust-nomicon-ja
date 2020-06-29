@@ -222,12 +222,20 @@ leaks causing more leaks a *leak amplification*.
 
 ## Rc
 
+<!--
 Rc is an interesting case because at first glance it doesn't appear to be a
 proxy value at all. After all, it manages the data it points to, and dropping
 all the Rcs for a value will drop that value. Leaking an Rc doesn't seem like it
 would be particularly dangerous. It will leave the refcount permanently
 incremented and prevent the data from being freed or dropped, but that seems
 just like Box, right?
+-->
+
+Rc は興味深いケースです。なぜなら、ひと目見ただけでは、 Rc がプロキシな値とは全く見えないからです。
+結局、 Rc は自身が指しているデータを操作し、その値に対する Rc が全てドロップされることで、
+その値もドロップされます。 Rc をリークすることは特に危険のようには見えません。
+参照カウントが永遠にインクリメントされたまま、データが解放されたりドロップされるのを
+妨害します。けれどもこれは単に Box に似ています。そうですよね?
 
 Nope.
 
