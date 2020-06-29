@@ -143,7 +143,7 @@ consequences.
 では、 Drain がイテレーションの真っ最中であるとしましょう。ムーブされた値もあれば、
 まだの値もあります。つまりこれは、 Vec の一部のデータが今、論理的には未初期化のデータで
 埋まっていることを意味します!値を削除する度に Vec の要素を後ろにずらすことも出来たでしょう。
-けれどもこれは結果的に、パフォーマンスがひどく落ちるでしょう。
+けれどもこれは結果的に、パフォーマンスをひどく落とすことになるでしょう。
 
 Instead, we would like Drain to fix the Vec's backing storage when it is
 dropped. It should run itself to completion, backshift any elements that weren't
