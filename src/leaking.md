@@ -145,10 +145,17 @@ consequences.
 埋まっていることを意味します!値を削除する度に Vec の要素を後ろにずらすことも出来たでしょう。
 けれどもこれは結果的に、パフォーマンスをひどく落とすことになるでしょう。
 
+<!--
 Instead, we would like Drain to fix the Vec's backing storage when it is
 dropped. It should run itself to completion, backshift any elements that weren't
 removed (drain supports subranges), and then fix Vec's `len`. It's even
 unwinding-safe! Easy!
+-->
+
+その代わりに Drain が、 Vecの背後にあるストレージがドロップした時に、 そのストレージを
+修正するようにしたいと思います。 Drain は完璧に動き、削除されなかった要素は後ろに
+ずらされ (Drain は副範囲をサポートしています) 、そして Vec の `len` を修正します。
+巻き戻し安全でもあります! 簡単です!
 
 Now consider the following:
 
