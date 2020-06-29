@@ -196,6 +196,7 @@ unsound).
 一貫性のある状態を維持できないことで、安全なコードで未定義動作を起こしてしまいます (これにより API が
 不健全となってしまいます) 。
 
+<!--
 So what can we do? Well, we can pick a trivially consistent state: set the Vec's
 len to be 0 when we start the iteration, and fix it up if necessary in the
 destructor. That way, if everything executes like normal we get the desired
@@ -204,6 +205,17 @@ mem::forget us in the middle of the iteration, all that does is *leak even more*
 (and possibly leave the Vec in an unexpected but otherwise consistent state).
 Since we've accepted that mem::forget is safe, this is definitely safe. We call
 leaks causing more leaks a *leak amplification*.
+-->
+
+ではどうすればいいのでしょうか? うーん、ちょっと一貫性のある状態を選択することが出来ます。
+すなわち、イテレーションの初めでは Vec の len を 0 に設定し、そしてもし必要ならば、
+デストラクタ内で len を修正します。このようにすることで、もしすべてが普通に実行されるなら、
+最小限のオーバーヘッドで望まれている振る舞いを得ることが出来ます。
+しかし、もし*大胆にも* mem::forget がイテレーションの真ん中に存在したら、
+この関数によって、*更に多くのものがリークされます* (そして多分 Vec を
+予期しない状態か、そうでないなら一貫性のある状態にするでしょう) 。 mem::forget は安全だとして
+受け入れたので、このリークは絶対安全です。リークがより多くのリークを引き起こしてしまうことを、
+*リークの増幅*と呼びます。
 
 
 
