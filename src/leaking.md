@@ -132,11 +132,18 @@ after claiming ownership over all of its contents. It produces an iterator
 アロケーションを再利用することが出来ます。 `drain` は Vec の内容を値で返すイテレータ (Drain) を
 生成します。
 
+<!--
 Now, consider Drain in the middle of iteration: some values have been moved out,
 and others haven't. This means that part of the Vec is now full of logically
 uninitialized data! We could backshift all the elements in the Vec every time we
 remove a value, but this would have pretty catastrophic performance
 consequences.
+-->
+
+では、 Drain がイテレーションの真っ最中であるとしましょう。ムーブされた値もあれば、
+まだの値もあります。つまりこれは、 Vec の一部のデータが今、論理的には未初期化のデータで
+埋まっていることを意味します!値を削除する度に Vec の要素を後ろにずらすことも出来たでしょう。
+けれどもこれは結果的に、パフォーマンスがひどく落ちるでしょう。
 
 Instead, we would like Drain to fix the Vec's backing storage when it is
 dropped. It should run itself to completion, backshift any elements that weren't
