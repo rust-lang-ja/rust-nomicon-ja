@@ -342,9 +342,15 @@ pub fn scoped<'a, F>(f: F) -> JoinGuard<'a>
     where F: FnOnce() + Send + 'a
 ```
 
+<!--
 Here `f` is some closure for the other thread to execute. Saying that
 `F: Send +'a` is saying that it closes over data that lives for `'a`, and it
 either owns that data or the data was Sync (implying `&data` is Send).
+-->
+
+ここで `f` は、他のスレッドで実行する何らかのクロージャです。 `F: Send + 'a` ということは、 f は `'a` の長さ
+生きるデータを内包します。そしてそのデータを所有するか、データは Sync ということになります (`&data` が Send であることを示唆します) 。
+
 
 Because JoinGuard has a lifetime, it keeps all the data it closes over
 borrowed in the parent thread. This means the JoinGuard can't outlive
