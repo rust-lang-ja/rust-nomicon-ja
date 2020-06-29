@@ -310,9 +310,15 @@ we can happily use-after-free the inner data. Bad Bad Not Good.
 使用することで、 `ref_count` をオーバーフローすることが可能です。そして、既に存在する Rc があるのに
 値は 0 になります。そうして適切に内部データを解放後に使用します。全く良いところのない、最悪だ。
 
+<!--
 This can be solved by just checking the `ref_count` and doing *something*. The
 standard library's stance is to just abort, because your program has become
 horribly degenerate. Also *oh my gosh* it's such a ridiculous corner case.
+-->
+
+これは単に `ref_count` を確認し、*何かを*行なうことで解決可能です。
+標準ライブラリにおいては、単にアボートします。なぜならプログラムが
+ひどく悪化したからです。そして*おーまいがっしゅ*、これは結構馬鹿げたコーナーケースなのです。
 
 
 
