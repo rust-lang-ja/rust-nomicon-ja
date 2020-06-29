@@ -294,12 +294,21 @@ impl<T> Drop for Rc<T> {
 }
 ```
 
+<!--
 This code contains an implicit and subtle assumption: `ref_count` can fit in a
 `usize`, because there can't be more than `usize::MAX` Rcs in memory. However
 this itself assumes that the `ref_count` accurately reflects the number of Rcs
 in memory, which we know is false with `mem::forget`. Using `mem::forget` we can
 overflow the `ref_count`, and then get it down to 0 with outstanding Rcs. Then
 we can happily use-after-free the inner data. Bad Bad Not Good.
+-->
+
+このコードは暗黙で微妙な前提を含んでいます。すなわち、 `ref_count` が `usize` に
+収まるということです。なぜなら、 `usize::MAX` 個以上の Rc はメモリに存在し得ないからです。
+しかしながら、これ自体が `ref_count` が正確に、メモリ上にある Rc の数を反映しているという
+前提の上にあります。ご存知のように、 `mem::forget` のせいでこれは正しくありません。 `mem::forget` を
+使用することで、 `ref_count` をオーバーフローすることが可能です。そして、既に存在する Rc があるのに
+値は 0 になります。そうして適切に内部データを解放後に使用します。全く良いところのない、最悪だ。
 
 This can be solved by just checking the `ref_count` and doing *something*. The
 standard library's stance is to just abort, because your program has become
