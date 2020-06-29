@@ -325,10 +325,17 @@ horribly degenerate. Also *oh my gosh* it's such a ridiculous corner case.
 
 ## thread::scoped::JoinGuard
 
+<!--
 The thread::scoped API intends to allow threads to be spawned that reference
 data on their parent's stack without any synchronization over that data by
 ensuring the parent joins the thread before any of the shared data goes out
 of scope.
+-->
+
+thread::scoped API は、共有されているデータが 1 つでもスコープを抜ける前に、
+確実に親がスレッドに関連付けることで、データの同期なしに、親スタック上のデータを
+参照するスレッドをスポーン可能にすることを意図しています。
+
 
 ```rust,ignore
 pub fn scoped<'a, F>(f: F) -> JoinGuard<'a>
