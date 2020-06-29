@@ -262,7 +262,7 @@ struct RcBox<T> {
 impl<T> Rc<T> {
     fn new(data: T) -> Self {
         unsafe {
-            // Wouldn't it be nice if heap::allocate worked like this?
+            // もし heap::allocate がこのように動作したら便利だと思いませんか?
             let ptr = heap::allocate::<RcBox<T>>();
             ptr::write(ptr, RcBox {
                 data: data,
