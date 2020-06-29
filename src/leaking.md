@@ -157,7 +157,11 @@ unwinding-safe! Easy!
 ずらされ (Drain は副範囲をサポートしています) 、そして Vec の `len` を修正します。
 巻き戻し安全でもあります! 簡単です!
 
+<!--
 Now consider the following:
+-->
+
+それでは以下の例を考えてみましょう。
 
 ```rust,ignore
 let mut vec = vec![Box::new(0); 4];
