@@ -285,7 +285,7 @@ impl<T> Drop for Rc<T> {
         unsafe {
             (*self.ptr).ref_count -= 1;
             if (*self.ptr).ref_count == 0 {
-                // drop the data and then free it
+                // データをドロップしそして解放します
                 ptr::read(self.ptr);
                 heap::deallocate(self.ptr);
             }
