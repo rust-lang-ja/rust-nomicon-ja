@@ -243,7 +243,11 @@ Nope.
 
 いいえ。
 
+<!--
 Let's consider a simplified implementation of Rc:
+-->
+
+では、以下の単純化された Rc の実装を確認しましょう。
 
 ```rust,ignore
 struct Rc<T> {
