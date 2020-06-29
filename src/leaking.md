@@ -167,18 +167,18 @@ Now consider the following:
 let mut vec = vec![Box::new(0); 4];
 
 {
-    // start draining, vec can no longer be accessed
+    // ドレインを開始します。 vec にはもうアクセスできません
     let mut drainer = vec.drain(..);
 
-    // pull out two elements and immediately drop them
+    // 2 つの値を引き出し、即座にドロップします
     drainer.next();
     drainer.next();
 
-    // get rid of drainer, but don't call its destructor
+    // drainer を取り除きますが、デストラクタは呼び出しません
     mem::forget(drainer);
 }
 
-// Oops, vec[0] was dropped, we're reading a pointer into free'd memory!
+// しまった、 vec[0] はドロップされていたんだった、解放されたメモリを読み出そうとしているぞ!
 println!("{}", vec[0]);
 ```
 
