@@ -397,8 +397,13 @@ let mut data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 // data は絶対ここで変化します。
 ```
 
+<!--
 In principle, this totally works! Rust's ownership system perfectly ensures it!
 ...except it relies on a destructor being called to be safe.
+-->
+
+原則として、これは完全に動作します! Rust の所有権システムが見事にこれを確実に行ないます!
+...デストラクタが安全に呼ばれるということに頼っている以外は。
 
 ```rust,ignore
 let mut data = Box::new(0);
