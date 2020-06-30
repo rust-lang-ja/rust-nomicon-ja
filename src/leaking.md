@@ -352,11 +352,19 @@ either owns that data or the data was Sync (implying `&data` is Send).
 生きるデータを内包します。そしてそのデータを所有するか、データは Sync ということになります (`&data` が Send であることを示唆します) 。
 
 
+<!--
 Because JoinGuard has a lifetime, it keeps all the data it closes over
 borrowed in the parent thread. This means the JoinGuard can't outlive
 the data that the other thread is working on. When the JoinGuard *does* get
 dropped it blocks the parent thread, ensuring the child terminates before any
 of the closed-over data goes out of scope in the parent.
+-->
+
+JoinGuard がライフタイムを所有しているため、 JoinGuard は、内包しているデータが
+親スレッドで借用されたままの状態にします。これはつまり、 JoinGuard が、もう片方のスレッドが扱っている
+データよりも長生きできないことを意味します。 JoinGuard が*本当に*ドロップされるとき、
+JoinGuard は親スレッドをブロックし、内包されている全てのデータが親のスコープを
+抜ける前に、子スレッドを確実に終了させます。
 
 Usage looked like:
 
