@@ -420,5 +420,10 @@ let mut data = Box::new(0);
 // しようとしていないかもしれない最中に Box がここでドロップされてしまいます。
 ```
 
+<!--
 Dang. Here the destructor running was pretty fundamental to the API, and it had
 to be scrapped in favor of a completely different design.
+-->
+
+ちくしょう。デストラクタが実行されるのはこの場で API にとってとても大切で、
+そして全く異なる設計のために中止されなければならないのです。
