@@ -377,24 +377,24 @@ let mut data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 {
     let guards = vec![];
     for x in &mut data {
-        // Move the mutable reference into the closure, and execute
-        // it on a different thread. The closure has a lifetime bound
-        // by the lifetime of the mutable reference `x` we store in it.
-        // The guard that is returned is in turn assigned the lifetime
-        // of the closure, so it also mutably borrows `data` as `x` did.
-        // This means we cannot access `data` until the guard goes away.
+        // 可変参照をクロージャ内にムーブします。そして、
+        // クロージャを別のスレッド上で実行します。クロージャは
+        // 可変参照 `x` のライフタイムによる、ライフタイムの制限があります。
+        // 値が返される guard には、代わってクロージャのライフタイムが
+        // 代入されます。ですから `x` と同じように、ガードも `data` を可変で借用します。
+        // これは、 guard がスコープを抜けるまで `data` にアクセスできないことを意味します。
         let guard = thread::scoped(move || {
             *x *= 2;
         });
-        // store the thread's guard for later
+        // 後の使用に備えて、スレッドのガードを保存します
         guards.push(guard);
     }
-    // All guards are dropped here, forcing the threads to join
-    // (this thread blocks here until the others terminate).
-    // Once the threads join, the borrow expires and the data becomes
-    // accessible again in this thread.
+    // 全てのガードはここでドロップされましたので、全てのスレッドを強制的に join します
+    // (このスレッドは他のスレッドが終了するまでブロックされます) 。
+    // スレッドが join されたら、借用は有効ではなくなり、データは
+    // 再びこのスレッドからアクセス可能となります。
 }
-// data is definitely mutated here.
+// data は絶対ここで変化します。
 ```
 
 In principle, this totally works! Rust's ownership system perfectly ensures it!
