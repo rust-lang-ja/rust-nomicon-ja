@@ -409,15 +409,15 @@ In principle, this totally works! Rust's ownership system perfectly ensures it!
 let mut data = Box::new(0);
 {
     let guard = thread::scoped(|| {
-        // This is at best a data race. At worst, it's also a use-after-free.
+        // これは良くてもデータ競合を引き起こし、最悪、解放後の使用にもなります。
         *data += 1;
     });
-    // Because the guard is forgotten, expiring the loan without blocking this
-    // thread.
+    // guard が忘れられたので、このスレッドをブロックせず、
+    // ローンの期限が切れます。
     mem::forget(guard);
 }
-// So the Box is dropped here while the scoped thread may or may not be trying
-// to access it.
+// ですからスコープ内のスレッドが Box にアクセスしようとしているかもしれないし、
+// しようとしていないかもしれない最中に Box がここでドロップされてしまいます。
 ```
 
 Dang. Here the destructor running was pretty fundamental to the API, and it had
