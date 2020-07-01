@@ -33,7 +33,7 @@
 	* [コンストラクタ](constructors.md)
 	* [Destructors](destructors.md)
 	* [Leaking](leaking.md)
-* [Unwinding](unwinding.md)
+* [巻き戻し](unwinding.md)
 	* [例外安全性](exception-safety.md)
 	* [Poisoning](poisoning.md)
 * [Concurrency](concurrency.md)
