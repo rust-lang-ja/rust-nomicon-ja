@@ -29,11 +29,19 @@ safety that one may concern themselves with:
 しばしば*例外安全*と呼ばれています。 Rust では、プログラムが関わる可能性のある、
 2 つの例外安全のレベルがあります。
 
+<!--
 * In unsafe code, we *must* be exception safe to the point of not violating
   memory safety. We'll call this *minimal* exception safety.
 
 * In safe code, it is *good* to be exception safe to the point of your program
   doing the right thing. We'll call this *maximal* exception safety.
+-->
+
+* アンセーフなコードでは、メモリ安全性を侵害しないという点において、
+  例外安全で*なければなりません*。これを、*最小限*の例外安全と呼びます。
+
+* 安全なコードでは、プログラムが正しいことを行なうという点において、
+  例外安全であると*良い*です。これを*最大限*の例外安全と呼びます。
 
 As is the case in many places in Rust, Unsafe code must be ready to deal with
 bad Safe code when it comes to unwinding. Code that transiently creates
