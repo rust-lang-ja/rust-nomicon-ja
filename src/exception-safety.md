@@ -19,9 +19,15 @@ pretty much everything can unwind, and you need to be ready for it.
 そしてどのコードを実行するかを厳しくコントロールしない限り、ほとんどすべての
 コードが巻き戻しをする可能性があり、これに対して準備をする必要があります。
 
+<!--
 Being ready for unwinding is often referred to as *exception safety*
 in the broader programming world. In Rust, there are two levels of exception
 safety that one may concern themselves with:
+-->
+
+巻き戻しに対して準備が出来ていることは、もっと広いプログラミングの世界において、
+しばしば*例外安全*と呼ばれています。 Rust では、プログラムが関わる可能性のある、
+2 つの例外安全のレベルがあります。
 
 * In unsafe code, we *must* be exception safe to the point of not violating
   memory safety. We'll call this *minimal* exception safety.
