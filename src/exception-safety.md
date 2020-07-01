@@ -43,6 +43,7 @@ safety that one may concern themselves with:
 * 安全なコードでは、プログラムが正しいことを行なうという点において、
   例外安全であると*良い*です。これを*最大限*の例外安全と呼びます。
 
+<!--
 As is the case in many places in Rust, Unsafe code must be ready to deal with
 bad Safe code when it comes to unwinding. Code that transiently creates
 unsound states must be careful that a panic does not cause that state to be
@@ -50,6 +51,17 @@ used. Generally this means ensuring that only non-panicking code is run while
 these states exist, or making a guard that cleans up the state in the case of
 a panic. This does not necessarily mean that the state a panic witnesses is a
 fully coherent state. We need only guarantee that it's a *safe* state.
+-->
+
+Rust の多くの場において事実なのですが、巻き戻しとなると、アンセーフなコードは、
+悪い安全なコードに対処する準備をしなければなりません。一時的に健全ではない
+状態を生むコードは、パニックによってその状態が使用されないよう、注意深く
+扱わなければなりません。一般的にこれは、このような健全でない状態が存在する間、
+パニックを起こさないコードのみを確実に実行させることを意味するか、あるいは
+パニックの際、その状態を片付けるガードを生成することを意味します。
+これは必ずしも、パニックが起きているときの状態が、完全に意味のある状態であるということを
+意味しません。*安全な*状態であると保証されていることだけが必要なのです。
+
 
 Most Unsafe code is leaf-like, and therefore fairly easy to make exception-safe.
 It controls all the code that runs, and most of that code can't panic. However
