@@ -4,11 +4,20 @@
 
 # 例外安全性
 
+<!--
 Although programs should use unwinding sparingly, there's a lot of code that
 *can* panic. If you unwrap a None, index out of bounds, or divide by 0, your
 program will panic. On debug builds, every arithmetic operation can panic
 if it overflows. Unless you are very careful and tightly control what code runs,
 pretty much everything can unwind, and you need to be ready for it.
+-->
+
+プログラム内では巻き戻しを注意深く使用するべきですが、パニック*し得る*コードが
+たくさんあります。もし None をアンラップしたり、境界外のインデックスを指定したり、
+0 で除算したりしたら、プログラムはパニックするでしょう。デバッグビルドでは、
+全ての算術演算は、オーバーフロー時にパニックします。非常に注意深く、
+そしてどのコードを実行するかを厳しくコントロールしない限り、ほとんどすべての
+コードが巻き戻しをする可能性があり、これに対して準備をする必要があります。
 
 Being ready for unwinding is often referred to as *exception safety*
 in the broader programming world. In Rust, there are two levels of exception
