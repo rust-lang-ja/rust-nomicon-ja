@@ -285,7 +285,7 @@ However, in the future we expect there to be a first-class way to announce that
 a field shouldn't be automatically dropped.
 -->
 
-結局、これは大丈夫なのです。明らかに、デフォルトで到達すべきものなのです。
+結局のところ、これはそれほど悪くないやり方です。明らかに誰もが必要とする機能です。
 しかしながら将来、あるフィールドが自動的にドロップされるべきでないと知らせる、
 素晴らしい方法が現れると我々は期待しています。
 
