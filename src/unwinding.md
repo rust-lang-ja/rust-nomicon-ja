@@ -17,8 +17,8 @@ Rustのエラーハンドリングには**階層的な**スキームが存在し
 -->
 * もし何かが、明確な理由があって欠如しうる場合、Optionが使われます
 * もし何かおかしなことが起こった際に合理的な対処方法がある場合、Resultが使われます
-* もし何かおかしなことが起こった際に合理的な対処方法がない場合、そのスレッドはpanicします
-* もし何か破滅的な出来事が起こった場合、プログラムはabortします
+* もし何かおかしなことが起こった際に合理的な対処方法がない場合、そのスレッドはパニックします
+* もし何か破滅的な出来事が起こった場合、プログラムはアボートします
 
 <!--
 Option and Result are overwhelmingly preferred in most situations, especially
@@ -27,8 +27,8 @@ Panics cause the thread to halt normal execution and unwind its stack, calling
 destructors as if every function instantly returned.
 -->
 大抵の状況では圧倒的にOptionとResultが好まれます。というのもAPIのユーザーの
-裁量次第でpanicやabortさせることも可能だからです。panicはスレッドの正常処理を
-停止し、stackをunwind、全ての関数が即座にreturnしたかのようにデストラクタ
+裁量次第でパニックやアボートさせることも可能だからです。パニックはスレッドの正常処理を
+停止し、スタックを巻き戻し、全ての関数が即座にリターンしたかのようにデストラクタ
 を呼び出します。
 
 <!--
@@ -39,10 +39,10 @@ untenable state. Unlike an exception in Java or C++, a panic could not be
 caught at any time. Panics could only be caught by the owner of the task, at which
 point they had to be handled or *that* task would itself panic.
 -->
-バージョン1.0以降のRustはpanic時に２種類の対処法を用いるようになりました。
+バージョン1.0以降のRustはパニック時に２種類の対処法を用いるようになりました。
 大昔、Rustは今よりもErlangによく似ていました。Erlangと同様、Rustには軽量のタスク
-が存在し、タスクが続行不可能な状態に陥った際にはタスクが自分自身をpanicによって
-killすることを意図して設計されていました。JavaやC++の例外と違い、panicはいかなる
+が存在し、タスクが続行不可能な状態に陥った際にはタスクが自分自身をパニックによって
+killすることを意図して設計されていました。JavaやC++の例外と違い、パニックはいかなる
 場合においてもcatchすることはできませんでした。panicをcatchできるのはタスクの
 オーナーのみであり、その時点で適切にハンドリングされるか、**その**タスク
 (訳注: オーナーとなるタスク)自体がpanicするかのどちらかでした。
