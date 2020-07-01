@@ -37,7 +37,7 @@ dropped other than dropping its children, then it means `Drop` doesn't need to
 be implemented at all!
 -->
 
-これは便利な機能で、子フィールドをドロップするための "デストラクタの標準モデル" を
+これは便利な機能で、子フィールドをドロップするための "デストラクタの決まり文句" を
 書く必要がありません。もし構造体に、子フィールドをドロップする以外の、ドロップされる際の
 特別なロジックが存在しなければ、 `Drop` を実装する必要が全くありません!
 
