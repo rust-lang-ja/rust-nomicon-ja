@@ -43,9 +43,9 @@ point they had to be handled or *that* task would itself panic.
 大昔、Rustは今よりもErlangによく似ていました。Erlangと同様、Rustには軽量のタスク
 が存在し、タスクが続行不可能な状態に陥った際にはタスクが自分自身をパニックによって
 killすることを意図して設計されていました。JavaやC++の例外と違い、パニックはいかなる
-場合においても捕捉することはできませんでした。panicを捕捉できるのはタスクの
+場合においても捕捉することはできませんでした。パニックを捕捉できるのはタスクの
 オーナーのみであり、その時点で適切にハンドリングされるか、**その**タスク
-(訳注: オーナーとなるタスク)自体がpanicするかのどちらかでした。
+(訳注: オーナーとなるタスク)自体がパニックするかのどちらかでした。
 
 <!--
 Unwinding was important to this story because if a task's
@@ -53,8 +53,8 @@ destructors weren't called, it would cause memory and other system resources to
 leak. Since tasks were expected to die during normal execution, this would make
 Rust very poor for long-running systems!
 -->
-この一連の流れの中では、タスクのデスクトラクタが呼ばれなかった場合にメモリー及び
-その他のシステムリソースがリークを起こす可能性があったため、unwindingが重要でした。
+この一連の流れの中では、タスクのデスクトラクタが呼ばれなかった場合にメモリ及び
+その他のシステムリソースがリークを起こす可能性があったため、巻き戻しが重要でした。
 タスクは通常の実行中にも死ぬ可能性があると想定されていたため、Rustのこういった
 特徴は長期間実行されるシステムを作る上でとても不適切でした。
 
@@ -70,8 +70,8 @@ Rustが現在の形に近づく過程で、より抽象化を少なくしたい�
 スタイルのプログラミングが確立していき、その過程で軽量のタスクは重量級の
 OSスレッドに駆逐・統一されました
 （訳注: いわゆるグリーンスレッドとネイティブスレッドの話）。しかしながら
-Rust1.0の時点ではpanicはその親スレッドによってのみ補足が可能という仕様であった
-ため、 panicの補足時にOSのスレッドを丸ごとunwindしてしまう必要
+Rust1.0の時点ではパニックはその親スレッドによってのみ補足が可能という仕様であった
+ため、 パニックの補足時にOSのスレッドを丸ごと巻き戻してしまう必要
 があったのです！不幸なことにこれはゼロコスト抽象化というRustの思想と
 真っ向からぶつかってしまいました。
 
@@ -86,16 +86,16 @@ Don't build your programs to unwind under normal circumstances. Ideally, you
 should only panic for programming errors or *extreme* problems.
 -->
 一応 `catch_panic` というunstableなAPIが存在し、これによってスレッドをspawn
-することなくpanicを補足することはできます。
+することなくパニックを補足することはできます。
 
 > 訳注: その後 `recover` -> `catch_unwind` と変更され、Rust1.9でstableになりました。
 
-とはいえあくまでこれは代替手段として用いることを推奨します。現在のRustのunwind
-は「unwindしない」ケースに偏った最適化をしています。unwindが発生しないとわかって
-いれば、プログラムがunwindの**準備**をするためのランタイムコストも無くなるためです。
-結果として、実際にはJavaのような言語よりもunwindのコストは高くなっています。
-したがって通常の状況ではunwindしないようなプログラムの作成を心がけるべきです。
-**非常に大きな**問題の発生時やプログラミングエラーに対してのみpanicすべきです。
+とはいえあくまでこれは代替手段として用いることを推奨します。現在のRustの巻き戻し
+は「巻き戻ししない」ケースに偏った最適化をしています。巻き戻しが発生しないとわかって
+いれば、プログラムが巻き戻しの**準備**をするためのランタイムコストも無くなるためです。
+結果として、実際にはJavaのような言語よりも巻き戻しのコストは高くなっています。
+したがって通常の状況では巻き戻ししないようなプログラムの作成を心がけるべきです。
+**非常に大きな**問題の発生時やプログラミングエラーに対してのみパニックすべきです。
 
 <!--
 Rust's unwinding strategy is not specified to be fundamentally compatible
@@ -106,10 +106,10 @@ point is up to you, but *something* must be done. If you fail to do this,
 at best, your application will crash and burn. At worst, your application *won't*
 crash and burn, and will proceed with completely clobbered state.
 -->
-Rustのunwindの取り扱い方針は、他の言語のそれと根本から同等になるように設計されて
-はいません。したがって他の言語で発生したunwindががRustに波及したり、逆にRustから
+Rustの巻き戻しの取り扱い方針は、他の言語のそれと根本から同等になるように設計されて
+はいません。したがって他の言語で発生した巻き戻しがRustに波及したり、逆にRustから
 多言語に波及したりといった動作は未定義となっています。
-FFIの構築時には**絶対に**全てのpanicを境界部でキャッチしなくてはなりません。
+FFIの構築時には**絶対に**全てのパニックを境界部でキャッチしなくてはなりません。
 キャッチの結果どのように対処するかはプログラマ次第ですが、とにかく**何か**を
 しなくてはなりません。そうしなければ、良くてアプリケーションがクラッシュ・炎上します。
 最悪のケースではアプリケーションがクラッシュ・炎上**しません**。完全にボロボロの状態
