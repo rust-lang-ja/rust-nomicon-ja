@@ -277,7 +277,7 @@ arbitrarily invalid state in there.
 デストラクタで起こっているからです。勿論、これは逆に大いに納得がいきます。
 デストラクタ内で self に対して任意のメソッドを呼ぶことができ、同じことが、
 フィールドが未初期化状態に戻されたあとに行われるのを防ぐはずですから。
-だからといって、そこで何か他の不正状態を生成することを防ぐわけではありませんが。
+だからといって、他の不正状態が生まれることを防ぐわけではありませんが。
 
 <!--
 On balance this is an ok choice. Certainly what you should reach for by default.
