@@ -16,7 +16,7 @@ is perfect and all of our problems are solved.
 オブジェクトを生成すると、リソースを獲得します。そして、オブジェクトが
 破棄されるとリソースを解放します。オブジェクトの破棄はプログラマの責任ですので、
 リソースの解法を忘れることは出来ません。そしてできるだけ早く解放するのです!
-確実にこれは完全で、我々の全ての問題は解決します。
+明らかにこれは完全で、我々の全ての問題は解決します。
 
 <!--
 Everything is terrible and we have new and exotic problems to try to solve.
