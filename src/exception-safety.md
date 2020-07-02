@@ -239,7 +239,12 @@ intermix untrusted and unsafe code *for reals*.
 ヒープのトラバーサルを *2 回* 行わなければならない! 分かった、我慢しよう。
 信用していないコードやアンセーフなコードを本気で混ぜてみよう。
 
+<!--
 If Rust had `try` and `finally` like in Java, we could do the following:
+-->
+
+もし Rust に Java のような `try` と `finally` があったら、コードは
+こんな感じだったでしょう。
 
 ```text
 bubble_up(heap, index):
