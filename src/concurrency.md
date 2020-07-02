@@ -1,4 +1,8 @@
+<!--
 # Concurrency and Parallelism
+-->
+
+# 並行性と並列性
 
 Rust as a language doesn't *really* have an opinion on how to do concurrency or
 parallelism. The standard library exposes OS threads and blocking sys-calls
