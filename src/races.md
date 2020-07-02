@@ -4,7 +4,12 @@
 
 # データ競合と競合状態
 
+<!--
 Safe Rust guarantees an absence of data races, which are defined as:
+-->
+
+安全な Rust では、データ競合が存在しないことが保証されています。
+データ競合は、以下のように定義されています。
 
 * two or more threads concurrently accessing a location of memory
 * one of them is a write
