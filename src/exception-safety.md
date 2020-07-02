@@ -237,7 +237,7 @@ intermix untrusted and unsafe code *for reals*.
 
 多分、この設計を嬉しく思わないでしょう。明らかに騙している! そして複雑な
 ヒープのトラバーサルを *2 回* 行わなければならない! 分かった、我慢しよう。
-信用していないコードやアンセーフなコードを本気で混ぜてみよう。
+信用していないコードやアンセーフなコードを*本気で*混ぜてみよう。
 
 <!--
 If Rust had `try` and `finally` like in Java, we could do the following:
