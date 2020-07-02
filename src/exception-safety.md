@@ -257,11 +257,19 @@ bubble_up(heap, index):
         heap[index] = elem
 ```
 
+<!--
 The basic idea is simple: if the comparison panics, we just toss the loose
 element in the logically uninitialized index and bail out. Anyone who observes
 the heap will see a potentially *inconsistent* heap, but at least it won't
 cause any double-drops! If the algorithm terminates normally, then this
 operation happens to coincide precisely with the how we finish up regardless.
+-->
+
+基本的な考えは単純です。すなわち、もし比較においてパニックしたのなら、単に要素を
+論理的に未初期化のインデックスの位置に保存し、脱出します。このヒープを観察する誰もが、
+潜在的には*一貫性のない*ヒープを目にするでしょうが、少なくともこのコードは二重ドロップを
+起こしません! もしアルゴリズムが通常通り終了すれば、この操作はコードがどのように終了するかに
+関わらず、結果を正確に一致させるために実行されます。
 
 Sadly, Rust has no such construct, so we're going to need to roll our own! The
 way to do this is to store the algorithm's state in a separate struct with a
