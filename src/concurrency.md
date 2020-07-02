@@ -21,7 +21,14 @@ them tends to involve trade-offs that we weren't willing to commit to for 1.0.
 これらに対するいかなる抽象化においても、バージョン 1.0 に対するコミットを
 行ないたくないようなトレードオフを巻き込む傾向にあります。
 
+<!--
 However the way Rust models concurrency makes it relatively easy to design your own
 concurrency paradigm as a library and have everyone else's code Just Work
 with yours. Just require the right lifetimes and Send and Sync where appropriate
 and you're off to the races. Or rather, off to the... not... having... races.
+-->
+
+しかしながら、 Rust の並行性のモデルは比較的簡単に、ライブラリとして、自分自身の並行パラダイムを
+設計することができ、そして、自分のコードと同じように、他の人のコードもちゃんと動かすことも出来ます。
+必要なのは正しいライフタイムと、必要に応じて Send と Sync で、これですぐ書くことが出来ます。
+あるいは... 競合を... 起こさずに... 済みます。
