@@ -271,10 +271,17 @@ operation happens to coincide precisely with the how we finish up regardless.
 起こしません! もしアルゴリズムが通常通り終了すれば、この操作はコードがどのように終了するかに
 関わらず、結果を正確に一致させるために実行されます。
 
+<!--
 Sadly, Rust has no such construct, so we're going to need to roll our own! The
 way to do this is to store the algorithm's state in a separate struct with a
 destructor for the "finally" logic. Whether we panic or not, that destructor
 will run and clean up after us.
+-->
+
+悲しいことに、 Rust にはそのような構造が存在しません。ですので、自分たちで退避させなければ
+ならないようです! これを行なうには、 "finally" の論理を構成するため、デストラクタと共に
+アルゴリズムの状態を、別の構造体に保存します。パニックしようがしまいが、デストラクタは
+実行され、状態を綺麗にします。
 
 ```rust,ignore
 struct Hole<'a, T: 'a> {
