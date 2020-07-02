@@ -21,11 +21,19 @@ Safe Rust guarantees an absence of data races, which are defined as:
 * この内 1 つは書き込み
 * この内 1 つは非同期
 
+<!--
 A data race has Undefined Behavior, and is therefore impossible to perform
 in Safe Rust. Data races are *mostly* prevented through rust's ownership system:
 it's impossible to alias a mutable reference, so it's impossible to perform a
 data race. Interior mutability makes this more complicated, which is largely why
 we have the Send and Sync traits (see below).
+-->
+
+データ競合は未定義動作を含み、そしてそれ故に安全な Rust で発生させることは不可能です。
+データ競合は Rust の所有権システムによって*ほとんど*防がれています。可変参照の
+エイリアスを生成することは不可能ですから、データ競合を起こすことは不可能です。
+内部可変性はこれをもっと複雑にします。これが、 Send トレイトと Sync トレイトが
+何故存在するかということの主な理由です (以下を見てください) 。
 
 **However Rust does not prevent general race conditions.**
 
