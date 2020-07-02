@@ -62,12 +62,19 @@ Rust の多くの場において事実なのですが、巻き戻しとなると
 これは必ずしも、パニックが起きているときの状態が、完全に意味のある状態であるということを
 意味しません。*安全な*状態であると保証されていることだけが必要なのです。
 
-
+<!--
 Most Unsafe code is leaf-like, and therefore fairly easy to make exception-safe.
 It controls all the code that runs, and most of that code can't panic. However
 it is not uncommon for Unsafe code to work with arrays of temporarily
 uninitialized data while repeatedly invoking caller-provided code. Such code
 needs to be careful and consider exception safety.
+-->
+
+ほとんどのアンセーフなコードは葉のようなもので、それ故に割と簡単に例外安全に
+出来ます。例外安全によって実行されるコードが管理され、そしてほとんどのコードは
+パニックしません。しかし、アンセーフなコードが繰り返し呼び出し側のコードを実行
+している間に、部分的に初期化されていないデータを扱うことはよくあります。
+このようなコードは注意深く扱い、例外安全を考える必要があるのです。
 
 
 
