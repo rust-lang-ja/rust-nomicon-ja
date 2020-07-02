@@ -196,8 +196,13 @@ user-defined!
 残念ながら、このコードに関しても、完全にコントロールすることは出来ません。
 比較がユーザ定義されているのです!
 
+<!--
 Unlike Vec, the fix isn't as easy here. One option is to break the user-defined
 code and the unsafe code into two separate phases:
+-->
+
+Vec とは違い、これを直すのは簡単ではありません。一つの選択肢として、ユーザ定義の
+コードとアンセーフなコードを、 2 つの段階に分割することです。
 
 ```text
 bubble_up(heap, index):
