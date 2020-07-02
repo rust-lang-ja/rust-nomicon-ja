@@ -42,9 +42,9 @@ panic. Any future attempts to lock the Mutex will return an `Err` or panic.
 こういった型は、パニックに直面した際に、意図的に自分自身を**ポイゾン**する可能性があり
 ます。ポイゾニング自体は特に何か別の事態を引き起こすわけではありません。一般的に
 通常の手続きの継続を止めるべきであることを表しています。よく知られた例として
-標準ライブラリのMutex型があります。この型は対応するMutexGuards(lockを取得した際に
-返るもの)が、panicによってdropされた際に自分自身をpoisonします。以後Mutexをlock
-しようとすると`Err`を返すかpanicします。
+標準ライブラリのMutex型があります。この型は対応するMutexGuards(ロックを取得した際に
+返るもの)が、パニックによってドロップされた際に自分自身をポイゾンします。以後Mutexをロック
+しようとすると`Err`を返すかパニックします。
 
 <!--
 Mutex poisons not for true safety in the sense that Rust normally cares about. It
@@ -54,8 +54,8 @@ middle of being modified, and as such may be in an inconsistent or incomplete st
 It is important to note that one cannot violate memory safety with such a type
 if it is correctly written. After all, it must be minimally exception-safe!
 -->
-Mutexのpoisonは、通常の文脈で語られるRustの安全性とは異なる用途のためのものです。
-Mutexを扱うスレッドがlock中にパニックを引き起こした場合、Mutexの中のデータは変更中
+Mutexのポイゾンは、通常の文脈で語られるRustの安全性とは異なる用途のためのものです。
+Mutexを扱うスレッドがロック中にパニックを引き起こした場合、Mutexの中のデータは変更中
 であった可能性が高く、一貫性を欠いていたり変更が未完了の状態であったりするため、
 そのようなデータを盲目的に扱う危険性に対する安全装置として動作します。
 注意しておきたいのはそのような型が適切に実装されていた場合、メモリ安全性**は**確実
@@ -74,4 +74,4 @@ Just maybe nonsense.
 として要件を満たさなかったような場合、そのデータ構造を利用するプログラムが作成者の
 意図通りの挙動をするということは考えにくいです。通常とは異なる振る舞いをする
 でしょう。とはいえ、十分に注意すればそのような場合でもその値が**何かに**使える
-可能性はあります。safe**では**あるのです。ただ、ナンセンスかもしれませんが。
+可能性はあります。安全**では**あるのです。ただ、ナンセンスかもしれませんが。
