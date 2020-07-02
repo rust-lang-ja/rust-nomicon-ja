@@ -119,16 +119,28 @@ there's a subtle problem with our code: it's not exception-safe! `set_len`,
 ではないのです! `set_len` と `offset` と `write` は全部問題ありません。 `clone` は、
 我々が見落としていたパニックの起爆装置です。
 
+<!--
 Clone is completely out of our control, and is totally free to panic. If it
 does, our function will exit early with the length of the Vec set too large. If
 the Vec is looked at or dropped, uninitialized memory will be read!
+-->
 
+Clone は全く制御不能で、全く自由にパニックしてしまいます。もしパニックしてしまえば、
+この関数は、 Vec の長さが大きすぎる値に設定されたまま、早期に終了してしまいます。
+もし Vec が読み出されたりドロップされたりすると、み初期化のメモリが読み出されて
+しまいます!
+
+<!--
 The fix in this case is fairly simple. If we want to guarantee that the values
 we *did* clone are dropped, we can set the `len` every loop iteration. If we
 just want to guarantee that uninitialized memory can't be observed, we can set
 the `len` after the loop.
+-->
 
-
+この場合、修正は割と簡単です。もし*本当に*、クローンした値がドロップされたと
+いうことを保証したいのなら、全てのループのイテレーションにおいて、 `len` を
+設定することが出来ます。もし単に、未初期化のメモリが読まれないようにしたいのなら、
+ループの後に `len` を設定することが出来ます。
 
 
 
