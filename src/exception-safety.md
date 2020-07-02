@@ -286,7 +286,7 @@ will run and clean up after us.
 ```rust,ignore
 struct Hole<'a, T: 'a> {
     data: &'a mut [T],
-    /// `elt` is always `Some` from new until drop.
+    /// `elt` は new で生成されたときからドロップまで、常に Some です
     elt: Option<T>,
     pos: usize,
 }
@@ -319,7 +319,7 @@ impl<'a, T> Hole<'a, T> {
 
 impl<'a, T> Drop for Hole<'a, T> {
     fn drop(&mut self) {
-        // fill the hole again
+        // 穴を再び埋めます
         unsafe {
             let pos = self.pos;
             ptr::write(&mut self.data[pos], self.elt.take().unwrap());
@@ -330,7 +330,7 @@ impl<'a, T> Drop for Hole<'a, T> {
 impl<T: Ord> BinaryHeap<T> {
     fn sift_up(&mut self, pos: usize) {
         unsafe {
-            // Take out the value at `pos` and create a hole.
+            // `pos` にある値を受け取り、穴を作ります。
             let mut hole = Hole::new(&mut self.data, pos);
 
             while hole.pos() != 0 {
@@ -338,7 +338,7 @@ impl<T: Ord> BinaryHeap<T> {
                 if hole.removed() <= hole.get(parent) { break }
                 hole.move_to(parent);
             }
-            // Hole will be unconditionally filled here; panic or not!
+            // 状況に関わらず、穴はここで埋まります。パニックしてもしなくても!
         }
     }
 }
