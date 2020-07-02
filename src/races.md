@@ -1,4 +1,8 @@
+<!--
 # Data Races and Race Conditions
+-->
+
+# データ競合と競合状態
 
 Safe Rust guarantees an absence of data races, which are defined as:
 
