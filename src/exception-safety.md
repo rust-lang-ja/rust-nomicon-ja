@@ -82,8 +82,13 @@ needs to be careful and consider exception safety.
 
 ## Vec::push_all
 
+<!--
 `Vec::push_all` is a temporary hack to get extending a Vec by a slice reliably
 efficient without specialization. Here's a simple implementation:
+-->
+
+`Vec::push_all` は、特殊化なしに、スライスが確実に効率的であることを利用した、
+Vec を伸ばす一時的なハックです。これは単純な実装です。
 
 ```rust,ignore
 impl<T: Clone> Vec<T> {
