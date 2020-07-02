@@ -217,10 +217,17 @@ bubble_up(heap, index):
     heap[index] = elem
 ```
 
+<!--
 If the user-defined code blows up, that's no problem anymore, because we haven't
 actually touched the state of the heap yet. Once we do start messing with the
 heap, we're working with only data and functions that we trust, so there's no
 concern of panics.
+-->
+
+もしユーザ定義のコードでトラブっても、もう問題ありません。なぜなら、
+ヒープの状態にはまだ触れていないからです。ヒープを実際に弄るとき、
+信用しているデータや関数のみを扱っています。ですからもうパニックの心配は
+ありません。
 
 Perhaps you're not happy with this design. Surely it's cheating! And we have
 to do the complex heap traversal *twice*! Alright, let's bite the bullet. Let's
