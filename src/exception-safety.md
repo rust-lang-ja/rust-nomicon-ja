@@ -106,10 +106,18 @@ impl<T: Clone> Vec<T> {
 }
 ```
 
+<!--
 We bypass `push` in order to avoid redundant capacity and `len` checks on the
 Vec that we definitely know has capacity. The logic is totally correct, except
 there's a subtle problem with our code: it's not exception-safe! `set_len`,
 `offset`, and `write` are all fine; `clone` is the panic bomb we over-looked.
+-->
+
+絶対にキャパシティがあると分かっている Vec の capacity と `len` の余分なチェックを
+回避するため、 `push` を使用していません。論理は完全に正しいです。但し、
+このコードに微妙な問題が含まれていることを除く。すなわち、このコードは例外安全
+ではないのです! `set_len` と `offset` と `write` は全部問題ありません。 `clone` は、
+我々が見落としていたパニックの起爆装置です。
 
 Clone is completely out of our control, and is totally free to panic. If it
 does, our function will exit early with the length of the Vec set too large. If
