@@ -13,8 +13,8 @@ green threads, and async APIs are all diverse enough that any abstraction over
 them tends to involve trade-offs that we weren't willing to commit to for 1.0.
 -->
 
-言語としての Rust は、*本当に*、どのように並行性や並列性を実現するかについての
-信条はありません。標準ライブラリは、 OS のスレッドやシステムコールのブロックを
+言語としての Rust には、*本当に*、どのように並行性や並列性を実現するかについての
+信条がありません。標準ライブラリは、 OS のスレッドやシステムコールのブロックを
 公開しています。なぜなら皆これらを持っていて、そして十分統一されているために、
 比較的反論の起きないような、これらに対する抽象化を提供できるからです。メッセージパッシング、
 グリーンスレッド、そして async の API はすべて、本当に異なっているため、
