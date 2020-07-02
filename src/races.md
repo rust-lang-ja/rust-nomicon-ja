@@ -11,9 +11,15 @@ Safe Rust guarantees an absence of data races, which are defined as:
 安全な Rust では、データ競合が存在しないことが保証されています。
 データ競合は、以下のように定義されています。
 
+<!--
 * two or more threads concurrently accessing a location of memory
 * one of them is a write
 * one of them is unsynchronized
+-->
+
+* 2 以上のスレッドが並行にメモリ上の場所にアクセスしている
+* この内 1 つは書き込み
+* この内 1 つは非同期
 
 A data race has Undefined Behavior, and is therefore impossible to perform
 in Safe Rust. Data races are *mostly* prevented through rust's ownership system:
