@@ -180,12 +180,21 @@ bubble_up(heap, index):
     heap[index] = elem
 ```
 
+<!--
 This code ensures that each element is copied as little as possible (it is in
 fact necessary that elem be copied twice in general). However it now exposes
 some exception safety trouble! At all times, there exists two copies of one
 value. If we panic in this function something will be double-dropped.
 Unfortunately, we also don't have full control of the code: that comparison is
 user-defined!
+-->
+
+このコードでは確実に、それぞれの要素ができるだけ少ない回数でコピーされます
+(実は一般的に、要素を 2 回コピーすることが必要なのです) 。しかし、これによって、
+いくつか例外安全性の問題が露見しました! 毎回、ある値に対する 2 つのコピーが
+存在します。もしこの関数内でパニックしたら、何かが 2 回ドロップされてしまいます。
+残念ながら、このコードに関しても、完全にコントロールすることは出来ません。
+比較がユーザ定義されているのです!
 
 Unlike Vec, the fix isn't as easy here. One option is to break the user-defined
 code and the unsafe code into two separate phases:
