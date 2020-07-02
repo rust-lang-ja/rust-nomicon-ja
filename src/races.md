@@ -35,7 +35,11 @@ we have the Send and Sync traits (see below).
 内部可変性はこれをもっと複雑にします。これが、 Send トレイトと Sync トレイトが
 何故存在するかということの主な理由です (以下を見てください) 。
 
+<!--
 **However Rust does not prevent general race conditions.**
+-->
+
+**しかしながら Rust は、一般的な競合状態を防ぎません。**
 
 This is pretty fundamentally impossible, and probably honestly undesirable. Your
 hardware is racy, your OS is racy, the other programs on your computer are racy,
