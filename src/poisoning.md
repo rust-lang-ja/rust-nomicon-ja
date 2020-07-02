@@ -12,12 +12,12 @@ exception-safe, but has no semantics on its own. It's possible that code that
 panics could fail to correctly update the integer, producing an inconsistent
 program state.
 -->
-全てのunsafeな型は最低限の例外安全性を満たしていることが**必要です**が、全ての
-unsafeな型が**最大限**の例外安全性を満たしている必要はありません。
+全てのアンセーフな型は最低限の例外安全性を満たしていることが**必要です**が、全ての
+アンセーフな型が**最大限**の例外安全性を満たしている必要はありません。
 仮に型自体が満たしていたとしても、実装が別の意味を暗黙に付与してしまう場合も
 あります。例えば整数型は間違いなく例外安全ですが、その(訳注: 最大限の例外安全性
 を担保する)セマンティクスを独自に持つわけではないため、整数をアップデートする
-際にpanicを起こすと、プログラムが一貫性のない状態に陥る可能性があります。
+際にパニックを起こすと、プログラムが一貫性のない状態に陥る可能性があります。
 
 <!--
 This is *usually* fine, because anything that witnesses an exception is about
@@ -28,8 +28,8 @@ values across the panic boundary.
 -->
 これは**通常は**問題になることはありません。というのも例外を発見した処理は直後に
 死ぬためです。例えばVecを別のスレッドに送り、そのスレッドがパニックし、結果として
-Vecが奇妙な状態に陥ったとしても、dropされて永久に闇の彼方に葬られてしまうためです。
-とはいえ型によってはpanicの境界をまたいでくる場合もあります。
+Vecが奇妙な状態に陥ったとしても、ドロップされて永久に闇の彼方に葬られてしまうためです。
+とはいえ型によってはパニックの境界をまたいでくる場合もあります。
 
 <!--
 These types may choose to explicitly *poison* themselves if they witness a panic.
@@ -39,8 +39,8 @@ standard library's Mutex type. A Mutex will poison itself if one of its
 MutexGuards (the thing it returns when a lock is obtained) is dropped during a
 panic. Any future attempts to lock the Mutex will return an `Err` or panic.
 -->
-こういった型は、panicに直面した際に、意図的に自分自身を**poison**する可能性があり
-ます。poisoningは自体は特に何か別の事態を引き起こすわけではありません。一般的に
+こういった型は、パニックに直面した際に、意図的に自分自身を**ポイゾン**する可能性があり
+ます。ポイゾニングは自体は特に何か別の事態を引き起こすわけではありません。一般的に
 通常の手続きの継続を止めるべきであることを表しています。よく知られた例として
 標準ライブラリのMutex型があります。この型は対応するMutexGuards(lockを取得した際に
 返るもの)が、panicによってdropされた際に自分自身をpoisonします。以後Mutexをlock
