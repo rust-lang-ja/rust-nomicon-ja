@@ -161,9 +161,15 @@ bubble_up(heap, index):
 
 ```
 
+<!--
 A literal transcription of this code to Rust is totally fine, but has an annoying
 performance characteristic: the `self` element is swapped over and over again
 uselessly. We would rather have the following:
+-->
+
+このコードを Rust に直訳するのは全く問題ありません。ですが、嫌になるようなパフォーマンス
+です。すなわち、 `self` の要素が無駄に交換され続けます。それならむしろ、以下のコードの方が
+良いでしょう。
 
 ```text
 bubble_up(heap, index):
