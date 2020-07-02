@@ -40,7 +40,7 @@ MutexGuards (the thing it returns when a lock is obtained) is dropped during a
 panic. Any future attempts to lock the Mutex will return an `Err` or panic.
 -->
 こういった型は、パニックに直面した際に、意図的に自分自身を**ポイゾン**する可能性があり
-ます。ポイゾニングは自体は特に何か別の事態を引き起こすわけではありません。一般的に
+ます。ポイゾニング自体は特に何か別の事態を引き起こすわけではありません。一般的に
 通常の手続きの継続を止めるべきであることを表しています。よく知られた例として
 標準ライブラリのMutex型があります。この型は対応するMutexGuards(lockを取得した際に
 返るもの)が、panicによってdropされた際に自分自身をpoisonします。以後Mutexをlock
