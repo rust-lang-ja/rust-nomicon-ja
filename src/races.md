@@ -17,7 +17,7 @@ Safe Rust guarantees an absence of data races, which are defined as:
 * one of them is unsynchronized
 -->
 
-* 2 以上のスレッドが並行にメモリ上の場所にアクセスしている
+* 2 つ以上のスレッドが並行にメモリ上の場所にアクセスしている
 * この内 1 つは書き込み
 * この内 1 つは非同期
 
