@@ -55,12 +55,21 @@ incorrect.
 *全ての*競合状態を防げると喧伝しているようなものは、本当に使いづらいものとなるでしょう。
 たとえ正しいものだとしても。
 
+<!--
 So it's perfectly "fine" for a Safe Rust program to get deadlocked or do
 something nonsensical with incorrect synchronization. Obviously such a program
 isn't very good, but Rust can only hold your hand so far. Still, a race
 condition can't violate memory safety in a Rust program on its own. Only in
 conjunction with some other unsafe code can a race condition actually violate
 memory safety. For instance:
+-->
+
+ですから、安全な Rust のプログラムがデッドロックに陥ったり、正しくない同期によって何か
+馬鹿げたことを行なっても、これは全く "問題ない" のです。明らかにそのようなプログラムは
+本当に良くないです。ですが、 Rust は今までのところ、プログラマに我慢してもらうしか出来ないのです。
+それでも Rust のプログラムだけでは、競合状態において、メモリ安全性を侵害することは出来ません。
+何か他のアンセーフなコードと組み合わせることだけでしか、実際に競合状態において、
+メモリ安全性を侵害することが出来ないのです。例:
 
 ```rust,no_run
 use std::thread;
