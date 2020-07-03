@@ -132,9 +132,15 @@ impl !Send for SpecialThreadToken {}
 impl !Sync for SpecialThreadToken {}
 ```
 
+<!--
 Note that *in and of itself* it is impossible to incorrectly derive Send and
 Sync. Only types that are ascribed special meaning by other unsafe code can
 possible cause trouble by being incorrectly Send or Sync.
+-->
+
+*それ自体では* Send や Sync を不正に継承してしまうことはありえないということに注意
+してください。他のアンセーフなコードによって特別な意味を持ってしまった型のみが、
+不正な Send や Sync によって問題を引き起こしてしまう可能性があります。
 
 Most uses of raw pointers should be encapsulated behind a sufficient abstraction
 that Send and Sync can be derived. For instance all of Rust's standard
