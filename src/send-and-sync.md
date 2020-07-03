@@ -125,7 +125,7 @@ derived to be Send or Sync, then one can also unimplement Send and Sync:
 ```rust
 #![feature(optin_builtin_traits)]
 
-// I have some magic semantics for some synchronization primitive!
+// プリミティブな型を同期する何か魔法のようなセマンティクスがある!
 struct SpecialThreadToken(u8);
 
 impl !Send for SpecialThreadToken {}
