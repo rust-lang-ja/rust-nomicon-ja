@@ -101,7 +101,11 @@ example of a type that contains a `*mut` that is definitely not thread safe.
 Rc の場合においては、 `*mut` を含んでいる型が絶対にスレッドセーフではない、ということに関する
 素晴らしい例があります。
 
+<!--
 Types that aren't automatically derived can simply implement them if desired:
+-->
+
+自動的に継承されない型に関しても、必要ならば単純に実装することが可能です。
 
 ```rust
 struct MyBox(*mut u8);
