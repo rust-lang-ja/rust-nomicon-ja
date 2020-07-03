@@ -24,6 +24,7 @@ captures this through the `Send` and `Sync` traits.
 * ある型を他のスレッドに安全に送信できる場合、その型は Send を実装します。
 * ある型をスレッド間で安全に共有できる場合、その型は Sync を実装します (`&T` は Send を実装します) 。
 
+<!--
 Send and Sync are fundamental to Rust's concurrency story. As such, a
 substantial amount of special tooling exists to make them work right. First and
 foremost, they're [unsafe traits]. This means that they are unsafe to
@@ -32,6 +33,15 @@ implemented. Since they're *marker traits* (they have no associated items like
 methods), correctly implemented simply means that they have the intrinsic
 properties an implementor should have. Incorrectly implementing Send or Sync can
 cause Undefined Behavior.
+-->
+
+Send と Sync は Rust の並行性の基本です。したがって、これらが正しく動作するように、
+かなりの量の、特別なツールが存在します。まず真っ先に、これらは[アンセーフなトレイト][unsafe traits]です。
+これはつまり、これらを実装するのはアンセーフで、他のアンセーフなコードが、これらのトレイトが正しく
+実装されていると見なすことができます。これらのトレイトは*マーカートレイト*
+(これらのトレイトは、メソッドなどの関連情報を備えていません) ですので、正しく実装することは、
+これらのトレイトが、型を実装するものが持っているべき intrinsic の特性を持っているということを
+単に意味します。 Send や Sync が正しく実装されていないと、未定義動作を引き起こします。
 
 Send and Sync are also automatically derived traits. This means that, unlike
 every other trait, if a type is composed entirely of Send or Sync types, then it
