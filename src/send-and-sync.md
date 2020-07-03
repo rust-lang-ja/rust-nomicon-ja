@@ -43,10 +43,17 @@ Send と Sync は Rust の並行性の基本です。したがって、これら
 これらのトレイトが、型を実装するものが持っているべき intrinsic の特性を持っているということを
 単に意味します。 Send や Sync が正しく実装されていないと、未定義動作を引き起こします。
 
+<!--
 Send and Sync are also automatically derived traits. This means that, unlike
 every other trait, if a type is composed entirely of Send or Sync types, then it
 is Send or Sync. Almost all primitives are Send and Sync, and as a consequence
 pretty much all types you'll ever interact with are Send and Sync.
+-->
+
+Send や Sync はまた、自動的に継承されるトレイトです。これはつまり、他のすべてのトレイトとは
+違い、もしある型が Send や Sync を実装している型だけで構成されている場合、その型は Send や
+Sync を実装しています。ほとんどすべてのプリミティブ型は Send や Sync を実装しています。
+そして結果的に、あなたが扱うかなり多くの型は、 Send や Sync を実装しています。
 
 Major exceptions include:
 
