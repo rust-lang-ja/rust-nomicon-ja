@@ -55,7 +55,11 @@ Send や Sync はまた、自動的に継承されるトレイトです。これ
 Sync を実装しています。ほとんどすべてのプリミティブ型は Send や Sync を実装しています。
 そして結果的に、あなたが扱うかなり多くの型は、 Send や Sync を実装しています。
 
+<!--
 Major exceptions include:
+-->
+
+これの主な例外には、このようなものがあります。
 
 * raw pointers are neither Send nor Sync (because they have no safety guards).
 * `UnsafeCell` isn't Sync (and therefore `Cell` and `RefCell` aren't).
