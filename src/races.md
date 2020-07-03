@@ -77,28 +77,27 @@ use std::sync::atomic::{AtomicUsize, Ordering};
 use std::sync::Arc;
 
 let data = vec![1, 2, 3, 4];
-// Arc so that the memory the AtomicUsize is stored in still exists for
-// the other thread to increment, even if we completely finish executing
-// before it. Rust won't compile the program without it, because of the
-// lifetime requirements of thread::spawn!
+// Arc にすることで、 他のスレッドより前に完全に実行が終了しても、 AtomicUsize が
+// 保存されているメモリが、他のスレッドがインクリメントするために存在し続けます。
+// これ無しにはコンパイルできません。なぜなら、 thread::spawn が
+// ライフタイムを必要とするからです!
 let idx = Arc::new(AtomicUsize::new(0));
 let other_idx = idx.clone();
 
-// `move` captures other_idx by-value, moving it into this thread
+// `move` によって other_idx が値でキャプチャされ、このスレッドにムーブされます
 thread::spawn(move || {
-    // It's ok to mutate idx because this value
-    // is an atomic, so it can't cause a Data Race.
+    // idx を変更しても大丈夫です。この値はアトミックだからです。
+    // ですからデータ競合は起こりません。
     other_idx.fetch_add(10, Ordering::SeqCst);
 });
 
-// Index with the value loaded from the atomic. This is safe because we
-// read the atomic memory only once, and then pass a copy of that value
-// to the Vec's indexing implementation. This indexing will be correctly
-// bounds checked, and there's no chance of the value getting changed
-// in the middle. However our program may panic if the thread we spawned
-// managed to increment before this ran. A race condition because correct
-// program execution (panicking is rarely correct) depends on order of
-// thread execution.
+// アトミックなものからロードした値を使用してインデックス指定をします。これは安全です。
+// なぜなら、アトミックメモリから読み込み、その値のコピーを Vec のインデックス実装に
+// 渡すからです。このインデックス指定では、正しく境界チェックが行なわれ、そして途中で
+// 値が変わることはありません。しかし、もしスポーンされたスレッドが、なんとかして実行前に
+// インクリメントするならば、このプログラムはパニックするかもしれません。
+// 正しいプログラムの実行 (パニックすることはほとんど正しくありません) は、スレッドの
+// 実行順序に依存するため、競合状態となります。
 println!("{}", data[idx.load(Ordering::SeqCst)]);
 ```
 
@@ -112,18 +111,18 @@ let data = vec![1, 2, 3, 4];
 let idx = Arc::new(AtomicUsize::new(0));
 let other_idx = idx.clone();
 
-// `move` captures other_idx by-value, moving it into this thread
+// `move` によって other_idx が値でキャプチャされ、このスレッドにムーブされます
 thread::spawn(move || {
-    // It's ok to mutate idx because this value
-    // is an atomic, so it can't cause a Data Race.
+    // idx を変更しても大丈夫です。この値はアトミックだからです。
+    // ですからデータ競合起こりません。
     other_idx.fetch_add(10, Ordering::SeqCst);
 });
 
 if idx.load(Ordering::SeqCst) < data.len() {
     unsafe {
-        // Incorrectly loading the idx after we did the bounds check.
-        // It could have changed. This is a race condition, *and dangerous*
-        // because we decided to do `get_unchecked`, which is `unsafe`.
+        // 境界チェックを行なった後、間違えて idx をロードしてしまいます。
+        // この値は変わってしまったかもしれません。これは競合状態で、*危険*です。
+        // なぜなら `unsafe` である `get_unchecked` を行なったからです。
         println!("{}", data.get_unchecked(idx.load(Ordering::SeqCst)));
     }
 }
