@@ -41,11 +41,19 @@ we have the Send and Sync traits (see below).
 
 **しかしながら Rust は、一般的な競合状態を防ぎません。**
 
+<!--
 This is pretty fundamentally impossible, and probably honestly undesirable. Your
 hardware is racy, your OS is racy, the other programs on your computer are racy,
 and the world this all runs in is racy. Any system that could genuinely claim to
 prevent *all* race conditions would be pretty awful to use, if not just
 incorrect.
+-->
+
+これは結構根本的に不可能で、そして多分本当にに望まれていないものです。ハードウェアは
+競合状態を起こし、 OS は競合状態を起こし、コンピュータの他のプログラムも競合状態を起こし、
+そして世界中にある全てのプログラムは競合状態を起こします。どんなシステムでも、
+*全ての*競合状態を防げると喧伝しているようなものは、本当に使いづらいものとなるでしょう。
+たとえ正しいものだとしても。
 
 So it's perfectly "fine" for a Safe Rust program to get deadlocked or do
 something nonsensical with incorrect synchronization. Obviously such a program
