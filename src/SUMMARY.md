@@ -37,7 +37,7 @@
 	* [例外安全性](exception-safety.md)
 	* [ポイゾニング](poisoning.md)
 * [並行性](concurrency.md)
-	* [Races](races.md)
+	* [競合](races.md)
 	* [Send and Sync](send-and-sync.md)
 	* [Atomics](atomics.md)
 * [Implementing Vec](vec.md)
