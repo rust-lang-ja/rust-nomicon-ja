@@ -61,9 +61,15 @@ Major exceptions include:
 
 これの主な例外には、このようなものがあります。
 
+<!--
 * raw pointers are neither Send nor Sync (because they have no safety guards).
 * `UnsafeCell` isn't Sync (and therefore `Cell` and `RefCell` aren't).
 * `Rc` isn't Send or Sync (because the refcount is shared and unsynchronized).
+-->
+
+* 生ポインタは Send も Sync も実装していません (なぜなら生ポインタには安全性に関するガードが存在しないからです) 。
+* `UnsafeCell` は Sync を実装していません (そしてそれ故に `Cell` も `RefCell` も同様です) 。
+* `Rc` は Send も Sync も実装していません (なぜなら参照カウントが共有され、これは同期されないからです) 。
 
 `Rc` and `UnsafeCell` are very fundamentally not thread-safe: they enable
 unsynchronized shared mutable state. However raw pointers are, strictly
