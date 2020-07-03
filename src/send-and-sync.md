@@ -71,12 +71,21 @@ Major exceptions include:
 * `UnsafeCell` は Sync を実装していません (そしてそれ故に `Cell` も `RefCell` も同様です) 。
 * `Rc` は Send も Sync も実装していません (なぜなら参照カウントが共有され、これは同期されないからです) 。
 
+<!--
 `Rc` and `UnsafeCell` are very fundamentally not thread-safe: they enable
 unsynchronized shared mutable state. However raw pointers are, strictly
 speaking, marked as thread-unsafe as more of a *lint*. Doing anything useful
 with a raw pointer requires dereferencing it, which is already unsafe. In that
 sense, one could argue that it would be "fine" for them to be marked as thread
 safe.
+-->
+
+`Rc` と `UnsafeCell` は本当に根本的にスレッドセーフではありません。すなわち、
+これらは、同期されていない共有可変状態を実現できてしまうからです。しかしながら、
+生ポインタは、厳密に言えば、*リント*において、より一層スレッドアンセーフです。
+生ポインタで何か有益なことをしようとすれば、参照外しをする必要があるため、
+もう既にアンセーフです。その意味で、これらをスレッドセーフとしてマークしても
+"問題ない" と論じることも可能と言えるでしょう。
 
 However it's important that they aren't thread safe to prevent types that
 contain them from being automatically marked as thread safe. These types have
