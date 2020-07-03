@@ -4,10 +4,17 @@
 
 # Send と Sync
 
+<!--
 Not everything obeys inherited mutability, though. Some types allow you to
 multiply alias a location in memory while mutating it. Unless these types use
 synchronization to manage this access, they are absolutely not thread safe. Rust
 captures this through the `Send` and `Sync` traits.
+-->
+
+すべてのものが継承可変性に従っているわけではありません。が、いくつかの型においては、
+メモリ上の場所の値を変更している間に、複数のエイリアスを生成することが可能です。
+型がこのアクセスを管理するために同期を行なわない限り、これは絶対スレッドセーフでは
+ありません。 Rust ではこれを、 `Send` トレイトと `Sync` トレイトでキャプチャしています。
 
 * A type is Send if it is safe to send it to another thread.
 * A type is Sync if it is safe to share between threads (`&T` is Send).
