@@ -87,11 +87,19 @@ safe.
 もう既にアンセーフです。その意味で、これらをスレッドセーフとしてマークしても
 "問題ない" と論じることも可能と言えるでしょう。
 
+<!--
 However it's important that they aren't thread safe to prevent types that
 contain them from being automatically marked as thread safe. These types have
 non-trivial untracked ownership, and it's unlikely that their author was
 necessarily thinking hard about thread safety. In the case of Rc, we have a nice
 example of a type that contains a `*mut` that is definitely not thread safe.
+-->
+
+しかしながら、これらの型を含んでいる型が、自動的にスレッドセーフとしてマークされないようにするために、
+これらがスレッドセーフではないということは重要です。これらの型は、些細ではない、そして追跡されない
+所有権を持ち、これらを書いた人が、本当にスレッドセーフについて熟考することは考えにくいです。
+Rc の場合においては、 `*mut` を含んでいる型が絶対にスレッドセーフではない、ということに関する
+素晴らしい例があります。
 
 Types that aren't automatically derived can simply implement them if desired:
 
