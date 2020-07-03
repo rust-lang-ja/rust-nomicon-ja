@@ -16,8 +16,13 @@ captures this through the `Send` and `Sync` traits.
 型がこのアクセスを管理するために同期を行なわない限り、これは絶対スレッドセーフでは
 ありません。 Rust ではこれを、 `Send` トレイトと `Sync` トレイトでキャプチャしています。
 
+<!--
 * A type is Send if it is safe to send it to another thread.
 * A type is Sync if it is safe to share between threads (`&T` is Send).
+-->
+
+* ある型を他のスレッドに安全に送信できる場合、その型は Send を実装します。
+* ある型をスレッド間で安全に共有できる場合、その型は Sync を実装します (`&T` は Send を実装します) 。
 
 Send and Sync are fundamental to Rust's concurrency story. As such, a
 substantial amount of special tooling exists to make them work right. First and
