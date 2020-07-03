@@ -142,12 +142,21 @@ possible cause trouble by being incorrectly Send or Sync.
 してください。他のアンセーフなコードによって特別な意味を持ってしまった型のみが、
 不正な Send や Sync によって問題を引き起こしてしまう可能性があります。
 
+<!--
 Most uses of raw pointers should be encapsulated behind a sufficient abstraction
 that Send and Sync can be derived. For instance all of Rust's standard
 collections are Send and Sync (when they contain Send and Sync types) in spite
 of their pervasive use of raw pointers to manage allocations and complex ownership.
 Similarly, most iterators into these collections are Send and Sync because they
 largely behave like an `&` or `&mut` into the collection.
+-->
+
+生ポインタの使用者のほとんどは、 Send や Sync を継承できるよう、十分な抽象化の裏に
+生ポインタをカプセル化するべきです。例えば Rust の全ての標準コレクションは、
+アロケーションや複雑な所有権を操るために至るところで生ポインタを使用しているのにも関わらず、
+Send と Sync を実装しています (これらの型が Send と Sync を実装している型を保持している場合) 。
+同じように、これらのコレクションのほとんどのイテレータは、イテレータがコレクションに対して
+`&` や `&mut` のように振る舞っているために、 Send や Sync を実装しています。
 
 TODO: better explain what can or can't be Send or Sync. Sufficient to appeal
 only to data races?
