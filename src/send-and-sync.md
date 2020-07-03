@@ -114,8 +114,13 @@ unsafe impl Send for MyBox {}
 unsafe impl Sync for MyBox {}
 ```
 
+<!--
 In the *incredibly rare* case that a type is inappropriately automatically
 derived to be Send or Sync, then one can also unimplement Send and Sync:
+-->
+
+*驚くほどに稀*な場合ですが、 Send や Sync が不適切かつ自動的に継承されてしまう
+場合があります。このような場合、 Send や Sync の実装を取り払うことも可能です。
 
 ```rust
 #![feature(optin_builtin_traits)]
