@@ -158,7 +158,12 @@ Send と Sync を実装しています (これらの型が Send と Sync を実�
 同じように、これらのコレクションのほとんどのイテレータは、イテレータがコレクションに対して
 `&` や `&mut` のように振る舞っているために、 Send や Sync を実装しています。
 
+<!--
 TODO: better explain what can or can't be Send or Sync. Sufficient to appeal
 only to data races?
+-->
+
+TODO: 何が Send や Sync を実装できるか、あるいは実装できないかについてのもっと良い
+説明。データ競合について述べるだけでも十分?
 
 [unsafe traits]: safe-unsafe-meaning.html
