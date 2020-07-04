@@ -425,5 +425,5 @@ Dang. Here the destructor running was pretty fundamental to the API, and it had
 to be scrapped in favor of a completely different design.
 -->
 
-ちくしょう。デストラクタが実行されるのは API にとってとても大切で、
-そしてこれにおいて、全く異なる設計のために中止されなければならないのです。
+ちくしょう。デストラクタが実行されるのは API にとってとても大切だったのですが、
+全く別の設計上の理由で破棄しなくてはいけなかったのです。
