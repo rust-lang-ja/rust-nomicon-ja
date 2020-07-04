@@ -307,8 +307,9 @@ we can happily use-after-free the inner data. Bad Bad Not Good.
 収まるということです。なぜなら、 `usize::MAX` 個以上の Rc はメモリに存在し得ないからです。
 しかしながら、これ自体が `ref_count` が正確に、メモリ上にある Rc の数を反映しているという
 前提の上にあります。ご存知のように、 `mem::forget` のせいでこれは正しくありません。 `mem::forget` を
-使用することで、 `ref_count` をオーバーフローさせることが可能です。そして、既に存在する Rc があるのに
-値は 0 になります。そうして適切に内部データを解放後に使用します。全く良いところのない、最悪だ。
+使用することで、 `ref_count` をオーバーフローさせることが可能です。そして、 Rc が存在していても
+`ref_count` を 0 にすることができます。こうしてめでたく、内部データを解放後に使用することができます。
+だめだだめだ、最悪だ。
 
 <!--
 This can be solved by just checking the `ref_count` and doing *something*. The
