@@ -32,7 +32,7 @@ leak resources in an uncontrolled way.
 
 多くの人々は、 Rust はリソースのリークを取り除いたと信じることが好きです。
 実際、これは基本的には正しいです。安全な Rust のプログラムが、制御不能なやり方で、
-リソースをリークしたら驚かれるでしょう。
+リソースをリークしたら驚くでしょう。
 
 <!--
 However from a theoretical perspective this is absolutely not the case, no
