@@ -152,9 +152,9 @@ removed (drain supports subranges), and then fix Vec's `len`. It's even
 unwinding-safe! Easy!
 -->
 
-その代わりに Drain が、 Vecの背後にあるストレージがドロップした時に、 そのストレージを
-修正するようにしたいと思います。 Drain は完璧に動き、削除されなかった要素は後ろに
-ずらされ (Drain は副範囲をサポートしています) 、そして Vec の `len` を修正します。
+その代わりに Drain がドロップする時に、 Vecの背後にあるストレージを
+修正するようにしたいと思います。 Drain を使い終わったら、削除されなかった要素を
+ずらし (Drain は副範囲をサポートしています) 、そして Vec の `len` を修正します。
 巻き戻し安全でもあります! 安心!
 
 <!--
