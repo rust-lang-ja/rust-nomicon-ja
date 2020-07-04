@@ -207,7 +207,7 @@ Since we've accepted that mem::forget is safe, this is definitely safe. We call
 leaks causing more leaks a *leak amplification*.
 -->
 
-ではどうすればいいのでしょうか? うーん、ちょっと一貫性のある状態を選択することが出来ます。
+ではどうすればいいのでしょうか? うーん、自明に一貫性のある状態を選択することが出来ます。
 すなわち、イテレーションの初めでは Vec の len を 0 に設定し、そしてもし必要ならば、
 デストラクタ内で len を修正します。このようにすることで、もしすべてが普通に実行されるなら、
 最小限のオーバーヘッドで望まれている振る舞いを得ることが出来ます。
