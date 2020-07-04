@@ -22,7 +22,7 @@ is perfect and all of our problems are solved.
 Everything is terrible and we have new and exotic problems to try to solve.
 -->
 
-全ては最悪で、我々には新しくそして風変わりな問題があります。
+実際にはこれは最悪で、我々には新しくそして風変わりな問題が与えられるのです。
 
 <!--
 Many people like to believe that Rust eliminates resource leaks. In practice,
