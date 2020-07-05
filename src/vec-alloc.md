@@ -4,10 +4,18 @@
 
 # メモリのアロケーティング
 
+<!--
 Using Unique throws a wrench in an important feature of Vec (and indeed all of
 the std collections): an empty Vec doesn't actually allocate at all. So if we
 can't allocate, but also can't put a null pointer in `ptr`, what do we do in
 `Vec::new`? Well, we just put some other garbage in there!
+-->
+
+Unique を使用することで、 Vec の重要な機能に関して (そして実に std の全ての
+コレクションにおいて) 問題が発生します。すなわち、空の Vec は実際に、
+何もアロケートしていないのです。ですからもしアロケート出来ないだけではなく、
+`ptr` にヌルポインタを代入出来ないとしたら、 `Vec::new` で何をすれば
+いいのでしょうか? そうだ、単純にそこに何か他のゴミを突っ込みましょう!
 
 This is perfectly fine because we already have `cap == 0` as our sentinel for no
 allocation. We don't even need to handle it specially in almost any code because
