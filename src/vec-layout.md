@@ -47,9 +47,15 @@ drop check.
 ドロップチェッカが保守的に判断してしまうからです。変性やドロップチェックに
 関する全ての詳細は、[所有権とライフタイムの章][ownership]を参照してください。
 
+<!--
 As we saw in the ownership chapter, we should use `Unique<T>` in place of
 `*mut T` when we have a raw pointer to an allocation we own. Unique is unstable,
 so we'd like to not use it if possible, though.
+-->
+
+所有権の章で見てきたように、所有するアロケーションに対するポインタを持つ場合、
+`*mut T` の代わりに `Unique<T>` を使用するべきです。 Unique はアンステーブルなため、
+可能なら使いませんが。
 
 As a recap, Unique is a wrapper around a raw pointer that declares that:
 
