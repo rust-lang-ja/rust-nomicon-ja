@@ -78,8 +78,12 @@ As a recap, Unique is a wrapper around a raw pointer that declares that:
 * `*mut T` に参照外しする (つまりコード内では専ら `*mut` のように振る舞う)
 * ポインタはヌルにはならない (つまり `Option<Vec<T>>` はヌルポインタ最適化される)
 
+<!--
 We can implement all of the above requirements except for the last
 one in stable Rust:
+-->
+
+上記の最後以外の項は、安定版の Rust で実装可能です。
 
 ```rust
 use std::marker::PhantomData;
