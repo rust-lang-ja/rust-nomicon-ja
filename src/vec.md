@@ -1,4 +1,8 @@
+<!--
 # Example: Implementing Vec
+-->
+
+# 例: Vec の実装
 
 To bring everything together, we're going to write `std::Vec` from scratch.
 Because all the best tools for writing unsafe code are unstable, this
