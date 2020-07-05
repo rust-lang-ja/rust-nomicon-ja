@@ -110,6 +110,7 @@ when your allocator just came back with "hey I don't have any more memory".
 そしてアロケータが "なあ、もうメモリがないぜ" と戻ってきてしまうことで、
 何か悪い事をしてしまうからです。
 
+<!--
 Of course, this is a bit silly since most platforms don't actually run out of
 memory in a conventional way. Your operating system will probably kill the
 application by another means if you legitimately start using up all the memory.
@@ -118,6 +119,16 @@ of memory at once (e.g. half the theoretical address space). As such it's
 *probably* fine to panic and nothing bad will happen. Still, we're trying to be
 like the standard library as much as possible, so we'll just kill the whole
 program.
+-->
+
+もちろん、通常ならほとんどのプラットフォームにおいて、実際にメモリ不足に
+陥ることはないため、これはちょっと馬鹿げています。オペレーティングシステムは、
+何らかの理由でアプリケーションが全てのメモリを使用しているなら、
+そのアプリケーションを他の手段によって多分 kill するでしょう。
+OOM になってしまう、もっともあり得る場合というのは単に、信じられないくらいの
+メモリ量をいっぺんに確保しようとする場合です (例: 理論上のアドレス空間の半分) 。
+ですからパニックしても*多分*問題なく、何も悪いことは起きません。それでも、
+なるべく標準ライブラリに似せるため、ここでは単にプログラム全体を kill します。
 
 We said we don't want to use intrinsics, so doing exactly what `std` does is
 out. Instead, we'll call `std::process::exit` with some random number.
