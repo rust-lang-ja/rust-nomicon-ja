@@ -14,7 +14,11 @@ elements that have been initialized.
 持っています。アロケーションへのポインタと、アロケーションの大きさ、
 そして初期化した要素の数です。
 
+<!--
 Naively, this means we just want this design:
+-->
+
+愚直に考えると、これは以下の設計で良いということになります。
 
 ```rust
 pub struct Vec<T> {
