@@ -91,12 +91,12 @@ use std::ops::Deref;
 use std::mem;
 
 struct Unique<T> {
-    ptr: *const T,              // *const for variance
-    _marker: PhantomData<T>,    // For the drop checker
+    ptr: *const T,              // 変性のために *const です
+    _marker: PhantomData<T>,    // ドロップチェッカ対策
 }
 
-// Deriving Send and Sync is safe because we are the Unique owners
-// of this data. It's like Unique<T> is "just" T.
+// Send と Sync を継承することは安全です。なぜならこのデータの
+// Unique を所有しているからです。 Unique<T> は "単なる" T のようなものです。
 unsafe impl<T: Send> Send for Unique<T> {}
 unsafe impl<T: Sync> Sync for Unique<T> {}
 
@@ -109,9 +109,9 @@ impl<T> Unique<T> {
 impl<T> Deref for Unique<T> {
     type Target = *mut T;
     fn deref(&self) -> &*mut T {
-        // There's no way to cast the *const to a *mut
-        // while also taking a reference. So we just
-        // transmute it since it's all "just pointers".
+        // 参照も受け取っている時に、 *const を *mut に
+        // キャストする方法はありません。
+        // これらは全て "ただのポインタ" ですのでトランスミュートします。
         unsafe { mem::transmute(&self.ptr) }
     }
 }
