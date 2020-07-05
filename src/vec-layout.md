@@ -29,6 +29,7 @@ pub struct Vec<T> {
 # fn main() {}
 ```
 
+<!--
 And indeed this would compile. Unfortunately, it would be incorrect. First, the
 compiler will give us too strict variance. So a `&Vec<&'static str>`
 couldn't be used where an `&Vec<&'a str>` was expected. More importantly, it
@@ -36,6 +37,15 @@ will give incorrect ownership information to the drop checker, as it will
 conservatively assume we don't own any values of type `T`. See [the chapter
 on ownership and lifetimes][ownership] for all the details on variance and
 drop check.
+-->
+
+そして実際に、このコードはコンパイルできます。残念ながら、この設計は正しくありません。
+まず、コンパイラはあまりに厳密すぎる変性を与えることになります。ですから
+`&Vec<&'a str>` が予期されているところで `&Vec<&'static str>` を使う事が
+出来ません。もっと重要なことに、この設計によって正しくない所有権の情報が
+ドロップチェッカに渡されてしまいます。型 `T` のいかなる値も所有していないと、
+ドロップチェッカが保守的に判断してしまうからです。変性やドロップチェックに
+関する全ての詳細は、[所有権とライフタイムの章][ownership]を参照してください。
 
 As we saw in the ownership chapter, we should use `Unique<T>` in place of
 `*mut T` when we have a raw pointer to an allocation we own. Unique is unstable,
