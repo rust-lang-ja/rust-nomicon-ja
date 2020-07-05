@@ -57,7 +57,12 @@ so we'd like to not use it if possible, though.
 `*mut T` の代わりに `Unique<T>` を使用するべきです。 Unique はアンステーブルなため、
 可能なら使いませんが。
 
+<!--
 As a recap, Unique is a wrapper around a raw pointer that declares that:
+-->
+
+繰り返しになりますが、 Unique は生ポインタのラッパで、以下のことを宣言
+します。
 
 * We are variant over `T`
 * We may own a value of type `T` (for drop check)
