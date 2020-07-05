@@ -41,7 +41,7 @@
 	* [Send and Sync](send-and-sync.md)
 	* [Atomics](atomics.md)
 * [Implementing Vec](vec.md)
-	* [Layout](vec-layout.md)
+	* [レイアウト](vec-layout.md)
 	* [Allocating](vec-alloc.md)
 	* [Push and Pop](vec-push-pop.md)
 	* [Deallocating](vec-dealloc.md)
