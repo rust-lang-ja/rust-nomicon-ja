@@ -45,4 +45,8 @@ when the problem doesn't *really* merit it.
 その問題によって何か*本当に*利益を得ることがないとしても、基本的で
 細かいところに突っ込んでいきます。
 
+<!--
 You wanted advanced. We're gonna go advanced.
+-->
+
+先に進みたいですよね? それでは行きましょう。
