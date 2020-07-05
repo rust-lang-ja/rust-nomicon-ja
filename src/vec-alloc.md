@@ -73,9 +73,16 @@ impl<T> Vec<T> {
 }
 ```
 
+<!--
 I slipped in that assert there because zero-sized types will require some
 special handling throughout our code, and I want to defer the issue for now.
 Without this assert, some of our early drafts will do some Very Bad Things.
+-->
+
+コードの中に、assert を入れました。サイズが 0 の型は、コード全体において
+何か特別な処理をする必要があり、この問題を今は後回しにしたいためです。
+この assert がないと、コードの下書きにおいて、なにか非常にまずいことを
+起こしてしまいます。
 
 Next we need to figure out what to actually do when we *do* want space. For
 that, we'll need to use the rest of the heap APIs. These basically allow us to
