@@ -145,7 +145,12 @@ fn oom() {
 }
 ```
 
+<!--
 Okay, now we can write growing. Roughly, we want to have this logic:
+-->
+
+よし、これで Vec の伸長のコードを書くことが出来ます。欲しい
+ロジックは大体以下のようなものです。
 
 ```text
 if cap == 0:
