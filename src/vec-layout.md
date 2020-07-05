@@ -142,11 +142,19 @@ pub struct Vec<T> {
 # fn main() {}
 ```
 
+<!--
 If you don't care about the null-pointer optimization, then you can use the
 stable code. However we will be designing the rest of the code around enabling
 the optimization. In particular, `Unique::new` is unsafe to call, because
 putting `null` inside of it is Undefined Behavior. Our stable Unique doesn't
 need `new` to be unsafe because it doesn't make any interesting guarantees about
 its contents.
+-->
+
+もしヌルポインタ最適化を気にしないなら、安定版のコードを使用することもできます。
+しかしながら、残りのコードでは、最適化を有効にするような設計していきます。
+特に、 `Unique::new` を呼ぶことはアンセーフです。なぜなら `null` を中に突っ込む
+ことは、未定義動作を引き起こしてしまうからです。安定版のコードの `new` はアンセーフに
+する必要はありません。中身についての興味深い保証をしないからです。
 
 [ownership]: ownership.html
