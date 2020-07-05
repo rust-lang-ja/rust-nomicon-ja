@@ -4,9 +4,15 @@
 
 # レイアウト
 
+<!--
 First off, we need to come up with the struct layout. A Vec has three parts:
 a pointer to the allocation, the size of the allocation, and the number of
 elements that have been initialized.
+-->
+
+まず、構造体のレイアウトを考える必要があります。 Vec は 3 つの部品を
+持っています。アロケーションへのポインタと、アロケーションの大きさ、
+そして初期化した要素の数です。
 
 Naively, this means we just want this design:
 
