@@ -62,6 +62,7 @@ use alloc::heap::EMPTY;
 
 impl<T> Vec<T> {
     fn new() -> Self {
+        // まだ ZST を扱う準備が出来ていません
         assert!(mem::size_of::<T>() != 0, "We're not ready to handle ZSTs");
         unsafe {
             // EMPTY を欲しい実際のポインタ型にキャストする必要があります。
