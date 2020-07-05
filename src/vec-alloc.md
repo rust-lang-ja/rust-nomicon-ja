@@ -161,9 +161,15 @@ else:
     cap *= 2
 ```
 
+<!--
 But Rust's only supported allocator API is so low level that we'll need to do a
 fair bit of extra work. We also need to guard against some special
 conditions that can occur with really large allocations or empty allocations.
+-->
+
+しかし、 Rust が唯一サポートしているアロケータ API は本当に低レベルな
+ものですので、追加の作業がかなり必要です。また、本当に大きいアロケーションや、
+空のアロケーションの際に起こる、特別な状況に対してガードする必要もあります。
 
 In particular, `ptr::offset` will cause us a lot of trouble, because it has
 the semantics of LLVM's GEP inbounds instruction. If you're fortunate enough to
