@@ -84,9 +84,16 @@ Without this assert, some of our early drafts will do some Very Bad Things.
 この assert がないと、コードの下書きにおいて、なにか非常にまずいことを
 起こしてしまいます。
 
+<!--
 Next we need to figure out what to actually do when we *do* want space. For
 that, we'll need to use the rest of the heap APIs. These basically allow us to
 talk directly to Rust's allocator (jemalloc by default).
+-->
+
+次に、*本当に*スペースがほしいときに、実際に何をすればいいかを考える
+必要があります。そのためには、 heap の他の API を使用する必要があります。
+基本的にこれらによって、 Rust のアロケータ (デフォルトでは jemalloc) と
+対話できるようになります。
 
 We'll also need a way to handle out-of-memory (OOM) conditions. The standard
 library calls the `abort` intrinsic, which just calls an illegal instruction to
