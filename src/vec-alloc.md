@@ -64,8 +64,8 @@ impl<T> Vec<T> {
     fn new() -> Self {
         assert!(mem::size_of::<T>() != 0, "We're not ready to handle ZSTs");
         unsafe {
-            // need to cast EMPTY to the actual ptr type we want, let
-            // inference handle it.
+            // EMPTY を欲しい実際のポインタ型にキャストする必要があります。
+            // 推論してもらいましょう。
             Vec { ptr: Unique::new(heap::EMPTY as *mut _), len: 0, cap: 0 }
         }
     }
