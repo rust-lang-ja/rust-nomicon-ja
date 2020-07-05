@@ -36,9 +36,16 @@ want to use `heap::EMPTY` because there's no real allocation to talk about but
 アロケーションが存在しないために `heap::EMPTY` を使用したい箇所がかなり
 多く存在します。
 
+<!--
 All of the `heap` API is totally unstable under the `heap_api` feature, though.
 We could trivially define `heap::EMPTY` ourselves, but we'll want the rest of
 the `heap` API anyway, so let's just get that dependency over with.
+-->
+
+それでも全ての `heap` の API は、 `heap_api` フィーチャの下で、
+全くアンステーブルです。自ら `heap::EMPTY` を定義してしまうことも
+出来るでしょうが、結局 `heap` の他の API を使いたくなるため、単にその API を
+依存関係に追加しましょう。
 
 So:
 
