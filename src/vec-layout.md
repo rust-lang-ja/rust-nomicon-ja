@@ -75,7 +75,7 @@ As a recap, Unique is a wrapper around a raw pointer that declares that:
 * `T` に対して変性
 * 型 `T` の値を所有する可能性がある (ドロップチェックのため)
 * `T` が Send/Sync を実装している場合、継承される
-* `*mut T` に参照外しする (つまりコード内では専ら `*mut` のように振る舞う)
+* `*mut T` に参照外しをする (つまりコード内では専ら `*mut` のように振る舞う)
 * ポインタはヌルにはならない (つまり `Option<Vec<T>>` はヌルポインタ最適化される)
 
 <!--
