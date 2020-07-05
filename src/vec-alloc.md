@@ -199,12 +199,21 @@ As a simple example, consider the following fragment of code:
 *y *= 3;
 ```
 
+<!--
 If the compiler can prove that `x` and `y` point to different locations in
 memory, the two operations can in theory be executed in parallel (by e.g.
 loading them into different registers and working on them independently).
 However the compiler can't do this in general because if x and y point to
 the same location in memory, the operations need to be done to the same value,
 and they can't just be merged afterwards.
+-->
+
+もしコンパイラが、 `x` と `y` がメモリ上の別の場所をそれぞれ指していると
+証明できるのなら、理論的には、これらの 2 つの命令は並列に行なうことが
+可能です (例: 異なるレジスタにロードして、個別に操作する) 。
+しかしながら、コンパイラは一般的にこれをすることが出来ません。
+なぜなら、 `x` と `y` がメモリ上の同一の場所を指しているのなら、操作を
+同じ値に対して行なわなければならず、単に最後、統合することは不可能だからです。
 
 When you use GEP inbounds, you are specifically telling LLVM that the offsets
 you're about to do are within the bounds of a single "allocated" entity. The
