@@ -33,9 +33,16 @@ intrinsic が永遠にアンステーブルだからです。もっとも、多�
 別の場において安定版になっていますが (`std::ptr` や `std::mem` は、
 多くの intrinsic を含んでいます) 。
 
+<!--
 Ultimately this means our implementation may not take advantage of all
 possible optimizations, though it will be by no means *naive*. We will
 definitely get into the weeds over nitty-gritty details, even
 when the problem doesn't *really* merit it.
+-->
+
+究極には、これは、ここで実装する Vec ではいかなる最適化も利用しない
+ということを意味します。だからといって、全く*単純*という訳ではありません。
+その問題によって何か*本当に*利益を得ることがないとしても、基本的で
+細かいところに突っ込んでいきます。
 
 You wanted advanced. We're gonna go advanced.
