@@ -1,4 +1,8 @@
+<!--
 # Allocating Memory
+-->
+
+# メモリのアロケーティング
 
 Using Unique throws a wrench in an important feature of Vec (and indeed all of
 the std collections): an empty Vec doesn't actually allocate at all. So if we
