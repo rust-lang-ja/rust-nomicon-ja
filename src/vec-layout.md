@@ -64,11 +64,19 @@ As a recap, Unique is a wrapper around a raw pointer that declares that:
 繰り返しになりますが、 Unique は生ポインタのラッパで、以下のことを宣言
 します。
 
+<!--
 * We are variant over `T`
 * We may own a value of type `T` (for drop check)
 * We are Send/Sync if `T` is Send/Sync
 * We deref to `*mut T` (so it largely acts like a `*mut` in our code)
 * Our pointer is never null (so `Option<Vec<T>>` is null-pointer-optimized)
+-->
+
+* `T` に対して変性
+* 型 `T` の値を所有する可能性がある (ドロップチェックのため)
+* `T` が Send/Sync を実装している場合、継承される
+* `*mut T` に参照外しする (つまりコード内では専ら `*mut` のように振る舞う)
+* ポインタはヌルにはならない (つまり `Option<Vec<T>>` はヌルポインタ最適化される)
 
 We can implement all of the above requirements except for the last
 one in stable Rust:
