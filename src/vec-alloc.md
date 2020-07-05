@@ -17,6 +17,7 @@ Unique を使用することで、 Vec の重要な機能に関して (そして
 `ptr` にヌルポインタを代入出来ないとしたら、 `Vec::new` で何をすれば
 いいのでしょうか? そうだ、単純にそこに何か他のゴミを突っ込みましょう!
 
+<!--
 This is perfectly fine because we already have `cap == 0` as our sentinel for no
 allocation. We don't even need to handle it specially in almost any code because
 we usually need to check if `cap > len` or `len > 0` anyway. The traditional
@@ -24,6 +25,16 @@ Rust value to put here is `0x01`. The standard library actually exposes this
 as `alloc::heap::EMPTY`. There are quite a few places where we'll
 want to use `heap::EMPTY` because there's no real allocation to talk about but
 `null` would make the compiler do bad things.
+-->
+
+これは全く問題ありません。なぜなら、 `cap == 0` が既に、アロケーションが
+ないことを示す番兵となっているからです。もはやこれを特別扱いする必要も
+ありません。なぜならほとんどすべてのコードで、結局は `cap > len` か `len > 0` を
+通常確かめる必要があるからです。伝統的に Rust では、 `0x01` を突っ込んでいます。
+標準ライブラリでは実際にこれを `alloc::heap::EMPTY` として公開しています。
+`null` を使ってしまうとコンパイラが悪さをしてしまうけれども、実際の
+アロケーションが存在しないために `heap::EMPTY` を使用したい箇所がかなり
+多く存在します。
 
 All of the `heap` API is totally unstable under the `heap_api` feature, though.
 We could trivially define `heap::EMPTY` ourselves, but we'll want the rest of
