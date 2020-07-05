@@ -171,11 +171,20 @@ conditions that can occur with really large allocations or empty allocations.
 ものですので、追加の作業がかなり必要です。また、本当に大きいアロケーションや、
 空のアロケーションの際に起こる、特別な状況に対してガードする必要もあります。
 
+<!--
 In particular, `ptr::offset` will cause us a lot of trouble, because it has
 the semantics of LLVM's GEP inbounds instruction. If you're fortunate enough to
 not have dealt with this instruction, here's the basic story with GEP: alias
 analysis, alias analysis, alias analysis. It's super important to an optimizing
 compiler to be able to reason about data dependencies and aliasing.
+-->
+
+特に `ptr::offset` は、沢山の問題を引き起こします。なぜならこれは、 LLVM の、
+GEP インバウンド命令のセマンティクスを持っているからです。もしあなたが
+幸運にもこの命令に対処したことがない場合、こちらが GEP に関する
+基本的な事柄です: エイリアス分析、エイリアス分析、エイリアス分析。
+コンパイラが最適化をする際、データの依存関係や、エイリアシングを
+推論できるということは、本当に重要なのです。
 
 As a simple example, consider the following fragment of code:
 
