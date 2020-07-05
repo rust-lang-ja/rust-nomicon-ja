@@ -47,7 +47,11 @@ the `heap` API anyway, so let's just get that dependency over with.
 出来るでしょうが、結局 `heap` の他の API を使いたくなるため、単にその API を
 依存関係に追加しましょう。
 
+<!--
 So:
+-->
+
+こうなります:
 
 ```rust,ignore
 #![feature(alloc, heap_api)]
