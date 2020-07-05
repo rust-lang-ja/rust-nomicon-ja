@@ -186,7 +186,11 @@ GEP インバウンド命令のセマンティクスを持っているからで�
 コンパイラが最適化をする際、データの依存関係や、エイリアシングを
 推論できるということは、本当に重要なのです。
 
+<!--
 As a simple example, consider the following fragment of code:
+-->
+
+単純な例として、以下のコード片を考えてみましょう。
 
 ```rust
 # let x = &mut 0;
