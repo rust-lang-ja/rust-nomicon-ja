@@ -130,8 +130,14 @@ OOM になってしまう、もっともあり得る場合というのは単に�
 ですからパニックしても*多分*問題なく、何も悪いことは起きません。それでも、
 なるべく標準ライブラリに似せるため、ここでは単にプログラム全体を kill します。
 
+<!--
 We said we don't want to use intrinsics, so doing exactly what `std` does is
 out. Instead, we'll call `std::process::exit` with some random number.
+-->
+
+intrinsic を使いたくないと述べました。ですので、 `std` で行なっていることと、
+全く同じことをすることは出来ません。代わりに、 `std::process::exit` を
+適当な値と共に呼び出します。
 
 ```rust
 fn oom() {
