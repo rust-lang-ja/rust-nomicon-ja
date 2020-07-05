@@ -95,11 +95,20 @@ talk directly to Rust's allocator (jemalloc by default).
 基本的にこれらによって、 Rust のアロケータ (デフォルトでは jemalloc) と
 対話できるようになります。
 
+<!--
 We'll also need a way to handle out-of-memory (OOM) conditions. The standard
 library calls the `abort` intrinsic, which just calls an illegal instruction to
 crash the whole program. The reason we abort and don't panic is because
 unwinding can cause allocations to happen, and that seems like a bad thing to do
 when your allocator just came back with "hey I don't have any more memory".
+-->
+
+また、メモリ不足 (out-of-memory, OOM) の状態に対処する方法も必要です。
+標準ライブラリでは、単に `abort` intrinsic を呼びます。これは単純に
+不正な命令を呼び出して、プログラムをクラッシュさせます。なぜパニックではなく
+アボートさせるかというと、巻き戻しによってアロケーションが起こり、
+そしてアロケータが "なあ、もうメモリがないぜ" と戻ってきてしまうことで、
+何か悪い事をしてしまうからです。
 
 Of course, this is a bit silly since most platforms don't actually run out of
 memory in a conventional way. Your operating system will probably kill the
