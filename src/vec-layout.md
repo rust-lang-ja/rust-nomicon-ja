@@ -118,9 +118,14 @@ impl<T> Deref for Unique<T> {
 # fn main() {}
 ```
 
+<!--
 Unfortunately the mechanism for stating that your value is non-zero is
 unstable and unlikely to be stabilized soon. As such we're just going to
 take the hit and use std's Unique:
+-->
+
+残念ながら、値が非 0 であると述べるメカニズムはアンステーブルで、すぐには
+安定版はならないでしょう。ですから単に std の Unique を使うことにします。
 
 
 ```rust
