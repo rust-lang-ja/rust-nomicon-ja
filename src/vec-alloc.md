@@ -291,9 +291,15 @@ here, and just unconditionally check, rather than use clever platform-specific
 単に、プラットフォーム特有の `cfg` 等を使用するのではなく、状況に関わりなく
 チェックします。
 
+<!--
 The other corner-case we need to worry about is empty allocations. There will
 be two kinds of empty allocations we need to worry about: `cap = 0` for all T,
 and `cap > 0` for zero-sized types.
+-->
+
+心配しなければならない他のコーナーケースは、空のアロケーションです。
+空のアロケーションには 2 種類あります。 全ての T における `cap = 0` と、
+サイズが 0 の型における `cap > 0` です。
 
 These cases are tricky because they come
 down to what LLVM means by "allocated". LLVM's notion of an
