@@ -323,6 +323,7 @@ LLVM は異なる言語のセマンティクスや、カスタムアロケータ
 についてです。ですから、 Rust は*一貫性*を保つ限り、アロケーションの概念に関しては
 技術的に、ちょっと高速に、ちょっと緩く、行なうことが出来ます。
 
+<!--
 Getting back to the empty allocation case, there are a couple of places where
 we want to offset by 0 as a consequence of generic code. The question is then:
 is it consistent to do so? For zero-sized types, we have concluded that it is
@@ -333,6 +334,19 @@ at `0x01`. No allocator will ever allocate that address, because they won't
 allocate `0x00` and they generally allocate to some minimal alignment higher
 than a byte. Also generally the whole first page of memory is
 protected from being allocated anyway (a whole 4k, on many platforms).
+-->
+
+空のアロケーションの場合について戻りましょう。ジェネリックなコードの結果、 0 の
+オフセットが欲しい場合がいくつかあります。そうすると問題はこうなります。すなわち、
+これを行なうことは、一貫性があるのでしょうか? 例えばサイズが 0 の型の場合、
+任意の要素数による GEP インバウンドオフセットを行なうことは、実に一貫性が
+あると結論付けました。これは実行時には no-op です。なぜなら、全ての要素は
+スペースを消費せず、そして `0x01` に無限の数の、サイズが 0 の型がアロケート
+されているとしても問題ないからです。どのアロケータも、常にそのアドレスには
+アロケートしません。なぜなら、アロケータは `0x00` にはアロケートせず、
+一般的にバイト以上のある最小のアラインメントにアロケートするからです。
+また一般的には、メモリの最初のページ全体は、アロケートされることに対し
+結局保護されています (多くのプロットフォームでは 4k 全体) 。
 
 However what about for positive-sized types? That one's a bit trickier. In
 principle, you can argue that offsetting by 0 gives LLVM no information: either
