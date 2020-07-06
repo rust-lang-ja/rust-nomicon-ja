@@ -301,6 +301,7 @@ and `cap > 0` for zero-sized types.
 空のアロケーションには 2 種類あります。 全ての T における `cap = 0` と、
 サイズが 0 の型における `cap > 0` です。
 
+<!--
 These cases are tricky because they come
 down to what LLVM means by "allocated". LLVM's notion of an
 allocation is significantly more abstract than how we usually use it. Because
@@ -310,6 +311,17 @@ allocation is "doesn't overlap with other stuff". That is, heap allocations,
 stack allocations, and globals don't randomly overlap. Yep, it's about alias
 analysis. As such, Rust can technically play a bit fast and loose with the notion of
 an allocation as long as it's *consistent*.
+-->
+
+これらは結局、 LLVM が意味する "アロケートされた" 状態ですので、扱いにくいです。
+LLVM におけるアロケーションの概念は、我々が普段使う概念よりも遥かに抽象的です。
+LLVM は異なる言語のセマンティクスや、カスタムアロケータを扱う必要があるため、
+アロケーションに深入り出来ないのです。その代わり、アロケーションの
+背後にある主要な考えは "他のものと重ならない" という事です。つまり、
+ヒープアロケーションやスタックアロケーション、そしてグローバルな
+アロケーションは、ランダムに重なることはありません。ええ、これはエイリアス分析
+についてです。ですから、 Rust は*一貫性*を保つ限り、アロケーションの概念に関しては
+技術的に、ちょっと高速に、ちょっと緩く、行なうことが出来ます。
 
 Getting back to the empty allocation case, there are a couple of places where
 we want to offset by 0 as a consequence of generic code. The question is then:
