@@ -55,7 +55,7 @@ pub fn push(&mut self, elem: T) {
         ptr::write(self.ptr.offset(self.len as isize), elem);
     }
 
-    // Can't fail, we'll OOM first.
+    // 絶対成功します。 OOM はこの前に起こるからです。
     self.len += 1;
 }
 ```
