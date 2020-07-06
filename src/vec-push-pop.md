@@ -39,8 +39,13 @@ target address with the bits of the value we provide. No evaluation involved.
 正しい方法は、 `ptr::write` を使う方法です。これは、ターゲットのアドレスを、
 与えた値のビットでそのまま上書きします。何の評価も起こりません。
 
+<!--
 For `push`, if the old len (before push was called) is 0, then we want to write
 to the 0th index. So we should offset by the old len.
+-->
+
+`push` においては、もし古い (push が呼ばれる前の) len が 0 であるなら、 0 番目の
+インデックスに書き込むようにしたいです。ですから古い len の値による offset を使うべきです。
 
 ```rust,ignore
 pub fn push(&mut self, elem: T) {
