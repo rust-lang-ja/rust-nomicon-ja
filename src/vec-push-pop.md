@@ -16,11 +16,20 @@ length.
 状況によらず、次のインデックスの場所に書き込み、そして長さをインクリメント
 します。
 
+<!--
 To do the write we have to be careful not to evaluate the memory we want to write
 to. At worst, it's truly uninitialized memory from the allocator. At best it's the
 bits of some old value we popped off. Either way, we can't just index to the memory
 and dereference it, because that will evaluate the memory as a valid instance of
 T. Worse, `foo[idx] = x` will try to call `drop` on the old value of `foo[idx]`!
+-->
+
+書き込みの際、書き込みたいメモリの値を評価しないよう、注意深く行なう必要が
+あるます。最悪、そのメモリはアロケータが全く初期化していません。良くても、
+ポップした古い値のビットが残っています。いずれにせよ、そのメモリをインデックス指定し、
+単に参照外しをするわけにはいきません。なぜならそれによって、メモリ上の値を、 T の
+正しいインスタンスとして評価してしまうからです。もっと悪いと `foo[idx] = x` によって、
+`foo[idx]` の古い値に対して `drop` を呼ぼうとしてしまいます!
 
 The correct way to do this is with `ptr::write`, which just blindly overwrites the
 target address with the bits of the value we provide. No evaluation involved.
