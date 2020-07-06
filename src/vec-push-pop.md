@@ -60,6 +60,7 @@ pub fn push(&mut self, elem: T) {
 }
 ```
 
+<!--
 Easy! How about `pop`? Although this time the index we want to access is
 initialized, Rust won't just let us dereference the location of memory to move
 the value out, because that would leave the memory uninitialized! For this we
@@ -67,6 +68,15 @@ need `ptr::read`, which just copies out the bits from the target address and
 interprets it as a value of type T. This will leave the memory at this address
 logically uninitialized, even though there is in fact a perfectly good instance
 of T there.
+-->
+
+簡単です! では `pop` はどうでしょうか? この場合、アクセスしたいインデックスにある
+値は初期化されていますが、 Rust は値をムーブするために、メモリ上の場所への
+参照外しをする事を許可しません。なぜならこれによって、メモリを未初期化のままにするからです!
+これに関しては、 `ptr::read` を必要とします。これは、単にターゲットのアドレスから
+ビットをコピーし、それを型 `T` の値として解釈します。これによって、実際には
+そのアドレスのメモリにある値は完全に T のインスタンスであるけれども、
+値を論理的には未初期化の状態のままにします。
 
 For `pop`, if the old len is 1, we want to read out of the 0th index. So we
 should offset by the new len.
