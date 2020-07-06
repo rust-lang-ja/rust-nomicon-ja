@@ -236,7 +236,11 @@ GEP インバウンドを使用する際、実行しようとしているオフ�
 扱うために激しく最適化されていて、インバウンドオフセットは
 全ての中で最良のものです。ですからなるべくこれらを使うことが重要です。
 
+<!--
 So that's what GEP's about, how can it cause us trouble?
+-->
+
+これが、 GEP についてです。ではこれが、どのような問題を引き起こすのでしょうか?
 
 The first problem is that we index into arrays with unsigned integers, but
 GEP (and as a consequence `ptr::offset`) takes a signed integer. This means
