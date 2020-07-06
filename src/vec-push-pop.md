@@ -4,10 +4,17 @@
 
 # プッシュとポップ
 
+<!--
 Alright. We can initialize. We can allocate. Let's actually implement some
 functionality! Let's start with `push`. All it needs to do is check if we're
 full to grow, unconditionally write to the next index, and then increment our
 length.
+-->
+
+よし、初期化出来ました。アロケート出来ます。それでは実際にいくつか機能を
+実装しましょう! まず `push` 。必要なことは、 grow をするべきか確認し、
+状況によらず、次のインデックスの場所に書き込み、そして長さをインクリメント
+します。
 
 To do the write we have to be careful not to evaluate the memory we want to write
 to. At worst, it's truly uninitialized memory from the allocator. At best it's the
