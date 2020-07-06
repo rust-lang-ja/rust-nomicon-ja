@@ -242,6 +242,7 @@ So that's what GEP's about, how can it cause us trouble?
 
 これが、 GEP についてです。ではこれが、どのような問題を引き起こすのでしょうか?
 
+<!--
 The first problem is that we index into arrays with unsigned integers, but
 GEP (and as a consequence `ptr::offset`) takes a signed integer. This means
 that half of the seemingly valid indices into an array will overflow GEP and
@@ -251,6 +252,18 @@ byte-sized objects, because e.g. `> isize::MAX` `u16`s will truly exhaust all of
 the system's memory. However in order to avoid subtle corner cases where someone
 reinterprets some array of `< isize::MAX` objects as bytes, std limits all
 allocations to `isize::MAX` bytes.
+-->
+
+第一に、配列のインデックス指定では符号なし整数を指定しますが、
+GEP (そして結果として `ptr::offset` も) では符号付き整数を受け取ります。
+これはつまり、配列のインデックス指定では有効であろう値の半分が、 GEP では
+オーバーフローしてしまい、実際に間違った方向に進んでしまうのです! ですから
+全てのアロケーションを `isize::MAX` 個の要素に制限しなければなりません。
+これは実際には、バイトサイズのオブジェクトに関してのみ、心配する必要があります。
+なぜなら、例えば `isize::MAX` 個以上の `u16` などでは、明らかにシステムのメモリを
+使い果たしてしまうでしょう。しかし、何らかの配列を `isize::MAX` 個以下のバイトオブジェクトと
+再解釈するような、微妙なコーナーケースを避けるため、 std では全てのアロケーションを
+`isize::MAX` バイトに制限しています。
 
 On all 64-bit targets that Rust currently supports we're artificially limited
 to significantly less than all 64 bits of the address space (modern x64
