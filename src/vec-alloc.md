@@ -281,9 +281,15 @@ Rust が現在サポートしている 64 ビットのターゲットでは、 �
 を使用する拡張に対して (PAE x86 や x32) 、理論的には `isize::MAX` バイト以上の
 メモリをアロケートしてしまうことが可能です。
 
+<!--
 However since this is a tutorial, we're not going to be particularly optimal
 here, and just unconditionally check, rather than use clever platform-specific
 `cfg`s.
+-->
+
+しかしながら、これはチュートリアルですので、ここではベストを尽くしません。
+単に、プラットフォーム特有の `cfg` 等を使用するのではなく、状況に関わりなく
+チェックします。
 
 The other corner-case we need to worry about is empty allocations. There will
 be two kinds of empty allocations we need to worry about: `cap = 0` for all T,
