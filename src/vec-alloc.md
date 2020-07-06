@@ -215,6 +215,7 @@ and they can't just be merged afterwards.
 なぜなら、 `x` と `y` がメモリ上の同一の場所を指しているのなら、操作を
 同じ値に対して行なわなければならず、単に最後、統合することは不可能だからです。
 
+<!--
 When you use GEP inbounds, you are specifically telling LLVM that the offsets
 you're about to do are within the bounds of a single "allocated" entity. The
 ultimate payoff being that LLVM can assume that if two pointers are known to
@@ -223,6 +224,17 @@ known to not alias (because you won't just end up in some random place in
 memory). LLVM is heavily optimized to work with GEP offsets, and inbounds
 offsets are the best of all, so it's important that we use them as much as
 possible.
+-->
+
+GEP インバウンドを使用する際、実行しようとしているオフセットは、
+単一の "アロケートされた" エンティティの境界内に収まると、 LLVM に
+事細かく伝えることになります。 LLVM を使うことによる、究極の利点は、
+2 つのポインタが異なるオブジェクトを指すと分かっている時、これらの
+ポインタの全てのオフセット*も*、エイリアスではないということが
+分かるということです (なぜならメモリ上のどこかランダムな場所を
+指さないと分かっているからです) 。 LLVM は、 GEP オフセットを
+扱うために激しく最適化されていて、インバウンドオフセットは
+全ての中で最良のものです。ですからなるべくこれらを使うことが重要です。
 
 So that's what GEP's about, how can it cause us trouble?
 
