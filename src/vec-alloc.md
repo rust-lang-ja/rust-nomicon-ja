@@ -369,7 +369,11 @@ such we will guard against this case explicitly.
 
 *ふー*
 
+<!--
 Ok with all the nonsense out of the way, let's actually allocate some memory:
+-->
+
+よし、ナンセンスな物を退けましたので、実際にメモリをアロケートしてみましょう。
 
 ```rust,ignore
 fn grow(&mut self) {
