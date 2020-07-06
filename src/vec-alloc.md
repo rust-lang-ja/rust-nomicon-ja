@@ -348,11 +348,20 @@ protected from being allocated anyway (a whole 4k, on many platforms).
 また一般的には、メモリの最初のページ全体は、アロケートされることに対し
 結局保護されています (多くのプロットフォームでは 4k 全体) 。
 
+<!--
 However what about for positive-sized types? That one's a bit trickier. In
 principle, you can argue that offsetting by 0 gives LLVM no information: either
 there's an element before the address or after it, but it can't know which.
 However we've chosen to conservatively assume that it may do bad things. As
 such we will guard against this case explicitly.
+-->
+
+しかしながら、サイズが正の型についてはどうでしょうか? これはちょっと
+トリッキーです。一般には、 0 のオフセットでは LLVM には何の情報も
+行き渡らないと論ずる事が出来ます。すなわち、アドレスの前か後ろかの
+どちらかに要素があるけれども、どっちなのかはわからないということです。
+しかし、これによって悪いことが起きると保守的に見なすことを選びました。
+ですからこれらの場合に対しては、明示的にガードします。
 
 *Phew*
 
