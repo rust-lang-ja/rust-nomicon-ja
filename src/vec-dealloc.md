@@ -1,4 +1,8 @@
+<!--
 # Deallocating
+-->
+
+# デアロケーティング
 
 Next we should implement Drop so that we don't massively leak tons of resources.
 The easiest way is to just call `pop` until it yields None, and then deallocate
