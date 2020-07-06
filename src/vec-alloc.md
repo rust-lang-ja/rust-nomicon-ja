@@ -421,6 +421,10 @@ fn grow(&mut self) {
 }
 ```
 
+<!--
 Nothing particularly tricky here. Just computing sizes and alignments and doing
 some careful multiplication checks.
+-->
 
+ここでは特にトリッキーなことはしていません。単にサイズとアラインメントを計算し、
+注意深く行なわなければならない掛け算のチェックをしています。
