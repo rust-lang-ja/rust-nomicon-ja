@@ -1,4 +1,8 @@
+<!--
 # Push and Pop
+-->
+
+# プッシュとポップ
 
 Alright. We can initialize. We can allocate. Let's actually implement some
 functionality! Let's start with `push`. All it needs to do is check if we're
