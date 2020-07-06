@@ -377,9 +377,9 @@ Ok with all the nonsense out of the way, let's actually allocate some memory:
 
 ```rust,ignore
 fn grow(&mut self) {
-    // this is all pretty delicate, so let's say it's all unsafe
+    // これは本当に繊細なので、全部アンセーフにしましょう
     unsafe {
-        // current API requires us to specify size and alignment manually.
+        // 現在の API では、大きさとアラインメントを手動で指定する必要があります。
         let align = mem::align_of::<T>();
         let elem_size = mem::size_of::<T>();
 
@@ -387,18 +387,20 @@ fn grow(&mut self) {
             let ptr = heap::allocate(elem_size, align);
             (1, ptr)
         } else {
-            // as an invariant, we can assume that `self.cap < isize::MAX`,
-            // so this doesn't need to be checked.
+            // 非変性ですので、 `self.cap < isize::MAX` と見なすことが出来ます。
+            // ですからチェックする必要はありません。
             let new_cap = self.cap * 2;
-            // Similarly this can't overflow due to previously allocating this
+            // 同様に、前にアロケートしたのでオーバーフローすることはありません
             let old_num_bytes = self.cap * elem_size;
 
-            // check that the new allocation doesn't exceed `isize::MAX` at all
-            // regardless of the actual size of the capacity. This combines the
-            // `new_cap <= isize::MAX` and `new_num_bytes <= usize::MAX` checks
-            // we need to make. We lose the ability to allocate e.g. 2/3rds of
-            // the address space with a single Vec of i16's on 32-bit though.
+            // 実際のキャパシティの大きさに関わらず、新しいアロケーションが
+            // `isize::MAX` を超過しないか確認します。これは、必要なチェックである、
+            // `new_cap <= isize::MAX` と `new_num_bytes <= usize::MAX` を
+            // 組み合わせています。もっとも、例えば 32ビットプラットフォーム上では、
+            // i16 の単一の Vec で、アドレス空間の 2/3 をアロケートすることは
+            // できなくなっていますが。
             // Alas, poor Yorick -- I knew him, Horatio.
+            // (訳注: シェイクスピアに登場する、ハムレットのセリフです)
             assert!(old_num_bytes <= (::std::isize::MAX as usize) / 2,
                     "capacity overflow");
 
@@ -410,7 +412,7 @@ fn grow(&mut self) {
             (new_cap, ptr)
         };
 
-        // If allocate or reallocate fail, we'll get `null` back
+        // もしアロケートや、リアロケートに失敗すると、 `null` が返ってきます
         if ptr.is_null() { oom(); }
 
         self.ptr = Unique::new(ptr as *mut _);
