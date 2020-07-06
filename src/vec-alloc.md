@@ -265,12 +265,21 @@ GEP (そして結果として `ptr::offset` も) では符号付き整数を受�
 再解釈するような、微妙なコーナーケースを避けるため、 std では全てのアロケーションを
 `isize::MAX` バイトに制限しています。
 
+<!--
 On all 64-bit targets that Rust currently supports we're artificially limited
 to significantly less than all 64 bits of the address space (modern x64
 platforms only expose 48-bit addressing), so we can rely on just running out of
 memory first. However on 32-bit targets, particularly those with extensions to
 use more of the address space (PAE x86 or x32), it's theoretically possible to
 successfully allocate more than `isize::MAX` bytes of memory.
+-->
+
+Rust が現在サポートしている 64 ビットのターゲットでは、 恣意的に、 64 ビットの
+アドレス空間全体よりも遥かに少なく制限されています (現代の x64 プラットフォームでは、
+48 ビットのアドレスしか公開されていません) 。ですから単純に、最初にメモリ不足に
+なると考えて良いです。しかし 32 ビットのターゲットでは、特に追加のアドレス空間
+を使用する拡張に対して (PAE x86 や x32) 、理論的には `isize::MAX` バイト以上の
+メモリをアロケートしてしまうことが可能です。
 
 However since this is a tutorial, we're not going to be particularly optimal
 here, and just unconditionally check, rather than use clever platform-specific
