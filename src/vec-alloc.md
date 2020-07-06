@@ -363,7 +363,11 @@ such we will guard against this case explicitly.
 しかし、これによって悪いことが起きると保守的に見なすことを選びました。
 ですからこれらの場合に対しては、明示的にガードします。
 
+<!--
 *Phew*
+-->
+
+*ふー*
 
 Ok with all the nonsense out of the way, let's actually allocate some memory:
 
