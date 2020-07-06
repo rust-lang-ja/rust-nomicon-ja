@@ -31,8 +31,13 @@ T. Worse, `foo[idx] = x` will try to call `drop` on the old value of `foo[idx]`!
 正しいインスタンスとして評価してしまうからです。もっと悪いと `foo[idx] = x` によって、
 `foo[idx]` の古い値に対して `drop` を呼ぼうとしてしまいます!
 
+<!--
 The correct way to do this is with `ptr::write`, which just blindly overwrites the
 target address with the bits of the value we provide. No evaluation involved.
+-->
+
+正しい方法は、 `ptr::write` を使う方法です。これは、ターゲットのアドレスを、
+与えた値のビットでそのまま上書きします。何の評価も起こりません。
 
 For `push`, if the old len (before push was called) is 0, then we want to write
 to the 0th index. So we should offset by the old len.
