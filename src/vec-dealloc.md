@@ -19,9 +19,8 @@ wouldn't bother unless you notice it's not being stripped (in this case it is).
 呼ぶことは必要ない事に注意してください。理論的には、`T` をドロップする必要が
 あるかを `needs_drop` で確かめ、 `pop` の呼び出しを省略することが出来ます。
 しかし実践的には、 LLVM は*本当に*このような副作用のない単純なコードを
-取り除くことに優れているため、 (今回の場合のように) コードが取り除かれてしまい、
-悩みの原因となってしまいます。
-
+取り除くことに優れているため、コードが取り除かれていないと気づかない
+限りは気にしません (今回はコードが取り除かれています) 。
 <!--
 We must not call `heap::deallocate` when `self.cap == 0`, as in this case we
 haven't actually allocated any memory.
