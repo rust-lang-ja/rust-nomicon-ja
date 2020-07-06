@@ -78,8 +78,13 @@ of T there.
 そのアドレスのメモリにある値は完全に T のインスタンスであるけれども、
 値を論理的には未初期化の状態のままにします。
 
+<!--
 For `pop`, if the old len is 1, we want to read out of the 0th index. So we
 should offset by the new len.
+-->
+
+`pop` に関しては、もし古い len の値が 1 の場合、 0 番目のインデックスにある値を
+読み出したいです。ですから新しい len による offset を使うべきです。
 
 ```rust,ignore
 pub fn pop(&mut self) -> Option<T> {
