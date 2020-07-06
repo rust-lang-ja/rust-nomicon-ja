@@ -22,8 +22,13 @@ wouldn't bother unless you notice it's not being stripped (in this case it is).
 取り除くことに優れているため、 (今回の場合のように) コードが取り除かれてしまい、
 悩みの原因となってしまいます。
 
+<!--
 We must not call `heap::deallocate` when `self.cap == 0`, as in this case we
 haven't actually allocated any memory.
+-->
+
+`self.cap == 0` である場合、 `heap::deallocate` を呼んではいけません。
+この時、実際にはメモリをアロケートしていないからです。
 
 
 ```rust,ignore
