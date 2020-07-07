@@ -90,7 +90,11 @@ dropped.
 イテレーションの途中では気にしないのですが、 IntoIter がドロップされたら Vec を
 ドロップするため、 Vec のアロケーションの情報を保持する必要もあります。
 
+<!--
 So we're going to use the following struct:
+-->
+
+ですから以下のような構造体を使っていきます。
 
 ```rust,ignore
 struct IntoIter<T> {
