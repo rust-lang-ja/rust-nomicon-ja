@@ -56,8 +56,13 @@ pub fn insert(&mut self, index: usize, elem: T) {
 }
 ```
 
+<!--
 Remove behaves in the opposite manner. We need to shift all the elements from
 `[i+1 .. len + 1]` to `[i .. len]` using the *new* len.
+-->
+
+削除では真逆の事を行ないます。*新しい* len を使用して、
+`[i+1 .. len+1]` を `[i .. len]` にシフトします。
 
 ```rust,ignore
 pub fn remove(&mut self, index: usize) -> T {
