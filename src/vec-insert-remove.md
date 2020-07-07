@@ -26,8 +26,13 @@ Rust 版のようなものです。これは、ある場所のメモリを別の
 そして、2つの場所が重なっていても、正しくコピーされます (今回の場合、
 明らかに重なります) 。
 
+<!--
 If we insert at index `i`, we want to shift the `[i .. len]` to `[i+1 .. len+1]`
 using the old len.
+-->
+
+インデックス `i` の位置に挿入する場合、古い `len` の値を用いて、
+`[i .. len]` を `[i+1 .. len+1]` にシフトします。
 
 ```rust,ignore
 pub fn insert(&mut self, index: usize, elem: T) {
