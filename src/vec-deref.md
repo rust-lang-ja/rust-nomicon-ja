@@ -62,5 +62,11 @@ impl<T> DerefMut for Vec<T> {
 }
 ```
 
+<!--
 Now we have `len`, `first`, `last`, indexing, slicing, sorting, `iter`,
 `iter_mut`, and all other sorts of bells and whistles provided by slice. Sweet!
+-->
+
+これで、 `len`、 `first`、 `last`、 インデックス参照、スライス、ソート、
+`iter`、 `iter_mut`、そして他のスライスによって提供される、あらゆる
+魅力的なツールを手に入れました。やったね!
