@@ -4,8 +4,13 @@
 
 # 挿入と削除
 
+<!--
 Something *not* provided by slice is `insert` and `remove`, so let's do those
 next.
+-->
+
+スライスから提供*されない*ものに、 `insert` と `remove` があります。
+今度はこれらを実装していきましょう。
 
 Insert needs to shift all the elements at the target index to the right by one.
 To do this we need to use `ptr::copy`, which is our version of C's `memmove`.
