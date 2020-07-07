@@ -1,8 +1,14 @@
 # IntoIter
 
+<!--
 Let's move on to writing iterators. `iter` and `iter_mut` have already been
 written for us thanks to The Magic of Deref. However there's two interesting
 iterators that Vec provides that slices can't: `into_iter` and `drain`.
+-->
+
+イテレータに移行しましょう。 Deref の魔法のおかげで、 `iter` と `iter_mut` は
+既に書かれています。しかし、 Vec が提供できて、スライスが提供できない 2 つの
+興味深いイテレータがあります。 `into_iter` と `drain` です。
 
 IntoIter consumes the Vec by-value, and can consequently yield its elements
 by-value. In order to enable this, IntoIter needs to take control of Vec's
