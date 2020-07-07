@@ -66,7 +66,9 @@ Remove behaves in the opposite manner. We need to shift all the elements from
 
 ```rust,ignore
 pub fn remove(&mut self, index: usize) -> T {
-    // Note: `<` because it's *not* valid to remove after everything
+    // 注意: 全要素のあとの物を削除することは*有効ではない*ため、 '<' を使用します
+
+    // 境界外インデックスです
     assert!(index < self.len, "index out of bounds");
     unsafe {
         self.len -= 1;
