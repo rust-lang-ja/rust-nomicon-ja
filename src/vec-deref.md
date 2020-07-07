@@ -4,12 +4,22 @@
 
 # 参照外し
 
+<!--
 Alright! We've got a decent minimal stack implemented. We can push, we can
 pop, and we can clean up after ourselves. However there's a whole mess of
 functionality we'd reasonably want. In particular, we have a proper array, but
 none of the slice functionality. That's actually pretty easy to solve: we can
 implement `Deref<Target=[T]>`. This will magically make our Vec coerce to, and
 behave like, a slice in all sorts of conditions.
+-->
+
+よし! 満足できる最小限のスタックを実装しました。プッシュ、ポップができ、
+そして最後に自身を片付けることができます。しかし、我々が欲しい
+沢山のコマンドがあります。特に、適切な配列はあるけれども、スライスの
+機能がありません。これは実際結構簡単に解決することができます。すなわち、
+`Deref<Target=[T]>` を実装すればよいのです。これによって、 Vec に
+あらゆる状況において、参照外しをさせたり、スライスのように振る舞わせる
+ことができるようになります。
 
 All we need is `slice::from_raw_parts`. It will correctly handle empty slices
 for us. Later once we set up zero-sized type support it will also Just Work
