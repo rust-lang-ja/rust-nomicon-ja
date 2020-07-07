@@ -204,7 +204,7 @@ IntoIter はアロケーションの所有権を受け取るので、それを�
 impl<T> Drop for IntoIter<T> {
     fn drop(&mut self) {
         if self.cap != 0 {
-            // drop any remaining elements
+            // 残っている要素を全てドロップします
             for _ in &mut *self {}
 
             let align = mem::align_of::<T>();
