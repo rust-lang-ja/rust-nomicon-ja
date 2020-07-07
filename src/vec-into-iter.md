@@ -139,7 +139,11 @@ impl<T> Vec<T> {
 }
 ```
 
+<!--
 Here's iterating forward:
+-->
+
+前方へのイテレーションのコードです。
 
 ```rust,ignore
 impl<T> Iterator for IntoIter<T> {
