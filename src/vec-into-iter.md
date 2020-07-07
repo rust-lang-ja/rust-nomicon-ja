@@ -20,11 +20,19 @@ IntoIter は Vec を値として消費します。その結果、その要素を
 これを有効にするために、 IntoIter が Vec のアロケーションを操作する
 必要があります。
 
+<!--
 IntoIter needs to be DoubleEnded as well, to enable reading from both ends.
 Reading from the back could just be implemented as calling `pop`, but reading
 from the front is harder. We could call `remove(0)` but that would be insanely
 expensive. Instead we're going to just use ptr::read to copy values out of
 either end of the Vec without mutating the buffer at all.
+-->
+
+IntoIter は始端と終端の量から読み出せるように、両頭である必要があります。
+後ろから読み込むのは単に `pop` を呼び出すよう実装すればよいのですが、
+前から読み出すのはもっと難しいです。 `remove(0)` を呼び出してもよいのですが、
+そのコストは馬鹿馬鹿しい位大きいです。その代わりに、バッファを全く変化させずに、
+ptr::read を使って両端から値をコピーするようにします。
 
 To do this we're going to use a very common C idiom for array iteration. We'll
 make two pointers; one that points to the start of the array, and one that
