@@ -1,4 +1,8 @@
+<!--
 # Insert and Remove
+-->
+
+# 挿入と削除
 
 Something *not* provided by slice is `insert` and `remove`, so let's do those
 next.
