@@ -44,7 +44,11 @@ impl<T> Deref for Vec<T> {
 }
 ```
 
+<!--
 And let's do DerefMut too:
+-->
+
+では DerefMut も実装しましょう。
 
 ```rust,ignore
 use std::ops::DerefMut;
