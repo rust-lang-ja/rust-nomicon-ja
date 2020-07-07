@@ -73,8 +73,13 @@ The array looks like this:
 [X, X, X, O, X, X, X]
 ```
 
+<!--
 If E pointed directly at the element it wanted to yield next, it would be
 indistinguishable from the case where there are no more elements to yield.
+-->
+
+もし E が、次に返したい値を直接指していたら、返す値が既に存在しない場合と
+区別がつかなくなっているでしょう。
 
 Although we don't actually care about it during iteration, we also need to hold
 onto the Vec's allocation information in order to free it once IntoIter is
