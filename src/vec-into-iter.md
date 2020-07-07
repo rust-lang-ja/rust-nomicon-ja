@@ -189,9 +189,15 @@ impl<T> DoubleEndedIterator for IntoIter<T> {
 }
 ```
 
+<!--
 Because IntoIter takes ownership of its allocation, it needs to implement Drop
 to free it. However it also wants to implement Drop to drop any elements it
 contains that weren't yielded.
+-->
+
+IntoIter はアロケーションの所有権を受け取るので、それを解放するために Drop を
+実装する必要があります。しかし、イテレーションの最中に返されなかった要素を
+ドロップするための Drop も実装する必要があります。
 
 
 ```rust,ignore
