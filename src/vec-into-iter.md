@@ -48,11 +48,19 @@ the two pointers are equal, we know we're done.
 指している値を読み出して、ポインタを 1 だけ動かします。もし 2 つのポインタが
 等価な場合、全要素が読み出されたことを意味します。
 
+<!--
 Note that the order of read and offset are reversed for `next` and `next_back`
 For `next_back` the pointer is always after the element it wants to read next,
 while for `next` the pointer is always at the element it wants to read next.
 To see why this is, consider the case where every element but one has been
 yielded.
+-->
+
+読み出しとオフセットの操作の順序は `next` と `next_back` とで逆転することに
+注意してください。 `next_back` では、ポインタは次に読みたい要素の直後の
+要素をいつも指しています。対して `next` では、ポインタは次に読みたい
+要素をいつも指しています。なぜこうなのか、 1 つを除いて全ての要素が
+既に返された例を見てみましょう。
 
 The array looks like this:
 
