@@ -21,9 +21,15 @@ behave like, a slice in all sorts of conditions.
 あらゆる状況において、参照外しをさせたり、スライスのように振る舞わせる
 ことができるようになります。
 
+<!--
 All we need is `slice::from_raw_parts`. It will correctly handle empty slices
 for us. Later once we set up zero-sized type support it will also Just Work
 for those too.
+-->
+
+必要なのは `slice::from_raw_parts` です。これによって、正しく空の
+スライスを扱えます。あとでサイズが 0 の型をサポートしたあとは、
+これらも同様に扱えるようになります。
 
 ```rust,ignore
 use std::ops::Deref;
