@@ -36,14 +36,16 @@ using the old len.
 
 ```rust,ignore
 pub fn insert(&mut self, index: usize, elem: T) {
-    // Note: `<=` because it's valid to insert after everything
-    // which would be equivalent to push.
+    // 注意: 全要素の後に挿入しても問題ないため、
+    // `<=` としています。これは、プッシュと同等です。
+
+    // 境界外インデックスです
     assert!(index <= self.len, "index out of bounds");
     if self.cap == self.len { self.grow(); }
 
     unsafe {
         if index < self.len {
-            // ptr::copy(src, dest, len): "copy from source to dest len elems"
+            // ptr::copy(src, dest, len): "src から dest まで len 個の要素をコピー"
             ptr::copy(self.ptr.offset(index as isize),
                       self.ptr.offset(index as isize + 1),
                       self.len - index);
