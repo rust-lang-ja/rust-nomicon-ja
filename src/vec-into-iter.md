@@ -34,11 +34,19 @@ IntoIter は始端と終端の量から読み出せるように、両頭であ�
 そのコストは馬鹿馬鹿しい位大きいです。その代わりに、バッファを全く変化させずに、
 ptr::read を使って両端から値をコピーするようにします。
 
+<!--
 To do this we're going to use a very common C idiom for array iteration. We'll
 make two pointers; one that points to the start of the array, and one that
 points to one-element past the end. When we want an element from one end, we'll
 read out the value pointed to at that end and move the pointer over by one. When
 the two pointers are equal, we know we're done.
+-->
+
+これをするために、 C のごく普通の配列のイテレーションのイディオムを使います。
+2 つのポインタを生成します。 1 つは配列の最初を指し、もう 1 つは配列の最後の
+1 つ後ろの要素を指します。終端から要素を 1 つ取得したい場合は、ポインタが
+指している値を読み出して、ポインタを 1 だけ動かします。もし 2 つのポインタが
+等価な場合、全要素が読み出されたことを意味します。
 
 Note that the order of read and offset are reversed for `next` and `next_back`
 For `next_back` the pointer is always after the element it wants to read next,
