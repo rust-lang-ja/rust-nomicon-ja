@@ -168,7 +168,11 @@ impl<T> Iterator for IntoIter<T> {
 }
 ```
 
+<!--
 And here's iterating backwards.
+-->
+
+そして後方へのイテレーションのコードです。
 
 ```rust,ignore
 impl<T> DoubleEndedIterator for IntoIter<T> {
