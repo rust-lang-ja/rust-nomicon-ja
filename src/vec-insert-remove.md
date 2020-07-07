@@ -12,11 +12,19 @@ next.
 スライスから提供*されない*ものに、 `insert` と `remove` があります。
 今度はこれらを実装していきましょう。
 
+<!--
 Insert needs to shift all the elements at the target index to the right by one.
 To do this we need to use `ptr::copy`, which is our version of C's `memmove`.
 This copies some chunk of memory from one location to another, correctly
 handling the case where the source and destination overlap (which will
 definitely happen here).
+-->
+
+挿入では、挿入位置から最後の要素まで、 1 ずつずらす必要があります。
+これを行なうために、 `ptr::copy` を使う必要があります。 C の `memmove` の、
+Rust 版のようなものです。これは、ある場所のメモリを別の場所にコピーします。
+そして、2つの場所が重なっていても、正しくコピーされます (今回の場合、
+明らかに重なります) 。
 
 If we insert at index `i`, we want to shift the `[i .. len]` to `[i+1 .. len+1]`
 using the old len.
