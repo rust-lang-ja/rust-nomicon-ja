@@ -114,12 +114,12 @@ And this is what we end up with for initialization:
 ```rust,ignore
 impl<T> Vec<T> {
     fn into_iter(self) -> IntoIter<T> {
-        // Can't destructure Vec since it's Drop
+        // Vec がドロップされてしまうため、 Vec をデストラクト出来ません。
         let ptr = self.ptr;
         let cap = self.cap;
         let len = self.len;
 
-        // Make sure not to drop Vec since that will free the buffer
+        // Vec をドロップするとバッファを解放してしまうので、ドロップしないようにします。
         mem::forget(self);
 
         unsafe {
@@ -128,7 +128,7 @@ impl<T> Vec<T> {
                 cap: cap,
                 start: *ptr,
                 end: if cap == 0 {
-                    // can't offset off this pointer, it's not allocated!
+                    // このポインタのオフセットを取ることが出来ません。アロケートされていないからです!
                     *ptr
                 } else {
                     ptr.offset(len as isize)
