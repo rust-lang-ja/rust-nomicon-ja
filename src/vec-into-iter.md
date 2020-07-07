@@ -10,9 +10,15 @@ iterators that Vec provides that slices can't: `into_iter` and `drain`.
 既に書かれています。しかし、 Vec が提供できて、スライスが提供できない 2 つの
 興味深いイテレータがあります。 `into_iter` と `drain` です。
 
+<!--
 IntoIter consumes the Vec by-value, and can consequently yield its elements
 by-value. In order to enable this, IntoIter needs to take control of Vec's
 allocation.
+-->
+
+IntoIter は Vec を値として消費します。その結果、その要素を値で返します。
+これを有効にするために、 IntoIter が Vec のアロケーションを操作する
+必要があります。
 
 IntoIter needs to be DoubleEnded as well, to enable reading from both ends.
 Reading from the back could just be implemented as calling `pop`, but reading
