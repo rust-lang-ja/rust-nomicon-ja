@@ -105,7 +105,11 @@ struct IntoIter<T> {
 }
 ```
 
+<!--
 And this is what we end up with for initialization:
+-->
+
+そしてこれが初期化のコードです。
 
 ```rust,ignore
 impl<T> Vec<T> {
