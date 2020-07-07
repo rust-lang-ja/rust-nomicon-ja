@@ -28,7 +28,7 @@ expensive. Instead we're going to just use ptr::read to copy values out of
 either end of the Vec without mutating the buffer at all.
 -->
 
-IntoIter は始端と終端の量から読み出せるように、両頭である必要があります。
+IntoIter は始端と終端の両方から読み出せるように、両頭である必要があります。
 後ろから読み込むのは単に `pop` を呼び出すよう実装すればよいのですが、
 前から読み出すのはもっと難しいです。 `remove(0)` を呼び出してもよいのですが、
 そのコストは馬鹿馬鹿しい位大きいです。その代わりに、バッファを全く変化させずに、
