@@ -33,7 +33,7 @@ impl<T> RawVec<T> {
         }
     }
 
-    // unchanged from Vec
+    // Vec の時と変更ありません
     fn grow(&mut self) {
         unsafe {
             let align = mem::align_of::<T>();
@@ -51,7 +51,7 @@ impl<T> RawVec<T> {
                 (new_cap, ptr)
             };
 
-            // If allocate or reallocate fail, we'll get `null` back
+            // もしアロケートや、リアロケートに失敗すると、 `null` が返ってきます
             if ptr.is_null() { oom() }
 
             self.ptr = Unique::new(ptr as *mut _);
