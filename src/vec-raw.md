@@ -110,7 +110,11 @@ impl<T> Drop for Vec<T> {
 }
 ```
 
+<!--
 And finally we can really simplify IntoIter:
+-->
+
+最終的に、本当に IntoIter が単純になります。
 
 ```rust,ignore
 struct IntoIter<T> {
