@@ -11,8 +11,13 @@ time to perform some logic compression.
 メモリの解放の論理が重複しているのです。これらを実装し、*実際に*ロジックが
 重複していると特定したので、今がロジックを圧縮する丁度良い時です。
 
+<!--
 We're going to abstract out the `(ptr, cap)` pair and give them the logic for
 allocating, growing, and freeing:
+-->
+
+`(ptr, cap)` のペアを取り除き、これにアロケート、伸長そして解放のロジックを
+与えます。
 
 ```rust,ignore
 struct RawVec<T> {
