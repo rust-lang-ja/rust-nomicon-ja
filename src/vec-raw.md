@@ -75,7 +75,11 @@ impl<T> Drop for RawVec<T> {
 }
 ```
 
+<!--
 And change Vec as follows:
+-->
+
+そして Vec を以下のように変更します。
 
 ```rust,ignore
 pub struct Vec<T> {
