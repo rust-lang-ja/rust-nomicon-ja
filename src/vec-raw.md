@@ -118,17 +118,17 @@ And finally we can really simplify IntoIter:
 
 ```rust,ignore
 struct IntoIter<T> {
-    _buf: RawVec<T>, // we don't actually care about this. Just need it to live.
+    _buf: RawVec<T>, // これを扱うことはないのですが、その存在は必要です。
     start: *const T,
     end: *const T,
 }
 
-// next and next_back literally unchanged since they never referred to the buf
+// next と next_back は buf を参照していないため、文字通り変更しません
 
 impl<T> Drop for IntoIter<T> {
     fn drop(&mut self) {
-        // only need to ensure all our elements are read;
-        // buffer will clean itself up afterwards.
+        // 全ての要素が確実に読まれていることだけが必要です。
+        // バッファは後で自身を片付けます。
         for _ in &mut *self {}
     }
 }
@@ -136,8 +136,9 @@ impl<T> Drop for IntoIter<T> {
 impl<T> Vec<T> {
     pub fn into_iter(self) -> IntoIter<T> {
         unsafe {
-            // need to use ptr::read to unsafely move the buf out since it's
-            // not Copy, and Vec implements Drop (so we can't destructure it).
+            // buf をアンセーフに移動させるため、 ptr:read を必要とします。
+            // buf は Copy を実装しておらず、 Vec は Drop を実装しているからです
+            // (ですから Vec をデストラクト出来ません) 。
             let buf = ptr::read(&self.buf);
             let len = self.len;
             mem::forget(self);
