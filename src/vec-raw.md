@@ -1,9 +1,15 @@
 # RawVec
 
+<!--
 We've actually reached an interesting situation here: we've duplicated the logic
 for specifying a buffer and freeing its memory in Vec and IntoIter. Now that
 we've implemented it and identified *actual* logic duplication, this is a good
 time to perform some logic compression.
+-->
+
+興味深い状況に突入しました。すなわち、 Vec と IntoIter の、バッファの指定と
+メモリの解放の論理が重複しているのです。これらを実装し、*実際に*ロジックが
+重複していると特定したので、今がロジックを圧縮する丁度良い時です。
 
 We're going to abstract out the `(ptr, cap)` pair and give them the logic for
 allocating, growing, and freeing:
