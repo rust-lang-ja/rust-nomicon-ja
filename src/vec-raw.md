@@ -96,7 +96,7 @@ impl<T> Vec<T> {
         Vec { buf: RawVec::new(), len: 0 }
     }
 
-    // push/pop/insert/remove largely unchanged:
+    // push/pop/insert/remove は以下以外の変更はありません。
     // * `self.ptr -> self.ptr()`
     // * `self.cap -> self.cap()`
     // * `self.grow -> self.buf.grow()`
@@ -105,7 +105,7 @@ impl<T> Vec<T> {
 impl<T> Drop for Vec<T> {
     fn drop(&mut self) {
         while let Some(_) = self.pop() {}
-        // deallocation is handled by RawVec
+        // デアロケートは RawVec が対処します
     }
 }
 ```
