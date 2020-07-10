@@ -73,7 +73,7 @@ And IntoIter becomes the following:
 
 ```rust,ignore
 pub struct IntoIter<T> {
-    _buf: RawVec<T>, // we don't actually care about this. Just need it to live.
+    _buf: RawVec<T>, // これを扱うことはないのですが、その存在は必要です。
     iter: RawValIter<T>,
 }
 
