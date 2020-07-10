@@ -159,7 +159,7 @@ impl<T> Vec<T> {
             let iter = RawValIter::new(&self);
 
             // これは mem::forget の安全版です。もし Drain が forget されたら、
-            // 単に Vec の内容全体がリークします。そして*結局*これをしなければ
+            // "単に" Vec の内容全体がリークします。そして*結局*これをしなければ
             // なりません。なら今やっちゃいましょう。
             self.len = 0;
 
