@@ -29,8 +29,13 @@ impl<'a, T> Iterator for Drain<'a, T> {
             None
 ```
 
+<!--
 -- wait, this is seeming familiar. Let's do some more compression. Both
 IntoIter and Drain have the exact same structure, let's just factor it out.
+-->
+
+-- 待った、何か似ているな。もっと圧縮してみましょう。
+IntoIter と Drain は両方同じ構造を持っています。抽出しましょう。
 
 ```rust
 struct RawValIter<T> {
