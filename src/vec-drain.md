@@ -45,7 +45,7 @@ struct RawValIter<T> {
 
 impl<T> RawValIter<T> {
     // 値のコンストラクトはアンセーフです。関連付けられているライフタイムが
-    // 存在しないからです。 これは、RawValIter を実際のアロケーションと同一の構造体に
+    // 存在しないからです。 これは、RawValIter を、実際のアロケーションと同一の構造体に
     // 保存するため必要です。プライベートな実装詳細ですので問題ありません。
     unsafe fn new(slice: &[T]) -> Self {
         RawValIter {
