@@ -123,7 +123,11 @@ We also take a slice to simplify Drain initialization.
 これは、もっと複雑な Drain に対しては正しく動作しません。
 スライスも用いて、 Drain の初期化を単純にします。
 
+<!--
 Alright, now Drain is really easy:
+-->
+
+よし、これで Drain を本当に楽に実装できます。
 
 ```rust,ignore
 use std::marker::PhantomData;
@@ -154,9 +158,9 @@ impl<T> Vec<T> {
         unsafe {
             let iter = RawValIter::new(&self);
 
-            // this is a mem::forget safety thing. If Drain is forgotten, we just
-            // leak the whole Vec's contents. Also we need to do this *eventually*
-            // anyway, so why not do it now?
+            // これは mem::forget の安全版です。もし Drain が forget されたら、
+            // 単に Vec の内容全体がリークします。そして*結局*これをしなければ
+            // なりません。なら今やっちゃいましょう。
             self.len = 0;
 
             Drain {
