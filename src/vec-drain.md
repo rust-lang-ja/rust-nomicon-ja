@@ -7,7 +7,7 @@ untouched. For now we'll only implement the "basic" full-range version.
 -->
 
 Drain に移行しましょう。 Drain は大体 IntoIter と同じですが、 Vec を消費
-する代わり、 Vec を借用し、アロケーションに触れないままにします。
+する代わりに、 Vec を借用し、アロケーションに触れないままにします。
 とりあえず、 "基本的な" 全範囲のバージョンだけを実装しましょう。
 
 ```rust,ignore
