@@ -65,7 +65,11 @@ impl<T> RawValIter<T> {
 // Iterator と DoubleEndedIterator の impl は IntoIter と同一です。
 ```
 
+<!--
 And IntoIter becomes the following:
+-->
+
+そして IntoIter は以下のようになります。
 
 ```rust,ignore
 pub struct IntoIter<T> {
