@@ -44,17 +44,16 @@ struct RawValIter<T> {
 }
 
 impl<T> RawValIter<T> {
-    // unsafe to construct because it has no associated lifetimes.
-    // This is necessary to store a RawValIter in the same struct as
-    // its actual allocation. OK since it's a private implementation
-    // detail.
+    // 値のコンストラクトはアンセーフです。関連付けられているライフタイムが
+    // 存在しないからです。 これは、RawValIter を実際のアロケーションと同一の構造体に
+    // 保存する必要があるためです。プライベートな実装詳細ですので問題ありません。
     unsafe fn new(slice: &[T]) -> Self {
         RawValIter {
             start: slice.as_ptr(),
             end: if slice.len() == 0 {
-                // if `len = 0`, then this is not actually allocated memory.
-                // Need to avoid offsetting because that will give wrong
-                // information to LLVM via GEP.
+                // もし `len = 0` なら、実際にはメモリをアロケートしていません。
+                // GEP を通して LLVM に間違った情報を渡してしまうため、
+                // オフセットを避ける必要があります。
                 slice.as_ptr()
             } else {
                 slice.as_ptr().offset(slice.len() as isize)
@@ -63,7 +62,7 @@ impl<T> RawValIter<T> {
     }
 }
 
-// Iterator and DoubleEndedIterator impls identical to IntoIter.
+// Iterator と DoubleEndedIterator の impl は IntoIter と同一です。
 ```
 
 And IntoIter becomes the following:
