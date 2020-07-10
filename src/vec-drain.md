@@ -172,7 +172,11 @@ impl<T> Vec<T> {
 }
 ```
 
+<!--
 For more details on the `mem::forget` problem, see the
 [section on leaks][leaks].
+-->
+
+`mem::forget` の詳細は、[リークの章][leaks]を参照してください。
 
 [leaks]: leaking.html
