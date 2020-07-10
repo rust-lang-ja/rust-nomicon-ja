@@ -1,8 +1,14 @@
 # Drain
 
+<!--
 Let's move on to Drain. Drain is largely the same as IntoIter, except that
 instead of consuming the Vec, it borrows the Vec and leaves its allocation
 untouched. For now we'll only implement the "basic" full-range version.
+-->
+
+Drain に移行しましょう。 Drain は大体 IntoIter と同じですが、 Vec を消費
+する代わり、 Vec を借用し、アロケーションに触れないままにします。
+とりあえず、 "基本的な" 全範囲のバージョンだけを実装しましょう。
 
 ```rust,ignore
 use std::marker::PhantomData;
