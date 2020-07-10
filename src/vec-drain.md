@@ -14,9 +14,9 @@ Drain に移行しましょう。 Drain は大体 IntoIter と同じですが、
 use std::marker::PhantomData;
 
 struct Drain<'a, T: 'a> {
-    // Need to bound the lifetime here, so we do it with `&'a mut Vec<T>`
-    // because that's semantically what we contain. We're "just" calling
-    // `pop()` and `remove(0)`.
+    // ライフタイムの制限を課す必要があるため、 `&'a mut Vec<T>` という
+    // ライフタイムを付与します。セマンティクス的に、これを含んでいるからです。
+    // 単に `pop()` と `remove(0)` を呼び出しています。
     vec: PhantomData<&'a mut Vec<T>>
     start: *const T,
     end: *const T,
