@@ -110,10 +110,18 @@ impl<T> Vec<T> {
 }
 ```
 
+<!--
 Note that I've left a few quirks in this design to make upgrading Drain to work
 with arbitrary subranges a bit easier. In particular we *could* have RawValIter
 drain itself on drop, but that won't work right for a more complex Drain.
 We also take a slice to simplify Drain initialization.
+-->
+
+設計の中で、ちょっと奇妙なものを少し含めたことに注意してください。
+これは、 Drain を任意の副範囲で動作させるのを、ちょっと簡単にするためです。
+特に、 RawValIter がドロップの際に、自身をドレイン*出来る*でしょうが、
+これは、もっと複雑な Drain に対しては正しく動作しません。
+スライスも用いて、 Drain の初期化を単純にします。
 
 Alright, now Drain is really easy:
 
