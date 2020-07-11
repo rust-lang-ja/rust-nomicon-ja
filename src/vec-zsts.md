@@ -45,12 +45,21 @@ RawValIter and RawVec respectively. How mysteriously convenient.
 
 ## サイズが 0 の型をアロケートする
 
+<!--
 So if the allocator API doesn't support zero-sized allocations, what on earth
 do we store as our allocation? Why, `heap::EMPTY` of course! Almost every operation
 with a ZST is a no-op since ZSTs have exactly one value, and therefore no state needs
 to be considered to store or load them. This actually extends to `ptr::read` and
 `ptr::write`: they won't actually look at the pointer at all. As such we never need
 to change the pointer.
+-->
+
+では、アロケータの API がサイズ 0 の型のアロケーションに対応していないのならば、
+一体全体何を、アロケーションとして保存すればいいのでしょうか? そうさ，勿論 `heap::EMPTY` さ!
+ZST に対する操作は、 ZSTがちょうど 1 つの値を持つため、 ほとんど全てが no-op となります。
+それゆえこの型の値を保存したりロードしたりする場合に、状態を考える必要がありません。
+この考えは実際に `ptr::read` や `ptr::write` に拡張されます。つまり、これらの操作は、
+実際には全くポインタに着目していないのです。ですからポインタを変える必要は全くないのです。
 
 Note however that our previous reliance on running out of memory before overflow is
 no longer valid with zero-sized types. We must explicitly guard against capacity
