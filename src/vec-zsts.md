@@ -1,4 +1,8 @@
+<!--
 # Handling Zero-Sized Types
+-->
+
+# サイズが 0 の型を扱う
 
 It's time. We're going to fight the specter that is zero-sized types. Safe Rust
 *never* needs to care about this, but Vec is very intensive on raw pointers and
