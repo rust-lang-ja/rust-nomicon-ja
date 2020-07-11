@@ -28,8 +28,13 @@ zero-sized types. We need to be careful of two things:
 * 生ポインタのオフセットは、サイズが 0 の型に対しては no-op となります。
   これによって C スタイルのポインタによるイテレータが壊れます。
 
+<!--
 Thankfully we abstracted out pointer-iterators and allocating handling into
 RawValIter and RawVec respectively. How mysteriously convenient.
+-->
+
+ありがたいことに、ポインタのイテレータと、 RawValIter と RawVec に対する
+アロケーションの扱いを抽出しました。なんと魔法のように役立つでしょう。
 
 
 
