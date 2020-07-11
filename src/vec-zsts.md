@@ -4,10 +4,17 @@
 
 # サイズが 0 の型を扱う
 
+<!--
 It's time. We're going to fight the specter that is zero-sized types. Safe Rust
 *never* needs to care about this, but Vec is very intensive on raw pointers and
 raw allocations, which are exactly the two things that care about
 zero-sized types. We need to be careful of two things:
+-->
+
+時間です。サイズが 0 の型という怪物と戦いましょう。安全な Rust では*絶対に*
+これを気にする必要はないのですが、 Vec は非常に生ポインタや生アロケーションを
+多用します。これらはサイズが 0 の型を気にします。以下の 2 つを気にしなければ
+なりません。
 
 * The raw allocator API has undefined behavior if you pass in 0 for an
   allocation size.
