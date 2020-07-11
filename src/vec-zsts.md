@@ -39,7 +39,11 @@ RawValIter and RawVec respectively. How mysteriously convenient.
 
 
 
+<!--
 ## Allocating Zero-Sized Types
+-->
+
+## サイズが 0 の型をアロケートする
 
 So if the allocator API doesn't support zero-sized allocations, what on earth
 do we store as our allocation? Why, `heap::EMPTY` of course! Almost every operation
