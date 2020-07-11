@@ -61,9 +61,15 @@ ZST に対する操作は、 ZSTがちょうど 1 つの値を持つため、 �
 この考えは実際に `ptr::read` や `ptr::write` に拡張されます。つまり、これらの操作は、
 実際には全くポインタに着目していないのです。ですからポインタを変える必要は全くないのです。
 
+<!--
 Note however that our previous reliance on running out of memory before overflow is
 no longer valid with zero-sized types. We must explicitly guard against capacity
 overflow for zero-sized types.
+-->
+
+ですが、サイズが 0 の型に対しては、オーバーフローの前にメモリ不足になる、という、
+前述した前提は最早有効ではないということに注意してください。サイズが 0 の型に対しては、
+キャパシティのオーバーフローに対して明示的にガードしなければなりません。
 
 Due to our current architecture, all this means is writing 3 guards, one in each
 method of RawVec.
