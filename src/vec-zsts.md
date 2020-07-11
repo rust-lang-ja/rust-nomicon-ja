@@ -16,10 +16,17 @@ zero-sized types. We need to be careful of two things:
 多用します。これらはサイズが 0 の型を気にします。以下の 2 つを気にしなければ
 なりません。
 
+<!--
 * The raw allocator API has undefined behavior if you pass in 0 for an
   allocation size.
 * raw pointer offsets are no-ops for zero-sized types, which will break our
   C-style pointer iterator.
+-->
+
+* 生アロケータ API は、もしアロケーションのサイズとして 0 を渡すと、
+  未定義動作を引き起こします。
+* 生ポインタのオフセットは、サイズが 0 の型に対しては no-op となります。
+  これによって C スタイルのポインタによるイテレータが壊れます。
 
 Thankfully we abstracted out pointer-iterators and allocating handling into
 RawValIter and RawVec respectively. How mysteriously convenient.
