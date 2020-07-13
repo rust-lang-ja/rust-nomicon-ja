@@ -53,7 +53,7 @@ As we saw in the ownership chapter, we should use `Unique<T>` in place of
 so we'd like to not use it if possible, though.
 -->
 
-所有権の章で見てきたように、所有するアロケーションに対する生ポインタを持つ場合、
+所有権の章で見てきたように、所有しているアロケーションに対する生ポインタを持つ場合、
 `*mut T` の代わりに `Unique<T>` を使用するべきです。 Unique はアンステーブルなため、
 可能なら使いませんが。
 
