@@ -40,7 +40,7 @@
 	* [競合](races.md)
 	* [Send and Sync](send-and-sync.md)
 	* [Atomics](atomics.md)
-* [Implementing Vec](vec.md)
+* [Vec の実装](vec.md)
 	* [Layout](vec-layout.md)
 	* [Allocating](vec-alloc.md)
 	* [Push and Pop](vec-push-pop.md)
