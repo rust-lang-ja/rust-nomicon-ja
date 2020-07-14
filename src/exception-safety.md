@@ -151,7 +151,7 @@ Bubbling an element up a heap is a bit more complicated than extending a Vec.
 The pseudocode is as follows:
 -->
 
-ヒープのアップヒープは Vec を伸ばすことよりちょっと複雑です。擬似コードはこんな感じです。
+ヒープにおけるアップヒープは Vec を伸ばすことよりちょっと複雑です。擬似コードはこんな感じです。
 
 ```text
 bubble_up(heap, index):
