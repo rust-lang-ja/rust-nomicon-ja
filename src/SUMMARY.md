@@ -45,7 +45,7 @@
 	* [Allocating](vec-alloc.md)
 	* [プッシュとポップ](vec-push-pop.md)
 	* [デアロケーティング](vec-dealloc.md)
-	* [Deref](vec-deref.md)
+	* [参照外し](vec-deref.md)
 	* [Insert and Remove](vec-insert-remove.md)
 	* [IntoIter](vec-into-iter.md)
 	* [RawVec](vec-raw.md)
