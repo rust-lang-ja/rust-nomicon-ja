@@ -38,7 +38,7 @@
 	* [ポイゾニング](poisoning.md)
 * [並行性](concurrency.md)
 	* [競合](races.md)
-	* [Send and Sync](send-and-sync.md)
+	* [Send と Sync](send-and-sync.md)
 	* [Atomics](atomics.md)
 * [Vec の実装](vec.md)
 	* [レイアウト](vec-layout.md)
