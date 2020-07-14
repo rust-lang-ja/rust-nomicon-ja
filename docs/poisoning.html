@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Poisoning</title>
+        <title>ポイゾニング</title>
         
         
 
@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">はじめに</a></li><li class="chapter-item expanded "><a href="meet-safe-and-unsafe.html"><strong aria-hidden="true">1.</strong> 安全と危険のご紹介</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="safe-unsafe-meaning.html"><strong aria-hidden="true">1.1.</strong> 安全と危険の相互作用</a></li><li class="chapter-item expanded "><a href="working-with-unsafe.html"><strong aria-hidden="true">1.2.</strong> Unsafe と連携する</a></li></ol></li><li class="chapter-item expanded "><a href="data.html"><strong aria-hidden="true">2.</strong> データレイアウト</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="repr-rust.html"><strong aria-hidden="true">2.1.</strong> repr(Rust)</a></li><li class="chapter-item expanded "><a href="exotic-sizes.html"><strong aria-hidden="true">2.2.</strong> 奇妙なサイズの型</a></li><li class="chapter-item expanded "><a href="other-reprs.html"><strong aria-hidden="true">2.3.</strong> 代替メモリレイアウト</a></li></ol></li><li class="chapter-item expanded "><a href="ownership.html"><strong aria-hidden="true">3.</strong> 所有権とライフタイム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">3.1.</strong> リファレンス</a></li><li class="chapter-item expanded "><a href="lifetimes.html"><strong aria-hidden="true">3.2.</strong> ライフタイム</a></li><li class="chapter-item expanded "><a href="lifetime-mismatch.html"><strong aria-hidden="true">3.3.</strong> ライフタイムシステムの限界</a></li><li class="chapter-item expanded "><a href="lifetime-elision.html"><strong aria-hidden="true">3.4.</strong> ライフタイムの省略</a></li><li class="chapter-item expanded "><a href="unbounded-lifetimes.html"><strong aria-hidden="true">3.5.</strong> 無制限のライフタイム</a></li><li class="chapter-item expanded "><a href="hrtb.html"><strong aria-hidden="true">3.6.</strong> 高階トレイト境界</a></li><li class="chapter-item expanded "><a href="subtyping.html"><strong aria-hidden="true">3.7.</strong> Subtyping and Variance</a></li><li class="chapter-item expanded "><a href="dropck.html"><strong aria-hidden="true">3.8.</strong> Drop Check</a></li><li class="chapter-item expanded "><a href="phantom-data.html"><strong aria-hidden="true">3.9.</strong> PhantomData</a></li><li class="chapter-item expanded "><a href="borrow-splitting.html"><strong aria-hidden="true">3.10.</strong> 借用の分割</a></li></ol></li><li class="chapter-item expanded "><a href="conversions.html"><strong aria-hidden="true">4.</strong> 型変換</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="coercions.html"><strong aria-hidden="true">4.1.</strong> 型強制</a></li><li class="chapter-item expanded "><a href="dot-operator.html"><strong aria-hidden="true">4.2.</strong> ドットオペレータ</a></li><li class="chapter-item expanded "><a href="casts.html"><strong aria-hidden="true">4.3.</strong> キャスト</a></li><li class="chapter-item expanded "><a href="transmutes.html"><strong aria-hidden="true">4.4.</strong> トランスミュート</a></li></ol></li><li class="chapter-item expanded "><a href="uninitialized.html"><strong aria-hidden="true">5.</strong> 初期化されないメモリ</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="checked-uninit.html"><strong aria-hidden="true">5.1.</strong> チェックされるメモリ</a></li><li class="chapter-item expanded "><a href="drop-flags.html"><strong aria-hidden="true">5.2.</strong> ドロップフラグ</a></li><li class="chapter-item expanded "><a href="unchecked-uninit.html"><strong aria-hidden="true">5.3.</strong> チェックされないメモリ</a></li></ol></li><li class="chapter-item expanded "><a href="obrm.html"><strong aria-hidden="true">6.</strong> 所有権に基づいたリソース管理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="constructors.html"><strong aria-hidden="true">6.1.</strong> コンストラクタ</a></li><li class="chapter-item expanded "><a href="destructors.html"><strong aria-hidden="true">6.2.</strong> Destructors</a></li><li class="chapter-item expanded "><a href="leaking.html"><strong aria-hidden="true">6.3.</strong> Leaking</a></li></ol></li><li class="chapter-item expanded "><a href="unwinding.html"><strong aria-hidden="true">7.</strong> 巻き戻し</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="exception-safety.html"><strong aria-hidden="true">7.1.</strong> 例外安全性</a></li><li class="chapter-item expanded "><a href="poisoning.html" class="active"><strong aria-hidden="true">7.2.</strong> Poisoning</a></li></ol></li><li class="chapter-item expanded "><a href="concurrency.html"><strong aria-hidden="true">8.</strong> 並行性</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="races.html"><strong aria-hidden="true">8.1.</strong> Races</a></li><li class="chapter-item expanded "><a href="send-and-sync.html"><strong aria-hidden="true">8.2.</strong> Send and Sync</a></li><li class="chapter-item expanded "><a href="atomics.html"><strong aria-hidden="true">8.3.</strong> Atomics</a></li></ol></li><li class="chapter-item expanded "><a href="vec.html"><strong aria-hidden="true">9.</strong> Implementing Vec</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="vec-layout.html"><strong aria-hidden="true">9.1.</strong> Layout</a></li><li class="chapter-item expanded "><a href="vec-alloc.html"><strong aria-hidden="true">9.2.</strong> Allocating</a></li><li class="chapter-item expanded "><a href="vec-push-pop.html"><strong aria-hidden="true">9.3.</strong> Push and Pop</a></li><li class="chapter-item expanded "><a href="vec-dealloc.html"><strong aria-hidden="true">9.4.</strong> Deallocating</a></li><li class="chapter-item expanded "><a href="vec-deref.html"><strong aria-hidden="true">9.5.</strong> Deref</a></li><li class="chapter-item expanded "><a href="vec-insert-remove.html"><strong aria-hidden="true">9.6.</strong> Insert and Remove</a></li><li class="chapter-item expanded "><a href="vec-into-iter.html"><strong aria-hidden="true">9.7.</strong> IntoIter</a></li><li class="chapter-item expanded "><a href="vec-raw.html"><strong aria-hidden="true">9.8.</strong> RawVec</a></li><li class="chapter-item expanded "><a href="vec-drain.html"><strong aria-hidden="true">9.9.</strong> Drain</a></li><li class="chapter-item expanded "><a href="vec-zsts.html"><strong aria-hidden="true">9.10.</strong> Handling Zero-Sized Types</a></li><li class="chapter-item expanded "><a href="vec-final.html"><strong aria-hidden="true">9.11.</strong> Final Code</a></li></ol></li><li class="chapter-item expanded "><a href="arc-and-mutex.html"><strong aria-hidden="true">10.</strong> Implementing Arc and Mutex</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">はじめに</a></li><li class="chapter-item expanded "><a href="meet-safe-and-unsafe.html"><strong aria-hidden="true">1.</strong> 安全と危険のご紹介</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="safe-unsafe-meaning.html"><strong aria-hidden="true">1.1.</strong> 安全と危険の相互作用</a></li><li class="chapter-item expanded "><a href="working-with-unsafe.html"><strong aria-hidden="true">1.2.</strong> Unsafe と連携する</a></li></ol></li><li class="chapter-item expanded "><a href="data.html"><strong aria-hidden="true">2.</strong> データレイアウト</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="repr-rust.html"><strong aria-hidden="true">2.1.</strong> repr(Rust)</a></li><li class="chapter-item expanded "><a href="exotic-sizes.html"><strong aria-hidden="true">2.2.</strong> 奇妙なサイズの型</a></li><li class="chapter-item expanded "><a href="other-reprs.html"><strong aria-hidden="true">2.3.</strong> 代替メモリレイアウト</a></li></ol></li><li class="chapter-item expanded "><a href="ownership.html"><strong aria-hidden="true">3.</strong> 所有権とライフタイム</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">3.1.</strong> リファレンス</a></li><li class="chapter-item expanded "><a href="lifetimes.html"><strong aria-hidden="true">3.2.</strong> ライフタイム</a></li><li class="chapter-item expanded "><a href="lifetime-mismatch.html"><strong aria-hidden="true">3.3.</strong> ライフタイムシステムの限界</a></li><li class="chapter-item expanded "><a href="lifetime-elision.html"><strong aria-hidden="true">3.4.</strong> ライフタイムの省略</a></li><li class="chapter-item expanded "><a href="unbounded-lifetimes.html"><strong aria-hidden="true">3.5.</strong> 無制限のライフタイム</a></li><li class="chapter-item expanded "><a href="hrtb.html"><strong aria-hidden="true">3.6.</strong> 高階トレイト境界</a></li><li class="chapter-item expanded "><a href="subtyping.html"><strong aria-hidden="true">3.7.</strong> Subtyping and Variance</a></li><li class="chapter-item expanded "><a href="dropck.html"><strong aria-hidden="true">3.8.</strong> Drop Check</a></li><li class="chapter-item expanded "><a href="phantom-data.html"><strong aria-hidden="true">3.9.</strong> PhantomData</a></li><li class="chapter-item expanded "><a href="borrow-splitting.html"><strong aria-hidden="true">3.10.</strong> 借用の分割</a></li></ol></li><li class="chapter-item expanded "><a href="conversions.html"><strong aria-hidden="true">4.</strong> 型変換</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="coercions.html"><strong aria-hidden="true">4.1.</strong> 型強制</a></li><li class="chapter-item expanded "><a href="dot-operator.html"><strong aria-hidden="true">4.2.</strong> ドットオペレータ</a></li><li class="chapter-item expanded "><a href="casts.html"><strong aria-hidden="true">4.3.</strong> キャスト</a></li><li class="chapter-item expanded "><a href="transmutes.html"><strong aria-hidden="true">4.4.</strong> トランスミュート</a></li></ol></li><li class="chapter-item expanded "><a href="uninitialized.html"><strong aria-hidden="true">5.</strong> 初期化されないメモリ</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="checked-uninit.html"><strong aria-hidden="true">5.1.</strong> チェックされるメモリ</a></li><li class="chapter-item expanded "><a href="drop-flags.html"><strong aria-hidden="true">5.2.</strong> ドロップフラグ</a></li><li class="chapter-item expanded "><a href="unchecked-uninit.html"><strong aria-hidden="true">5.3.</strong> チェックされないメモリ</a></li></ol></li><li class="chapter-item expanded "><a href="obrm.html"><strong aria-hidden="true">6.</strong> 所有権に基づいたリソース管理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="constructors.html"><strong aria-hidden="true">6.1.</strong> コンストラクタ</a></li><li class="chapter-item expanded "><a href="destructors.html"><strong aria-hidden="true">6.2.</strong> デストラクタ</a></li><li class="chapter-item expanded "><a href="leaking.html"><strong aria-hidden="true">6.3.</strong> リーク</a></li></ol></li><li class="chapter-item expanded "><a href="unwinding.html"><strong aria-hidden="true">7.</strong> 巻き戻し</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="exception-safety.html"><strong aria-hidden="true">7.1.</strong> 例外安全性</a></li><li class="chapter-item expanded "><a href="poisoning.html" class="active"><strong aria-hidden="true">7.2.</strong> ポイゾニング</a></li></ol></li><li class="chapter-item expanded "><a href="concurrency.html"><strong aria-hidden="true">8.</strong> 並行性</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="races.html"><strong aria-hidden="true">8.1.</strong> 競合</a></li><li class="chapter-item expanded "><a href="send-and-sync.html"><strong aria-hidden="true">8.2.</strong> Send and Sync</a></li><li class="chapter-item expanded "><a href="atomics.html"><strong aria-hidden="true">8.3.</strong> Atomics</a></li></ol></li><li class="chapter-item expanded "><a href="vec.html"><strong aria-hidden="true">9.</strong> Vec の実装</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="vec-layout.html"><strong aria-hidden="true">9.1.</strong> レイアウト</a></li><li class="chapter-item expanded "><a href="vec-alloc.html"><strong aria-hidden="true">9.2.</strong> Allocating</a></li><li class="chapter-item expanded "><a href="vec-push-pop.html"><strong aria-hidden="true">9.3.</strong> プッシュとポップ</a></li><li class="chapter-item expanded "><a href="vec-dealloc.html"><strong aria-hidden="true">9.4.</strong> Deallocating</a></li><li class="chapter-item expanded "><a href="vec-deref.html"><strong aria-hidden="true">9.5.</strong> Deref</a></li><li class="chapter-item expanded "><a href="vec-insert-remove.html"><strong aria-hidden="true">9.6.</strong> Insert and Remove</a></li><li class="chapter-item expanded "><a href="vec-into-iter.html"><strong aria-hidden="true">9.7.</strong> IntoIter</a></li><li class="chapter-item expanded "><a href="vec-raw.html"><strong aria-hidden="true">9.8.</strong> RawVec</a></li><li class="chapter-item expanded "><a href="vec-drain.html"><strong aria-hidden="true">9.9.</strong> Drain</a></li><li class="chapter-item expanded "><a href="vec-zsts.html"><strong aria-hidden="true">9.10.</strong> Handling Zero-Sized Types</a></li><li class="chapter-item expanded "><a href="vec-final.html"><strong aria-hidden="true">9.11.</strong> Final Code</a></li></ol></li><li class="chapter-item expanded "><a href="arc-and-mutex.html"><strong aria-hidden="true">10.</strong> Implementing Arc and Mutex</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -155,7 +155,10 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#poisoning" id="poisoning">Poisoning</a></h1>
+                        <!--
+# Poisoning
+-->
+<h1><a class="header" href="#ポイゾニング" id="ポイゾニング">ポイゾニング</a></h1>
 <!--
 Although all unsafe code *must* ensure it has minimal exception safety, not all
 types ensure *maximal* exception safety. Even if the type does, your code may
@@ -164,12 +167,12 @@ exception-safe, but has no semantics on its own. It's possible that code that
 panics could fail to correctly update the integer, producing an inconsistent
 program state.
 -->
-<p>全てのunsafeな型は最低限の例外安全性を満たしていることが<strong>必要です</strong>が、全ての
-unsafeな型が<strong>最大限</strong>の例外安全性を満たしている必要はありません。
+<p>全てのアンセーフな型は最低限の例外安全性を満たしていることが<strong>必要です</strong>が、全ての
+アンセーフな型が<strong>最大限</strong>の例外安全性を満たしている必要はありません。
 仮に型自体が満たしていたとしても、実装が別の意味を暗黙に付与してしまう場合も
 あります。例えば整数型は間違いなく例外安全ですが、その(訳注: 最大限の例外安全性
 を担保する)セマンティクスを独自に持つわけではないため、整数をアップデートする
-際にpanicを起こすと、プログラムが一貫性のない状態に陥る可能性があります。</p>
+際にパニックを起こすと、プログラムが一貫性のない状態に陥る可能性があります。</p>
 <!--
 This is *usually* fine, because anything that witnesses an exception is about
 to get destroyed. For instance, if you send a Vec to another thread and that
@@ -179,8 +182,8 @@ values across the panic boundary.
 -->
 <p>これは<strong>通常は</strong>問題になることはありません。というのも例外を発見した処理は直後に
 死ぬためです。例えばVecを別のスレッドに送り、そのスレッドがパニックし、結果として
-Vecが奇妙な状態に陥ったとしても、dropされて永久に闇の彼方に葬られてしまうためです。
-とはいえ型によってはpanicの境界をまたいでくる場合もあります。</p>
+Vecが奇妙な状態に陥ったとしても、ドロップされて永久に闇の彼方に葬られてしまうためです。
+とはいえ型によってはパニックの境界をまたいでくる場合もあります。</p>
 <!--
 These types may choose to explicitly *poison* themselves if they witness a panic.
 Poisoning doesn't entail anything in particular. Generally it just means
@@ -189,12 +192,12 @@ standard library's Mutex type. A Mutex will poison itself if one of its
 MutexGuards (the thing it returns when a lock is obtained) is dropped during a
 panic. Any future attempts to lock the Mutex will return an `Err` or panic.
 -->
-<p>こういった型は、panicに直面した際に、意図的に自分自身を<strong>poison</strong>する可能性があり
-ます。poisoningは自体は特に何か別の事態を引き起こすわけではありません。一般的に
+<p>こういった型は、パニックに直面した際に、意図的に自分自身を<strong>ポイゾン</strong>する可能性があり
+ます。ポイゾニング自体は特に何か別の事態を引き起こすわけではありません。一般的に
 通常の手続きの継続を止めるべきであることを表しています。よく知られた例として
-標準ライブラリのMutex型があります。この型は対応するMutexGuards(lockを取得した際に
-返るもの)が、panicによってdropされた際に自分自身をpoisonします。以後Mutexをlock
-しようとすると<code>Err</code>を返すかpanicします。</p>
+標準ライブラリのMutex型があります。この型は対応するMutexGuards(ロックを取得した際に
+返るもの)が、パニックによってドロップされた際に自分自身をポイゾンします。以後Mutexをロック
+しようとすると<code>Err</code>を返すかパニックします。</p>
 <!--
 Mutex poisons not for true safety in the sense that Rust normally cares about. It
 poisons as a safety-guard against blindly using the data that comes out of a Mutex
@@ -203,8 +206,8 @@ middle of being modified, and as such may be in an inconsistent or incomplete st
 It is important to note that one cannot violate memory safety with such a type
 if it is correctly written. After all, it must be minimally exception-safe!
 -->
-<p>Mutexのpoisonは、通常の文脈で語られるRustの安全性とは異なる用途のためのものです。
-Mutexを扱うスレッドがlock中にパニックを引き起こした場合、Mutexの中のデータは変更中
+<p>Mutexのポイゾンは、通常の文脈で語られるRustの安全性とは異なる用途のためのものです。
+Mutexを扱うスレッドがロック中にパニックを引き起こした場合、Mutexの中のデータは変更中
 であった可能性が高く、一貫性を欠いていたり変更が未完了の状態であったりするため、
 そのようなデータを盲目的に扱う危険性に対する安全装置として動作します。
 注意しておきたいのはそのような型が適切に実装されていた場合、メモリ安全性<strong>は</strong>確実
@@ -222,7 +225,7 @@ Just maybe nonsense.
 として要件を満たさなかったような場合、そのデータ構造を利用するプログラムが作成者の
 意図通りの挙動をするということは考えにくいです。通常とは異なる振る舞いをする
 でしょう。とはいえ、十分に注意すればそのような場合でもその値が<strong>何かに</strong>使える
-可能性はあります。safe<strong>では</strong>あるのです。ただ、ナンセンスかもしれませんが。</p>
+可能性はあります。安全<strong>では</strong>あるのです。ただ、ナンセンスかもしれませんが。</p>
 
                     </main>
 
