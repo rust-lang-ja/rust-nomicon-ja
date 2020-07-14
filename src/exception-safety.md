@@ -95,7 +95,7 @@ impl<T: Clone> Vec<T> {
     fn push_all(&mut self, to_push: &[T]) {
         self.reserve(to_push.len());
         unsafe {
-            // 今さっき reserve をしましたので、オーバーフローするはずがありません
+            // 今さっき reserve をしたので、オーバーフローするはずがありません
             self.set_len(self.len() + to_push.len());
 
             for (i, x) in to_push.iter().enumerate() {
