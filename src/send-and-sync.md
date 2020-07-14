@@ -11,7 +11,7 @@ synchronization to manage this access, they are absolutely not thread safe. Rust
 captures this through the `Send` and `Sync` traits.
 -->
 
-すべてのものが継承可変性に従っているわけではありません。が、いくつかの型においては、
+すべてのものが継承可変性に従っているわけではありません。いくつかの型においては、
 メモリ上の場所の値を変更している間に、複数のエイリアスを生成することが可能です。
 これらの型が、このアクセスを管理するために同期を行なわない限り、これらは絶対スレッドセーフでは
 ありません。 Rust ではこれを、 `Send` トレイトと `Sync` トレイトで表しています。
