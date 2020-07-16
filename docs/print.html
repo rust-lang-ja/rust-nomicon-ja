@@ -4868,7 +4868,7 @@ Don't build your programs to unwind under normal circumstances. Ideally, you
 should only panic for programming errors or *extreme* problems.
 -->
 <p>一応 <code>catch_panic</code> というunstableなAPIが存在し、これによってスレッドをspawn
-することなくパニックを補足することはできます。</p>
+することなくパニックを捕捉することはできます。</p>
 <blockquote>
 <p>訳注: その後 <code>recover</code> -&gt; <code>catch_unwind</code> と変更され、Rust1.9でstableになりました。</p>
 </blockquote>
@@ -6302,37 +6302,82 @@ Remove behaves in the opposite manner. We need to shift all the elements from
 }
 </code></pre>
 <h1><a class="header" href="#intoiter" id="intoiter">IntoIter</a></h1>
-<p>Let's move on to writing iterators. <code>iter</code> and <code>iter_mut</code> have already been
+<!--
+Let's move on to writing iterators. `iter` and `iter_mut` have already been
 written for us thanks to The Magic of Deref. However there's two interesting
-iterators that Vec provides that slices can't: <code>into_iter</code> and <code>drain</code>.</p>
-<p>IntoIter consumes the Vec by-value, and can consequently yield its elements
+iterators that Vec provides that slices can't: `into_iter` and `drain`.
+-->
+<p>イテレータに移行しましょう。 Deref の魔法のおかげで、 <code>iter</code> と <code>iter_mut</code> は
+既に書かれています。しかし、 Vec が提供できて、スライスが提供できない 2 つの
+興味深いイテレータがあります。 <code>into_iter</code> と <code>drain</code> です。</p>
+<!--
+IntoIter consumes the Vec by-value, and can consequently yield its elements
 by-value. In order to enable this, IntoIter needs to take control of Vec's
-allocation.</p>
-<p>IntoIter needs to be DoubleEnded as well, to enable reading from both ends.
-Reading from the back could just be implemented as calling <code>pop</code>, but reading
-from the front is harder. We could call <code>remove(0)</code> but that would be insanely
+allocation.
+-->
+<p>IntoIter は Vec を値として消費します。その結果、その要素を値で返します。
+これを有効にするために、 IntoIter が Vec のアロケーションを操作する
+必要があります。</p>
+<!--
+IntoIter needs to be DoubleEnded as well, to enable reading from both ends.
+Reading from the back could just be implemented as calling `pop`, but reading
+from the front is harder. We could call `remove(0)` but that would be insanely
 expensive. Instead we're going to just use ptr::read to copy values out of
-either end of the Vec without mutating the buffer at all.</p>
-<p>To do this we're going to use a very common C idiom for array iteration. We'll
+either end of the Vec without mutating the buffer at all.
+-->
+<p>IntoIter は始端と終端の両方から読み出せるように、両頭である必要があります。
+後ろから読み込むのは単に <code>pop</code> を呼び出すよう実装すればよいのですが、
+前から読み出すのはもっと難しいです。 <code>remove(0)</code> を呼び出してもよいのですが、
+そのコストは馬鹿馬鹿しい位大きいです。その代わりに、バッファを全く変化させずに、
+ptr::read を使って両端から値をコピーするようにします。</p>
+<!--
+To do this we're going to use a very common C idiom for array iteration. We'll
 make two pointers; one that points to the start of the array, and one that
 points to one-element past the end. When we want an element from one end, we'll
 read out the value pointed to at that end and move the pointer over by one. When
-the two pointers are equal, we know we're done.</p>
-<p>Note that the order of read and offset are reversed for <code>next</code> and <code>next_back</code>
-For <code>next_back</code> the pointer is always after the element it wants to read next,
-while for <code>next</code> the pointer is always at the element it wants to read next.
+the two pointers are equal, we know we're done.
+-->
+<p>これをするために、 C のごく普通の配列のイテレーションのイディオムを使います。
+2 つのポインタを生成します。 1 つは配列の最初を指し、もう 1 つは配列の最後の
+1 つ後ろの要素を指します。終端から要素を 1 つ取得したい場合は、ポインタが
+指している値を読み出して、ポインタを 1 だけ動かします。もし 2 つのポインタが
+等価な場合、全要素が読み出されたことを意味します。</p>
+<!--
+Note that the order of read and offset are reversed for `next` and `next_back`
+For `next_back` the pointer is always after the element it wants to read next,
+while for `next` the pointer is always at the element it wants to read next.
 To see why this is, consider the case where every element but one has been
-yielded.</p>
-<p>The array looks like this:</p>
+yielded.
+-->
+<p>読み出しとオフセットの操作の順序は <code>next</code> と <code>next_back</code> とで逆転することに
+注意してください。 <code>next_back</code> では、ポインタは次に読みたい要素の直後の
+要素をいつも指しています。対して <code>next</code> では、ポインタは次に読みたい
+要素をいつも指しています。なぜこうなのか、 1 つを除いて全ての要素が
+既に返された例を見てみましょう。</p>
+<!--
+The array looks like this:
+-->
+<p>配列は以下のようになっています。</p>
 <pre><code class="language-text">          S  E
 [X, X, X, O, X, X, X]
 </code></pre>
-<p>If E pointed directly at the element it wanted to yield next, it would be
-indistinguishable from the case where there are no more elements to yield.</p>
-<p>Although we don't actually care about it during iteration, we also need to hold
+<!--
+If E pointed directly at the element it wanted to yield next, it would be
+indistinguishable from the case where there are no more elements to yield.
+-->
+<p>もし E が、次に返したい値を直接指していたら、返す値が既に存在しない場合と
+区別がつかなくなっているでしょう。</p>
+<!--
+Although we don't actually care about it during iteration, we also need to hold
 onto the Vec's allocation information in order to free it once IntoIter is
-dropped.</p>
-<p>So we're going to use the following struct:</p>
+dropped.
+-->
+<p>イテレーションの途中では気にしないのですが、 IntoIter がドロップされたら Vec を
+解放するため、 Vec のアロケーションの情報を保持する必要もあります。</p>
+<!--
+So we're going to use the following struct:
+-->
+<p>ですから以下のような構造体を使っていきます。</p>
 <pre><code class="language-rust ignore">struct IntoIter&lt;T&gt; {
     buf: Unique&lt;T&gt;,
     cap: usize,
@@ -6340,15 +6385,18 @@ dropped.</p>
     end: *const T,
 }
 </code></pre>
-<p>And this is what we end up with for initialization:</p>
+<!--
+And this is what we end up with for initialization:
+-->
+<p>そしてこれが初期化のコードです。</p>
 <pre><code class="language-rust ignore">impl&lt;T&gt; Vec&lt;T&gt; {
     fn into_iter(self) -&gt; IntoIter&lt;T&gt; {
-        // Can't destructure Vec since it's Drop
+        // Vec がドロップされてしまうため、 Vec を分配出来ません。
         let ptr = self.ptr;
         let cap = self.cap;
         let len = self.len;
 
-        // Make sure not to drop Vec since that will free the buffer
+        // Vec をドロップするとバッファを解放してしまうので、ドロップしないようにします。
         mem::forget(self);
 
         unsafe {
@@ -6357,7 +6405,7 @@ dropped.</p>
                 cap: cap,
                 start: *ptr,
                 end: if cap == 0 {
-                    // can't offset off this pointer, it's not allocated!
+                    // このポインタのオフセットを取ることが出来ません。アロケートされていないからです!
                     *ptr
                 } else {
                     ptr.offset(len as isize)
@@ -6367,7 +6415,10 @@ dropped.</p>
     }
 }
 </code></pre>
-<p>Here's iterating forward:</p>
+<!--
+Here's iterating forward:
+-->
+<p>前方へのイテレーションのコードです。</p>
 <pre><code class="language-rust ignore">impl&lt;T&gt; Iterator for IntoIter&lt;T&gt; {
     type Item = T;
     fn next(&amp;mut self) -&gt; Option&lt;T&gt; {
@@ -6389,7 +6440,10 @@ dropped.</p>
     }
 }
 </code></pre>
-<p>And here's iterating backwards.</p>
+<!--
+And here's iterating backwards.
+-->
+<p>そして後方へのイテレーションのコードです。</p>
 <pre><code class="language-rust ignore">impl&lt;T&gt; DoubleEndedIterator for IntoIter&lt;T&gt; {
     fn next_back(&amp;mut self) -&gt; Option&lt;T&gt; {
         if self.start == self.end {
@@ -6403,13 +6457,18 @@ dropped.</p>
     }
 }
 </code></pre>
-<p>Because IntoIter takes ownership of its allocation, it needs to implement Drop
+<!--
+Because IntoIter takes ownership of its allocation, it needs to implement Drop
 to free it. However it also wants to implement Drop to drop any elements it
-contains that weren't yielded.</p>
+contains that weren't yielded.
+-->
+<p>IntoIter はアロケーションの所有権を受け取るので、それを解放するために Drop を
+実装する必要があります。しかし、イテレーションの最中に返されなかった要素を
+ドロップするためにも Drop も実装する必要があります。</p>
 <pre><code class="language-rust ignore">impl&lt;T&gt; Drop for IntoIter&lt;T&gt; {
     fn drop(&amp;mut self) {
         if self.cap != 0 {
-            // drop any remaining elements
+            // 残っている要素を全てドロップします
             for _ in &amp;mut *self {}
 
             let align = mem::align_of::&lt;T&gt;();

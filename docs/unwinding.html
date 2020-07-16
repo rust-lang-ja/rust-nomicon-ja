@@ -237,7 +237,7 @@ Don't build your programs to unwind under normal circumstances. Ideally, you
 should only panic for programming errors or *extreme* problems.
 -->
 <p>一応 <code>catch_panic</code> というunstableなAPIが存在し、これによってスレッドをspawn
-することなくパニックを補足することはできます。</p>
+することなくパニックを捕捉することはできます。</p>
 <blockquote>
 <p>訳注: その後 <code>recover</code> -&gt; <code>catch_unwind</code> と変更され、Rust1.9でstableになりました。</p>
 </blockquote>
