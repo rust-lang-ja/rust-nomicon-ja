@@ -42,7 +42,7 @@
 	* [Atomics](atomics.md)
 * [Vec の実装](vec.md)
 	* [レイアウト](vec-layout.md)
-	* [Allocating](vec-alloc.md)
+	* [アロケーティング](vec-alloc.md)
 	* [プッシュとポップ](vec-push-pop.md)
 	* [デアロケーティング](vec-dealloc.md)
 	* [参照外し](vec-deref.md)
