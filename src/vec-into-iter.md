@@ -114,7 +114,7 @@ And this is what we end up with for initialization:
 ```rust,ignore
 impl<T> Vec<T> {
     fn into_iter(self) -> IntoIter<T> {
-        // Vec がドロップされてしまうため、 Vec をデストラクト出来ません。
+        // Vec がドロップされてしまうため、 Vec を分配出来ません。
         let ptr = self.ptr;
         let cap = self.cap;
         let len = self.len;
