@@ -106,9 +106,9 @@ when your allocator just came back with "hey I don't have any more memory".
 また、メモリ不足 (out-of-memory, OOM) の状態に対処する方法も必要です。
 標準ライブラリでは、単に `abort` intrinsic を呼びます。これは単純に
 不正な命令を呼び出して、プログラムをクラッシュさせます。なぜパニックではなく
-アボートさせるかというと、巻き戻しによってアロケーションが起こる事があり、
-そしてアロケータが "なあ、もうメモリがないぜ" と戻ってきてしまうことで、
-何か悪い事をしてしまうからです。
+アボートさせるかというと、巻き戻しはアロケーションを起こす事があるため、
+アロケータが "なあ、もうメモリがないぜ" と帰ってきたときに巻き戻しを行なうのは
+まずいからです。
 
 <!--
 Of course, this is a bit silly since most platforms don't actually run out of
