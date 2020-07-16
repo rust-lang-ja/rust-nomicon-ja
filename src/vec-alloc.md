@@ -387,7 +387,7 @@ fn grow(&mut self) {
             let ptr = heap::allocate(elem_size, align);
             (1, ptr)
         } else {
-            // 非変性ですので、 `self.cap < isize::MAX` と見なすことが出来ます。
+            // 不変条件ですので、 `self.cap < isize::MAX` と見なすことが出来ます。
             // ですからチェックする必要はありません。
             let new_cap = self.cap * 2;
             // 同様に、前にアロケートしたのでオーバーフローすることはありません
