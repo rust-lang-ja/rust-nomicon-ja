@@ -6074,7 +6074,7 @@ T. Worse, `foo[idx] = x` will try to call `drop` on the old value of `foo[idx]`!
 あるます。最悪、そのメモリはアロケータが全く初期化していません。良くても、
 ポップした古い値のビットが残っています。いずれにせよ、そのメモリをインデックス指定し、
 単に参照外しをするわけにはいきません。なぜならそれによって、メモリ上の値を、 T の
-正しいインスタンスとして評価してしまうからです。もっと悪いと <code>foo[idx] = x</code> によって、
+正しいインスタンスとして評価してしまうからです。もっと悪いことに、 <code>foo[idx] = x</code> によって、
 <code>foo[idx]</code> の古い値に対して <code>drop</code> を呼ぼうとしてしまいます!</p>
 <!--
 The correct way to do this is with `ptr::write`, which just blindly overwrites the
