@@ -187,11 +187,19 @@ impl<T> RawValIter<T> {
 }
 ```
 
+<!--
 Now we have a different bug. Instead of our iterators not running at all, our
 iterators now run *forever*. We need to do the same trick in our iterator impls.
 Also, our size_hint computation code will divide by 0 for ZSTs. Since we'll
 basically be treating the two pointers as if they point to bytes, we'll just
 map size 0 to divide by 1.
+-->
+
+さて、これにより別のバグが発生します。イテレータが全く動作しない代わりに、
+このイテレータは*永遠に*動作してしまいます。同じトリックをイテレータの impl に
+行なう必要があります。また、 size_hint の計算では、 ZST の場合 0 で割ることになります。
+基本的に 2 つのポインタを、それらがバイトサイズの値を指しているとして扱っているため、
+サイズが 0 の場合、 1 で割ります。
 
 ```rust,ignore
 impl<T> Iterator for RawValIter<T> {
