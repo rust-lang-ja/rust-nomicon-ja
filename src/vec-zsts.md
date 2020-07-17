@@ -67,7 +67,7 @@ no longer valid with zero-sized types. We must explicitly guard against capacity
 overflow for zero-sized types.
 -->
 
-ですが、サイズが 0 の型に対しては、オーバーフローの前にメモリ不足になる、という、
+ですが、サイズが 0 の型に対しては、オーバーフローの前にメモリ不足になる、という
 前述した前提は最早有効ではないということに注意してください。サイズが 0 の型に対しては、
 キャパシティのオーバーフローに対して明示的にガードしなければなりません。
 
