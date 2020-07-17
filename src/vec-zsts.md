@@ -141,8 +141,14 @@ impl<T> Drop for RawVec<T> {
 }
 ```
 
+<!--
 That's it. We support pushing and popping zero-sized types now. Our iterators
 (that aren't provided by slice Deref) are still busted, though.
+-->
+
+以上。これで、サイズが 0 の型に対するプッシュとポップがサポートされます。
+それでもイテレータ (スライスの Deref から提供されていないもの) は
+まだサポートされていないのですが。
 
 
 
