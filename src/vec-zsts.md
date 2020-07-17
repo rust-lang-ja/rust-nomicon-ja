@@ -147,7 +147,7 @@ That's it. We support pushing and popping zero-sized types now. Our iterators
 -->
 
 以上。これで、サイズが 0 の型に対するプッシュとポップがサポートされます。
-それでもイテレータ (スライスの Deref から提供されていないもの) は
+それでも (スライスの Deref から提供されていない) イテレータは、
 まだサポートされていないのですが。
 
 
