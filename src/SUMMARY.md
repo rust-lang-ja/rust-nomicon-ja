@@ -51,5 +51,5 @@
 	* [RawVec](vec-raw.md)
 	* [Drain](vec-drain.md)
 	* [Handling Zero-Sized Types](vec-zsts.md)
-	* [Final Code](vec-final.md)
+	* [最終コード](vec-final.md)
 * [Implementing Arc and Mutex](arc-and-mutex.md)
