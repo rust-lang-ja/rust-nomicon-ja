@@ -86,8 +86,8 @@ impl<T> RawVec<T> {
             // !0 は usize::MAX です。この分岐はコンパイル時に取り除かれるはずです。
             let cap = if mem::size_of::<T>() == 0 { !0 } else { 0 };
 
-            // heap::EMPTY は "アロケートされていない" と "サイズが 0 の型のアロケーションの" の
-            // 2 つの意味を持ちます。
+            // heap::EMPTY は "アロケートされていない" と "サイズが 0 の型のアロケーション" の
+            // 2 つの意味も兼ねることになります。
             RawVec { ptr: Unique::new(heap::EMPTY as *mut T), cap: cap }
         }
     }
