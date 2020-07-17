@@ -246,4 +246,8 @@ impl<T> DoubleEndedIterator for RawValIter<T> {
 }
 ```
 
+<!--
 And that's it. Iteration works!
+-->
+
+出来ました。イテレーションが動作します!
