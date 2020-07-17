@@ -83,10 +83,11 @@ method of RawVec.
 impl<T> RawVec<T> {
     fn new() -> Self {
         unsafe {
-            // !0 is usize::MAX. This branch should be stripped at compile time.
+            // !0 は usize::MAX です。この分岐はコンパイル時に取り除かれるはずです。
             let cap = if mem::size_of::<T>() == 0 { !0 } else { 0 };
 
-            // heap::EMPTY doubles as "unallocated" and "zero-sized allocation"
+            // heap::EMPTY は "アロケートされていない" と "サイズが 0 の型のアロケーションの" の
+            // 2 つの意味を持ちます。
             RawVec { ptr: Unique::new(heap::EMPTY as *mut T), cap: cap }
         }
     }
@@ -95,8 +96,9 @@ impl<T> RawVec<T> {
         unsafe {
             let elem_size = mem::size_of::<T>();
 
-            // since we set the capacity to usize::MAX when elem_size is
-            // 0, getting to here necessarily means the Vec is overfull.
+            // elem_size が 0 の時にキャパシティを usize::MAX にしたので、
+            // ここにたどり着いてしまうということは、 Vec が満杯であることを必然的に
+            // 意味します。
             assert!(elem_size != 0, "capacity overflow");
 
             let align = mem::align_of::<T>();
@@ -113,7 +115,7 @@ impl<T> RawVec<T> {
                 (new_cap, ptr)
             };
 
-            // If allocate or reallocate fail, we'll get `null` back
+            // もしアロケートや、リアロケートに失敗すると、 `null` が返ってきます
             if ptr.is_null() { oom() }
 
             self.ptr = Unique::new(ptr as *mut _);
@@ -126,7 +128,7 @@ impl<T> Drop for RawVec<T> {
     fn drop(&mut self) {
         let elem_size = mem::size_of::<T>();
 
-        // don't free zero-sized allocations, as they were never allocated.
+        // サイズが 0 の型のアロケーションは解放しません。そもそもアロケートされていないからです。
         if self.cap != 0 && elem_size != 0 {
             let align = mem::align_of::<T>();
 
