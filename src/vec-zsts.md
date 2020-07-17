@@ -159,10 +159,16 @@ That's it. We support pushing and popping zero-sized types now. Our iterators
 
 ## サイズが 0 の型のイテレーション
 
+<!--
 Zero-sized offsets are no-ops. This means that our current design will always
 initialize `start` and `end` as the same value, and our iterators will yield
 nothing. The current solution to this is to cast the pointers to integers,
 increment, and then cast them back:
+-->
+
+サイズが 0 の型に対するオフセットは no-op です。つまり、現在の設計では `start` と `end` を
+常に同じ値に初期化し、イテレータは何も値を返しません。これに対する今の所の解決策は、
+ポインタを整数にキャストし、インクリメントした後に下に戻すという方法です。
 
 ```rust,ignore
 impl<T> RawValIter<T> {
