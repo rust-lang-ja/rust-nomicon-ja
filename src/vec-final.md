@@ -1,4 +1,8 @@
+<!--
 # The Final Code
+-->
+
+# 最終コード
 
 ```rust
 #![feature(unique)]
@@ -21,10 +25,11 @@ struct RawVec<T> {
 impl<T> RawVec<T> {
     fn new() -> Self {
         unsafe {
-            // !0 is usize::MAX. This branch should be stripped at compile time.
+            // !0 は usize::MAX です。この分岐はコンパイル時に取り除かれるはずです。
             let cap = if mem::size_of::<T>() == 0 { !0 } else { 0 };
 
-            // heap::EMPTY doubles as "unallocated" and "zero-sized allocation"
+            // heap::EMPTY は "アロケートされていない" と "サイズが 0 の型のアロケーション" の
+            // 2 つの意味を兼ねることになります。
             RawVec { ptr: Unique::new(heap::EMPTY as *mut T), cap: cap }
         }
     }
@@ -33,8 +38,9 @@ impl<T> RawVec<T> {
         unsafe {
             let elem_size = mem::size_of::<T>();
 
-            // since we set the capacity to usize::MAX when elem_size is
-            // 0, getting to here necessarily means the Vec is overfull.
+            // elem_size が 0 の時にキャパシティを usize::MAX にしたので、
+            // ここにたどり着いてしまうということは、 Vec が満杯であることを必然的に
+            // 意味します。
             assert!(elem_size != 0, "capacity overflow");
 
             let align = mem::align_of::<T>();
@@ -51,7 +57,7 @@ impl<T> RawVec<T> {
                 (new_cap, ptr)
             };
 
-            // If allocate or reallocate fail, we'll get `null` back
+            // もしアロケートや、リアロケートに失敗すると、 `null` が返ってきます
             if ptr.is_null() { oom() }
 
             self.ptr = Unique::new(ptr as *mut _);
@@ -98,7 +104,7 @@ impl<T> Vec<T> {
             ptr::write(self.ptr().offset(self.len as isize), elem);
         }
 
-        // Can't fail, we'll OOM first.
+        // 絶対成功します。 OOM はこの前に起きるからです。
         self.len += 1;
     }
 
@@ -157,9 +163,9 @@ impl<T> Vec<T> {
         unsafe {
             let iter = RawValIter::new(&self);
 
-            // this is a mem::forget safety thing. If Drain is forgotten, we just
-            // leak the whole Vec's contents. Also we need to do this *eventually*
-            // anyway, so why not do it now?
+            // これは mem::forget の安全版です。もし Drain が forget されたら、
+            // 単に Vec の内容全体をリークします。そして*結局*これをしなければ
+            // なりません。なら今やっちゃいましょう。
             self.len = 0;
 
             Drain {
@@ -173,7 +179,7 @@ impl<T> Vec<T> {
 impl<T> Drop for Vec<T> {
     fn drop(&mut self) {
         while let Some(_) = self.pop() {}
-        // allocation is handled by RawVec
+        // デアロケートは RawVec が対処します
     }
 }
 
@@ -265,7 +271,7 @@ impl<T> DoubleEndedIterator for RawValIter<T> {
 
 
 pub struct IntoIter<T> {
-    _buf: RawVec<T>, // we don't actually care about this. Just need it to live.
+    _buf: RawVec<T>, // これを扱うことはないのですが、その存在は必要です。
     iter: RawValIter<T>,
 }
 
@@ -310,9 +316,9 @@ impl<'a, T> Drop for Drain<'a, T> {
     }
 }
 
-/// Abort the process, we're out of memory!
+/// プロセスをアボートします。メモリ不足だ!
 ///
-/// In practice this is probably dead code on most OSes
+/// 実際にはこのコードは、多分ほとんどの OS においてデッドコードとなるでしょう
 fn oom() {
     ::std::process::exit(-9999);
 }
