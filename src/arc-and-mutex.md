@@ -14,4 +14,8 @@ we'll be implementing versions of the standard library's Arc and Mutex types.
 アトミックや内部可変性をもっと理解するために、標準ライブラリの Arc 型と Mutex 型を
 実装していきます。
 
+<!--
 TODO: ALL OF THIS OMG
+-->
+
+TODO: この章全部
