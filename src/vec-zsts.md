@@ -153,7 +153,11 @@ That's it. We support pushing and popping zero-sized types now. Our iterators
 
 
 
+<!--
 ## Iterating Zero-Sized Types
+-->
+
+## サイズが 0 の型のイテレーション
 
 Zero-sized offsets are no-ops. This means that our current design will always
 initialize `start` and `end` as the same value, and our iterators will yield
