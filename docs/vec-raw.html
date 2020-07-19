@@ -156,12 +156,21 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#rawvec" id="rawvec">RawVec</a></h1>
-<p>We've actually reached an interesting situation here: we've duplicated the logic
+<!--
+We've actually reached an interesting situation here: we've duplicated the logic
 for specifying a buffer and freeing its memory in Vec and IntoIter. Now that
-we've implemented it and identified <em>actual</em> logic duplication, this is a good
-time to perform some logic compression.</p>
-<p>We're going to abstract out the <code>(ptr, cap)</code> pair and give them the logic for
-allocating, growing, and freeing:</p>
+we've implemented it and identified *actual* logic duplication, this is a good
+time to perform some logic compression.
+-->
+<p>興味深い状況に突入しました。すなわち、 Vec と IntoIter の、バッファの指定と
+メモリの解放の論理が重複しているのです。これらを実装し、<em>実際に</em>ロジックが
+重複していると特定したので、今がロジックを圧縮する丁度良い時です。</p>
+<!--
+We're going to abstract out the `(ptr, cap)` pair and give them the logic for
+allocating, growing, and freeing:
+-->
+<p><code>(ptr, cap)</code> のペアを取り除き、これにアロケート、伸長そして解放のロジックを
+与えます。</p>
 <pre><code class="language-rust ignore">struct RawVec&lt;T&gt; {
     ptr: Unique&lt;T&gt;,
     cap: usize,
@@ -175,7 +184,7 @@ impl&lt;T&gt; RawVec&lt;T&gt; {
         }
     }
 
-    // unchanged from Vec
+    // Vec の時と変更ありません
     fn grow(&amp;mut self) {
         unsafe {
             let align = mem::align_of::&lt;T&gt;();
@@ -193,7 +202,7 @@ impl&lt;T&gt; RawVec&lt;T&gt; {
                 (new_cap, ptr)
             };
 
-            // If allocate or reallocate fail, we'll get `null` back
+            // もしアロケートや、リアロケートに失敗すると、 `null` が返ってきます
             if ptr.is_null() { oom() }
 
             self.ptr = Unique::new(ptr as *mut _);
@@ -216,7 +225,10 @@ impl&lt;T&gt; Drop for RawVec&lt;T&gt; {
     }
 }
 </code></pre>
-<p>And change Vec as follows:</p>
+<!--
+And change Vec as follows:
+-->
+<p>そして Vec を以下のように変更します。</p>
 <pre><code class="language-rust ignore">pub struct Vec&lt;T&gt; {
     buf: RawVec&lt;T&gt;,
     len: usize,
@@ -231,7 +243,7 @@ impl&lt;T&gt; Vec&lt;T&gt; {
         Vec { buf: RawVec::new(), len: 0 }
     }
 
-    // push/pop/insert/remove largely unchanged:
+    // push/pop/insert/remove は以下以外の変更はありません。
     // * `self.ptr -&gt; self.ptr()`
     // * `self.cap -&gt; self.cap()`
     // * `self.grow -&gt; self.buf.grow()`
@@ -240,23 +252,26 @@ impl&lt;T&gt; Vec&lt;T&gt; {
 impl&lt;T&gt; Drop for Vec&lt;T&gt; {
     fn drop(&amp;mut self) {
         while let Some(_) = self.pop() {}
-        // deallocation is handled by RawVec
+        // デアロケートは RawVec が対処します
     }
 }
 </code></pre>
-<p>And finally we can really simplify IntoIter:</p>
+<!--
+And finally we can really simplify IntoIter:
+-->
+<p>最終的に、本当に IntoIter が単純になります。</p>
 <pre><code class="language-rust ignore">struct IntoIter&lt;T&gt; {
-    _buf: RawVec&lt;T&gt;, // we don't actually care about this. Just need it to live.
+    _buf: RawVec&lt;T&gt;, // これを扱うことはないのですが、その存在は必要です。
     start: *const T,
     end: *const T,
 }
 
-// next and next_back literally unchanged since they never referred to the buf
+// next と next_back は buf を参照していないため、文字通り変更しません
 
 impl&lt;T&gt; Drop for IntoIter&lt;T&gt; {
     fn drop(&amp;mut self) {
-        // only need to ensure all our elements are read;
-        // buffer will clean itself up afterwards.
+        // 全ての要素が確実に読まれていることだけが必要です。
+        // バッファは後で自身を片付けます。
         for _ in &amp;mut *self {}
     }
 }
@@ -264,8 +279,9 @@ impl&lt;T&gt; Drop for IntoIter&lt;T&gt; {
 impl&lt;T&gt; Vec&lt;T&gt; {
     pub fn into_iter(self) -&gt; IntoIter&lt;T&gt; {
         unsafe {
-            // need to use ptr::read to unsafely move the buf out since it's
-            // not Copy, and Vec implements Drop (so we can't destructure it).
+            // buf をアンセーフに移動させるため、 ptr:read を必要とします。
+            // buf は Copy を実装しておらず、 Vec は Drop を実装しているからです
+            // (ですから Vec を分配できません) 。
             let buf = ptr::read(&amp;self.buf);
             let len = self.len;
             mem::forget(self);
@@ -279,7 +295,10 @@ impl&lt;T&gt; Vec&lt;T&gt; {
     }
 }
 </code></pre>
-<p>Much better.</p>
+<!--
+Much better.
+-->
+<p>結構良くなりました。</p>
 
                     </main>
 
