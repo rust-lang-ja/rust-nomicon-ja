@@ -138,7 +138,7 @@ impl<T> Vec<T> {
         unsafe {
             // buf をアンセーフに移動させるため、 ptr:read を必要とします。
             // buf は Copy を実装しておらず、 Vec は Drop を実装しているからです
-            // (ですから Vec をデストラクト出来ません) 。
+            // (ですから Vec を分配できません) 。
             let buf = ptr::read(&self.buf);
             let len = self.len;
             mem::forget(self);
