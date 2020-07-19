@@ -1,12 +1,23 @@
 # RawVec
 
+<!--
 We've actually reached an interesting situation here: we've duplicated the logic
 for specifying a buffer and freeing its memory in Vec and IntoIter. Now that
 we've implemented it and identified *actual* logic duplication, this is a good
 time to perform some logic compression.
+-->
 
+興味深い状況に突入しました。すなわち、 Vec と IntoIter の、バッファの指定と
+メモリの解放の論理が重複しているのです。これらを実装し、*実際に*ロジックが
+重複していると特定したので、今がロジックを圧縮する丁度良い時です。
+
+<!--
 We're going to abstract out the `(ptr, cap)` pair and give them the logic for
 allocating, growing, and freeing:
+-->
+
+`(ptr, cap)` のペアを取り除き、これにアロケート、伸長そして解放のロジックを
+与えます。
 
 ```rust,ignore
 struct RawVec<T> {
@@ -22,7 +33,7 @@ impl<T> RawVec<T> {
         }
     }
 
-    // unchanged from Vec
+    // Vec の時と変更ありません
     fn grow(&mut self) {
         unsafe {
             let align = mem::align_of::<T>();
@@ -40,7 +51,7 @@ impl<T> RawVec<T> {
                 (new_cap, ptr)
             };
 
-            // If allocate or reallocate fail, we'll get `null` back
+            // もしアロケートや、リアロケートに失敗すると、 `null` が返ってきます
             if ptr.is_null() { oom() }
 
             self.ptr = Unique::new(ptr as *mut _);
@@ -64,7 +75,11 @@ impl<T> Drop for RawVec<T> {
 }
 ```
 
+<!--
 And change Vec as follows:
+-->
+
+そして Vec を以下のように変更します。
 
 ```rust,ignore
 pub struct Vec<T> {
@@ -81,7 +96,7 @@ impl<T> Vec<T> {
         Vec { buf: RawVec::new(), len: 0 }
     }
 
-    // push/pop/insert/remove largely unchanged:
+    // push/pop/insert/remove は以下以外の変更はありません。
     // * `self.ptr -> self.ptr()`
     // * `self.cap -> self.cap()`
     // * `self.grow -> self.buf.grow()`
@@ -90,26 +105,30 @@ impl<T> Vec<T> {
 impl<T> Drop for Vec<T> {
     fn drop(&mut self) {
         while let Some(_) = self.pop() {}
-        // deallocation is handled by RawVec
+        // デアロケートは RawVec が対処します
     }
 }
 ```
 
+<!--
 And finally we can really simplify IntoIter:
+-->
+
+最終的に、本当に IntoIter が単純になります。
 
 ```rust,ignore
 struct IntoIter<T> {
-    _buf: RawVec<T>, // we don't actually care about this. Just need it to live.
+    _buf: RawVec<T>, // これを扱うことはないのですが、その存在は必要です。
     start: *const T,
     end: *const T,
 }
 
-// next and next_back literally unchanged since they never referred to the buf
+// next と next_back は buf を参照していないため、文字通り変更しません
 
 impl<T> Drop for IntoIter<T> {
     fn drop(&mut self) {
-        // only need to ensure all our elements are read;
-        // buffer will clean itself up afterwards.
+        // 全ての要素が確実に読まれていることだけが必要です。
+        // バッファは後で自身を片付けます。
         for _ in &mut *self {}
     }
 }
@@ -117,8 +136,9 @@ impl<T> Drop for IntoIter<T> {
 impl<T> Vec<T> {
     pub fn into_iter(self) -> IntoIter<T> {
         unsafe {
-            // need to use ptr::read to unsafely move the buf out since it's
-            // not Copy, and Vec implements Drop (so we can't destructure it).
+            // buf をアンセーフに移動させるため、 ptr:read を必要とします。
+            // buf は Copy を実装しておらず、 Vec は Drop を実装しているからです
+            // (ですから Vec を分配できません) 。
             let buf = ptr::read(&self.buf);
             let len = self.len;
             mem::forget(self);
@@ -133,4 +153,8 @@ impl<T> Vec<T> {
 }
 ```
 
+<!--
 Much better.
+-->
+
+結構良くなりました。
