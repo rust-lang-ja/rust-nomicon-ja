@@ -50,6 +50,6 @@
 	* [IntoIter](vec-into-iter.md)
 	* [RawVec](vec-raw.md)
 	* [Drain](vec-drain.md)
-	* [Handling Zero-Sized Types](vec-zsts.md)
+	* [サイズが 0 の型を扱う](vec-zsts.md)
 	* [Final Code](vec-final.md)
 * [Arc と Mutex の実装](arc-and-mutex.md)
