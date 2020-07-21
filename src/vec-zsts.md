@@ -76,8 +76,8 @@ Due to our current architecture, all this means is writing 3 guards, one in each
 method of RawVec.
 -->
 
-現在のアーキテクチャでは、これは 3 つのガードを書くということを意味します。
-この内 1 つは RawVec の各メソッド内に書きます。
+現在のアーキテクチャでは、これは RawVec の各メソッド内に一つずつ、合わせて 3 つの
+ガードを書くことを意味します。
 
 ```rust,ignore
 impl<T> RawVec<T> {
