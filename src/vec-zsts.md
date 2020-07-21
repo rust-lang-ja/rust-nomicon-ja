@@ -87,7 +87,7 @@ impl<T> RawVec<T> {
             let cap = if mem::size_of::<T>() == 0 { !0 } else { 0 };
 
             // heap::EMPTY は "アロケートされていない" と "サイズが 0 の型のアロケーション" の
-            // 2 つの意味も兼ねることになります。
+            // 2 つの意味を兼ねることになります。
             RawVec { ptr: Unique::new(heap::EMPTY as *mut T), cap: cap }
         }
     }
