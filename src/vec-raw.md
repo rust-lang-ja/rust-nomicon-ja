@@ -118,7 +118,7 @@ And finally we can really simplify IntoIter:
 
 ```rust,ignore
 struct IntoIter<T> {
-    _buf: RawVec<T>, // これを扱うことはないのですが、 ライフタイムは有効でなくてはなりません。
+    _buf: RawVec<T>, // これを扱うことはないのですが、ライフタイムは有効でなくてはなりません。
     start: *const T,
     end: *const T,
 }
