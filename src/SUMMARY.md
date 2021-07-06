@@ -18,7 +18,7 @@
 	* [高階トレイト境界](hrtb.md)
 	* [Subtyping and Variance](subtyping.md)
 	* [Drop Check](dropck.md)
-	* [PhantomData](phantom-data.md)
+	* [ファントムデータ](phantom-data.md)
 	* [借用の分割](borrow-splitting.md)
 * [型変換](conversions.md)
 	* [型強制](coercions.md)

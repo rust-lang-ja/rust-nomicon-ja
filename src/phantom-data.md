@@ -1,9 +1,19 @@
+<!--
 # PhantomData
+-->
 
+# ファントムデータ
+
+<!--
 When working with unsafe code, we can often end up in a situation where
 types or lifetimes are logically associated with a struct, but not actually
 part of a field. This most commonly occurs with lifetimes. For instance, the
 `Iter` for `&'a [T]` is (approximately) defined as follows:
+-->
+
+アンセーフなコードを扱っているとき、しばしば型やライフタイムが論理的に構造体に結びついているけれども、
+フィールドの一部には結びついていない状況に陥る事があります。
+例えば、 `&'a [T]` に対する `Iter` は (大体) 以下のように定義されます。
 
 ```rust,ignore
 struct Iter<'a, T: 'a> {
@@ -12,20 +22,40 @@ struct Iter<'a, T: 'a> {
 }
 ```
 
+<!--
 However because `'a` is unused within the struct's body, it's *unbounded*.
 Because of the troubles this has historically caused, unbounded lifetimes and
 types are *forbidden* in struct definitions. Therefore we must somehow refer
 to these types in the body. Correctly doing this is necessary to have
 correct variance and drop checking.
+-->
 
+しかし、 `'a` は構造体の本体内では使用されないため、 `'a` は*無制限*のライフタイムとなります。
+これが過去に引き起こしてきた問題のために、無制限のライフタイムと無制限の型は、
+構造体の定義内では*禁じられています*。それ故に、なんとかして本体内にあるこれらの型を
+参照しなければなりません。正しくこれを行なうことは、正しい変性とドロップチェックを
+得るために必要です。
+
+<!--
 We do this using `PhantomData`, which is a special marker type. `PhantomData`
 consumes no space, but simulates a field of the given type for the purpose of
 static analysis. This was deemed to be less error-prone than explicitly telling
 the type-system the kind of variance that you want, while also providing other
 useful such as the information needed by drop check.
+-->
 
+これを、 `PhantomData` という、特別なマーカー型を使って行ないます。
+`PhantomData` はスペースを消費しませんが、静的分析のために、与えられた型のフィールドを装います。
+これは、明白に型システムに、欲しい変種の種類を伝えるよりも、エラーが起こりにくいと思われていた一方、
+例えばドロップチェッカが必要とする情報など、利便なものを提供していました。
+
+<!--
 Iter logically contains a bunch of `&'a T`s, so this is exactly what we tell
 the PhantomData to simulate:
+-->
+
+Iter は論理的には沢山の `&'a T` を保持しているため、この型が、 PhantomData に
+装うよう伝えるものです。
 
 ```
 use std::marker;
@@ -37,50 +67,94 @@ struct Iter<'a, T: 'a> {
 }
 ```
 
+<!--
 and that's it. The lifetime will be bounded, and your iterator will be variant
 over `'a` and `T`. Everything Just Works.
+-->
 
+これでよし。ライフタイムには制限が付き、イテレータは `'a` と `T` において変性になります。
+全てうまく行きます。
+
+<!--
 Another important example is Vec, which is (approximately) defined as follows:
+-->
+
+もう一つ重要な例は Vec で、これは (大体) 以下のように定義されます。
 
 ```
 struct Vec<T> {
-    data: *const T, // *const for variance!
+    data: *const T, // 変性を得るため *const です!
     len: usize,
     cap: usize,
 }
 ```
 
+<!--
 Unlike the previous example, it *appears* that everything is exactly as we
 want. Every generic argument to Vec shows up in at least one field.
 Good to go!
+-->
 
+前の例と違い、これは、全てが期待しているものと全く同じ*ように見えます*。
+Vec の全てのジェネリックな引数は少なくとも1つのフィールドに現れます。
+さあ準備完了!
+
+<!--
 Nope.
+-->
 
+いいえ。
+
+<!--
 The drop checker will generously determine that `Vec<T>` does not own any values
 of type T. This will in turn make it conclude that it doesn't need to worry
 about Vec dropping any T's in its destructor for determining drop check
 soundness. This will in turn allow people to create unsoundness using
 Vec's destructor.
+-->
 
+ドロップチェッカは、 `Vec<T>` がいかなる型 `T` の値も持たないと惜しみなく決定するでしょう。
+これは結果的に、ドロップチェックの健全性の決定によって、 Vec のデストラクタ内で、 Vec がなにか T の
+値をドロップするということを心配する必要がないと結論付けます。
+この結果、 Vec のデストラクタを使用して、無制限という性質を作り出すことを可能にするのです。
+
+<!--
 In order to tell dropck that we *do* own values of type T, and therefore may
 drop some T's when *we* drop, we must add an extra PhantomData saying exactly
 that:
+-->
+
+ドロップチェックに、 Vec が型 T の値を*本当に*保持していて、それ故に *Vec* が
+ドロップする際、なにか T の値もドロップするかもしれないと伝えるために、
+追加の PhantomData を加えなければなりません。
 
 ```
 use std::marker;
 
 struct Vec<T> {
-    data: *const T, // *const for covariance!
+    data: *const T, // 変性を得るため *const です!
     len: usize,
     cap: usize,
     _marker: marker::PhantomData<T>,
 }
 ```
 
+<!--
 Raw pointers that own an allocation is such a pervasive pattern that the
 standard library made a utility for itself called `Unique<T>` which:
+-->
 
+アロケーションを持つ生ポインタは普及しているパターンですので、
+標準ライブラリが以下の機能を持つ、 `Unique<T>` と呼ばれるユーティリティを作りました。
+
+<!--
 * wraps a `*const T` for variance
 * includes a `PhantomData<T>`
 * auto-derives Send/Sync as if T was contained
 * marks the pointer as NonZero for the null-pointer optimization
+-->
+
+* 変性を得るため、 `*const T` をラップします
+* `PhantomData<T>` を含みます
+* T が Send/Sync を保持しているかのように、自動的に継承します
+* ヌルポインタ最適化のため、ポインタを非 0 としてマークします
